@@ -11,3 +11,9 @@ __pycache__/
 
 # macOS folder metadata.
 .DS_Store
+
+# Lake build outputs.
+.lake/
+
+# Cargo build outputs.
+/target/

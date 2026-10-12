@@ -17,6 +17,12 @@
       "targets/elements/glyphs.js"
       "targets/elements/mark-data.js"
       "targets/brand-kit/README.md"
+      "targets/rust/src/assets.rs"
+      "targets/rust/src/bundle_data.rs"
+      "targets/rust/assets/**"
+      "targets/terminal/src/tokens.rs"
+      "targets/verso/verso-theme.css"
+      "targets/verso/StemmaDesign/Files.lean"
     ];
 
     # Nix.
@@ -40,6 +46,21 @@
 
     # Python.
     programs.ruff-format.enable = true;
+
+    # Rust, for the edition the workspace uses.
+    programs.rustfmt = {
+      enable = true;
+      edition = "2024";
+    };
+
+    # TOML, ordered and validated with the JSON Schemas that tombi ships
+    # (Cargo.toml, lakefile.toml, …). Offline, so that it also runs in the
+    # build sandbox.
+    settings.formatter.tombi = {
+      command = pkgs.lib.getExe pkgs.tombi;
+      options = ["format" "--offline"];
+      includes = ["*.toml"];
+    };
 
     # The Justfile.
     programs.just.enable = true;
