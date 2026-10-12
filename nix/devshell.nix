@@ -6,10 +6,15 @@ pkgs.devshell.mkShell {
     name = "design";
 
     packages = [
-      # Faces are subset and converted with fontTools; WOFF2 needs Brotli.
+      # Faces are subset and converted with fontTools, and WOFF2 needs
+      # Brotli. The wordmark is shaped with HarfBuzz and outlined with
+      # fontTools. Pillow writes the ICO and ICNS icons and compares
+      # rendered images.
       (pkgs.python3.withPackages (ps: [
         ps.fonttools
         ps.brotli
+        ps.uharfbuzz
+        ps.pillow
       ]))
     ];
   };
