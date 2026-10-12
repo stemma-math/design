@@ -47,8 +47,10 @@ its own folder.
 ## Development
 
 The tools are Node, Python with `fontTools`, Brotli, `uharfbuzz` and
-Pillow, `resvg` and `just`. The Nix flake's development shell provides them; without Nix,
-install them by hand.
+Pillow, `resvg` and `just`. The Nix flake's development shell provides them. Without Nix,
+install Node 24, `resvg` and `just` by hand, the Python packages with
+`python3 -m pip install -r scripts/requirements.txt`, and the Node ones
+with `npm ci`.
 
 ```sh
 nix develop     # enter the development shell

@@ -33,6 +33,11 @@ FONTS = TARGET / "fonts"
 
 HEADER = "Generated from source/fonts by scripts/fonts.py. Do not edit."
 
+# fontTools packs layout tables with HarfBuzz when `uharfbuzz` happens to be
+# installed, and with its own packer otherwise, and the two differ. Always
+# using its own keeps the output the same wherever this runs.
+CFG = {"fontTools.ttLib.tables.otBase:USE_HARFBUZZ_REPACKER": False}
+
 
 def ranges(spec):
     """Parses `U+0000-00FF, U+0131` into a set of code points."""
@@ -124,20 +129,20 @@ def add_ldot(font):
 
 
 def load(path, ldot):
-    font = TTFont(path, recalcTimestamp=False)
+    font = TTFont(path, recalcTimestamp=False, cfg=CFG)
     if ldot:
         add_ldot(font)
         # Round-trip, so the new glyphs are compiled before subsetting.
         buffer = io.BytesIO()
         font.save(buffer)
         buffer.seek(0)
-        font = TTFont(buffer, recalcTimestamp=False)
+        font = TTFont(buffer, recalcTimestamp=False, cfg=CFG)
     return font
 
 
 def woff2_bytes(font, unicodes=None):
     """The font, subset to `unicodes` when given, as WOFF2."""
-    font = TTFont(_sfnt(font), recalcTimestamp=False)
+    font = TTFont(_sfnt(font), recalcTimestamp=False, cfg=CFG)
     if unicodes is not None:
         options = subset.Options()
         options.layout_features = ["*"]

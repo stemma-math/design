@@ -1,0 +1,9 @@
+# The Python the generators need, for whoever works without Nix:
+#     python3 -m pip install -r scripts/requirements.txt
+# The versions are those of the Nix development shell. The web faces are
+# generated the same way with or without uharfbuzz, but another fontTools
+# may subset differently, so keep to this one when regenerating them.
+fonttools==4.63.0
+brotli==1.2.0
+uharfbuzz==0.53.2
+pillow==12.3.0
