@@ -1,0 +1,13 @@
+# Symlinks to Nix build outputs.
+result
+result-*
+
+# Node dependencies of the generators.
+node_modules/
+
+# Python caches.
+__pycache__/
+*.pyc
+
+# macOS folder metadata.
+.DS_Store
