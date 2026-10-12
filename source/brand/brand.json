@@ -1,0 +1,51 @@
+{
+  "$description": "How the brand kit is built from the drawn masters beside this file. Colours may refer to tokens, as `{color.navy-950}`. Lengths without a unit are fractions of the symbol's height.",
+  "symbol": {
+    "viewBox": [143.095, 81.912, 285.196, 246.702],
+    "masters": {
+      "on-dark": "symbol-on-dark.svg",
+      "on-light": "symbol-on-light.svg",
+      "mono": "symbol-simple.svg"
+    }
+  },
+  "wordmark": {
+    "text": "stemma",
+    "face": "instrument-sans/InstrumentSans-Medium.ttf",
+    "tracking": -0.035,
+    "color": {
+      "on-dark": "{color.on-dark-1}",
+      "on-light": "{color.navy-950}",
+      "mono": "currentColor"
+    }
+  },
+  "lockups": {
+    "horizontal": { "size": 0.56, "gap": 0.2 },
+    "stacked": { "size": 0.36, "gap": 0.14 }
+  },
+  "png": {
+    "symbol": [32, 64, 128, 256, 512, 1024],
+    "wordmark": [32, 64, 128, 256],
+    "lockup-horizontal": [32, 64, 128, 256],
+    "lockup-stacked": [64, 128, 256, 512]
+  },
+  "icon": {
+    "$description": "The application and home-screen icons: the symbol for dark surfaces, glowing on a navy field.",
+    "background": ["#07183f", "#07183f", "#06173d", "#041335", "#03102e", "#030e29"],
+    "glow": 0.55,
+    "app": {
+      "inset": 0.098,
+      "radius": 0.225,
+      "symbol": 0.56,
+      "png": [16, 24, 32, 48, 64, 128, 256, 512, 1024],
+      "ico": [16, 24, 32, 48, 64, 128, 256]
+    },
+    "web": { "symbol": 0.62, "png": [180, 192, 512] }
+  },
+  "favicon": {
+    "$description": "The simple symbol in a gradient, lighter where the browser's chrome is dark.",
+    "light": { "from": "#5f8ff0", "to": "#1b3a98", "dot": "#2b5bd6" },
+    "dark": { "from": "#c9ddff", "to": "#5d8ff2", "dot": "#9cc2ff" },
+    "gradient": [406.291, 83.912, 175.095, 326.614],
+    "ico": [16, 32, 48]
+  }
+}
