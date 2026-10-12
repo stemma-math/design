@@ -44,14 +44,30 @@ This repository belongs to the Stemma organization (`stemma-math`).
   - `targets/web`: the npm package `@stemma-math/design`, plain CSS;
   - `targets/elements`: the npm package `@stemma-math/design-elements`,
     custom elements as plain ES modules with `.d.ts` types;
+  - `targets/rust`: the crate `stemma-design`, the web target's files as
+    constants and the inline bundle;
+  - `targets/terminal`: the crate `stemma-design-terminal`, roles,
+    symbols, the colour policy and themes for clap, cliclack and indicatif;
+  - `targets/verso`: the Lake package `StemmaDesign` and its Verso theme;
+    it never imports Verso;
   - `targets/brand-kit`: every mark and icon, as files.
-- `scripts/` holds the generators: `tokens.mjs`, `fonts.py`, `glyphs.py`
-  and `brand.py`, and `bundle.mjs`, which writes an inline bundle for a
-  single-file page on request. Generated files are committed, and are
-  never edited by hand: change `source/` and run `just generate`.
+- `catalog/` is a static gallery drawn only with the targets, with no
+  framework. Add every new token, component or element to it.
+- `scripts/` holds the generators: `tokens.mjs`, `fonts.py`, `glyphs.py`,
+  `brand.py`, then `targets.mjs`, which copies the other targets' outputs
+  into the Rust crate and the Verso theme; and `bundle.mjs`, which writes an
+  inline bundle for a single-file page on request. Generated files are
+  committed, and are never edited by hand: change `source/` and run
+  `just generate`.
 - `just check` fails while a generated file is out of date, while a colour
   falls below its contrast requirement, while the inline bundle does not
-  hold together, or while a file is not formatted.
+  hold together or differs from the Rust crate's, while Clippy warns, a
+  test fails or the Lean package does not build, or while a file is not
+  formatted. `nix flake check` also builds every target from `source/` and
+  compares it with what is committed.
+- The Rust crates use the edition of the `stemma` repository (2024), and
+  the dependency versions of its command line; the Lean package uses the
+  toolchain of its Lean library.
 - Nothing here knows a product's concepts. Tokens and components speak of
   intents (`neutral`, `accent`, `success`, `warning`, `danger`, `info`),
   categorical tones, scales and document typography. Product layout,
@@ -63,8 +79,9 @@ This repository belongs to the Stemma organization (`stemma-math`).
   of `targets/web`, are usable by keyboard, keep ARIA state in step and
   respect reduced motion.
 - The tools are Node (Style Dictionary), Python with `fontTools`, Brotli,
-  HarfBuzz (`uharfbuzz`) and Pillow, `resvg` and `just`. `nix develop`
-  provides them; without Nix, install them by hand and run `npm ci` once.
+  HarfBuzz (`uharfbuzz`) and Pillow, `resvg`, Rust, `elan` and `just`.
+  `nix develop` provides them; without Nix, install them by hand, the
+  Python packages from `scripts/requirements.txt`, and run `npm ci` once.
 - Code is MIT (`LICENSE`). Each face keeps its own licence beside it, and
   the mark has its own usage policy in `source/brand/LICENSE`, copied into
   every target that carries the mark.
