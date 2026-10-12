@@ -30,6 +30,7 @@ Its use is governed by `LICENSE` in this folder.
 | `app/icon-48.png` | The application icon, 48px. |
 | `app/icon-512.png` | The application icon, 512px. |
 | `app/icon-64.png` | The application icon, 64px. |
+| `app/icon-small.svg` | The application icon for 32px and below, as SVG: the simple symbol. |
 | `app/icon.icns` | The application icon for macOS. |
 | `app/icon.ico` | The application icon for Windows, at 16, 24, 32, 48, 64, 128, 256 px. |
 | `app/icon.svg` | The application icon, as SVG. |
@@ -100,7 +101,7 @@ Its use is governed by `LICENSE` in this folder.
 | `svg/wordmark-on-dark.svg` | The wordmark, for dark surfaces. |
 | `svg/wordmark-on-light.svg` | The wordmark, for light surfaces. |
 | `web/apple-touch-icon.png` | The home-screen icon, 180px, full bleed. |
-| `web/favicon.ico` | The favicon, at 16, 32, 48 px. |
+| `web/favicon.ico` | The favicon, the small application icon, at 16, 32, 48 px. |
 | `web/favicon.svg` | The favicon, lighter where the browser's chrome is dark. |
 | `web/icon-192.png` | The home-screen icon, 192px, full bleed. |
 | `web/icon-512.png` | The home-screen icon, 512px, full bleed. |

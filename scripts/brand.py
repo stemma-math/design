@@ -186,17 +186,35 @@ def lockup_svg(kind, appearance):
     return svg(view, body)
 
 
-def icon_svg(kind, size=1024):
+def simple_on_navy():
+    """The simple symbol in the favicon's light blues, for small icons on
+    the navy field."""
+    colours = CONFIG["favicon"]["dark"]
+    x1, y1, x2, y2 = CONFIG["favicon"]["gradient"]
+    body = symbol_body("mono")
+    body = body.replace('<path fill="currentColor"', '<path fill="url(#small)"', 1)
+    body = body.replace(
+        '<circle fill="currentColor"', f'<circle fill="{colours["dot"]}"', 1
+    )
+    return (
+        f'<defs><linearGradient id="small" gradientUnits="userSpaceOnUse" x1="{x1}" '
+        f'y1="{y1}" x2="{x2}" y2="{y2}"><stop offset="0" stop-color="{colours["from"]}"/>'
+        f'<stop offset="1" stop-color="{colours["to"]}"/></linearGradient></defs>{body}'
+    )
+
+
+def icon_svg(kind, size=1024, small=False):
     """An application (`app`) or home-screen (`web`) icon: the symbol for
     dark surfaces glowing on a navy field. App icons are a rounded square
     inside the canvas; home-screen icons fill it, and the platform masks
-    them."""
+    them. `small` icons, drawn a few pixels wide, take the simple symbol
+    instead, larger and without the glow."""
     settings = CONFIG["icon"]
     shape = settings[kind]
     inset = shape.get("inset", 0) * size
     side = size - 2 * inset
     radius = shape.get("radius", 0) * side
-    width = shape["symbol"] * side
+    width = (shape["small"] if small else shape["symbol"]) * side
     scale = width / VW
     x = (size - width) / 2
     y = (size - VH * scale) / 2
@@ -205,9 +223,15 @@ def icon_svg(kind, size=1024):
         f'<stop offset="{number(i / (len(stops) - 1))}" stop-color="{c}"/>'
         for i, c in enumerate(stops)
     )
-    symbol = symbol_body("on-dark", "s-")
+    symbol = simple_on_navy() if small else symbol_body("on-dark", "s-")
     glow = symbol_body("on-dark", "g-")
     blur = width * 0.07
+    glowing = (
+        ""
+        if small
+        else f'<g opacity="{settings["glow"]}" filter="url(#glow)">'
+        f"{placed(glow, VIEW, x, y, scale)}</g>"
+    )
     body = (
         f'<defs><radialGradient id="field" cx="0.5" cy="0.48" r="0.62">{gradient}'
         f'</radialGradient><filter id="glow" x="-50%" y="-50%" width="200%" height="200%">'
@@ -215,9 +239,7 @@ def icon_svg(kind, size=1024):
         f'<clipPath id="shape"><rect x="{number(inset)}" y="{number(inset)}" '
         f'width="{number(side)}" height="{number(side)}" rx="{number(radius)}"/></clipPath></defs>'
         f'<g clip-path="url(#shape)"><rect width="{size}" height="{size}" fill="url(#field)"/>'
-        f'<g opacity="{settings["glow"]}" filter="url(#glow)">'
-        f"{placed(glow, VIEW, x, y, scale)}</g>"
-        f"{placed(symbol, VIEW, x, y, scale)}</g>"
+        f"{glowing}{placed(symbol, VIEW, x, y, scale)}</g>"
     )
     return svg((0, 0, size, size), body)
 
@@ -244,17 +266,6 @@ def favicon_svg():
     side = max(VW, VH) + 8
     view = (VX + VW / 2 - side / 2, VY + VH / 2 - side / 2, side, side)
     return svg(view, style + defs + body)
-
-
-def favicon_raster_svg():
-    """The favicon in its light colours, for rasters: `resvg` does not
-    apply media queries."""
-    light = CONFIG["favicon"]["light"]
-    text = favicon_svg()
-    text = re.sub(r"<style>.*?</style>", "", text)
-    text = text.replace('class="from"', f'stop-color="{light["from"]}"')
-    text = text.replace('class="to"', f'stop-color="{light["to"]}"')
-    return text.replace('class="dot"', f'fill="{light["dot"]}"')
 
 
 # ── Rendering ────────────────────────────────────────────────────────────
@@ -291,9 +302,9 @@ def ico(images):
     return buffer.getvalue()
 
 
-def icns(image):
+def icns(image, smaller):
     buffer = io.BytesIO()
-    image.save(buffer, "ICNS")
+    image.save(buffer, "ICNS", append_images=smaller)
     return buffer.getvalue()
 
 
@@ -338,9 +349,18 @@ def generate():
 
     # Application icons.
     app = icon_svg("app")
+    small = icon_svg("app", small=True)
+    limit = CONFIG["icon"]["small"]
     kit("app/icon.svg", app.encode(), "The application icon, as SVG.")
+    kit(
+        "app/icon-small.svg",
+        small.encode(),
+        f"The application icon for {limit}px and below, as SVG: the simple symbol.",
+    )
     sizes = CONFIG["icon"]["app"]["png"]
-    rendered = {size: render(app, width=size) for size in sizes}
+    rendered = {
+        size: render(small if size <= limit else app, width=size) for size in sizes
+    }
     for size, image in rendered.items():
         kit(f"app/icon-{size}.png", png(image), f"The application icon, {size}px.")
     ico_sizes = CONFIG["icon"]["app"]["ico"]
@@ -351,7 +371,11 @@ def generate():
         + ", ".join(f"{s}" for s in ico_sizes)
         + " px.",
     )
-    kit("app/icon.icns", icns(rendered[1024]), "The application icon for macOS.")
+    kit(
+        "app/icon.icns",
+        icns(rendered[1024], [rendered[s] for s in sizes if s != 1024]),
+        "The application icon for macOS.",
+    )
 
     # Web icons.
     web = icon_svg("web")
@@ -368,12 +392,13 @@ def generate():
         favicon.encode(),
         "The favicon, lighter where the browser's chrome is dark.",
     )
-    raster = favicon_raster_svg()
     favicon_sizes = CONFIG["favicon"]["ico"]
     kit(
         "web/favicon.ico",
-        ico([render(raster, width=s) for s in favicon_sizes]),
-        "The favicon, at " + ", ".join(map(str, favicon_sizes)) + " px.",
+        ico([render(small, width=s) for s in favicon_sizes]),
+        "The favicon, the small application icon, at "
+        + ", ".join(map(str, favicon_sizes))
+        + " px.",
     )
 
     kit(
@@ -471,9 +496,15 @@ def mark_module():
 
 
 def pixels(data):
-    """A raster file's largest image, as RGBA pixel data, for comparing."""
+    """Every image in a raster file, as RGBA pixel data, for comparing."""
     image = Image.open(io.BytesIO(data))
-    return image.size, image.convert("RGBA").tobytes()
+    if image.format == "ICO":
+        frames = [image.ico.getimage(size) for size in sorted(image.ico.sizes())]
+    elif image.format == "ICNS":
+        frames = [image.icns.getimage(size) for size in sorted(image.icns.itersizes())]
+    else:
+        frames = [image]
+    return [(frame.size, frame.convert("RGBA").tobytes()) for frame in frames]
 
 
 def same(path, data):

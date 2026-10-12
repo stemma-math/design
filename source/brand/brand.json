@@ -32,10 +32,12 @@
     "$description": "The application and home-screen icons: the symbol for dark surfaces, glowing on a navy field.",
     "background": ["#07183f", "#07183f", "#06173d", "#041335", "#03102e", "#030e29"],
     "glow": 0.55,
+    "small": 32,
     "app": {
       "inset": 0.098,
       "radius": 0.225,
       "symbol": 0.56,
+      "small": 0.74,
       "png": [16, 24, 32, 48, 64, 128, 256, 512, 1024],
       "ico": [16, 24, 32, 48, 64, 128, 256]
     },

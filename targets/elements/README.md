@@ -48,6 +48,12 @@ elements share; it is not part of the interface.
 - The light and the live mark pause while the page is hidden, and the
   light while it is out of view.
 
+## The live mark
+
+`<stemma-mark animated>` comes alive only on dark surfaces: its colour
+fields are drawn for the symbol on dark. On light surfaces, in one colour,
+with reduced motion or without WebGL it is the still SVG.
+
 ## Without script, or without WebGL
 
 `<stemma-light>` carries the `.brand-light` class, a CSS gradient with
