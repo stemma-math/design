@@ -86,7 +86,7 @@ def add_ldot(font):
         return
     glyf, hmtx = font["glyf"], font["hmtx"]
     dot = cmap[0x00B7]
-    dot_advance, dot_lsb = hmtx[dot]
+    dot_advance = hmtx[dot][0]
     dot_glyph = glyf[dot]
     dot_glyph.recalcBounds(glyf)
 
@@ -111,10 +111,8 @@ def add_ldot(font):
 
     l, L = cmap[0x6C], cmap[0x4C]
     l_advance, L_advance = hmtx[l][0], hmtx[L][0]
-    # ŀ: the dot's ink starts where the l ends, without the dot's left side
-    # bearing, so it sets a little tighter than l followed by ·.
-    ldot_x = l_advance - dot_glyph.xMin
-    add("ldot", l, 0x0140, ldot_x, l_advance + dot_advance - dot_lsb)
+    # ŀ: exactly l followed by ·, so ŀl sets as l·l does.
+    add("ldot", l, 0x0140, l_advance, l_advance + dot_advance)
     # Ŀ: the dot is centred in the L's open counter.
     dot_width = dot_glyph.xMax - dot_glyph.xMin
     Ldot_x = round(L_advance * 0.55) - dot_glyph.xMin - dot_width // 2
