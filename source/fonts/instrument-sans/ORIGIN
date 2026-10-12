@@ -1,0 +1,24 @@
+Instrument Sans, by Instrument.
+
+Source:    https://github.com/Instrument/instrument-sans
+Download:  https://raw.githubusercontent.com/Instrument/instrument-sans/7fa22308a3d0c94ee2b3cd537a1196b65db34a3e/fonts/ttf/
+Version:   1.000 (commit 7fa22308a3d0c94ee2b3cd537a1196b65db34a3e, 2023-06-14)
+Retrieved: 2026-10-12
+Licence:   SIL Open Font License 1.1 (OFL.txt), with no Reserved Font Name.
+
+Files, unmodified, from fonts/ttf/:
+
+    735badeb8b2046cee6f5e1226412ab6c29db04accbca413af03d70e991dce10d  InstrumentSans-Bold.ttf
+    7e6ebe089d1a62b73840f74fcfa477f2f5e43c4df5db18fb790908938e5aef96  InstrumentSans-Italic.ttf
+    56ba599d12b7cf2fff4eebf46d29253231b6f49bc5b6ce7733dfbf3d7940bfae  InstrumentSans-Medium.ttf
+    69fd3f7c467c70c1f73b232812407f688f3d87dd7a801ea7281aa97d29cf53d5  InstrumentSans-Regular.ttf
+    7151cf505f897e17b4e9b956293b5a60046ec39da3923a8feba29ce86fd14e12  InstrumentSans-SemiBold.ttf
+
+Modification. The generators add two glyphs to every face before deriving
+anything from it: Catalan ŀ (U+0140) and Ŀ (U+013F), as composites of l and
+L with the face's own middle dot (U+00B7). Upstream lacks the precomposed
+letters, though it has the middle dot, so l·l already sets well; the
+composites only make pasted text that uses U+0140 or U+013F render in this
+face. Nothing else changes. The files above stay as published, and the
+modification is applied by scripts/fonts.py (add_ldot). The OFL allows it,
+and needs no renaming, since the face names no Reserved Font Name.

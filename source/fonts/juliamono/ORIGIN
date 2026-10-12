@@ -1,0 +1,21 @@
+JuliaMono, by cormullion.
+
+Source:    https://github.com/cormullion/juliamono
+Download:  https://github.com/cormullion/juliamono/releases/download/v0.63.2/JuliaMono-webfonts.tar.gz
+Version:   0.63.2 (2026-07-18)
+Retrieved: 2026-10-12
+Licence:   SIL Open Font License 1.1 (LICENSE), with Reserved Font Name
+           "JuliaMono".
+
+Files, unmodified, from the archive's webfonts/ folder:
+
+    9ffd596514e31ba6317fffbf367c51c4ff93f2a68a1499c3e80ac9309dcd68fa  JuliaMono-Bold.woff2
+    b0ce72e332a96e1313bc86ec2e5a9d6102d6c4ae7cbfdf89f9e70240e5e339d9  JuliaMono-BoldLatin.woff2
+    d65cf131a1ccfe8c21f0c1b5b933e82c11dad323626f51607110d25aa07af511  JuliaMono-Medium.woff2
+    cd371c92e94978a6888b71e89a4b57f443604ad63595150511ceb7d5c354b857  JuliaMono-Regular.woff2
+    9c61ddc1b0bc237087e8aa7f5475312b5369c7cd1fa6b82f347beea19f14f26c  JuliaMono-RegularItalic.woff2
+    12419d20369b7f5a891eeabd33f44275a8208633ebc982e1b1728bdaa075bed8  JuliaMono-RegularLatin.woff2
+
+The licence reserves the name for unmodified files, so every target ships
+these files exactly as published: no subsetting, no conversion. The
+*Latin files are upstream's own Latin subsets of Regular and Bold.

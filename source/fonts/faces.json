@@ -1,0 +1,129 @@
+{
+  "$description": "The faces every target ships, by family. `directory` is the family's folder beside this file, `licenses` the files that go with every copy of it, and `split` whether a web target splits it by `unicode-range` (a math face never is: its MATH table refers to glyphs across every range). `copy` ships the family's files as published, whole or with upstream's own Latin subset (`latin`), for a face whose licence reserves its name. `ldot` adds the Catalan ŀ and Ŀ as composites, for a face that lacks them.",
+  "families": [
+    {
+      "family": "New Computer Modern",
+      "directory": "new-computer-modern",
+      "licenses": ["License.txt", "GUST-FONT-LICENSE.txt"],
+      "split": true,
+      "faces": [
+        {
+          "file": "NewCM10-Book.otf",
+          "weight": 400,
+          "style": "normal"
+        },
+        {
+          "file": "NewCM10-BookItalic.otf",
+          "weight": 400,
+          "style": "italic"
+        },
+        {
+          "file": "NewCM10-Bold.otf",
+          "weight": 700,
+          "style": "normal"
+        }
+      ]
+    },
+    {
+      "family": "New Computer Modern Math",
+      "directory": "new-computer-modern",
+      "slug": "new-computer-modern-math",
+      "licenses": ["License.txt", "GUST-FONT-LICENSE.txt"],
+      "split": false,
+      "faces": [
+        {
+          "file": "NewCMMath-Book.otf",
+          "weight": 400,
+          "style": "normal"
+        }
+      ]
+    },
+    {
+      "family": "Instrument Sans",
+      "directory": "instrument-sans",
+      "licenses": ["OFL.txt"],
+      "split": true,
+      "ldot": true,
+      "faces": [
+        {
+          "file": "InstrumentSans-Regular.ttf",
+          "weight": 400,
+          "style": "normal"
+        },
+        {
+          "file": "InstrumentSans-Italic.ttf",
+          "weight": 400,
+          "style": "italic"
+        },
+        {
+          "file": "InstrumentSans-Medium.ttf",
+          "weight": 500,
+          "style": "normal"
+        },
+        {
+          "file": "InstrumentSans-SemiBold.ttf",
+          "weight": 600,
+          "style": "normal"
+        },
+        {
+          "file": "InstrumentSans-Bold.ttf",
+          "weight": 700,
+          "style": "normal"
+        }
+      ]
+    },
+    {
+      "family": "Libertinus Sans",
+      "directory": "libertinus-sans",
+      "licenses": ["OFL.txt"],
+      "split": true,
+      "faces": [
+        {
+          "file": "LibertinusSans-Regular.otf",
+          "weight": 400,
+          "style": "normal"
+        },
+        {
+          "file": "LibertinusSans-Italic.otf",
+          "weight": 400,
+          "style": "italic"
+        },
+        {
+          "file": "LibertinusSans-Bold.otf",
+          "weight": 700,
+          "style": "normal"
+        }
+      ]
+    },
+    {
+      "family": "JuliaMono",
+      "directory": "juliamono",
+      "licenses": ["LICENSE"],
+      "faces": [
+        {
+          "file": "JuliaMono-Regular.woff2",
+          "latin": "JuliaMono-RegularLatin.woff2",
+          "weight": 400,
+          "style": "normal"
+        },
+        {
+          "file": "JuliaMono-RegularItalic.woff2",
+          "weight": 400,
+          "style": "italic"
+        },
+        {
+          "file": "JuliaMono-Medium.woff2",
+          "weight": 500,
+          "style": "normal"
+        },
+        {
+          "file": "JuliaMono-Bold.woff2",
+          "latin": "JuliaMono-BoldLatin.woff2",
+          "weight": 700,
+          "style": "normal"
+        }
+      ],
+      "copy": true
+    }
+  ]
+}

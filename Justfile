@@ -6,7 +6,7 @@ default:
 
 # Regenerate every generated file from `source/`.
 [group('generate')]
-generate: tokens
+generate: tokens fonts
 
 alias build := generate
 
@@ -14,6 +14,11 @@ alias build := generate
 [group('generate')]
 tokens: _node-modules
     node scripts/tokens.mjs
+
+# Generate the web faces: WOFF2 split by Unicode range, and fonts.css.
+[group('generate')]
+fonts:
+    python3 scripts/fonts.py
 
 # Format every file in the repository.
 [group('development')]
@@ -26,6 +31,7 @@ alias fmt := format
 [group('development')]
 check: _node-modules
     node scripts/tokens.mjs --check
+    python3 scripts/fonts.py --check
     nix flake check
 
 # Install the generators' Node dependencies, once.

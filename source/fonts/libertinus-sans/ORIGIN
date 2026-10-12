@@ -1,0 +1,18 @@
+Libertinus Sans, by the Libertinus Project Authors.
+
+Source:    https://github.com/alerque/libertinus
+Download:  https://github.com/alerque/libertinus/releases/download/v7.051/Libertinus-7.051.zip
+Version:   7.051 (2024-09-26)
+Retrieved: 2026-10-12
+Licence:   SIL Open Font License 1.1 (OFL.txt). Its Reserved Font Names are
+           "Linux Libertine", "Biolinum" and "STIX Fonts", none of which
+           this face is called.
+
+Files, unmodified, from the archive's static/OTF/ folder:
+
+    51bdd322b60ceabd9e137225273b2eb493acd7ca9abd2b2395c4a5dd67c39cc9  LibertinusSans-Bold.otf
+    e5a3083685b8aeca96e1820ad9478de95056e129177c35d6c31537bff8ddd515  LibertinusSans-Italic.otf
+    8f897bcf5b209f7c4b2a18a688dab10b723961b87690cbf54c927d7a68e0c442  LibertinusSans-Regular.otf
+
+A fallback face only: it supplies the Greek and the symbols that Instrument
+Sans lacks.

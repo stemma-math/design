@@ -1,0 +1,21 @@
+New Computer Modern, by Antonis Tsolomitis.
+
+Source:    https://ctan.org/pkg/newcomputermodern
+Download:  https://mirrors.ctan.org/fonts/newcomputermodern.zip
+Version:   8.1.1 (CTAN, 2026-06-22)
+Retrieved: 2026-10-12
+Licence:   GUST Font License (GUST-FONT-LICENSE.txt), as License.txt
+           states for every file here. License.txt is upstream's own.
+
+Files, unmodified, from the archive's otf/ folder:
+
+    40b0b32b63655fe802679ee4a14adb29c762a4712095d9c84cf7df7852b5152e  NewCM10-Bold.otf
+    005f9b4e13b2a133df36d4ebfbb8f5fe402854bcb5882deb500b9c0f72b1bb49  NewCM10-Book.otf
+    d01f6c7b5bcdee2545823f1cf0a35698b9ccff1891a2f79a8e9938e5b8ea561e  NewCM10-BookItalic.otf
+    2ea09ebc9167b1e1a66f31390dc917f2d4004ecfca72d51b28010e4ad6becd95  NewCMMath-Book.otf
+
+NewCM10-Book, NewCM10-BookItalic and NewCM10-Bold are the text faces (the
+Book cut, a little heavier than Regular); NewCMMath-Book is the math face
+drawn to match them. The GUST Font License asks, without requiring it, that
+modified versions be renamed. The web target converts these files to WOFF2
+and splits the text faces by Unicode range without changing any glyph.
