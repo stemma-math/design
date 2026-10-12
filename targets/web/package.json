@@ -1,0 +1,36 @@
+{
+  "name": "@stemma-math/design",
+  "version": "0.0.0",
+  "description": "Stemma's design system for the web: faces, tokens, base styles, document typography and components, as plain CSS.",
+  "license": "MIT AND OFL-1.1 AND LPPL-1.3c",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/stemma-math/design.git",
+    "directory": "targets/web"
+  },
+  "type": "module",
+  "sideEffects": [
+    "*.css"
+  ],
+  "style": "./index.css",
+  "exports": {
+    ".": {
+      "style": "./index.css",
+      "default": "./index.css"
+    },
+    "./index.css": "./index.css",
+    "./fonts.css": "./fonts.css",
+    "./tokens.css": "./tokens.css",
+    "./base.css": "./base.css",
+    "./document.css": "./document.css",
+    "./components.css": "./components.css",
+    "./fonts/*": "./fonts/*",
+    "./package.json": "./package.json"
+  },
+  "files": [
+    "*.css",
+    "fonts/",
+    "README.md",
+    "LICENSE"
+  ]
+}
