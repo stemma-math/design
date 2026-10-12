@@ -122,6 +122,10 @@
     /* Hovers and popovers. */
     --dur-ui: 180ms;
     --ease-out: cubic-bezier(0.22, 1, 0.36, 1);
+    /* A change of scene: the brand light withdrawing, a page giving way to the next. */
+    --dur-long: 1600ms;
+    /* Something that starts and ends at rest, as the brand light withdrawing. */
+    --ease-in-out: cubic-bezier(0.65, 0, 0.35, 1);
     /* The page, behind cards. */
     --surface-page: #f3f5fa;
     /* Cards, dialogs, menus. */

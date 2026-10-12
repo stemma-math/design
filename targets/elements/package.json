@@ -1,0 +1,70 @@
+{
+  "name": "@stemma-math/design-elements",
+  "version": "0.0.0",
+  "description": "Stemma's design system, behaviour: framework-agnostic custom elements over the classes of @stemma-math/design, the brand light and the live mark.",
+  "license": "MIT AND LicenseRef-Stemma-Mark",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/stemma-math/design.git",
+    "directory": "targets/elements"
+  },
+  "type": "module",
+  "sideEffects": true,
+  "peerDependencies": {
+    "@stemma-math/design": "0.0.0"
+  },
+  "exports": {
+    ".": {
+      "types": "./index.d.ts",
+      "default": "./index.js"
+    },
+    "./copy-button.js": {
+      "types": "./copy-button.d.ts",
+      "default": "./copy-button.js"
+    },
+    "./dialog.js": {
+      "types": "./dialog.d.ts",
+      "default": "./dialog.js"
+    },
+    "./filter-chips.js": {
+      "types": "./filter-chips.d.ts",
+      "default": "./filter-chips.js"
+    },
+    "./light.js": {
+      "types": "./light.d.ts",
+      "default": "./light.js"
+    },
+    "./mark.js": {
+      "types": "./mark.d.ts",
+      "default": "./mark.js"
+    },
+    "./menu.js": {
+      "types": "./menu.d.ts",
+      "default": "./menu.js"
+    },
+    "./segmented.js": {
+      "types": "./segmented.d.ts",
+      "default": "./segmented.js"
+    },
+    "./theme-switch.js": {
+      "types": "./theme-switch.d.ts",
+      "default": "./theme-switch.js"
+    },
+    "./toast-region.js": {
+      "types": "./toast-region.d.ts",
+      "default": "./toast-region.js"
+    },
+    "./tooltip.js": {
+      "types": "./tooltip.d.ts",
+      "default": "./tooltip.js"
+    },
+    "./package.json": "./package.json"
+  },
+  "files": [
+    "*.js",
+    "*.d.ts",
+    "README.md",
+    "LICENSE",
+    "LICENSE-mark"
+  ]
+}

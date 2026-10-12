@@ -24,11 +24,14 @@
     "./base.css": "./base.css",
     "./document.css": "./document.css",
     "./components.css": "./components.css",
+    "./glyphs.svg": "./glyphs.svg",
+    "./noise.svg": "./noise.svg",
     "./fonts/*": "./fonts/*",
     "./package.json": "./package.json"
   },
   "files": [
     "*.css",
+    "*.svg",
     "fonts/",
     "README.md",
     "LICENSE"

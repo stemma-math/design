@@ -474,6 +474,29 @@
         border: 1px dashed var(--border-dashed);
     }
 
+    /* A chip that is a toggle, as in a set of filters: outlined while
+     * off, filled while on. */
+    button.chip {
+        cursor: pointer;
+        transition:
+            background var(--dur-ui) var(--ease-out),
+            border-color var(--dur-ui) var(--ease-out);
+    }
+
+    .chip[aria-pressed="false"] {
+        color: var(--ink-2);
+        background: transparent;
+        border-color: var(--border-strong);
+    }
+
+    .chip[aria-pressed="false"]:hover {
+        border-color: color-mix(in srgb, var(--tone) var(--mix-border), transparent);
+    }
+
+    .chip[aria-pressed="true"] {
+        border-color: color-mix(in srgb, var(--tone) var(--mix-border), transparent);
+    }
+
     .chip .glyph {
         width: 13px;
         height: 13px;
@@ -937,8 +960,8 @@
      * A message raised over everything else, on `.message`: it floats, and
      * when it goes away by itself `.toast__time` shows how long it has
      * left, from `--toast-life`. The time stops while the pointer is over
-     * it, so it can be read and copied. Where it sits is the consumer's to
-     * say. */
+     * it or focus is in it, so it can be read and copied. Where it sits is
+     * the consumer's to say. */
 
     .toast {
         position: relative;
@@ -959,7 +982,8 @@
         animation: stemma-toast-time var(--toast-life, 8s) linear forwards;
     }
 
-    .toast:hover .toast__time {
+    .toast:hover .toast__time,
+    .toast:focus-within .toast__time {
         animation-play-state: paused;
     }
 
@@ -1111,5 +1135,95 @@
         font-weight: 500;
         letter-spacing: -0.035em;
         line-height: 1;
+    }
+
+    /* ── Floating ──────────────────────────────────────────────────────
+     *
+     * A menu or tooltip shown as a popover is placed by its element, not
+     * by the browser's defaults. */
+
+    .menu[popover],
+    .tooltip[popover] {
+        position: fixed;
+        inset: auto;
+        margin: 0;
+        overflow: visible;
+    }
+
+    .menu[popover] {
+        overflow: auto;
+    }
+
+    /* ── Toast region ──────────────────────────────────────────────────
+     *
+     * Where `<stemma-toast-region>` stacks its toasts, newest last. Where
+     * it sits on the page is the consumer's to say. */
+
+    stemma-toast-region {
+        display: flex;
+        flex-direction: column;
+        gap: var(--space-2);
+    }
+
+    /* ── The brand light ───────────────────────────────────────────────
+     *
+     * The light rising under a navy surface. `.brand-light` draws it with
+     * CSS alone, the brand gradient and grain, for pages without script;
+     * `<stemma-light>` draws it live, over the same. Its content sits above
+     * it, in the colours for dark surfaces. `--light-progress`, from 0 to
+     * 1, fades it. */
+
+    .brand-light {
+        position: relative;
+        isolation: isolate;
+        color: var(--on-dark-1);
+    }
+
+    .brand-light::before {
+        position: absolute;
+        inset: 0;
+        z-index: -1;
+        content: "";
+        background:
+            url("noise.svg") 0 0 / 180px,
+            var(--glow);
+        background-blend-mode: soft-light, normal;
+        opacity: calc(1 - var(--light-progress, 0));
+    }
+
+    stemma-light {
+        display: block;
+    }
+
+    stemma-light > canvas {
+        position: absolute;
+        inset: 0;
+        z-index: -1;
+        display: block;
+        width: 100%;
+        height: 100%;
+    }
+
+    /* ── The mark ──────────────────────────────────────────────────────
+     *
+     * `<stemma-mark>`: the symbol, 4em wide unless said otherwise. */
+
+    stemma-mark {
+        position: relative;
+        display: inline-block;
+        width: 4em;
+        aspect-ratio: 285.196 / 246.702;
+        vertical-align: middle;
+    }
+
+    stemma-mark > svg {
+        display: block;
+        width: 100%;
+        height: 100%;
+    }
+
+    stemma-mark > canvas {
+        position: absolute;
+        pointer-events: none;
     }
 }
