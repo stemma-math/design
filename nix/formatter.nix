@@ -14,6 +14,9 @@
       "package-lock.json"
       "targets/web/tokens.css"
       "targets/web/fonts.css"
+      "targets/elements/glyphs.js"
+      "targets/elements/mark-data.js"
+      "targets/brand-kit/README.md"
     ];
 
     # Nix.
