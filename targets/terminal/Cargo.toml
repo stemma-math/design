@@ -1,0 +1,25 @@
+[package]
+name = "stemma-design-terminal"
+version.workspace = true
+edition.workspace = true
+description = "Stemma's design system for terminals: roles, symbols, one colour policy, and themes for clap, cliclack and indicatif"
+repository.workspace = true
+license = "MIT"
+include = ["LICENSE", "README.md", "examples/**", "src/**"]
+
+[[example]]
+name = "roles"
+
+[dependencies]
+clap = { version = "4.6.7", default-features = false, features = ["color", "std"], optional = true }
+cliclack = { version = "0.5.6", optional = true }
+console = { version = "0.16.6", optional = true }
+indicatif = { version = "0.18.6", optional = true }
+
+[features]
+# `Styles` for clap's help and errors.
+clap = ["dep:clap"]
+# A theme for cliclack's prompts.
+cliclack = ["dep:cliclack", "dep:console"]
+# Progress styles and spinner frames for indicatif.
+indicatif = ["dep:console", "dep:indicatif"]

@@ -1,0 +1,25 @@
+// Generated from source/tokens by scripts/tokens.mjs. Do not edit.
+
+use crate::{Palette, Rgb};
+
+/// The roles' colours for a terminal with a light background.
+pub const LIGHT: Palette = Palette {
+    accent: Rgb(0x24, 0x4a, 0x9e),
+    success: Rgb(0x1f, 0x6b, 0x47),
+    warning: Rgb(0x8a, 0x4a, 0x06),
+    danger: Rgb(0xb4, 0x23, 0x18),
+    info: Rgb(0x00, 0x53, 0x74),
+    muted: Rgb(0x5b, 0x64, 0x77),
+    identifier: Rgb(0x78, 0x35, 0x64),
+};
+
+/// The roles' colours for a terminal with a dark background.
+pub const DARK: Palette = Palette {
+    accent: Rgb(0xa9, 0xc3, 0xff),
+    success: Rgb(0x72, 0xd3, 0xa2),
+    warning: Rgb(0xf2, 0xb8, 0x6a),
+    danger: Rgb(0xff, 0x8f, 0x86),
+    info: Rgb(0x8e, 0xcc, 0xeb),
+    muted: Rgb(0x9b, 0xa7, 0xbe),
+    identifier: Rgb(0xf0, 0xb0, 0xda),
+};

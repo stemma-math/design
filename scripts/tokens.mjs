@@ -105,7 +105,51 @@ const css = [
     "",
 ].join("\n");
 
-const outputs = [{ destination: "targets/web/tokens.css", output: css }];
+// ── Terminal ───────────────────────────────────────────────────────────────
+
+// Truecolour values for the terminal's roles: the text colour of each
+// intent, for terminals with a light background and with a dark one. Roles
+// map mainly to the 16 named ANSI colours; these are for the occasional
+// accent where a terminal supports more.
+const ROLES = {
+    accent: "accent-text",
+    success: "success-text",
+    warning: "warning-text",
+    danger: "danger-text",
+    info: "info-text",
+    muted: "ink-3",
+    identifier: "tone-magenta-text",
+};
+
+const palette = (tokens, appearance) => {
+    const value = new Map(tokens.allTokens.map((token) => [token.name, token.$value]));
+    const fields = Object.entries(ROLES).map(([role, name]) => {
+        const [r, g, b] = [1, 3, 5].map((i) => `0x${value.get(name).slice(i, i + 2)}`);
+        return `    ${role}: Rgb(${r}, ${g}, ${b}),`;
+    });
+    return [
+        `/// The roles' colours for a terminal with a ${appearance} background.`,
+        `pub const ${appearance.toUpperCase()}: Palette = Palette {`,
+        ...fields,
+        "};",
+    ];
+};
+
+const rust = [
+    `// ${HEADER}`,
+    "",
+    "use crate::{Palette, Rgb};",
+    "",
+    ...palette(light, "light"),
+    "",
+    ...palette(dark, "dark"),
+    "",
+].join("\n");
+
+const outputs = [
+    { destination: "targets/web/tokens.css", output: css },
+    { destination: "targets/terminal/src/tokens.rs", output: rust },
+];
 
 // ── Contrast ───────────────────────────────────────────────────────────────
 
