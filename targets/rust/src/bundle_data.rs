@@ -1,0 +1,798 @@
+// Generated from targets/web, targets/elements and targets/brand-kit by scripts/targets.mjs. Do not edit.
+
+use crate::bundle::FontRule;
+
+pub(crate) static FONT_RULES: &[FontRule] = &[
+    FontRule {
+        family: "New Computer Modern",
+        weight: 400,
+        subset: Some("latin"),
+        url: "fonts/new-computer-modern/new-computer-modern-400-latin.woff2",
+        rule: "@font-face {
+    font-family: \"New Computer Modern\";
+    font-style: normal;
+    font-weight: 400;
+    font-display: swap;
+    src: url(\"fonts/new-computer-modern/new-computer-modern-400-latin.woff2\") format(\"woff2\");
+    unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+}",
+    },
+    FontRule {
+        family: "New Computer Modern",
+        weight: 400,
+        subset: Some("latin-ext"),
+        url: "fonts/new-computer-modern/new-computer-modern-400-latin-ext.woff2",
+        rule: "@font-face {
+    font-family: \"New Computer Modern\";
+    font-style: normal;
+    font-weight: 400;
+    font-display: swap;
+    src: url(\"fonts/new-computer-modern/new-computer-modern-400-latin-ext.woff2\") format(\"woff2\");
+    unicode-range: U+0100-02BA, U+02BD-02C5, U+02C7-02CC, U+02CE-02D7, U+02DD-02FF, U+0304, U+0308, U+0329, U+1D00-1DBF, U+1E00-1E9F, U+1EF2-1EFF, U+2020, U+20A0-20AB, U+20AD-20C0, U+2113, U+2C60-2C7F, U+A720-A7FF;
+}",
+    },
+    FontRule {
+        family: "New Computer Modern",
+        weight: 400,
+        subset: Some("greek"),
+        url: "fonts/new-computer-modern/new-computer-modern-400-greek.woff2",
+        rule: "@font-face {
+    font-family: \"New Computer Modern\";
+    font-style: normal;
+    font-weight: 400;
+    font-display: swap;
+    src: url(\"fonts/new-computer-modern/new-computer-modern-400-greek.woff2\") format(\"woff2\");
+    unicode-range: U+0370-0377, U+037A-037F, U+0384-038A, U+038C, U+038E-03A1, U+03A3-03FF, U+1F00-1FFF;
+}",
+    },
+    FontRule {
+        family: "New Computer Modern",
+        weight: 400,
+        subset: Some("cyrillic"),
+        url: "fonts/new-computer-modern/new-computer-modern-400-cyrillic.woff2",
+        rule: "@font-face {
+    font-family: \"New Computer Modern\";
+    font-style: normal;
+    font-weight: 400;
+    font-display: swap;
+    src: url(\"fonts/new-computer-modern/new-computer-modern-400-cyrillic.woff2\") format(\"woff2\");
+    unicode-range: U+0400-052F, U+1C80-1C8A, U+2116, U+2DE0-2DFF, U+A640-A69F, U+FE2E-FE2F;
+}",
+    },
+    FontRule {
+        family: "New Computer Modern",
+        weight: 400,
+        subset: Some("symbols"),
+        url: "fonts/new-computer-modern/new-computer-modern-400-symbols.woff2",
+        rule: "@font-face {
+    font-family: \"New Computer Modern\";
+    font-style: normal;
+    font-weight: 400;
+    font-display: swap;
+    src: url(\"fonts/new-computer-modern/new-computer-modern-400-symbols.woff2\") format(\"woff2\");
+    unicode-range: U+02CD, U+02D8-02D9, U+02DB, U+0300-0303, U+0305-0307, U+0309-0328, U+032A-036F, U+0531-1ACE, U+1DC0-1DFF, U+1EA0-1EF1, U+207F-2080, U+20D0-2103, U+2117-2120, U+2126-2190, U+2192, U+2197-2206, U+2217-28FF, U+2C80-2CFF, U+2E18-A46B, U+A71B-A71C, U+AB66-FE2D, U+FE66, U+10140-1D703;
+}",
+    },
+    FontRule {
+        family: "New Computer Modern",
+        weight: 400,
+        subset: Some("latin"),
+        url: "fonts/new-computer-modern/new-computer-modern-400-italic-latin.woff2",
+        rule: "@font-face {
+    font-family: \"New Computer Modern\";
+    font-style: italic;
+    font-weight: 400;
+    font-display: swap;
+    src: url(\"fonts/new-computer-modern/new-computer-modern-400-italic-latin.woff2\") format(\"woff2\");
+    unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+}",
+    },
+    FontRule {
+        family: "New Computer Modern",
+        weight: 400,
+        subset: Some("latin-ext"),
+        url: "fonts/new-computer-modern/new-computer-modern-400-italic-latin-ext.woff2",
+        rule: "@font-face {
+    font-family: \"New Computer Modern\";
+    font-style: italic;
+    font-weight: 400;
+    font-display: swap;
+    src: url(\"fonts/new-computer-modern/new-computer-modern-400-italic-latin-ext.woff2\") format(\"woff2\");
+    unicode-range: U+0100-02BA, U+02BD-02C5, U+02C7-02CC, U+02CE-02D7, U+02DD-02FF, U+0304, U+0308, U+0329, U+1D00-1DBF, U+1E00-1E9F, U+1EF2-1EFF, U+2020, U+20A0-20AB, U+20AD-20C0, U+2113, U+2C60-2C7F, U+A720-A7FF;
+}",
+    },
+    FontRule {
+        family: "New Computer Modern",
+        weight: 400,
+        subset: Some("greek"),
+        url: "fonts/new-computer-modern/new-computer-modern-400-italic-greek.woff2",
+        rule: "@font-face {
+    font-family: \"New Computer Modern\";
+    font-style: italic;
+    font-weight: 400;
+    font-display: swap;
+    src: url(\"fonts/new-computer-modern/new-computer-modern-400-italic-greek.woff2\") format(\"woff2\");
+    unicode-range: U+0370-0377, U+037A-037F, U+0384-038A, U+038C, U+038E-03A1, U+03A3-03FF, U+1F00-1FFF;
+}",
+    },
+    FontRule {
+        family: "New Computer Modern",
+        weight: 400,
+        subset: Some("cyrillic"),
+        url: "fonts/new-computer-modern/new-computer-modern-400-italic-cyrillic.woff2",
+        rule: "@font-face {
+    font-family: \"New Computer Modern\";
+    font-style: italic;
+    font-weight: 400;
+    font-display: swap;
+    src: url(\"fonts/new-computer-modern/new-computer-modern-400-italic-cyrillic.woff2\") format(\"woff2\");
+    unicode-range: U+0400-052F, U+1C80-1C8A, U+2116, U+2DE0-2DFF, U+A640-A69F, U+FE2E-FE2F;
+}",
+    },
+    FontRule {
+        family: "New Computer Modern",
+        weight: 400,
+        subset: Some("symbols"),
+        url: "fonts/new-computer-modern/new-computer-modern-400-italic-symbols.woff2",
+        rule: "@font-face {
+    font-family: \"New Computer Modern\";
+    font-style: italic;
+    font-weight: 400;
+    font-display: swap;
+    src: url(\"fonts/new-computer-modern/new-computer-modern-400-italic-symbols.woff2\") format(\"woff2\");
+    unicode-range: U+02D8-02D9, U+02DB, U+0300-0303, U+0305-0307, U+0309-0328, U+032A-036F, U+0531-1ACE, U+1DC0-1DFF, U+1EA0-1EF1, U+2080, U+20D0-2103, U+2117-2120, U+2126-2190, U+2192, U+2206, U+2217-27E7, U+2C80-2CFF, U+2E18-A46B, U+AB70-FE2D, U+FE66, U+10140-102FB;
+}",
+    },
+    FontRule {
+        family: "New Computer Modern",
+        weight: 700,
+        subset: Some("latin"),
+        url: "fonts/new-computer-modern/new-computer-modern-700-latin.woff2",
+        rule: "@font-face {
+    font-family: \"New Computer Modern\";
+    font-style: normal;
+    font-weight: 700;
+    font-display: swap;
+    src: url(\"fonts/new-computer-modern/new-computer-modern-700-latin.woff2\") format(\"woff2\");
+    unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+}",
+    },
+    FontRule {
+        family: "New Computer Modern",
+        weight: 700,
+        subset: Some("latin-ext"),
+        url: "fonts/new-computer-modern/new-computer-modern-700-latin-ext.woff2",
+        rule: "@font-face {
+    font-family: \"New Computer Modern\";
+    font-style: normal;
+    font-weight: 700;
+    font-display: swap;
+    src: url(\"fonts/new-computer-modern/new-computer-modern-700-latin-ext.woff2\") format(\"woff2\");
+    unicode-range: U+0100-02BA, U+02BD-02C5, U+02C7-02CC, U+02CE-02D7, U+02DD-02FF, U+0304, U+0308, U+0329, U+1D00-1DBF, U+1E00-1E9F, U+1EF2-1EFF, U+2020, U+20A0-20AB, U+20AD-20C0, U+2113, U+2C60-2C7F, U+A720-A7FF;
+}",
+    },
+    FontRule {
+        family: "New Computer Modern",
+        weight: 700,
+        subset: Some("greek"),
+        url: "fonts/new-computer-modern/new-computer-modern-700-greek.woff2",
+        rule: "@font-face {
+    font-family: \"New Computer Modern\";
+    font-style: normal;
+    font-weight: 700;
+    font-display: swap;
+    src: url(\"fonts/new-computer-modern/new-computer-modern-700-greek.woff2\") format(\"woff2\");
+    unicode-range: U+0370-0377, U+037A-037F, U+0384-038A, U+038C, U+038E-03A1, U+03A3-03FF, U+1F00-1FFF;
+}",
+    },
+    FontRule {
+        family: "New Computer Modern",
+        weight: 700,
+        subset: Some("cyrillic"),
+        url: "fonts/new-computer-modern/new-computer-modern-700-cyrillic.woff2",
+        rule: "@font-face {
+    font-family: \"New Computer Modern\";
+    font-style: normal;
+    font-weight: 700;
+    font-display: swap;
+    src: url(\"fonts/new-computer-modern/new-computer-modern-700-cyrillic.woff2\") format(\"woff2\");
+    unicode-range: U+0400-052F, U+1C80-1C8A, U+2116, U+2DE0-2DFF, U+A640-A69F, U+FE2E-FE2F;
+}",
+    },
+    FontRule {
+        family: "New Computer Modern",
+        weight: 700,
+        subset: Some("symbols"),
+        url: "fonts/new-computer-modern/new-computer-modern-700-symbols.woff2",
+        rule: "@font-face {
+    font-family: \"New Computer Modern\";
+    font-style: normal;
+    font-weight: 700;
+    font-display: swap;
+    src: url(\"fonts/new-computer-modern/new-computer-modern-700-symbols.woff2\") format(\"woff2\");
+    unicode-range: U+02CD, U+02D8-02D9, U+02DB, U+0300-0303, U+0305-0307, U+0309-0328, U+032A-036F, U+0531-1ACE, U+1DC0-1DFF, U+1EA0-1EF1, U+207F-2080, U+20D0-2103, U+2117-2120, U+2126-2190, U+2192, U+2197-2206, U+2217-28FF, U+2C80-2CFF, U+2E18-A46B, U+A71B-A71C, U+AB66-FE2D, U+FE66, U+10140-1D703;
+}",
+    },
+    FontRule {
+        family: "New Computer Modern Math",
+        weight: 400,
+        subset: None,
+        url: "fonts/new-computer-modern-math/new-computer-modern-math-400.woff2",
+        rule: "@font-face {
+    font-family: \"New Computer Modern Math\";
+    font-style: normal;
+    font-weight: 400;
+    font-display: swap;
+    src: url(\"fonts/new-computer-modern-math/new-computer-modern-math-400.woff2\") format(\"woff2\");
+}",
+    },
+    FontRule {
+        family: "Instrument Sans",
+        weight: 400,
+        subset: Some("latin"),
+        url: "fonts/instrument-sans/instrument-sans-400-latin.woff2",
+        rule: "@font-face {
+    font-family: \"Instrument Sans\";
+    font-style: normal;
+    font-weight: 400;
+    font-display: swap;
+    src: url(\"fonts/instrument-sans/instrument-sans-400-latin.woff2\") format(\"woff2\");
+    unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+}",
+    },
+    FontRule {
+        family: "Instrument Sans",
+        weight: 400,
+        subset: Some("latin-ext"),
+        url: "fonts/instrument-sans/instrument-sans-400-latin-ext.woff2",
+        rule: "@font-face {
+    font-family: \"Instrument Sans\";
+    font-style: normal;
+    font-weight: 400;
+    font-display: swap;
+    src: url(\"fonts/instrument-sans/instrument-sans-400-latin-ext.woff2\") format(\"woff2\");
+    unicode-range: U+0100-02BA, U+02BD-02C5, U+02C7-02CC, U+02CE-02D7, U+02DD-02FF, U+0304, U+0308, U+0329, U+1D00-1DBF, U+1E00-1E9F, U+1EF2-1EFF, U+2020, U+20A0-20AB, U+20AD-20C0, U+2113, U+2C60-2C7F, U+A720-A7FF;
+}",
+    },
+    FontRule {
+        family: "Instrument Sans",
+        weight: 400,
+        subset: Some("symbols"),
+        url: "fonts/instrument-sans/instrument-sans-400-symbols.woff2",
+        rule: "@font-face {
+    font-family: \"Instrument Sans\";
+    font-style: normal;
+    font-weight: 400;
+    font-display: swap;
+    src: url(\"fonts/instrument-sans/instrument-sans-400-symbols.woff2\") format(\"woff2\");
+    unicode-range: U+02D8-02D9, U+02DB, U+0300-0303, U+0306-0307, U+030A-0328, U+2190, U+2192, U+2194-2199;
+}",
+    },
+    FontRule {
+        family: "Instrument Sans",
+        weight: 400,
+        subset: Some("latin"),
+        url: "fonts/instrument-sans/instrument-sans-400-italic-latin.woff2",
+        rule: "@font-face {
+    font-family: \"Instrument Sans\";
+    font-style: italic;
+    font-weight: 400;
+    font-display: swap;
+    src: url(\"fonts/instrument-sans/instrument-sans-400-italic-latin.woff2\") format(\"woff2\");
+    unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+}",
+    },
+    FontRule {
+        family: "Instrument Sans",
+        weight: 400,
+        subset: Some("latin-ext"),
+        url: "fonts/instrument-sans/instrument-sans-400-italic-latin-ext.woff2",
+        rule: "@font-face {
+    font-family: \"Instrument Sans\";
+    font-style: italic;
+    font-weight: 400;
+    font-display: swap;
+    src: url(\"fonts/instrument-sans/instrument-sans-400-italic-latin-ext.woff2\") format(\"woff2\");
+    unicode-range: U+0100-02BA, U+02BD-02C5, U+02C7-02CC, U+02CE-02D7, U+02DD-02FF, U+0304, U+0308, U+0329, U+1D00-1DBF, U+1E00-1E9F, U+1EF2-1EFF, U+2020, U+20A0-20AB, U+20AD-20C0, U+2113, U+2C60-2C7F, U+A720-A7FF;
+}",
+    },
+    FontRule {
+        family: "Instrument Sans",
+        weight: 400,
+        subset: Some("symbols"),
+        url: "fonts/instrument-sans/instrument-sans-400-italic-symbols.woff2",
+        rule: "@font-face {
+    font-family: \"Instrument Sans\";
+    font-style: italic;
+    font-weight: 400;
+    font-display: swap;
+    src: url(\"fonts/instrument-sans/instrument-sans-400-italic-symbols.woff2\") format(\"woff2\");
+    unicode-range: U+02D8-02D9, U+02DB, U+0300-0303, U+0306-0307, U+030A-0328, U+2190, U+2192, U+2194-2199;
+}",
+    },
+    FontRule {
+        family: "Instrument Sans",
+        weight: 500,
+        subset: Some("latin"),
+        url: "fonts/instrument-sans/instrument-sans-500-latin.woff2",
+        rule: "@font-face {
+    font-family: \"Instrument Sans\";
+    font-style: normal;
+    font-weight: 500;
+    font-display: swap;
+    src: url(\"fonts/instrument-sans/instrument-sans-500-latin.woff2\") format(\"woff2\");
+    unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+}",
+    },
+    FontRule {
+        family: "Instrument Sans",
+        weight: 500,
+        subset: Some("latin-ext"),
+        url: "fonts/instrument-sans/instrument-sans-500-latin-ext.woff2",
+        rule: "@font-face {
+    font-family: \"Instrument Sans\";
+    font-style: normal;
+    font-weight: 500;
+    font-display: swap;
+    src: url(\"fonts/instrument-sans/instrument-sans-500-latin-ext.woff2\") format(\"woff2\");
+    unicode-range: U+0100-02BA, U+02BD-02C5, U+02C7-02CC, U+02CE-02D7, U+02DD-02FF, U+0304, U+0308, U+0329, U+1D00-1DBF, U+1E00-1E9F, U+1EF2-1EFF, U+2020, U+20A0-20AB, U+20AD-20C0, U+2113, U+2C60-2C7F, U+A720-A7FF;
+}",
+    },
+    FontRule {
+        family: "Instrument Sans",
+        weight: 500,
+        subset: Some("symbols"),
+        url: "fonts/instrument-sans/instrument-sans-500-symbols.woff2",
+        rule: "@font-face {
+    font-family: \"Instrument Sans\";
+    font-style: normal;
+    font-weight: 500;
+    font-display: swap;
+    src: url(\"fonts/instrument-sans/instrument-sans-500-symbols.woff2\") format(\"woff2\");
+    unicode-range: U+02D8-02D9, U+02DB, U+0300-0303, U+0306-0307, U+030A-0328, U+2190, U+2192, U+2194-2199;
+}",
+    },
+    FontRule {
+        family: "Instrument Sans",
+        weight: 600,
+        subset: Some("latin"),
+        url: "fonts/instrument-sans/instrument-sans-600-latin.woff2",
+        rule: "@font-face {
+    font-family: \"Instrument Sans\";
+    font-style: normal;
+    font-weight: 600;
+    font-display: swap;
+    src: url(\"fonts/instrument-sans/instrument-sans-600-latin.woff2\") format(\"woff2\");
+    unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+}",
+    },
+    FontRule {
+        family: "Instrument Sans",
+        weight: 600,
+        subset: Some("latin-ext"),
+        url: "fonts/instrument-sans/instrument-sans-600-latin-ext.woff2",
+        rule: "@font-face {
+    font-family: \"Instrument Sans\";
+    font-style: normal;
+    font-weight: 600;
+    font-display: swap;
+    src: url(\"fonts/instrument-sans/instrument-sans-600-latin-ext.woff2\") format(\"woff2\");
+    unicode-range: U+0100-02BA, U+02BD-02C5, U+02C7-02CC, U+02CE-02D7, U+02DD-02FF, U+0304, U+0308, U+0329, U+1D00-1DBF, U+1E00-1E9F, U+1EF2-1EFF, U+2020, U+20A0-20AB, U+20AD-20C0, U+2113, U+2C60-2C7F, U+A720-A7FF;
+}",
+    },
+    FontRule {
+        family: "Instrument Sans",
+        weight: 600,
+        subset: Some("symbols"),
+        url: "fonts/instrument-sans/instrument-sans-600-symbols.woff2",
+        rule: "@font-face {
+    font-family: \"Instrument Sans\";
+    font-style: normal;
+    font-weight: 600;
+    font-display: swap;
+    src: url(\"fonts/instrument-sans/instrument-sans-600-symbols.woff2\") format(\"woff2\");
+    unicode-range: U+02D8-02D9, U+02DB, U+0300-0303, U+0306-0307, U+030A-0328, U+2190, U+2192, U+2194-2199;
+}",
+    },
+    FontRule {
+        family: "Instrument Sans",
+        weight: 700,
+        subset: Some("latin"),
+        url: "fonts/instrument-sans/instrument-sans-700-latin.woff2",
+        rule: "@font-face {
+    font-family: \"Instrument Sans\";
+    font-style: normal;
+    font-weight: 700;
+    font-display: swap;
+    src: url(\"fonts/instrument-sans/instrument-sans-700-latin.woff2\") format(\"woff2\");
+    unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+}",
+    },
+    FontRule {
+        family: "Instrument Sans",
+        weight: 700,
+        subset: Some("latin-ext"),
+        url: "fonts/instrument-sans/instrument-sans-700-latin-ext.woff2",
+        rule: "@font-face {
+    font-family: \"Instrument Sans\";
+    font-style: normal;
+    font-weight: 700;
+    font-display: swap;
+    src: url(\"fonts/instrument-sans/instrument-sans-700-latin-ext.woff2\") format(\"woff2\");
+    unicode-range: U+0100-02BA, U+02BD-02C5, U+02C7-02CC, U+02CE-02D7, U+02DD-02FF, U+0304, U+0308, U+0329, U+1D00-1DBF, U+1E00-1E9F, U+1EF2-1EFF, U+2020, U+20A0-20AB, U+20AD-20C0, U+2113, U+2C60-2C7F, U+A720-A7FF;
+}",
+    },
+    FontRule {
+        family: "Instrument Sans",
+        weight: 700,
+        subset: Some("symbols"),
+        url: "fonts/instrument-sans/instrument-sans-700-symbols.woff2",
+        rule: "@font-face {
+    font-family: \"Instrument Sans\";
+    font-style: normal;
+    font-weight: 700;
+    font-display: swap;
+    src: url(\"fonts/instrument-sans/instrument-sans-700-symbols.woff2\") format(\"woff2\");
+    unicode-range: U+02D8-02D9, U+02DB, U+0300-0303, U+0306-0307, U+030A-0328, U+2190, U+2192, U+2194-2199;
+}",
+    },
+    FontRule {
+        family: "Libertinus Sans",
+        weight: 400,
+        subset: Some("latin"),
+        url: "fonts/libertinus-sans/libertinus-sans-400-latin.woff2",
+        rule: "@font-face {
+    font-family: \"Libertinus Sans\";
+    font-style: normal;
+    font-weight: 400;
+    font-display: swap;
+    src: url(\"fonts/libertinus-sans/libertinus-sans-400-latin.woff2\") format(\"woff2\");
+    unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+}",
+    },
+    FontRule {
+        family: "Libertinus Sans",
+        weight: 400,
+        subset: Some("latin-ext"),
+        url: "fonts/libertinus-sans/libertinus-sans-400-latin-ext.woff2",
+        rule: "@font-face {
+    font-family: \"Libertinus Sans\";
+    font-style: normal;
+    font-weight: 400;
+    font-display: swap;
+    src: url(\"fonts/libertinus-sans/libertinus-sans-400-latin-ext.woff2\") format(\"woff2\");
+    unicode-range: U+0100-02BA, U+02BD-02C5, U+02C7-02CC, U+02CE-02D7, U+02DD-02FF, U+0304, U+0308, U+0329, U+1D00-1DBF, U+1E00-1E9F, U+1EF2-1EFF, U+2020, U+20A0-20AB, U+20AD-20C0, U+2113, U+2C60-2C7F, U+A720-A7FF;
+}",
+    },
+    FontRule {
+        family: "Libertinus Sans",
+        weight: 400,
+        subset: Some("greek"),
+        url: "fonts/libertinus-sans/libertinus-sans-400-greek.woff2",
+        rule: "@font-face {
+    font-family: \"Libertinus Sans\";
+    font-style: normal;
+    font-weight: 400;
+    font-display: swap;
+    src: url(\"fonts/libertinus-sans/libertinus-sans-400-greek.woff2\") format(\"woff2\");
+    unicode-range: U+0370-0377, U+037A-037F, U+0384-038A, U+038C, U+038E-03A1, U+03A3-03FF, U+1F00-1FFF;
+}",
+    },
+    FontRule {
+        family: "Libertinus Sans",
+        weight: 400,
+        subset: Some("cyrillic"),
+        url: "fonts/libertinus-sans/libertinus-sans-400-cyrillic.woff2",
+        rule: "@font-face {
+    font-family: \"Libertinus Sans\";
+    font-style: normal;
+    font-weight: 400;
+    font-display: swap;
+    src: url(\"fonts/libertinus-sans/libertinus-sans-400-cyrillic.woff2\") format(\"woff2\");
+    unicode-range: U+0400-052F, U+1C80-1C8A, U+2116, U+2DE0-2DFF, U+A640-A69F, U+FE2E-FE2F;
+}",
+    },
+    FontRule {
+        family: "Libertinus Sans",
+        weight: 400,
+        subset: Some("symbols"),
+        url: "fonts/libertinus-sans/libertinus-sans-400-symbols.woff2",
+        rule: "@font-face {
+    font-family: \"Libertinus Sans\";
+    font-style: normal;
+    font-weight: 400;
+    font-display: swap;
+    src: url(\"fonts/libertinus-sans/libertinus-sans-400-symbols.woff2\") format(\"woff2\");
+    unicode-range: U+02CD, U+02D8-02D9, U+02DB, U+0300-0303, U+0305-0307, U+0309-0328, U+032A-036F, U+05B0-05F4, U+1EA0-1EF1, U+2070-209C, U+2100-2111, U+2115, U+2119-2120, U+2124-2190, U+2192, U+2194-2211, U+2213-2214, U+2216-27E9, U+2E02-2E18, U+FB29, U+1D106-1D107;
+}",
+    },
+    FontRule {
+        family: "Libertinus Sans",
+        weight: 400,
+        subset: Some("latin"),
+        url: "fonts/libertinus-sans/libertinus-sans-400-italic-latin.woff2",
+        rule: "@font-face {
+    font-family: \"Libertinus Sans\";
+    font-style: italic;
+    font-weight: 400;
+    font-display: swap;
+    src: url(\"fonts/libertinus-sans/libertinus-sans-400-italic-latin.woff2\") format(\"woff2\");
+    unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+}",
+    },
+    FontRule {
+        family: "Libertinus Sans",
+        weight: 400,
+        subset: Some("latin-ext"),
+        url: "fonts/libertinus-sans/libertinus-sans-400-italic-latin-ext.woff2",
+        rule: "@font-face {
+    font-family: \"Libertinus Sans\";
+    font-style: italic;
+    font-weight: 400;
+    font-display: swap;
+    src: url(\"fonts/libertinus-sans/libertinus-sans-400-italic-latin-ext.woff2\") format(\"woff2\");
+    unicode-range: U+0100-02BA, U+02BD-02C5, U+02C7-02CC, U+02CE-02D7, U+02DD-02FF, U+0304, U+0308, U+0329, U+1D00-1DBF, U+1E00-1E9F, U+1EF2-1EFF, U+2020, U+20A0-20AB, U+20AD-20C0, U+2113, U+2C60-2C7F, U+A720-A7FF;
+}",
+    },
+    FontRule {
+        family: "Libertinus Sans",
+        weight: 400,
+        subset: Some("greek"),
+        url: "fonts/libertinus-sans/libertinus-sans-400-italic-greek.woff2",
+        rule: "@font-face {
+    font-family: \"Libertinus Sans\";
+    font-style: italic;
+    font-weight: 400;
+    font-display: swap;
+    src: url(\"fonts/libertinus-sans/libertinus-sans-400-italic-greek.woff2\") format(\"woff2\");
+    unicode-range: U+0370-0377, U+037A-037F, U+0384-038A, U+038C, U+038E-03A1, U+03A3-03FF, U+1F00-1FFF;
+}",
+    },
+    FontRule {
+        family: "Libertinus Sans",
+        weight: 400,
+        subset: Some("cyrillic"),
+        url: "fonts/libertinus-sans/libertinus-sans-400-italic-cyrillic.woff2",
+        rule: "@font-face {
+    font-family: \"Libertinus Sans\";
+    font-style: italic;
+    font-weight: 400;
+    font-display: swap;
+    src: url(\"fonts/libertinus-sans/libertinus-sans-400-italic-cyrillic.woff2\") format(\"woff2\");
+    unicode-range: U+0400-052F, U+1C80-1C8A, U+2116, U+2DE0-2DFF, U+A640-A69F, U+FE2E-FE2F;
+}",
+    },
+    FontRule {
+        family: "Libertinus Sans",
+        weight: 400,
+        subset: Some("symbols"),
+        url: "fonts/libertinus-sans/libertinus-sans-400-italic-symbols.woff2",
+        rule: "@font-face {
+    font-family: \"Libertinus Sans\";
+    font-style: italic;
+    font-weight: 400;
+    font-display: swap;
+    src: url(\"fonts/libertinus-sans/libertinus-sans-400-italic-symbols.woff2\") format(\"woff2\");
+    unicode-range: U+02CD, U+02D8-02D9, U+02DB, U+0300-0303, U+0305-0307, U+0309-0328, U+032A-0364, U+05B0-05F4, U+1EA0-1EF1, U+2070-2099, U+2100-2111, U+2115, U+2119-2120, U+2124-2190, U+2192, U+2194-2211, U+2213-2214, U+2216-27E9, U+2E02-2E18, U+FB29, U+1D106-1D107;
+}",
+    },
+    FontRule {
+        family: "Libertinus Sans",
+        weight: 700,
+        subset: Some("latin"),
+        url: "fonts/libertinus-sans/libertinus-sans-700-latin.woff2",
+        rule: "@font-face {
+    font-family: \"Libertinus Sans\";
+    font-style: normal;
+    font-weight: 700;
+    font-display: swap;
+    src: url(\"fonts/libertinus-sans/libertinus-sans-700-latin.woff2\") format(\"woff2\");
+    unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+}",
+    },
+    FontRule {
+        family: "Libertinus Sans",
+        weight: 700,
+        subset: Some("latin-ext"),
+        url: "fonts/libertinus-sans/libertinus-sans-700-latin-ext.woff2",
+        rule: "@font-face {
+    font-family: \"Libertinus Sans\";
+    font-style: normal;
+    font-weight: 700;
+    font-display: swap;
+    src: url(\"fonts/libertinus-sans/libertinus-sans-700-latin-ext.woff2\") format(\"woff2\");
+    unicode-range: U+0100-02BA, U+02BD-02C5, U+02C7-02CC, U+02CE-02D7, U+02DD-02FF, U+0304, U+0308, U+0329, U+1D00-1DBF, U+1E00-1E9F, U+1EF2-1EFF, U+2020, U+20A0-20AB, U+20AD-20C0, U+2113, U+2C60-2C7F, U+A720-A7FF;
+}",
+    },
+    FontRule {
+        family: "Libertinus Sans",
+        weight: 700,
+        subset: Some("greek"),
+        url: "fonts/libertinus-sans/libertinus-sans-700-greek.woff2",
+        rule: "@font-face {
+    font-family: \"Libertinus Sans\";
+    font-style: normal;
+    font-weight: 700;
+    font-display: swap;
+    src: url(\"fonts/libertinus-sans/libertinus-sans-700-greek.woff2\") format(\"woff2\");
+    unicode-range: U+0370-0377, U+037A-037F, U+0384-038A, U+038C, U+038E-03A1, U+03A3-03FF, U+1F00-1FFF;
+}",
+    },
+    FontRule {
+        family: "Libertinus Sans",
+        weight: 700,
+        subset: Some("cyrillic"),
+        url: "fonts/libertinus-sans/libertinus-sans-700-cyrillic.woff2",
+        rule: "@font-face {
+    font-family: \"Libertinus Sans\";
+    font-style: normal;
+    font-weight: 700;
+    font-display: swap;
+    src: url(\"fonts/libertinus-sans/libertinus-sans-700-cyrillic.woff2\") format(\"woff2\");
+    unicode-range: U+0400-052F, U+1C80-1C8A, U+2116, U+2DE0-2DFF, U+A640-A69F, U+FE2E-FE2F;
+}",
+    },
+    FontRule {
+        family: "Libertinus Sans",
+        weight: 700,
+        subset: Some("symbols"),
+        url: "fonts/libertinus-sans/libertinus-sans-700-symbols.woff2",
+        rule: "@font-face {
+    font-family: \"Libertinus Sans\";
+    font-style: normal;
+    font-weight: 700;
+    font-display: swap;
+    src: url(\"fonts/libertinus-sans/libertinus-sans-700-symbols.woff2\") format(\"woff2\");
+    unicode-range: U+02CD, U+02D8-02D9, U+02DB, U+0300-0303, U+0305-0307, U+0309-0328, U+032A-036F, U+05B0-05F4, U+1EA0-1EF1, U+2070-209C, U+2100-2111, U+2115, U+2119-2120, U+2124-2190, U+2192, U+2194-2211, U+2213-2214, U+2216-27E9, U+2E17-2E18, U+FB29, U+1D106-1D107;
+}",
+    },
+    FontRule {
+        family: "JuliaMono",
+        weight: 400,
+        subset: None,
+        url: "fonts/juliamono/JuliaMono-Regular.woff2",
+        rule: "@font-face {
+    font-family: \"JuliaMono\";
+    font-style: normal;
+    font-weight: 400;
+    font-display: swap;
+    src: url(\"fonts/juliamono/JuliaMono-Regular.woff2\") format(\"woff2\");
+}",
+    },
+    FontRule {
+        family: "JuliaMono",
+        weight: 400,
+        subset: None,
+        url: "fonts/juliamono/JuliaMono-RegularLatin.woff2",
+        rule: "@font-face {
+    font-family: \"JuliaMono\";
+    font-style: normal;
+    font-weight: 400;
+    font-display: swap;
+    src: url(\"fonts/juliamono/JuliaMono-RegularLatin.woff2\") format(\"woff2\");
+    unicode-range: U+0020-007E, U+00A0-00A3, U+00A5-00AC, U+00AE-00B4, U+00B6-00FF, U+0101, U+0103, U+0105, U+0107, U+010B, U+010D, U+010F, U+0111, U+0113, U+0117, U+0119, U+011B, U+011F, U+0121, U+0123, U+0127, U+012B, U+012F, U+0131, U+0137, U+013A, U+013C, U+013E, U+0141-0142, U+0144, U+0146, U+0148, U+014B, U+014D, U+0151-0153, U+0155, U+0157, U+0159, U+015B, U+015F-0161, U+0163, U+0165, U+0167, U+016B, U+016F, U+0171, U+0173, U+0175, U+0177-0178, U+017A, U+017C-017E, U+0192, U+0219, U+021B, U+02C6-02C7, U+02D8-02DD, U+0300-0304, U+0306-0308, U+030A-030C, U+0312, U+0326-0328, U+0394, U+03A9, U+03BC, U+03C0, U+1E81, U+1E83, U+1E85, U+1EF3, U+2013-2014, U+2018-201A, U+201C-201E, U+2020-2022, U+2026, U+2030, U+2039-203A, U+2044, U+20AC, U+2122, U+2190-2193, U+21D2, U+2202, U+220F, U+2211-2212, U+221A, U+221E, U+222B, U+2248, U+2260, U+2264-2265, U+2500, U+2502, U+250C, U+2510, U+2514, U+2518, U+251C, U+2524, U+253C, U+2550, U+2560-2561, U+25CA, U+26B2, U+E800, U+FB01-FB02;
+}",
+    },
+    FontRule {
+        family: "JuliaMono",
+        weight: 400,
+        subset: None,
+        url: "fonts/juliamono/JuliaMono-RegularItalic.woff2",
+        rule: "@font-face {
+    font-family: \"JuliaMono\";
+    font-style: italic;
+    font-weight: 400;
+    font-display: swap;
+    src: url(\"fonts/juliamono/JuliaMono-RegularItalic.woff2\") format(\"woff2\");
+}",
+    },
+    FontRule {
+        family: "JuliaMono",
+        weight: 500,
+        subset: None,
+        url: "fonts/juliamono/JuliaMono-Medium.woff2",
+        rule: "@font-face {
+    font-family: \"JuliaMono\";
+    font-style: normal;
+    font-weight: 500;
+    font-display: swap;
+    src: url(\"fonts/juliamono/JuliaMono-Medium.woff2\") format(\"woff2\");
+}",
+    },
+    FontRule {
+        family: "JuliaMono",
+        weight: 700,
+        subset: None,
+        url: "fonts/juliamono/JuliaMono-Bold.woff2",
+        rule: "@font-face {
+    font-family: \"JuliaMono\";
+    font-style: normal;
+    font-weight: 700;
+    font-display: swap;
+    src: url(\"fonts/juliamono/JuliaMono-Bold.woff2\") format(\"woff2\");
+}",
+    },
+    FontRule {
+        family: "JuliaMono",
+        weight: 700,
+        subset: None,
+        url: "fonts/juliamono/JuliaMono-BoldLatin.woff2",
+        rule: "@font-face {
+    font-family: \"JuliaMono\";
+    font-style: normal;
+    font-weight: 700;
+    font-display: swap;
+    src: url(\"fonts/juliamono/JuliaMono-BoldLatin.woff2\") format(\"woff2\");
+    unicode-range: U+0020-007E, U+00A0-00A3, U+00A5-00AC, U+00AE-00B4, U+00B6-00FF, U+0101, U+0103, U+0105, U+0107, U+010B, U+010D, U+010F, U+0111, U+0113, U+0117, U+0119, U+011B, U+011F, U+0121, U+0123, U+0127, U+012B, U+012F, U+0131, U+0137, U+013A, U+013C, U+013E, U+0141-0142, U+0144, U+0146, U+0148, U+014B, U+014D, U+0151-0153, U+0155, U+0157, U+0159, U+015B, U+015F-0161, U+0163, U+0165, U+0167, U+016B, U+016F, U+0171, U+0173, U+0175, U+0177-0178, U+017A, U+017C-017E, U+0192, U+0219, U+021B, U+02C6-02C7, U+02D8-02DD, U+0300-0304, U+0306-0308, U+030A-030C, U+0312, U+0326-0328, U+0394, U+03A9, U+03BC, U+03C0, U+1E81, U+1E83, U+1E85, U+1EF3, U+2013-2014, U+2018-201A, U+201C-201E, U+2020-2022, U+2026, U+2030, U+2039-203A, U+2044, U+20AC, U+2122, U+2190-2193, U+21D2, U+2202, U+220F, U+2211-2212, U+221A, U+221E, U+222B, U+2248, U+2260, U+2264-2265, U+2500, U+2502, U+250C, U+2510, U+2514, U+2518, U+251C, U+2524, U+253C, U+2550, U+2560-2561, U+25CA, U+26B2, U+E800, U+FB01-FB02;
+}",
+    },
+];
+
+#[cfg(feature = "elements")]
+pub(crate) static MODULES: &[crate::bundle::Module] = &[
+    crate::bundle::Module {
+        name: "glyphs",
+        imports: &[],
+        code: include_str!("../assets/bundle/glyphs.js"),
+    },
+    crate::bundle::Module {
+        name: "internal",
+        imports: &[],
+        code: include_str!("../assets/bundle/internal.js"),
+    },
+    crate::bundle::Module {
+        name: "copy-button",
+        imports: &["glyphs", "internal"],
+        code: include_str!("../assets/bundle/copy-button.js"),
+    },
+    crate::bundle::Module {
+        name: "dialog",
+        imports: &["internal"],
+        code: include_str!("../assets/bundle/dialog.js"),
+    },
+    crate::bundle::Module {
+        name: "filter-chips",
+        imports: &["internal"],
+        code: include_str!("../assets/bundle/filter-chips.js"),
+    },
+    crate::bundle::Module {
+        name: "light",
+        imports: &["internal"],
+        code: include_str!("../assets/bundle/light.js"),
+    },
+    crate::bundle::Module {
+        name: "mark-data",
+        imports: &[],
+        code: include_str!("../assets/bundle/mark-data.js"),
+    },
+    crate::bundle::Module {
+        name: "mark",
+        imports: &["internal", "mark-data"],
+        code: include_str!("../assets/bundle/mark.js"),
+    },
+    crate::bundle::Module {
+        name: "menu",
+        imports: &["internal"],
+        code: include_str!("../assets/bundle/menu.js"),
+    },
+    crate::bundle::Module {
+        name: "segmented",
+        imports: &["internal"],
+        code: include_str!("../assets/bundle/segmented.js"),
+    },
+    crate::bundle::Module {
+        name: "theme-switch",
+        imports: &["segmented", "internal"],
+        code: include_str!("../assets/bundle/theme-switch.js"),
+    },
+    crate::bundle::Module {
+        name: "toast-region",
+        imports: &["glyphs", "internal"],
+        code: include_str!("../assets/bundle/toast-region.js"),
+    },
+    crate::bundle::Module {
+        name: "tooltip",
+        imports: &["internal"],
+        code: include_str!("../assets/bundle/tooltip.js"),
+    },
+];

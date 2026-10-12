@@ -1,0 +1,271 @@
+/* Typography for documents: running text, headings, lists, tables,
+ * quotations, code and formulas, inside an element with the class
+ * `.document`. Interface around it is left alone.
+ *
+ * Needs `tokens.css` and `base.css`. Prose is set in New Computer Modern,
+ * headings in the interface's face, code in JuliaMono and formulas, as
+ * MathML, in New Computer Modern Math. How wide the text runs, and where it
+ * sits on the page, is the consumer's to say. Highlighted blocks are the
+ * `.highlight` component, in `components.css`.
+ */
+
+@layer stemma.base, stemma.document, stemma.components, stemma.tones;
+
+@layer stemma.document {
+    .document {
+        font: var(--text-prose);
+        color: var(--ink-1);
+        font-kerning: normal;
+        overflow-wrap: break-word;
+    }
+
+    .document > :first-child {
+        margin-top: 0;
+    }
+
+    .document > :last-child {
+        margin-bottom: 0;
+    }
+
+    /* ── Headings ──────────────────────────────────────────────────── */
+
+    .document :is(h1, h2, h3, h4, h5, h6) {
+        margin: 1.6em 0 0.5em;
+        font-family: var(--font-ui);
+        font-weight: 600;
+        line-height: 1.25;
+        color: var(--ink-1);
+        text-wrap: balance;
+    }
+
+    .document h1 {
+        margin-top: 0;
+        font-size: var(--step-8);
+        line-height: 1.1;
+        letter-spacing: -0.02em;
+    }
+
+    .document h2 {
+        font-size: var(--step-7);
+        letter-spacing: -0.015em;
+    }
+
+    .document h3 {
+        font-size: var(--step-6);
+        letter-spacing: -0.01em;
+    }
+
+    .document h4 {
+        font-size: var(--step-5);
+    }
+
+    .document :is(h5, h6) {
+        font-size: var(--step-4);
+    }
+
+    .document h6 {
+        color: var(--ink-2);
+    }
+
+    /* A heading's next block follows it closely. */
+    .document :is(h1, h2, h3, h4, h5, h6) + * {
+        margin-top: 0;
+    }
+
+    /* ── Text ──────────────────────────────────────────────────────── */
+
+    .document :is(p, ul, ol, dl, blockquote, pre, table, figure) {
+        margin: 0 0 1em;
+    }
+
+    .document a {
+        color: var(--link);
+        text-decoration: underline;
+        text-decoration-color: color-mix(in srgb, currentColor 40%, transparent);
+        text-decoration-thickness: 1px;
+        text-underline-offset: 0.18em;
+    }
+
+    .document a:hover {
+        text-decoration-color: currentColor;
+    }
+
+    /* A reference: a link to a numbered or named thing elsewhere in the
+     * text, a citation or a footnote. In the link's colour, without an
+     * underline until hovered, so a paragraph full of them stays calm. */
+    .document .ref,
+    .document sup > a {
+        text-decoration: none;
+        font-variant-numeric: lining-nums tabular-nums;
+    }
+
+    .document .ref:hover,
+    .document sup > a:hover {
+        text-decoration: underline;
+    }
+
+    .document :is(strong, b) {
+        font-weight: 700;
+    }
+
+    .document small {
+        font-size: 0.85em;
+    }
+
+    .document :is(sub, sup) {
+        font-size: 0.75em;
+        line-height: 0;
+    }
+
+    .document hr {
+        height: 0;
+        margin: 2em 0;
+        border: 0;
+        border-top: 1px solid var(--border);
+    }
+
+    .document img {
+        max-width: 100%;
+        height: auto;
+    }
+
+    /* ── Lists ─────────────────────────────────────────────────────── */
+
+    .document :is(ul, ol) {
+        padding-inline-start: 1.5em;
+    }
+
+    .document li + li,
+    .document li > :is(ul, ol) {
+        margin-top: 0.25em;
+    }
+
+    .document li > :is(ul, ol) {
+        margin-bottom: 0;
+    }
+
+    .document li::marker {
+        color: var(--ink-3);
+    }
+
+    .document dt {
+        font-weight: 700;
+    }
+
+    .document dd {
+        margin: 0 0 0.5em 1.5em;
+    }
+
+    /* ── Quotations ────────────────────────────────────────────────── */
+
+    .document blockquote {
+        padding-inline-start: 1em;
+        color: var(--ink-2);
+        border-inline-start: 3px solid var(--border-strong);
+    }
+
+    .document blockquote > :last-child {
+        margin-bottom: 0;
+    }
+
+    /* ── Code ──────────────────────────────────────────────────────────
+     *
+     * JuliaMono sits large beside the prose face, so code is set smaller
+     * than the text around it. */
+
+    .document :is(code, kbd, samp) {
+        font-family: var(--font-mono);
+        font-size: 0.82em;
+    }
+
+    .document :not(pre) > code {
+        padding: 0.1em 0.3em;
+        background: var(--fill-muted);
+        border-radius: var(--radius-xs);
+    }
+
+    .document kbd {
+        padding: 0.05em 0.35em;
+        background: var(--surface-card);
+        border: 1px solid var(--border-strong);
+        border-bottom-width: 2px;
+        border-radius: var(--radius-xs);
+    }
+
+    .document pre {
+        overflow-x: auto;
+        padding: var(--space-3) var(--space-4);
+        font-size: 0.82em;
+        line-height: 1.5;
+        background: var(--surface-subtle);
+        border: 1px solid var(--border);
+        border-radius: var(--radius-md);
+        tab-size: 4;
+    }
+
+    .document pre code {
+        font-size: inherit;
+    }
+
+    /* ── Tables ────────────────────────────────────────────────────── */
+
+    .document table {
+        display: block;
+        max-width: 100%;
+        overflow-x: auto;
+        border-collapse: collapse;
+        font-size: 0.9em;
+        font-variant-numeric: lining-nums tabular-nums;
+    }
+
+    .document :is(th, td) {
+        padding: 0.4em 0.75em;
+        text-align: start;
+        vertical-align: top;
+        border-bottom: 1px solid var(--divider);
+    }
+
+    .document :is(th, td):first-child {
+        padding-inline-start: 0;
+    }
+
+    .document th {
+        font: var(--text-label);
+        color: var(--ink-3);
+        border-bottom-color: var(--border-strong);
+    }
+
+    .document caption {
+        caption-side: bottom;
+        padding-top: 0.5em;
+        font: var(--text-meta);
+        color: var(--ink-3);
+        text-align: start;
+    }
+
+    /* ── Figures ───────────────────────────────────────────────────── */
+
+    .document figcaption {
+        margin-top: 0.5em;
+        font: var(--text-meta);
+        color: var(--ink-3);
+    }
+
+    /* ── Formulas ──────────────────────────────────────────────────────
+     *
+     * MathML, typeset by the browser in New Computer Modern Math, drawn to
+     * match the prose face at the same size. A displayed formula scrolls
+     * rather than overflow the text. */
+
+    .document math {
+        font-family: var(--font-math);
+        font-size: 1em;
+    }
+
+    .document math[display="block"] {
+        display: block math;
+        margin: 1em 0;
+        overflow-x: auto;
+        overflow-y: hidden;
+    }
+}

@@ -1,0 +1,14 @@
+[package]
+name = "stemma-design"
+version.workspace = true
+edition.workspace = true
+description = "Stemma's design system for Rust: the web target's files, to serve or to inline in a single HTML page"
+repository.workspace = true
+license = "MIT AND OFL-1.1 AND LPPL-1.3c AND LicenseRef-Stemma-Mark"
+include = ["LICENSE", "LICENSE-mark", "README.md", "assets/**", "src/**", "tests/**"]
+
+[features]
+# The favicons, application icons and marks of the brand kit.
+brand-kit = []
+# The custom elements, served and available to the inline bundle.
+elements = []

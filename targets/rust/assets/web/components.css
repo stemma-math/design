@@ -1,0 +1,1229 @@
+/* Stemma's components: classes over native HTML, for any consumer.
+ *
+ * Needs `tokens.css` and `base.css`. Every rule sits in a cascade layer, so
+ * a consumer's own unlayered rules win whatever their specificity.
+ * Placement and layout belong to the consumer; a component only says how
+ * it looks.
+ *
+ * Size follows the density: comfortable by default, compact inside
+ * `[data-density="compact"]`. Tone-driven components take an intent or a
+ * categorical tone as a modifier (`.chip--success`, `.chip--teal`); see
+ * "Tones" in `base.css`.
+ */
+
+@layer stemma.base, stemma.document, stemma.components, stemma.tones;
+
+@layer stemma.components {
+    /* A label names a group of things. Sentence case, never a heading. */
+    .label {
+        margin: 0;
+        font: var(--text-label);
+        color: var(--ink-3);
+    }
+
+    .quiet {
+        color: var(--ink-3);
+    }
+
+    .numeric {
+        font-variant-numeric: tabular-nums;
+    }
+
+    /* Identifiers are verbatim: names, paths, versions. One may be longer
+     * than the room it has, so it breaks anywhere rather than push past
+     * it. */
+    .identifier {
+        font-family: var(--font-mono);
+        font-size: 0.87em;
+        font-weight: 400;
+        overflow-wrap: anywhere;
+    }
+
+    .visually-hidden {
+        position: absolute;
+        width: 1px;
+        height: 1px;
+        overflow: hidden;
+        clip-path: inset(50%);
+        white-space: nowrap;
+    }
+
+    /* ── Glyph ─────────────────────────────────────────────────────────
+     *
+     * An inline line glyph, drawn in the colour of its text. */
+
+    .glyph {
+        flex-shrink: 0;
+        width: 18px;
+        height: 18px;
+        fill: none;
+        stroke: currentColor;
+        stroke-width: 1.7;
+        stroke-linecap: round;
+        stroke-linejoin: round;
+    }
+
+    .glyph--small {
+        width: 14px;
+        height: 14px;
+        stroke-width: 2;
+    }
+
+    /* ── Button ────────────────────────────────────────────────────────
+     *
+     * On a `button` or an `a`. Outlined and neutral by default, the
+     * secondary action. `--primary` is the one action a view is for: a
+     * solid fill of its tone, the accent unless an intent says otherwise
+     * (`.button--primary.button--danger`). An intent alone outlines the
+     * button in that intent. `--quiet` is a text button, `--link` reads as
+     * a link, and `--icon` holds a glyph alone and needs an `aria-label`.
+     * `aria-pressed="true"` and `aria-current` mark the one chosen. */
+
+    .button {
+        --tone: var(--accent);
+        --tone-text: var(--accent-text);
+        --tone-on: var(--accent-on);
+
+        box-sizing: border-box;
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        gap: var(--space-2);
+        min-height: var(--control-height);
+        padding: 0 var(--button-inline);
+        font: 500 var(--control-font) / 1.2 var(--font-ui);
+        color: var(--ink-1);
+        text-decoration: none;
+        white-space: nowrap;
+        background: var(--surface-card);
+        border: 1px solid var(--border-strong);
+        border-radius: var(--radius-md);
+        cursor: pointer;
+        transition:
+            background var(--dur-ui) var(--ease-out),
+            border-color var(--dur-ui) var(--ease-out),
+            color var(--dur-ui) var(--ease-out),
+            transform var(--dur-press) var(--ease-out);
+    }
+
+    .button:hover {
+        background: var(--surface-subtle);
+        border-color: var(--ink-4);
+    }
+
+    .button:active:not(:disabled) {
+        transform: scale(0.96);
+    }
+
+    .button[aria-pressed="true"],
+    .button[aria-current]:not([aria-current="false"]) {
+        color: var(--accent-text);
+        background: color-mix(in srgb, var(--accent) var(--mix-soft), transparent);
+        border-color: transparent;
+    }
+
+    /* Outlined in an intent, so it keeps its shape at rest without
+     * competing with `--primary`. */
+    .button:is(
+            .button--neutral,
+            .button--accent,
+            .button--success,
+            .button--warning,
+            .button--danger,
+            .button--info
+        ):not(.button--primary) {
+        color: var(--tone-text);
+        border-color: color-mix(in srgb, var(--tone) var(--mix-border), transparent);
+    }
+
+    .button:is(
+            .button--neutral,
+            .button--accent,
+            .button--success,
+            .button--warning,
+            .button--danger,
+            .button--info
+        ):not(.button--primary):hover {
+        background: color-mix(in srgb, var(--tone) var(--mix-soft), transparent);
+        border-color: var(--tone);
+    }
+
+    .button--primary {
+        color: var(--tone-on);
+        background: var(--tone);
+        border-color: var(--tone);
+        box-shadow: 0 1px 2px rgb(20 40 90 / 12%);
+    }
+
+    .button--primary:hover {
+        background: color-mix(in srgb, var(--tone) var(--mix-hover), black);
+        border-color: color-mix(in srgb, var(--tone) var(--mix-hover), black);
+    }
+
+    .button--quiet {
+        color: var(--ink-2);
+        background: transparent;
+        border-color: transparent;
+    }
+
+    .button--quiet:hover {
+        color: var(--ink-1);
+        background: var(--fill-muted);
+        border-color: transparent;
+    }
+
+    .button--link {
+        min-height: 0;
+        padding: 0;
+        color: var(--link);
+        background: transparent;
+        border: 0;
+        text-decoration: underline;
+        text-decoration-color: color-mix(in srgb, currentColor 40%, transparent);
+        text-underline-offset: 3px;
+    }
+
+    .button--link:hover {
+        background: transparent;
+        text-decoration-color: currentColor;
+    }
+
+    .button--icon {
+        width: var(--control-height);
+        padding: 0;
+        color: var(--ink-3);
+        background: transparent;
+        border-color: transparent;
+        border-radius: var(--radius-sm);
+    }
+
+    .button--icon:hover {
+        color: var(--ink-1);
+        background: var(--fill-muted);
+        border-color: transparent;
+    }
+
+    .button--small {
+        min-height: var(--control-small-height);
+        padding: 0 var(--space-3);
+        font-size: var(--control-small-font);
+        border-radius: var(--radius-sm);
+    }
+
+    .button--icon.button--small {
+        width: var(--control-small-height);
+        padding: 0;
+    }
+
+    .button:disabled,
+    .button[aria-disabled="true"] {
+        color: var(--ink-disabled);
+        background: var(--surface-subtle);
+        border-color: var(--border);
+        box-shadow: none;
+        cursor: not-allowed;
+    }
+
+    .button--quiet:disabled,
+    .button--icon:disabled,
+    .button--link:disabled {
+        background: transparent;
+        border-color: transparent;
+    }
+
+    /* ── Field ─────────────────────────────────────────────────────────
+     *
+     * A label, the control and an optional hint or error, stacked. `.input`
+     * goes on the `input`, `textarea` or `select` itself, so a control
+     * outside a field looks the same. An error says what happened and how
+     * to fix it; the control points at it with `aria-describedby` and
+     * carries `aria-invalid="true"`. */
+
+    .field {
+        display: flex;
+        flex-direction: column;
+        gap: 6px;
+    }
+
+    .field__label {
+        font: 500 var(--control-font) / 1.3 var(--font-ui);
+        color: var(--ink-1);
+    }
+
+    .field__hint {
+        font-size: var(--control-small-font);
+        color: var(--ink-3);
+    }
+
+    .field__error {
+        display: flex;
+        align-items: flex-start;
+        gap: 6px;
+        font-size: var(--control-small-font);
+        color: var(--danger-text);
+    }
+
+    .input {
+        box-sizing: border-box;
+        width: 100%;
+        min-height: var(--control-height);
+        padding: var(--control-block) var(--control-inline);
+        font: 400 var(--control-font) / 1.4 var(--font-ui);
+        color: var(--ink-1);
+        background: var(--surface-field);
+        border: 1px solid var(--border-strong);
+        border-radius: var(--radius-md);
+        transition:
+            border-color var(--dur-ui) var(--ease-out),
+            background var(--dur-ui) var(--ease-out),
+            box-shadow var(--dur-ui) var(--ease-out);
+    }
+
+    .input::placeholder {
+        color: var(--ink-placeholder);
+    }
+
+    .input:focus {
+        outline: none;
+        background: var(--surface-card);
+        border-color: var(--accent);
+        box-shadow: var(--ring-input);
+    }
+
+    .input[aria-invalid="true"] {
+        background: color-mix(in srgb, var(--danger) 5%, var(--surface-field));
+        border-color: var(--danger);
+    }
+
+    .input[aria-invalid="true"]:focus {
+        box-shadow: 0 0 0 3px color-mix(in srgb, var(--danger) 16%, transparent);
+    }
+
+    .input:disabled {
+        color: var(--ink-3);
+        cursor: not-allowed;
+    }
+
+    textarea.input {
+        resize: vertical;
+    }
+
+    select.input {
+        appearance: none;
+        padding-right: calc(var(--control-inline) + 20px);
+        background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23838c9f' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='m7 10 5 5 5-5'/%3E%3C/svg%3E");
+        background-repeat: no-repeat;
+        background-position: right 10px center;
+        background-size: 16px;
+    }
+
+    /* Verbatim input: codes, identifiers, source. */
+    .input--mono {
+        font-family: var(--font-mono);
+        font-size: calc(var(--control-font) - 1px);
+    }
+
+    /* ── Choice ────────────────────────────────────────────────────────
+     *
+     * A checkbox or radio and its words, as one line, so the words are
+     * the target and not the sixteen pixels of the control. */
+
+    .choice {
+        display: flex;
+        align-items: flex-start;
+        gap: var(--space-2);
+        font-size: var(--control-font);
+        line-height: 20px;
+        color: var(--ink-1);
+        cursor: pointer;
+    }
+
+    /* The box sits on the first line of the words, however many there are,
+     * centred on the letters rather than on the line box. */
+    .choice input[type] {
+        margin: 0.2em 0 0;
+    }
+
+    .choice:has(input:disabled) {
+        cursor: default;
+    }
+
+    /* Drawn rather than native, so the box is the same size, colour and
+     * alignment in every browser and webview. At rest it is a field;
+     * chosen, it takes the accent with its own text colour on it, as the
+     * primary button does. The edge is 3:1 against a card. */
+    input[type="checkbox"],
+    input[type="radio"] {
+        box-sizing: border-box;
+        flex-shrink: 0;
+        width: 16px;
+        height: 16px;
+        margin: 0;
+        vertical-align: -3px;
+        background: var(--surface-field) center / 0 no-repeat;
+        border: 1.5px solid var(--ink-4);
+        border-radius: 5px;
+        appearance: none;
+        cursor: pointer;
+        transition:
+            background-color var(--dur-press) var(--ease-out),
+            background-size var(--dur-ui) var(--ease-out),
+            border-color var(--dur-press) var(--ease-out),
+            box-shadow var(--dur-press) var(--ease-out);
+    }
+
+    input[type="checkbox"] {
+        background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 12 12'%3E%3Cpath d='M2.5 6.2 5 8.6l4.5-5' fill='none' stroke='%23fff' stroke-width='1.8' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E");
+    }
+
+    input[type="radio"] {
+        background-image: radial-gradient(circle, var(--accent-on) 0 2.5px, transparent 3px);
+        border-radius: 50%;
+    }
+
+    input[type="checkbox"]:hover:not(:disabled),
+    input[type="radio"]:hover:not(:disabled) {
+        border-color: var(--accent);
+        box-shadow: var(--ring-selected);
+    }
+
+    input[type="checkbox"]:checked,
+    input[type="radio"]:checked {
+        background-color: var(--accent);
+        border-color: var(--accent);
+    }
+
+    input[type="checkbox"]:checked {
+        background-size: 12px;
+    }
+
+    input[type="radio"]:checked {
+        background-size: 100%;
+    }
+
+    input[type="checkbox"]:checked:hover:not(:disabled),
+    input[type="radio"]:checked:hover:not(:disabled) {
+        background-color: color-mix(in srgb, var(--accent) var(--mix-hover), black);
+        border-color: color-mix(in srgb, var(--accent) var(--mix-hover), black);
+    }
+
+    input[type="checkbox"]:disabled,
+    input[type="radio"]:disabled {
+        opacity: 0.5;
+        cursor: default;
+    }
+
+    /* A set of choices: the question is the legend. */
+    .fieldset {
+        display: flex;
+        flex-direction: column;
+        gap: var(--space-2);
+        margin: 0;
+        padding: var(--space-3) var(--space-4) var(--space-4);
+        border: 1px solid var(--border);
+        border-radius: var(--radius-md);
+    }
+
+    /* WebKit lays a legend out as a flex item and stretches it, which
+     * takes the whole top border away with it. */
+    .fieldset > legend {
+        width: fit-content;
+        padding: 0 var(--space-1);
+        font: var(--text-small);
+        color: var(--ink-2);
+    }
+
+    /* ── Chip ──────────────────────────────────────────────────────────
+     *
+     * A state with a fixed meaning, in a tone: neutral by default. Always
+     * words, so colour is never the only cue; a glyph may go before them.
+     * A soft fill by default; `--outline` is a border alone, `--solid` a
+     * solid fill, and `--dashed` says something is missing. */
+
+    .chip {
+        --tone: var(--neutral);
+        --tone-text: var(--neutral-text);
+        --tone-on: var(--neutral-on);
+
+        box-sizing: border-box;
+        display: inline-flex;
+        align-items: center;
+        gap: 6px;
+        padding: 3px 9px;
+        font: var(--text-label);
+        white-space: nowrap;
+        color: var(--tone-text);
+        background: color-mix(in srgb, var(--tone) var(--mix-soft), transparent);
+        border: 1px solid transparent;
+        border-radius: var(--radius-pill);
+    }
+
+    .chip--outline {
+        background: transparent;
+        border-color: color-mix(in srgb, var(--tone) var(--mix-border), transparent);
+    }
+
+    .chip--solid {
+        color: var(--tone-on);
+        background: var(--tone);
+    }
+
+    .chip--dashed {
+        color: var(--ink-3);
+        background: transparent;
+        border: 1px dashed var(--border-dashed);
+    }
+
+    /* A chip that is a toggle, as in a set of filters: outlined while
+     * off, filled while on. */
+    button.chip {
+        cursor: pointer;
+        transition:
+            background var(--dur-ui) var(--ease-out),
+            border-color var(--dur-ui) var(--ease-out);
+    }
+
+    .chip[aria-pressed="false"] {
+        color: var(--ink-2);
+        background: transparent;
+        border-color: var(--border-strong);
+    }
+
+    .chip[aria-pressed="false"]:hover {
+        border-color: color-mix(in srgb, var(--tone) var(--mix-border), transparent);
+    }
+
+    .chip[aria-pressed="true"] {
+        border-color: color-mix(in srgb, var(--tone) var(--mix-border), transparent);
+    }
+
+    .chip .glyph {
+        width: 13px;
+        height: 13px;
+        stroke-width: 2;
+    }
+
+    /* ── Count ─────────────────────────────────────────────────────────
+     *
+     * A small number beside a heading or a destination, in a tone:
+     * neutral by default. */
+
+    .count {
+        --tone: var(--neutral);
+        --tone-text: var(--neutral-text);
+        --tone-on: var(--neutral-on);
+
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        min-width: 20px;
+        box-sizing: border-box;
+        padding: 1px 7px;
+        font: var(--text-label);
+        font-variant-numeric: tabular-nums;
+        color: var(--tone-text);
+        background: color-mix(in srgb, var(--tone) var(--mix-soft), transparent);
+        border-radius: var(--radius-pill);
+    }
+
+    .count--solid {
+        color: var(--tone-on);
+        background: var(--tone);
+    }
+
+    /* ── Avatar ────────────────────────────────────────────────────────
+     *
+     * A person is a circle with an initial; `--square` is a rounded square,
+     * for a group, with its initials. Either may hold an `img` instead. In
+     * a tone, the accent by default; a categorical tone tells people or
+     * groups apart. */
+
+    .avatar {
+        --tone: var(--accent);
+        --tone-text: var(--accent-text);
+        --tone-on: var(--accent-on);
+
+        display: inline-flex;
+        flex-shrink: 0;
+        align-items: center;
+        justify-content: center;
+        width: 34px;
+        height: 34px;
+        font: 600 14px / 1 var(--font-ui);
+        color: var(--tone-on);
+        background: linear-gradient(
+            135deg,
+            color-mix(in srgb, var(--tone) 80%, white),
+            var(--tone) 60%
+        );
+        border-radius: 50%;
+    }
+
+    .avatar--square {
+        width: 42px;
+        height: 42px;
+        font: 500 16px / 1 var(--font-ui);
+        border-radius: var(--radius-md);
+    }
+
+    /* A picture, where there is one, fills the shape in place of the
+     * initials. */
+    .avatar > img {
+        display: block;
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        border-radius: inherit;
+    }
+
+    /* ── Card ──────────────────────────────────────────────────────────
+     *
+     * A surface on the page. `--empty` is an empty state or an invitation
+     * to make something, outlined in dashes. `--raised` stands alone on a
+     * page. */
+
+    .card {
+        box-sizing: border-box;
+        color: var(--ink-1);
+        background: var(--surface-card);
+        border: 1px solid var(--border);
+        border-radius: var(--radius-xl);
+        box-shadow: var(--shadow-card);
+    }
+
+    .card--raised {
+        border-radius: var(--radius-2xl);
+        box-shadow: var(--shadow-raised);
+    }
+
+    .card--empty {
+        background: transparent;
+        border: 1px dashed var(--border-dashed);
+        box-shadow: none;
+    }
+
+    /* A line of text saying there is nothing here yet, and what to do. */
+    .empty {
+        margin: 0;
+        color: var(--ink-3);
+    }
+
+    /* ── Table ─────────────────────────────────────────────────────────
+     *
+     * Rows in a card. A row that goes somewhere is an `a` with the class
+     * `.table__row`, whole, ending in a chevron. The columns are the
+     * consumer's: set `--columns` on the table, as a track list. For
+     * tabular data in running text, use a plain `table` in a document. */
+
+    .table {
+        display: flex;
+        flex-direction: column;
+    }
+
+    .table__head,
+    .table__row {
+        display: grid;
+        grid-template-columns: var(--columns, 1fr);
+        gap: var(--space-4);
+        align-items: center;
+        padding: var(--space-3) var(--space-6);
+    }
+
+    .table__head {
+        padding-block: 10px;
+        font: var(--text-label);
+        color: var(--ink-3);
+        background: var(--surface-subtle);
+        border-block: 1px solid var(--divider);
+    }
+
+    .table__row {
+        min-height: 60px;
+        box-sizing: border-box;
+        color: var(--ink-1);
+        text-decoration: none;
+        border-bottom: 1px solid var(--divider);
+        transition: background var(--dur-ui) var(--ease-out);
+    }
+
+    .table__row:last-child {
+        border-bottom: 0;
+    }
+
+    a.table__row:hover {
+        background: var(--surface-subtle);
+    }
+
+    .chevron {
+        color: var(--ink-4);
+    }
+
+    /* ── Menu ──────────────────────────────────────────────────────────
+     *
+     * A panel of actions or destinations, one `.menu__item` each. Works as
+     * a `popover`; where it opens is the consumer's to say. `aria-current`
+     * or `aria-checked="true"` marks where you are. Destructive items,
+     * `--danger`, go last, after a separator. */
+
+    .menu {
+        box-sizing: border-box;
+        min-width: 200px;
+        margin: 0;
+        padding: 6px;
+        color: var(--ink-1);
+        background: var(--surface-card);
+        border: 1px solid var(--border);
+        border-radius: 12px;
+        box-shadow: var(--shadow-float);
+    }
+
+    .menu__item {
+        box-sizing: border-box;
+        display: flex;
+        align-items: center;
+        gap: 10px;
+        width: 100%;
+        min-height: 36px;
+        padding: 0 10px;
+        font: 400 14px / 1.3 var(--font-ui);
+        color: inherit;
+        text-align: left;
+        text-decoration: none;
+        background: transparent;
+        border: 0;
+        border-radius: var(--radius-sm);
+        cursor: pointer;
+    }
+
+    .menu__item:hover,
+    .menu__item:focus-visible {
+        background: var(--fill-muted);
+        outline-offset: -2px;
+    }
+
+    .menu__item[aria-current]:not([aria-current="false"]),
+    .menu__item[aria-checked="true"] {
+        font-weight: 500;
+        color: var(--accent-text);
+    }
+
+    .menu__item:disabled {
+        color: var(--ink-disabled);
+        background: transparent;
+        cursor: not-allowed;
+    }
+
+    .menu__item--danger {
+        color: var(--tone-text);
+    }
+
+    .menu__item--danger:hover {
+        background: color-mix(in srgb, var(--tone) var(--mix-soft), transparent);
+    }
+
+    .menu__item .glyph {
+        width: 16px;
+        height: 16px;
+        color: var(--ink-3);
+    }
+
+    .menu__item--danger .glyph {
+        color: inherit;
+    }
+
+    .menu__hint {
+        margin-left: auto;
+        font: var(--text-mono-sm);
+        color: var(--ink-3);
+    }
+
+    .menu__separator {
+        height: 1px;
+        margin: 6px 4px;
+        background: var(--divider);
+        border: 0;
+    }
+
+    .menu__heading {
+        margin: 0;
+        padding: 8px 10px 4px;
+        font: var(--text-label);
+        color: var(--ink-3);
+    }
+
+    /* A menu with nothing in it says so in the place of its items, as
+     * tall as one of them. */
+    .menu__empty {
+        box-sizing: border-box;
+        display: flex;
+        align-items: center;
+        min-height: 36px;
+        margin: 0;
+        padding: 0 10px;
+        font: 400 var(--step-2) / 1.3 var(--font-ui);
+        color: var(--ink-3);
+    }
+
+    /* ── Disclosure ────────────────────────────────────────────────────
+     *
+     * On a `details`: what is only wanted now and then waits behind its
+     * summary, which leads with a chevron. Everything in it is inset as far
+     * as the summary, by `--disclosure-inset`; on a `.card` that is the
+     * card's own inset. */
+
+    .disclosure {
+        --disclosure-inset: 16px;
+        --disclosure-block: 12px;
+    }
+
+    .card.disclosure {
+        --disclosure-inset: 24px;
+        --disclosure-block: 16px;
+    }
+
+    .disclosure > summary {
+        display: flex;
+        align-items: center;
+        gap: 10px;
+        padding: var(--disclosure-block) var(--disclosure-inset);
+        font-weight: 500;
+        list-style: none;
+        cursor: pointer;
+    }
+
+    .disclosure > summary::-webkit-details-marker {
+        display: none;
+    }
+
+    .disclosure > summary::before {
+        flex-shrink: 0;
+        width: 7px;
+        height: 7px;
+        content: "";
+        border-right: 1.5px solid var(--ink-3);
+        border-bottom: 1.5px solid var(--ink-3);
+        transform: rotate(-45deg);
+        transition: transform var(--dur-ui) var(--ease-out);
+    }
+
+    .disclosure[open] > summary::before {
+        transform: rotate(45deg);
+    }
+
+    .disclosure > :not(summary) {
+        margin-right: var(--disclosure-inset);
+        margin-left: var(--disclosure-inset);
+    }
+
+    .disclosure > :not(summary) + :not(summary) {
+        margin-top: var(--space-2);
+    }
+
+    .disclosure > :last-child:not(summary) {
+        margin-bottom: var(--disclosure-inset);
+    }
+
+    /* ── Dialog ────────────────────────────────────────────────────────
+     *
+     * On a `dialog` opened with `showModal()`: a title in a sentence, what
+     * will happen, and the buttons at the right, the exact verb last. */
+
+    .dialog {
+        box-sizing: border-box;
+        width: min(520px, calc(100vw - 32px));
+        max-height: calc(100vh - 64px);
+        padding: 0;
+        color: var(--ink-1);
+        background: var(--surface-card);
+        border: 0;
+        border-radius: var(--radius-xl);
+        box-shadow: var(--shadow-float);
+    }
+
+    /* A dialog takes the focus itself when opened; the ring is for its
+     * controls. */
+    .dialog:focus {
+        outline: none;
+    }
+
+    .dialog::backdrop {
+        background: color-mix(in srgb, var(--navy-950) 45%, transparent);
+    }
+
+    .dialog__body {
+        display: flex;
+        flex-direction: column;
+        gap: var(--space-4);
+        padding: var(--space-6);
+    }
+
+    .dialog__title {
+        margin: 0;
+        font: var(--text-heading);
+    }
+
+    .dialog__text {
+        margin: 0;
+        font: var(--text-meta);
+        color: var(--ink-2);
+    }
+
+    .dialog__actions {
+        display: flex;
+        justify-content: flex-end;
+        gap: var(--space-2);
+        padding-top: var(--space-2);
+    }
+
+    /* ── Message ───────────────────────────────────────────────────────
+     *
+     * Anything said to the person about what happened or what to keep in
+     * mind, in an intent: `--danger`, `--warning`, `--success`, `--info`,
+     * or neutral by default. It carries a glyph first, then its words in
+     * `.message__text`, then an optional action and `.message__close`. The
+     * words can always be selected, and links in them are underlined in
+     * the message's colour. */
+
+    .message {
+        --tone: var(--neutral);
+        --tone-text: var(--neutral-text);
+        --tone-on: var(--neutral-on);
+
+        box-sizing: border-box;
+        display: flex;
+        align-items: flex-start;
+        gap: var(--space-2);
+        min-width: 0;
+        margin: 0;
+        padding: 10px 12px 10px 14px;
+        font: var(--text-meta);
+        color: var(--tone-text);
+        background: color-mix(in srgb, var(--tone) var(--mix-soft), var(--surface-card));
+        border: 1px solid color-mix(in srgb, var(--tone) var(--mix-border), transparent);
+        border-radius: var(--radius-md);
+        -webkit-user-select: text;
+        user-select: text;
+    }
+
+    /* The glyph sits on the first line of the words, in the tone. */
+    .message > .glyph {
+        margin-top: 1px;
+        color: var(--tone);
+    }
+
+    .message__text {
+        flex: 1;
+        min-width: 0;
+        margin: 0;
+        overflow-wrap: anywhere;
+        cursor: text;
+        -webkit-user-select: text;
+        user-select: text;
+    }
+
+    .message__text a,
+    .message .button--link {
+        color: inherit;
+        text-decoration: underline;
+        text-underline-offset: 2px;
+    }
+
+    .message .button--link {
+        flex-shrink: 0;
+        font-weight: 600;
+    }
+
+    .message__close {
+        display: flex;
+        flex-shrink: 0;
+        align-items: center;
+        justify-content: center;
+        width: 22px;
+        height: 22px;
+        margin: -1px -4px -1px 0;
+        padding: 0;
+        color: inherit;
+        background: transparent;
+        border: 0;
+        border-radius: var(--radius-xs);
+        opacity: 0.7;
+        cursor: pointer;
+    }
+
+    .message__close:hover {
+        opacity: 1;
+        background: color-mix(in srgb, currentColor 10%, transparent);
+    }
+
+    /* ── Toast ─────────────────────────────────────────────────────────
+     *
+     * A message raised over everything else, on `.message`: it floats, and
+     * when it goes away by itself `.toast__time` shows how long it has
+     * left, from `--toast-life`. The time stops while the pointer is over
+     * it or focus is in it, so it can be read and copied. Where it sits is
+     * the consumer's to say. */
+
+    .toast {
+        position: relative;
+        max-width: min(560px, calc(100vw - 32px));
+        overflow: hidden;
+        box-shadow: var(--shadow-float);
+    }
+
+    .toast__time {
+        position: absolute;
+        right: 0;
+        bottom: 0;
+        left: 0;
+        height: 3px;
+        background: var(--tone);
+        opacity: 0.6;
+        transform-origin: left;
+        animation: stemma-toast-time var(--toast-life, 8s) linear forwards;
+    }
+
+    .toast:hover .toast__time,
+    .toast:focus-within .toast__time {
+        animation-play-state: paused;
+    }
+
+    @keyframes stemma-toast-time {
+        from {
+            transform: scaleX(1);
+        }
+
+        to {
+            transform: scaleX(0);
+        }
+    }
+
+    /* ── Tooltip ───────────────────────────────────────────────────────
+     *
+     * Dark in both appearances, small, for icon-only buttons; with the
+     * shortcut when there is one. */
+
+    .tooltip {
+        box-sizing: border-box;
+        padding: 5px 8px;
+        font: 400 var(--step-2) / 1.3 var(--font-ui);
+        color: var(--on-dark-1);
+        white-space: nowrap;
+        background: var(--navy-800);
+        border-radius: var(--radius-xs);
+        pointer-events: none;
+    }
+
+    .tooltip kbd {
+        margin-left: 6px;
+        font: inherit;
+        color: var(--on-dark-3);
+    }
+
+    /* ── Segmented control ─────────────────────────────────────────────
+     *
+     * Two or three views of one thing. Each option is a button with
+     * `aria-pressed`. */
+
+    .segmented {
+        display: inline-flex;
+        gap: 2px;
+        padding: 3px;
+        background: var(--fill-muted);
+        border-radius: 12px;
+    }
+
+    .segmented > button {
+        display: inline-flex;
+        align-items: center;
+        gap: 8px;
+        height: calc(var(--control-height) - 6px);
+        padding: 0 14px;
+        font: 500 var(--control-font) / 1 var(--font-ui);
+        color: var(--ink-3);
+        background: transparent;
+        border: 0;
+        border-radius: 9px;
+        cursor: pointer;
+        transition:
+            background var(--dur-ui) var(--ease-out),
+            color var(--dur-ui) var(--ease-out);
+    }
+
+    .segmented > button:hover {
+        color: var(--ink-1);
+    }
+
+    .segmented > button[aria-pressed="true"] {
+        color: var(--ink-1);
+        background: var(--surface-card);
+        box-shadow: 0 1px 2px rgb(20 40 90 / 10%);
+    }
+
+    .segmented .glyph {
+        width: 16px;
+        height: 16px;
+    }
+
+    /* ── Loading ───────────────────────────────────────────────────────
+     *
+     * A grey shape where content will be; a spinner only inside a button
+     * or beside a job. */
+
+    .skeleton {
+        background: var(--fill-muted);
+        border-radius: var(--radius-sm);
+    }
+
+    .spinner {
+        display: inline-block;
+        flex-shrink: 0;
+        width: 14px;
+        height: 14px;
+        border: 2px solid currentColor;
+        border-right-color: transparent;
+        border-radius: 50%;
+        animation: stemma-spin 0.8s linear infinite;
+    }
+
+    @keyframes stemma-spin {
+        to {
+            transform: rotate(1turn);
+        }
+    }
+
+    /* ── Highlight ─────────────────────────────────────────────────────
+     *
+     * A block set apart from the text around it by a rule in the margin
+     * and a faint fill of its tone: neutral by default. An optional
+     * `.highlight__title` leads it. What it holds, and what it is called,
+     * is the consumer's to say. */
+
+    .highlight {
+        --tone: var(--neutral);
+        --tone-text: var(--neutral-text);
+        --tone-on: var(--neutral-on);
+
+        box-sizing: border-box;
+        margin-block: 1em;
+        padding: 0.75em 1em;
+        background: color-mix(in srgb, var(--tone) calc(var(--mix-soft) / 2), transparent);
+        border-inline-start: 3px solid var(--tone);
+        border-radius: 0 var(--radius-sm) var(--radius-sm) 0;
+    }
+
+    .highlight > :first-child {
+        margin-top: 0;
+    }
+
+    .highlight > :last-child {
+        margin-bottom: 0;
+    }
+
+    .highlight__title {
+        margin: 0 0 0.35em;
+        font: 600 0.85em / 1.3 var(--font-ui);
+        color: var(--tone-text);
+    }
+
+    /* ── The wordmark ──────────────────────────────────────────────────
+     *
+     * "Stemma" set in the interface face, where the mark's own drawing
+     * cannot be used. */
+
+    .wordmark {
+        font-family: var(--font-ui);
+        font-weight: 500;
+        letter-spacing: -0.035em;
+        line-height: 1;
+    }
+
+    /* ── Floating ──────────────────────────────────────────────────────
+     *
+     * A menu or tooltip shown as a popover is placed by its element, not
+     * by the browser's defaults. */
+
+    .menu[popover],
+    .tooltip[popover] {
+        position: fixed;
+        inset: auto;
+        margin: 0;
+        overflow: visible;
+    }
+
+    .menu[popover] {
+        overflow: auto;
+    }
+
+    /* ── Toast region ──────────────────────────────────────────────────
+     *
+     * Where `<stemma-toast-region>` stacks its toasts, newest last. Where
+     * it sits on the page is the consumer's to say. */
+
+    stemma-toast-region {
+        display: flex;
+        flex-direction: column;
+        gap: var(--space-2);
+    }
+
+    /* ── The brand light ───────────────────────────────────────────────
+     *
+     * The light rising under a navy surface. `.brand-light` draws it with
+     * CSS alone, the brand gradient and grain, for pages without script;
+     * `<stemma-light>` draws it live, over the same. Its content sits above
+     * it, in the colours for dark surfaces. `--light-progress`, from 0 to
+     * 1, fades it. */
+
+    .brand-light {
+        position: relative;
+        isolation: isolate;
+        color: var(--on-dark-1);
+    }
+
+    .brand-light::before {
+        position: absolute;
+        inset: 0;
+        z-index: -1;
+        content: "";
+        background:
+            url("noise.svg") 0 0 / 180px,
+            var(--glow);
+        background-blend-mode: soft-light, normal;
+        opacity: calc(1 - var(--light-progress, 0));
+    }
+
+    stemma-light {
+        display: block;
+    }
+
+    stemma-light > canvas {
+        position: absolute;
+        inset: 0;
+        z-index: -1;
+        display: block;
+        width: 100%;
+        height: 100%;
+    }
+
+    /* ── The mark ──────────────────────────────────────────────────────
+     *
+     * `<stemma-mark>`: the symbol, 4em wide unless said otherwise. */
+
+    stemma-mark {
+        position: relative;
+        display: inline-block;
+        width: 4em;
+        aspect-ratio: 285.196 / 246.702;
+        vertical-align: middle;
+    }
+
+    stemma-mark > svg {
+        display: block;
+        width: 100%;
+        height: 100%;
+    }
+
+    stemma-mark > canvas {
+        position: absolute;
+        pointer-events: none;
+    }
+}

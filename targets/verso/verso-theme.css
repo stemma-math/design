@@ -1,0 +1,2653 @@
+/* Generated from targets/web, targets/elements and targets/brand-kit by scripts/targets.mjs. Do not edit. */
+
+/* ── fonts.css ── */
+
+/* Generated from source/fonts by scripts/fonts.py. Do not edit.
+
+ *
+
+ * Text faces are split by `unicode-range`; the math face is whole, and
+
+ * JuliaMono is upstream's own WOFF2. Each family's licences sit beside
+
+ * its files in `fonts/`. `swap`, because text is worth reading in a
+
+ * fallback face while the real one arrives.
+
+ */
+
+@font-face {
+    font-family: "New Computer Modern";
+    font-style: normal;
+    font-weight: 400;
+    font-display: swap;
+    src: url("fonts/new-computer-modern/new-computer-modern-400-latin.woff2") format("woff2");
+    unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+}
+
+@font-face {
+    font-family: "New Computer Modern";
+    font-style: normal;
+    font-weight: 400;
+    font-display: swap;
+    src: url("fonts/new-computer-modern/new-computer-modern-400-latin-ext.woff2") format("woff2");
+    unicode-range: U+0100-02BA, U+02BD-02C5, U+02C7-02CC, U+02CE-02D7, U+02DD-02FF, U+0304, U+0308, U+0329, U+1D00-1DBF, U+1E00-1E9F, U+1EF2-1EFF, U+2020, U+20A0-20AB, U+20AD-20C0, U+2113, U+2C60-2C7F, U+A720-A7FF;
+}
+
+@font-face {
+    font-family: "New Computer Modern";
+    font-style: normal;
+    font-weight: 400;
+    font-display: swap;
+    src: url("fonts/new-computer-modern/new-computer-modern-400-greek.woff2") format("woff2");
+    unicode-range: U+0370-0377, U+037A-037F, U+0384-038A, U+038C, U+038E-03A1, U+03A3-03FF, U+1F00-1FFF;
+}
+
+@font-face {
+    font-family: "New Computer Modern";
+    font-style: normal;
+    font-weight: 400;
+    font-display: swap;
+    src: url("fonts/new-computer-modern/new-computer-modern-400-cyrillic.woff2") format("woff2");
+    unicode-range: U+0400-052F, U+1C80-1C8A, U+2116, U+2DE0-2DFF, U+A640-A69F, U+FE2E-FE2F;
+}
+
+@font-face {
+    font-family: "New Computer Modern";
+    font-style: normal;
+    font-weight: 400;
+    font-display: swap;
+    src: url("fonts/new-computer-modern/new-computer-modern-400-symbols.woff2") format("woff2");
+    unicode-range: U+02CD, U+02D8-02D9, U+02DB, U+0300-0303, U+0305-0307, U+0309-0328, U+032A-036F, U+0531-1ACE, U+1DC0-1DFF, U+1EA0-1EF1, U+207F-2080, U+20D0-2103, U+2117-2120, U+2126-2190, U+2192, U+2197-2206, U+2217-28FF, U+2C80-2CFF, U+2E18-A46B, U+A71B-A71C, U+AB66-FE2D, U+FE66, U+10140-1D703;
+}
+
+@font-face {
+    font-family: "New Computer Modern";
+    font-style: italic;
+    font-weight: 400;
+    font-display: swap;
+    src: url("fonts/new-computer-modern/new-computer-modern-400-italic-latin.woff2") format("woff2");
+    unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+}
+
+@font-face {
+    font-family: "New Computer Modern";
+    font-style: italic;
+    font-weight: 400;
+    font-display: swap;
+    src: url("fonts/new-computer-modern/new-computer-modern-400-italic-latin-ext.woff2") format("woff2");
+    unicode-range: U+0100-02BA, U+02BD-02C5, U+02C7-02CC, U+02CE-02D7, U+02DD-02FF, U+0304, U+0308, U+0329, U+1D00-1DBF, U+1E00-1E9F, U+1EF2-1EFF, U+2020, U+20A0-20AB, U+20AD-20C0, U+2113, U+2C60-2C7F, U+A720-A7FF;
+}
+
+@font-face {
+    font-family: "New Computer Modern";
+    font-style: italic;
+    font-weight: 400;
+    font-display: swap;
+    src: url("fonts/new-computer-modern/new-computer-modern-400-italic-greek.woff2") format("woff2");
+    unicode-range: U+0370-0377, U+037A-037F, U+0384-038A, U+038C, U+038E-03A1, U+03A3-03FF, U+1F00-1FFF;
+}
+
+@font-face {
+    font-family: "New Computer Modern";
+    font-style: italic;
+    font-weight: 400;
+    font-display: swap;
+    src: url("fonts/new-computer-modern/new-computer-modern-400-italic-cyrillic.woff2") format("woff2");
+    unicode-range: U+0400-052F, U+1C80-1C8A, U+2116, U+2DE0-2DFF, U+A640-A69F, U+FE2E-FE2F;
+}
+
+@font-face {
+    font-family: "New Computer Modern";
+    font-style: italic;
+    font-weight: 400;
+    font-display: swap;
+    src: url("fonts/new-computer-modern/new-computer-modern-400-italic-symbols.woff2") format("woff2");
+    unicode-range: U+02D8-02D9, U+02DB, U+0300-0303, U+0305-0307, U+0309-0328, U+032A-036F, U+0531-1ACE, U+1DC0-1DFF, U+1EA0-1EF1, U+2080, U+20D0-2103, U+2117-2120, U+2126-2190, U+2192, U+2206, U+2217-27E7, U+2C80-2CFF, U+2E18-A46B, U+AB70-FE2D, U+FE66, U+10140-102FB;
+}
+
+@font-face {
+    font-family: "New Computer Modern";
+    font-style: normal;
+    font-weight: 700;
+    font-display: swap;
+    src: url("fonts/new-computer-modern/new-computer-modern-700-latin.woff2") format("woff2");
+    unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+}
+
+@font-face {
+    font-family: "New Computer Modern";
+    font-style: normal;
+    font-weight: 700;
+    font-display: swap;
+    src: url("fonts/new-computer-modern/new-computer-modern-700-latin-ext.woff2") format("woff2");
+    unicode-range: U+0100-02BA, U+02BD-02C5, U+02C7-02CC, U+02CE-02D7, U+02DD-02FF, U+0304, U+0308, U+0329, U+1D00-1DBF, U+1E00-1E9F, U+1EF2-1EFF, U+2020, U+20A0-20AB, U+20AD-20C0, U+2113, U+2C60-2C7F, U+A720-A7FF;
+}
+
+@font-face {
+    font-family: "New Computer Modern";
+    font-style: normal;
+    font-weight: 700;
+    font-display: swap;
+    src: url("fonts/new-computer-modern/new-computer-modern-700-greek.woff2") format("woff2");
+    unicode-range: U+0370-0377, U+037A-037F, U+0384-038A, U+038C, U+038E-03A1, U+03A3-03FF, U+1F00-1FFF;
+}
+
+@font-face {
+    font-family: "New Computer Modern";
+    font-style: normal;
+    font-weight: 700;
+    font-display: swap;
+    src: url("fonts/new-computer-modern/new-computer-modern-700-cyrillic.woff2") format("woff2");
+    unicode-range: U+0400-052F, U+1C80-1C8A, U+2116, U+2DE0-2DFF, U+A640-A69F, U+FE2E-FE2F;
+}
+
+@font-face {
+    font-family: "New Computer Modern";
+    font-style: normal;
+    font-weight: 700;
+    font-display: swap;
+    src: url("fonts/new-computer-modern/new-computer-modern-700-symbols.woff2") format("woff2");
+    unicode-range: U+02CD, U+02D8-02D9, U+02DB, U+0300-0303, U+0305-0307, U+0309-0328, U+032A-036F, U+0531-1ACE, U+1DC0-1DFF, U+1EA0-1EF1, U+207F-2080, U+20D0-2103, U+2117-2120, U+2126-2190, U+2192, U+2197-2206, U+2217-28FF, U+2C80-2CFF, U+2E18-A46B, U+A71B-A71C, U+AB66-FE2D, U+FE66, U+10140-1D703;
+}
+
+@font-face {
+    font-family: "New Computer Modern Math";
+    font-style: normal;
+    font-weight: 400;
+    font-display: swap;
+    src: url("fonts/new-computer-modern-math/new-computer-modern-math-400.woff2") format("woff2");
+}
+
+@font-face {
+    font-family: "Instrument Sans";
+    font-style: normal;
+    font-weight: 400;
+    font-display: swap;
+    src: url("fonts/instrument-sans/instrument-sans-400-latin.woff2") format("woff2");
+    unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+}
+
+@font-face {
+    font-family: "Instrument Sans";
+    font-style: normal;
+    font-weight: 400;
+    font-display: swap;
+    src: url("fonts/instrument-sans/instrument-sans-400-latin-ext.woff2") format("woff2");
+    unicode-range: U+0100-02BA, U+02BD-02C5, U+02C7-02CC, U+02CE-02D7, U+02DD-02FF, U+0304, U+0308, U+0329, U+1D00-1DBF, U+1E00-1E9F, U+1EF2-1EFF, U+2020, U+20A0-20AB, U+20AD-20C0, U+2113, U+2C60-2C7F, U+A720-A7FF;
+}
+
+@font-face {
+    font-family: "Instrument Sans";
+    font-style: normal;
+    font-weight: 400;
+    font-display: swap;
+    src: url("fonts/instrument-sans/instrument-sans-400-symbols.woff2") format("woff2");
+    unicode-range: U+02D8-02D9, U+02DB, U+0300-0303, U+0306-0307, U+030A-0328, U+2190, U+2192, U+2194-2199;
+}
+
+@font-face {
+    font-family: "Instrument Sans";
+    font-style: italic;
+    font-weight: 400;
+    font-display: swap;
+    src: url("fonts/instrument-sans/instrument-sans-400-italic-latin.woff2") format("woff2");
+    unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+}
+
+@font-face {
+    font-family: "Instrument Sans";
+    font-style: italic;
+    font-weight: 400;
+    font-display: swap;
+    src: url("fonts/instrument-sans/instrument-sans-400-italic-latin-ext.woff2") format("woff2");
+    unicode-range: U+0100-02BA, U+02BD-02C5, U+02C7-02CC, U+02CE-02D7, U+02DD-02FF, U+0304, U+0308, U+0329, U+1D00-1DBF, U+1E00-1E9F, U+1EF2-1EFF, U+2020, U+20A0-20AB, U+20AD-20C0, U+2113, U+2C60-2C7F, U+A720-A7FF;
+}
+
+@font-face {
+    font-family: "Instrument Sans";
+    font-style: italic;
+    font-weight: 400;
+    font-display: swap;
+    src: url("fonts/instrument-sans/instrument-sans-400-italic-symbols.woff2") format("woff2");
+    unicode-range: U+02D8-02D9, U+02DB, U+0300-0303, U+0306-0307, U+030A-0328, U+2190, U+2192, U+2194-2199;
+}
+
+@font-face {
+    font-family: "Instrument Sans";
+    font-style: normal;
+    font-weight: 500;
+    font-display: swap;
+    src: url("fonts/instrument-sans/instrument-sans-500-latin.woff2") format("woff2");
+    unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+}
+
+@font-face {
+    font-family: "Instrument Sans";
+    font-style: normal;
+    font-weight: 500;
+    font-display: swap;
+    src: url("fonts/instrument-sans/instrument-sans-500-latin-ext.woff2") format("woff2");
+    unicode-range: U+0100-02BA, U+02BD-02C5, U+02C7-02CC, U+02CE-02D7, U+02DD-02FF, U+0304, U+0308, U+0329, U+1D00-1DBF, U+1E00-1E9F, U+1EF2-1EFF, U+2020, U+20A0-20AB, U+20AD-20C0, U+2113, U+2C60-2C7F, U+A720-A7FF;
+}
+
+@font-face {
+    font-family: "Instrument Sans";
+    font-style: normal;
+    font-weight: 500;
+    font-display: swap;
+    src: url("fonts/instrument-sans/instrument-sans-500-symbols.woff2") format("woff2");
+    unicode-range: U+02D8-02D9, U+02DB, U+0300-0303, U+0306-0307, U+030A-0328, U+2190, U+2192, U+2194-2199;
+}
+
+@font-face {
+    font-family: "Instrument Sans";
+    font-style: normal;
+    font-weight: 600;
+    font-display: swap;
+    src: url("fonts/instrument-sans/instrument-sans-600-latin.woff2") format("woff2");
+    unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+}
+
+@font-face {
+    font-family: "Instrument Sans";
+    font-style: normal;
+    font-weight: 600;
+    font-display: swap;
+    src: url("fonts/instrument-sans/instrument-sans-600-latin-ext.woff2") format("woff2");
+    unicode-range: U+0100-02BA, U+02BD-02C5, U+02C7-02CC, U+02CE-02D7, U+02DD-02FF, U+0304, U+0308, U+0329, U+1D00-1DBF, U+1E00-1E9F, U+1EF2-1EFF, U+2020, U+20A0-20AB, U+20AD-20C0, U+2113, U+2C60-2C7F, U+A720-A7FF;
+}
+
+@font-face {
+    font-family: "Instrument Sans";
+    font-style: normal;
+    font-weight: 600;
+    font-display: swap;
+    src: url("fonts/instrument-sans/instrument-sans-600-symbols.woff2") format("woff2");
+    unicode-range: U+02D8-02D9, U+02DB, U+0300-0303, U+0306-0307, U+030A-0328, U+2190, U+2192, U+2194-2199;
+}
+
+@font-face {
+    font-family: "Instrument Sans";
+    font-style: normal;
+    font-weight: 700;
+    font-display: swap;
+    src: url("fonts/instrument-sans/instrument-sans-700-latin.woff2") format("woff2");
+    unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+}
+
+@font-face {
+    font-family: "Instrument Sans";
+    font-style: normal;
+    font-weight: 700;
+    font-display: swap;
+    src: url("fonts/instrument-sans/instrument-sans-700-latin-ext.woff2") format("woff2");
+    unicode-range: U+0100-02BA, U+02BD-02C5, U+02C7-02CC, U+02CE-02D7, U+02DD-02FF, U+0304, U+0308, U+0329, U+1D00-1DBF, U+1E00-1E9F, U+1EF2-1EFF, U+2020, U+20A0-20AB, U+20AD-20C0, U+2113, U+2C60-2C7F, U+A720-A7FF;
+}
+
+@font-face {
+    font-family: "Instrument Sans";
+    font-style: normal;
+    font-weight: 700;
+    font-display: swap;
+    src: url("fonts/instrument-sans/instrument-sans-700-symbols.woff2") format("woff2");
+    unicode-range: U+02D8-02D9, U+02DB, U+0300-0303, U+0306-0307, U+030A-0328, U+2190, U+2192, U+2194-2199;
+}
+
+@font-face {
+    font-family: "Libertinus Sans";
+    font-style: normal;
+    font-weight: 400;
+    font-display: swap;
+    src: url("fonts/libertinus-sans/libertinus-sans-400-latin.woff2") format("woff2");
+    unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+}
+
+@font-face {
+    font-family: "Libertinus Sans";
+    font-style: normal;
+    font-weight: 400;
+    font-display: swap;
+    src: url("fonts/libertinus-sans/libertinus-sans-400-latin-ext.woff2") format("woff2");
+    unicode-range: U+0100-02BA, U+02BD-02C5, U+02C7-02CC, U+02CE-02D7, U+02DD-02FF, U+0304, U+0308, U+0329, U+1D00-1DBF, U+1E00-1E9F, U+1EF2-1EFF, U+2020, U+20A0-20AB, U+20AD-20C0, U+2113, U+2C60-2C7F, U+A720-A7FF;
+}
+
+@font-face {
+    font-family: "Libertinus Sans";
+    font-style: normal;
+    font-weight: 400;
+    font-display: swap;
+    src: url("fonts/libertinus-sans/libertinus-sans-400-greek.woff2") format("woff2");
+    unicode-range: U+0370-0377, U+037A-037F, U+0384-038A, U+038C, U+038E-03A1, U+03A3-03FF, U+1F00-1FFF;
+}
+
+@font-face {
+    font-family: "Libertinus Sans";
+    font-style: normal;
+    font-weight: 400;
+    font-display: swap;
+    src: url("fonts/libertinus-sans/libertinus-sans-400-cyrillic.woff2") format("woff2");
+    unicode-range: U+0400-052F, U+1C80-1C8A, U+2116, U+2DE0-2DFF, U+A640-A69F, U+FE2E-FE2F;
+}
+
+@font-face {
+    font-family: "Libertinus Sans";
+    font-style: normal;
+    font-weight: 400;
+    font-display: swap;
+    src: url("fonts/libertinus-sans/libertinus-sans-400-symbols.woff2") format("woff2");
+    unicode-range: U+02CD, U+02D8-02D9, U+02DB, U+0300-0303, U+0305-0307, U+0309-0328, U+032A-036F, U+05B0-05F4, U+1EA0-1EF1, U+2070-209C, U+2100-2111, U+2115, U+2119-2120, U+2124-2190, U+2192, U+2194-2211, U+2213-2214, U+2216-27E9, U+2E02-2E18, U+FB29, U+1D106-1D107;
+}
+
+@font-face {
+    font-family: "Libertinus Sans";
+    font-style: italic;
+    font-weight: 400;
+    font-display: swap;
+    src: url("fonts/libertinus-sans/libertinus-sans-400-italic-latin.woff2") format("woff2");
+    unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+}
+
+@font-face {
+    font-family: "Libertinus Sans";
+    font-style: italic;
+    font-weight: 400;
+    font-display: swap;
+    src: url("fonts/libertinus-sans/libertinus-sans-400-italic-latin-ext.woff2") format("woff2");
+    unicode-range: U+0100-02BA, U+02BD-02C5, U+02C7-02CC, U+02CE-02D7, U+02DD-02FF, U+0304, U+0308, U+0329, U+1D00-1DBF, U+1E00-1E9F, U+1EF2-1EFF, U+2020, U+20A0-20AB, U+20AD-20C0, U+2113, U+2C60-2C7F, U+A720-A7FF;
+}
+
+@font-face {
+    font-family: "Libertinus Sans";
+    font-style: italic;
+    font-weight: 400;
+    font-display: swap;
+    src: url("fonts/libertinus-sans/libertinus-sans-400-italic-greek.woff2") format("woff2");
+    unicode-range: U+0370-0377, U+037A-037F, U+0384-038A, U+038C, U+038E-03A1, U+03A3-03FF, U+1F00-1FFF;
+}
+
+@font-face {
+    font-family: "Libertinus Sans";
+    font-style: italic;
+    font-weight: 400;
+    font-display: swap;
+    src: url("fonts/libertinus-sans/libertinus-sans-400-italic-cyrillic.woff2") format("woff2");
+    unicode-range: U+0400-052F, U+1C80-1C8A, U+2116, U+2DE0-2DFF, U+A640-A69F, U+FE2E-FE2F;
+}
+
+@font-face {
+    font-family: "Libertinus Sans";
+    font-style: italic;
+    font-weight: 400;
+    font-display: swap;
+    src: url("fonts/libertinus-sans/libertinus-sans-400-italic-symbols.woff2") format("woff2");
+    unicode-range: U+02CD, U+02D8-02D9, U+02DB, U+0300-0303, U+0305-0307, U+0309-0328, U+032A-0364, U+05B0-05F4, U+1EA0-1EF1, U+2070-2099, U+2100-2111, U+2115, U+2119-2120, U+2124-2190, U+2192, U+2194-2211, U+2213-2214, U+2216-27E9, U+2E02-2E18, U+FB29, U+1D106-1D107;
+}
+
+@font-face {
+    font-family: "Libertinus Sans";
+    font-style: normal;
+    font-weight: 700;
+    font-display: swap;
+    src: url("fonts/libertinus-sans/libertinus-sans-700-latin.woff2") format("woff2");
+    unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+}
+
+@font-face {
+    font-family: "Libertinus Sans";
+    font-style: normal;
+    font-weight: 700;
+    font-display: swap;
+    src: url("fonts/libertinus-sans/libertinus-sans-700-latin-ext.woff2") format("woff2");
+    unicode-range: U+0100-02BA, U+02BD-02C5, U+02C7-02CC, U+02CE-02D7, U+02DD-02FF, U+0304, U+0308, U+0329, U+1D00-1DBF, U+1E00-1E9F, U+1EF2-1EFF, U+2020, U+20A0-20AB, U+20AD-20C0, U+2113, U+2C60-2C7F, U+A720-A7FF;
+}
+
+@font-face {
+    font-family: "Libertinus Sans";
+    font-style: normal;
+    font-weight: 700;
+    font-display: swap;
+    src: url("fonts/libertinus-sans/libertinus-sans-700-greek.woff2") format("woff2");
+    unicode-range: U+0370-0377, U+037A-037F, U+0384-038A, U+038C, U+038E-03A1, U+03A3-03FF, U+1F00-1FFF;
+}
+
+@font-face {
+    font-family: "Libertinus Sans";
+    font-style: normal;
+    font-weight: 700;
+    font-display: swap;
+    src: url("fonts/libertinus-sans/libertinus-sans-700-cyrillic.woff2") format("woff2");
+    unicode-range: U+0400-052F, U+1C80-1C8A, U+2116, U+2DE0-2DFF, U+A640-A69F, U+FE2E-FE2F;
+}
+
+@font-face {
+    font-family: "Libertinus Sans";
+    font-style: normal;
+    font-weight: 700;
+    font-display: swap;
+    src: url("fonts/libertinus-sans/libertinus-sans-700-symbols.woff2") format("woff2");
+    unicode-range: U+02CD, U+02D8-02D9, U+02DB, U+0300-0303, U+0305-0307, U+0309-0328, U+032A-036F, U+05B0-05F4, U+1EA0-1EF1, U+2070-209C, U+2100-2111, U+2115, U+2119-2120, U+2124-2190, U+2192, U+2194-2211, U+2213-2214, U+2216-27E9, U+2E17-2E18, U+FB29, U+1D106-1D107;
+}
+
+@font-face {
+    font-family: "JuliaMono";
+    font-style: normal;
+    font-weight: 400;
+    font-display: swap;
+    src: url("fonts/juliamono/JuliaMono-Regular.woff2") format("woff2");
+}
+
+@font-face {
+    font-family: "JuliaMono";
+    font-style: normal;
+    font-weight: 400;
+    font-display: swap;
+    src: url("fonts/juliamono/JuliaMono-RegularLatin.woff2") format("woff2");
+    unicode-range: U+0020-007E, U+00A0-00A3, U+00A5-00AC, U+00AE-00B4, U+00B6-00FF, U+0101, U+0103, U+0105, U+0107, U+010B, U+010D, U+010F, U+0111, U+0113, U+0117, U+0119, U+011B, U+011F, U+0121, U+0123, U+0127, U+012B, U+012F, U+0131, U+0137, U+013A, U+013C, U+013E, U+0141-0142, U+0144, U+0146, U+0148, U+014B, U+014D, U+0151-0153, U+0155, U+0157, U+0159, U+015B, U+015F-0161, U+0163, U+0165, U+0167, U+016B, U+016F, U+0171, U+0173, U+0175, U+0177-0178, U+017A, U+017C-017E, U+0192, U+0219, U+021B, U+02C6-02C7, U+02D8-02DD, U+0300-0304, U+0306-0308, U+030A-030C, U+0312, U+0326-0328, U+0394, U+03A9, U+03BC, U+03C0, U+1E81, U+1E83, U+1E85, U+1EF3, U+2013-2014, U+2018-201A, U+201C-201E, U+2020-2022, U+2026, U+2030, U+2039-203A, U+2044, U+20AC, U+2122, U+2190-2193, U+21D2, U+2202, U+220F, U+2211-2212, U+221A, U+221E, U+222B, U+2248, U+2260, U+2264-2265, U+2500, U+2502, U+250C, U+2510, U+2514, U+2518, U+251C, U+2524, U+253C, U+2550, U+2560-2561, U+25CA, U+26B2, U+E800, U+FB01-FB02;
+}
+
+@font-face {
+    font-family: "JuliaMono";
+    font-style: italic;
+    font-weight: 400;
+    font-display: swap;
+    src: url("fonts/juliamono/JuliaMono-RegularItalic.woff2") format("woff2");
+}
+
+@font-face {
+    font-family: "JuliaMono";
+    font-style: normal;
+    font-weight: 500;
+    font-display: swap;
+    src: url("fonts/juliamono/JuliaMono-Medium.woff2") format("woff2");
+}
+
+@font-face {
+    font-family: "JuliaMono";
+    font-style: normal;
+    font-weight: 700;
+    font-display: swap;
+    src: url("fonts/juliamono/JuliaMono-Bold.woff2") format("woff2");
+}
+
+@font-face {
+    font-family: "JuliaMono";
+    font-style: normal;
+    font-weight: 700;
+    font-display: swap;
+    src: url("fonts/juliamono/JuliaMono-BoldLatin.woff2") format("woff2");
+    unicode-range: U+0020-007E, U+00A0-00A3, U+00A5-00AC, U+00AE-00B4, U+00B6-00FF, U+0101, U+0103, U+0105, U+0107, U+010B, U+010D, U+010F, U+0111, U+0113, U+0117, U+0119, U+011B, U+011F, U+0121, U+0123, U+0127, U+012B, U+012F, U+0131, U+0137, U+013A, U+013C, U+013E, U+0141-0142, U+0144, U+0146, U+0148, U+014B, U+014D, U+0151-0153, U+0155, U+0157, U+0159, U+015B, U+015F-0161, U+0163, U+0165, U+0167, U+016B, U+016F, U+0171, U+0173, U+0175, U+0177-0178, U+017A, U+017C-017E, U+0192, U+0219, U+021B, U+02C6-02C7, U+02D8-02DD, U+0300-0304, U+0306-0308, U+030A-030C, U+0312, U+0326-0328, U+0394, U+03A9, U+03BC, U+03C0, U+1E81, U+1E83, U+1E85, U+1EF3, U+2013-2014, U+2018-201A, U+201C-201E, U+2020-2022, U+2026, U+2030, U+2039-203A, U+2044, U+20AC, U+2122, U+2190-2193, U+21D2, U+2202, U+220F, U+2211-2212, U+221A, U+221E, U+222B, U+2248, U+2260, U+2264-2265, U+2500, U+2502, U+250C, U+2510, U+2514, U+2518, U+251C, U+2524, U+253C, U+2550, U+2560-2561, U+25CA, U+26B2, U+E800, U+FB01-FB02;
+}
+
+
+/* ── tokens.css ── */
+
+/* Generated from source/tokens by scripts/tokens.mjs. Do not edit. */
+
+:root {
+    color-scheme: light;
+    /* The darkest brand navy, and the theme colour. */
+    --navy-950: #030e29;
+    --navy-900: #030f2c;
+    --navy-850: #04133a;
+    --navy-800: #061a45;
+    --navy-700: #0b2a66;
+    --blue-700: #244a9e;
+    --blue-600: #1a4f9e;
+    /* The brand blue. */
+    --blue-500: #2f5fd6;
+    --blue-400: #3f7fd4;
+    --blue-300: #8cb0ff;
+    --blue-200: #a9c3ff;
+    --sky-300: #8fb6e8;
+    --sky-200: #a8c9f0;
+    --ice-100: #dbe7ff;
+    --ice-50: #f4f8ff;
+    --green-700: #1f6b47;
+    --green-600: #2a7e4f;
+    --green-300: #72d3a2;
+    --amber-800: #8a4a06;
+    --amber-600: #a06000;
+    --amber-300: #f2b86a;
+    --red-700: #b42318;
+    --red-600: #c4362b;
+    --red-300: #ff8f86;
+    --cyan-800: #005374;
+    --cyan-600: #0078a0;
+    --cyan-200: #8ecceb;
+    --indigo-700: #354a8a;
+    --indigo-600: #506bbc;
+    --indigo-200: #abc3ff;
+    --teal-700: #005754;
+    --teal-600: #007d77;
+    --teal-200: #8bd0cb;
+    --violet-700: #5a4083;
+    --violet-600: #7f5fb3;
+    --violet-200: #cfb9f9;
+    --ochre-700: #6e4400;
+    --ochre-600: #996400;
+    --ochre-200: #e5bd87;
+    --magenta-700: #783564;
+    --magenta-600: #a5528c;
+    --magenta-200: #f0b0da;
+    --olive-700: #455300;
+    --olive-600: #657612;
+    --olive-200: #bbca8d;
+    --cerulean-700: #00527a;
+    --cerulean-600: #0076a8;
+    --cerulean-200: #8ccbf1;
+    --rust-700: #81371b;
+    --rust-600: #b15433;
+    --rust-200: #fab39a;
+    /* The brand light rising from below a navy surface. The same in both appearances. */
+    --glow: radial-gradient(150% 48% at 50% 112%, rgba(168, 201, 240, .42) 0%, rgba(63, 127, 212, .30) 30%, rgba(10, 36, 88, 0) 64%), linear-gradient(180deg, var(--navy-900) 0%, var(--navy-800) 100%);
+    /* Running text in documents: New Computer Modern, Book cut. */
+    --font-prose: 'New Computer Modern', serif;
+    /* Formulas, typeset by the browser from MathML. */
+    --font-math: 'New Computer Modern Math', math;
+    /* The interface, document headings and the wordmark. Libertinus Sans supplies the Greek and symbols Instrument Sans lacks. */
+    --font-ui: 'Instrument Sans', 'Libertinus Sans', sans-serif;
+    /* Code and identifiers. */
+    --font-mono: JuliaMono, monospace;
+    --step-1: 12px;
+    --step-2: 13px;
+    --step-3: 15px;
+    --step-4: 16px;
+    --step-5: 19px;
+    --step-6: 22px;
+    --step-7: 27px;
+    --step-8: 34px;
+    /* The largest title on a page, with letter-spacing -0.02em. */
+    --text-display: 600 var(--step-8)/1.1 var(--font-ui);
+    /* A page's or a dialog's title. */
+    --text-title: 600 var(--step-6)/1.2 var(--font-ui);
+    /* A section heading in an interface, with letter-spacing -0.01em. */
+    --text-heading: 600 var(--step-5)/1.3 var(--font-ui);
+    --text-body: 400 var(--step-4)/1.5 var(--font-ui);
+    /* Secondary text: dates, counts, descriptions. */
+    --text-meta: 400 14px/1.45 var(--font-ui);
+    --text-small: 500 var(--step-2)/1.4 var(--font-ui);
+    /* Chips, table headers, section labels. Sentence case, never uppercase. */
+    --text-label: 500 var(--step-1)/1.3 var(--font-ui);
+    --text-mono-sm: 400 var(--step-1)/1.4 var(--font-mono);
+    /* Running text in documents. */
+    --text-prose: 400 var(--step-5)/1.55 var(--font-prose);
+    --space-1: 4px;
+    --space-2: 8px;
+    --space-3: 12px;
+    --space-4: 16px;
+    --space-5: 20px;
+    --space-6: 24px;
+    --space-8: 32px;
+    --space-11: 44px;
+    --space-12: 48px;
+    --space-14: 56px;
+    --space-16: 64px;
+    /* Tiny badges and tooltips. */
+    --radius-xs: 6px;
+    /* Icon buttons and small controls. */
+    --radius-sm: 8px;
+    /* Buttons, fields and menu items. */
+    --radius-md: 10px;
+    /* Inner cards and floating bars. */
+    --radius-lg: 14px;
+    /* Cards and dialogs. */
+    --radius-xl: 16px;
+    /* A large card standing alone on a page. */
+    --radius-2xl: 22px;
+    --radius-pill: 999px;
+    --shadow-card: 0 1px 2px rgba(20, 40, 90, .04);
+    /* Floating bars, popovers, menus, dialogs. */
+    --shadow-float: 0 10px 30px -12px rgba(20, 40, 90, .25);
+    /* A card standing alone on a page. */
+    --shadow-raised: 0 1px 2px rgba(20, 40, 90, .04), 0 18px 50px -24px rgba(30, 60, 130, .18);
+    /* Buttons scale to .96 while pressed. */
+    --dur-press: 120ms;
+    /* Hovers and popovers. */
+    --dur-ui: 180ms;
+    --ease-out: cubic-bezier(0.22, 1, 0.36, 1);
+    /* A change of scene: the brand light withdrawing, a page giving way to the next. */
+    --dur-long: 1600ms;
+    /* Something that starts and ends at rest, as the brand light withdrawing. */
+    --ease-in-out: cubic-bezier(0.65, 0, 0.35, 1);
+    /* The page, behind cards. */
+    --surface-page: #f3f5fa;
+    /* Cards, dialogs, menus. */
+    --surface-card: #ffffff;
+    /* Table header rows, hovered rows. */
+    --surface-subtle: #f8fafd;
+    /* Inputs at rest; the card colour when focused. */
+    --surface-field: #f7f9fc;
+    /* Hovered quiet buttons, segmented control tracks, skeletons. */
+    --fill-muted: #eef1f6;
+    /* Counts. */
+    --fill-muted-strong: #e6ebf4;
+    --border: #e3e8f1;
+    /* Outlined buttons and inputs. */
+    --border-strong: #d7deea;
+    /* Empty states and something missing. */
+    --border-dashed: #c6d0e2;
+    --divider: #eef1f6;
+    /* Text. */
+    --ink-1: #111a2e;
+    /* Secondary headings, quiet controls. */
+    --ink-2: #3c4557;
+    /* Meta text and captions. */
+    --ink-3: #5b6477;
+    /* Icons only (chevrons, drag handles): too faint for text. */
+    --ink-4: #838c9f;
+    /* Placeholders in inputs. */
+    --ink-placeholder: #697185;
+    /* Disabled controls. Exempt from contrast requirements. */
+    --ink-disabled: #a3abbb;
+    /* Links and link buttons. */
+    --link: var(--blue-500);
+    /* A 2px outline, 2px from every focusable element. */
+    --focus-ring: var(--blue-500);
+    /* Text on navy surfaces, in both appearances: names, the current item. */
+    --on-dark-1: #f4f8ff;
+    /* Items on navy. */
+    --on-dark-2: #c6d4ee;
+    /* Secondary text on navy. */
+    --on-dark-3: #9fb3d6;
+    /* Labels and identifiers on navy. */
+    --on-dark-4: #8fa6cc;
+    --on-dark-line: rgba(170, 200, 240, .18);
+    --on-dark-fill: rgba(255, 255, 255, .05);
+    /* The current item on navy. */
+    --on-dark-active: rgba(143, 182, 232, .16);
+    /* A card raised on navy. */
+    --on-dark-raised: rgba(3, 15, 44, .62);
+    /* The neutral intent: something with no judgement attached. */
+    --neutral: #5b6477;
+    --neutral-text: #3c4557;
+    --neutral-on: #ffffff;
+    /* The accent intent: the action a view is for, selection, what is current. */
+    --accent: var(--blue-500);
+    --accent-text: var(--blue-700);
+    --accent-on: #ffffff;
+    /* The success intent: something done or in good order. */
+    --success: var(--green-600);
+    --success-text: var(--green-700);
+    --success-on: #ffffff;
+    /* The warning intent: something to keep in mind before going on. */
+    --warning: var(--amber-600);
+    --warning-text: var(--amber-800);
+    --warning-on: #ffffff;
+    /* The danger intent: errors and destructive actions. */
+    --danger: var(--red-700);
+    --danger-text: var(--red-700);
+    --danger-on: #ffffff;
+    /* The info intent: something worth knowing, with no action needed. */
+    --info: var(--cyan-600);
+    --info-text: var(--cyan-800);
+    --info-on: #ffffff;
+    /* The categorical tones tell things apart by colour without judging them. In order: indigo, teal, violet, ochre, magenta, olive, cerulean, rust. A label always goes with the colour. */
+    --tone-indigo: var(--indigo-600);
+    --tone-indigo-text: var(--indigo-700);
+    --tone-indigo-on: #ffffff;
+    --tone-teal: var(--teal-600);
+    --tone-teal-text: var(--teal-700);
+    --tone-teal-on: #ffffff;
+    --tone-violet: var(--violet-600);
+    --tone-violet-text: var(--violet-700);
+    --tone-violet-on: #ffffff;
+    --tone-ochre: var(--ochre-600);
+    --tone-ochre-text: var(--ochre-700);
+    --tone-ochre-on: #ffffff;
+    --tone-magenta: var(--magenta-600);
+    --tone-magenta-text: var(--magenta-700);
+    --tone-magenta-on: #ffffff;
+    --tone-olive: var(--olive-600);
+    --tone-olive-text: var(--olive-700);
+    --tone-olive-on: #ffffff;
+    --tone-cerulean: var(--cerulean-600);
+    --tone-cerulean-text: var(--cerulean-700);
+    --tone-cerulean-on: #ffffff;
+    --tone-rust: var(--rust-600);
+    --tone-rust-text: var(--rust-700);
+    --tone-rust-on: #ffffff;
+    /* Around a selected or hovered choice. */
+    --ring-selected: 0 0 0 3px color-mix(in srgb, var(--accent) 10%, transparent);
+    /* Around a focused input, with an accent border. */
+    --ring-input: 0 0 0 3px color-mix(in srgb, var(--accent) 18%, transparent);
+    --mix-soft: 12%;
+    --mix-border: 35%;
+    --mix-hover: 84%;
+}
+
+@media (prefers-color-scheme: dark) {
+    :root:not([data-theme="light"]) {
+        color-scheme: dark;
+        --surface-page: #0a1120;
+        --surface-card: #111a2c;
+        --surface-subtle: #151f33;
+        --surface-field: #0d1526;
+        --fill-muted: #1b263d;
+        --fill-muted-strong: #233049;
+        --border: #222e46;
+        --border-strong: #2d3a56;
+        --border-dashed: #3a4866;
+        --divider: #1b263d;
+        --ink-1: #e8eef9;
+        --ink-2: #c3cde0;
+        --ink-3: #9ba7be;
+        --ink-4: #6f7c96;
+        --ink-placeholder: #8591a9;
+        --ink-disabled: #56627a;
+        /* Lighter than the accent, which is too dark to read as text here. */
+        --link: var(--blue-300);
+        --focus-ring: #6f9cff;
+        --neutral: #656f84;
+        --neutral-text: #c3cde0;
+        --accent-text: var(--blue-200);
+        --success-text: var(--green-300);
+        --warning-text: var(--amber-300);
+        --danger: var(--red-600);
+        --danger-text: var(--red-300);
+        --info-text: var(--cyan-200);
+        --tone-indigo-text: var(--indigo-200);
+        --tone-teal-text: var(--teal-200);
+        --tone-violet-text: var(--violet-200);
+        --tone-ochre-text: var(--ochre-200);
+        --tone-magenta-text: var(--magenta-200);
+        --tone-olive-text: var(--olive-200);
+        --tone-cerulean-text: var(--cerulean-200);
+        --tone-rust-text: var(--rust-200);
+        --mix-soft: 20%;
+        --mix-border: 50%;
+    }
+}
+
+:root[data-theme="dark"] {
+    color-scheme: dark;
+    --surface-page: #0a1120;
+    --surface-card: #111a2c;
+    --surface-subtle: #151f33;
+    --surface-field: #0d1526;
+    --fill-muted: #1b263d;
+    --fill-muted-strong: #233049;
+    --border: #222e46;
+    --border-strong: #2d3a56;
+    --border-dashed: #3a4866;
+    --divider: #1b263d;
+    --ink-1: #e8eef9;
+    --ink-2: #c3cde0;
+    --ink-3: #9ba7be;
+    --ink-4: #6f7c96;
+    --ink-placeholder: #8591a9;
+    --ink-disabled: #56627a;
+    /* Lighter than the accent, which is too dark to read as text here. */
+    --link: var(--blue-300);
+    --focus-ring: #6f9cff;
+    --neutral: #656f84;
+    --neutral-text: #c3cde0;
+    --accent-text: var(--blue-200);
+    --success-text: var(--green-300);
+    --warning-text: var(--amber-300);
+    --danger: var(--red-600);
+    --danger-text: var(--red-300);
+    --info-text: var(--cyan-200);
+    --tone-indigo-text: var(--indigo-200);
+    --tone-teal-text: var(--teal-200);
+    --tone-violet-text: var(--violet-200);
+    --tone-ochre-text: var(--ochre-200);
+    --tone-magenta-text: var(--magenta-200);
+    --tone-olive-text: var(--olive-200);
+    --tone-cerulean-text: var(--cerulean-200);
+    --tone-rust-text: var(--rust-200);
+    --mix-soft: 20%;
+    --mix-border: 50%;
+}
+
+:root,
+[data-density="comfortable"] {
+    --control-height: 40px;
+    --control-small-height: 32px;
+    --control-font: var(--step-3);
+    --control-small-font: var(--step-2);
+    --control-block: var(--space-2);
+    --control-inline: var(--space-3);
+    --button-inline: var(--space-4);
+}
+
+[data-density="compact"] {
+    --control-height: 34px;
+    --control-small-height: 28px;
+    --control-font: 14px;
+    --control-small-font: var(--step-1);
+    --control-block: 6px;
+    --control-inline: 10px;
+    --button-inline: 14px;
+}
+
+
+/* ── base.css ── */
+
+/* The ground every other stylesheet stands on: the order of the cascade
+ * layers, the page's defaults, focus, reduced motion, and how a tone is
+ * chosen.
+ *
+ * Needs `tokens.css`. Every rule sits in a cascade layer, so a consumer's
+ * own unlayered rules win whatever their specificity.
+ */
+
+@layer stemma.base, stemma.document, stemma.components, stemma.tones;
+
+@layer stemma.base {
+    body {
+        margin: 0;
+        font: var(--text-body);
+        color: var(--ink-1);
+        background: var(--surface-page);
+    }
+
+    code,
+    kbd,
+    samp,
+    pre {
+        font-family: var(--font-mono);
+    }
+
+    /* Formulas are MathML, typeset by the browser in the math face. */
+    math {
+        font-family: var(--font-math);
+    }
+
+    ::selection {
+        background: color-mix(in srgb, var(--accent) 22%, transparent);
+    }
+
+    /* Focus is never removed. */
+    :focus-visible {
+        outline: 2px solid var(--focus-ring);
+        outline-offset: 2px;
+    }
+
+    /* A toast's time left is how long it stays, not motion to spare. */
+    @media (prefers-reduced-motion: reduce) {
+        *:not(.toast__time),
+        *::before,
+        *::after {
+            transition-duration: 1ms !important;
+            animation-duration: 1ms !important;
+            animation-iteration-count: 1 !important;
+        }
+    }
+}
+
+/* ── Tones ─────────────────────────────────────────────────────────────
+ *
+ * A tone-driven component reads three custom properties and derives the
+ * rest from them with `color-mix()`:
+ *
+ *   --tone       solid fills, borders, rules and glyphs;
+ *   --tone-text  text in the tone, on a surface or on the tone's soft fill;
+ *   --tone-on    text on a solid fill of the tone.
+ *
+ * A component sets its default tone on itself, and a modifier named after
+ * an intent or a categorical tone replaces it. These rules sit in the last
+ * layer, so a modifier wins over any component's default. Every pair is
+ * checked for contrast when the tokens are generated. */
+
+@layer stemma.tones {
+    .button--neutral,
+    .chip--neutral,
+    .count--neutral,
+    .avatar--neutral,
+    .message--neutral,
+    .highlight--neutral {
+        --tone: var(--neutral);
+        --tone-text: var(--neutral-text);
+        --tone-on: var(--neutral-on);
+    }
+
+    .button--accent,
+    .chip--accent,
+    .count--accent,
+    .avatar--accent,
+    .message--accent,
+    .highlight--accent {
+        --tone: var(--accent);
+        --tone-text: var(--accent-text);
+        --tone-on: var(--accent-on);
+    }
+
+    .button--success,
+    .chip--success,
+    .count--success,
+    .avatar--success,
+    .message--success,
+    .highlight--success {
+        --tone: var(--success);
+        --tone-text: var(--success-text);
+        --tone-on: var(--success-on);
+    }
+
+    .button--warning,
+    .chip--warning,
+    .count--warning,
+    .avatar--warning,
+    .message--warning,
+    .highlight--warning {
+        --tone: var(--warning);
+        --tone-text: var(--warning-text);
+        --tone-on: var(--warning-on);
+    }
+
+    .button--danger,
+    .chip--danger,
+    .count--danger,
+    .avatar--danger,
+    .message--danger,
+    .highlight--danger,
+    .menu__item--danger {
+        --tone: var(--danger);
+        --tone-text: var(--danger-text);
+        --tone-on: var(--danger-on);
+    }
+
+    .button--info,
+    .chip--info,
+    .count--info,
+    .avatar--info,
+    .message--info,
+    .highlight--info {
+        --tone: var(--info);
+        --tone-text: var(--info-text);
+        --tone-on: var(--info-on);
+    }
+
+    /* The categorical tones: no meaning, only telling things apart. */
+
+    .chip--indigo,
+    .count--indigo,
+    .avatar--indigo,
+    .highlight--indigo {
+        --tone: var(--tone-indigo);
+        --tone-text: var(--tone-indigo-text);
+        --tone-on: var(--tone-indigo-on);
+    }
+
+    .chip--teal,
+    .count--teal,
+    .avatar--teal,
+    .highlight--teal {
+        --tone: var(--tone-teal);
+        --tone-text: var(--tone-teal-text);
+        --tone-on: var(--tone-teal-on);
+    }
+
+    .chip--violet,
+    .count--violet,
+    .avatar--violet,
+    .highlight--violet {
+        --tone: var(--tone-violet);
+        --tone-text: var(--tone-violet-text);
+        --tone-on: var(--tone-violet-on);
+    }
+
+    .chip--ochre,
+    .count--ochre,
+    .avatar--ochre,
+    .highlight--ochre {
+        --tone: var(--tone-ochre);
+        --tone-text: var(--tone-ochre-text);
+        --tone-on: var(--tone-ochre-on);
+    }
+
+    .chip--magenta,
+    .count--magenta,
+    .avatar--magenta,
+    .highlight--magenta {
+        --tone: var(--tone-magenta);
+        --tone-text: var(--tone-magenta-text);
+        --tone-on: var(--tone-magenta-on);
+    }
+
+    .chip--olive,
+    .count--olive,
+    .avatar--olive,
+    .highlight--olive {
+        --tone: var(--tone-olive);
+        --tone-text: var(--tone-olive-text);
+        --tone-on: var(--tone-olive-on);
+    }
+
+    .chip--cerulean,
+    .count--cerulean,
+    .avatar--cerulean,
+    .highlight--cerulean {
+        --tone: var(--tone-cerulean);
+        --tone-text: var(--tone-cerulean-text);
+        --tone-on: var(--tone-cerulean-on);
+    }
+
+    .chip--rust,
+    .count--rust,
+    .avatar--rust,
+    .highlight--rust {
+        --tone: var(--tone-rust);
+        --tone-text: var(--tone-rust-text);
+        --tone-on: var(--tone-rust-on);
+    }
+}
+
+
+/* ── document.css ── */
+
+/* Typography for documents: running text, headings, lists, tables,
+ * quotations, code and formulas, inside an element with the class
+ * `.document`. Interface around it is left alone.
+ *
+ * Needs `tokens.css` and `base.css`. Prose is set in New Computer Modern,
+ * headings in the interface's face, code in JuliaMono and formulas, as
+ * MathML, in New Computer Modern Math. How wide the text runs, and where it
+ * sits on the page, is the consumer's to say. Highlighted blocks are the
+ * `.highlight` component, in `components.css`.
+ */
+
+@layer stemma.base, stemma.document, stemma.components, stemma.tones;
+
+@layer stemma.document {
+    .document {
+        font: var(--text-prose);
+        color: var(--ink-1);
+        font-kerning: normal;
+        overflow-wrap: break-word;
+    }
+
+    .document > :first-child {
+        margin-top: 0;
+    }
+
+    .document > :last-child {
+        margin-bottom: 0;
+    }
+
+    /* ── Headings ──────────────────────────────────────────────────── */
+
+    .document :is(h1, h2, h3, h4, h5, h6) {
+        margin: 1.6em 0 0.5em;
+        font-family: var(--font-ui);
+        font-weight: 600;
+        line-height: 1.25;
+        color: var(--ink-1);
+        text-wrap: balance;
+    }
+
+    .document h1 {
+        margin-top: 0;
+        font-size: var(--step-8);
+        line-height: 1.1;
+        letter-spacing: -0.02em;
+    }
+
+    .document h2 {
+        font-size: var(--step-7);
+        letter-spacing: -0.015em;
+    }
+
+    .document h3 {
+        font-size: var(--step-6);
+        letter-spacing: -0.01em;
+    }
+
+    .document h4 {
+        font-size: var(--step-5);
+    }
+
+    .document :is(h5, h6) {
+        font-size: var(--step-4);
+    }
+
+    .document h6 {
+        color: var(--ink-2);
+    }
+
+    /* A heading's next block follows it closely. */
+    .document :is(h1, h2, h3, h4, h5, h6) + * {
+        margin-top: 0;
+    }
+
+    /* ── Text ──────────────────────────────────────────────────────── */
+
+    .document :is(p, ul, ol, dl, blockquote, pre, table, figure) {
+        margin: 0 0 1em;
+    }
+
+    .document a {
+        color: var(--link);
+        text-decoration: underline;
+        text-decoration-color: color-mix(in srgb, currentColor 40%, transparent);
+        text-decoration-thickness: 1px;
+        text-underline-offset: 0.18em;
+    }
+
+    .document a:hover {
+        text-decoration-color: currentColor;
+    }
+
+    /* A reference: a link to a numbered or named thing elsewhere in the
+     * text, a citation or a footnote. In the link's colour, without an
+     * underline until hovered, so a paragraph full of them stays calm. */
+    .document .ref,
+    .document sup > a {
+        text-decoration: none;
+        font-variant-numeric: lining-nums tabular-nums;
+    }
+
+    .document .ref:hover,
+    .document sup > a:hover {
+        text-decoration: underline;
+    }
+
+    .document :is(strong, b) {
+        font-weight: 700;
+    }
+
+    .document small {
+        font-size: 0.85em;
+    }
+
+    .document :is(sub, sup) {
+        font-size: 0.75em;
+        line-height: 0;
+    }
+
+    .document hr {
+        height: 0;
+        margin: 2em 0;
+        border: 0;
+        border-top: 1px solid var(--border);
+    }
+
+    .document img {
+        max-width: 100%;
+        height: auto;
+    }
+
+    /* ── Lists ─────────────────────────────────────────────────────── */
+
+    .document :is(ul, ol) {
+        padding-inline-start: 1.5em;
+    }
+
+    .document li + li,
+    .document li > :is(ul, ol) {
+        margin-top: 0.25em;
+    }
+
+    .document li > :is(ul, ol) {
+        margin-bottom: 0;
+    }
+
+    .document li::marker {
+        color: var(--ink-3);
+    }
+
+    .document dt {
+        font-weight: 700;
+    }
+
+    .document dd {
+        margin: 0 0 0.5em 1.5em;
+    }
+
+    /* ── Quotations ────────────────────────────────────────────────── */
+
+    .document blockquote {
+        padding-inline-start: 1em;
+        color: var(--ink-2);
+        border-inline-start: 3px solid var(--border-strong);
+    }
+
+    .document blockquote > :last-child {
+        margin-bottom: 0;
+    }
+
+    /* ── Code ──────────────────────────────────────────────────────────
+     *
+     * JuliaMono sits large beside the prose face, so code is set smaller
+     * than the text around it. */
+
+    .document :is(code, kbd, samp) {
+        font-family: var(--font-mono);
+        font-size: 0.82em;
+    }
+
+    .document :not(pre) > code {
+        padding: 0.1em 0.3em;
+        background: var(--fill-muted);
+        border-radius: var(--radius-xs);
+    }
+
+    .document kbd {
+        padding: 0.05em 0.35em;
+        background: var(--surface-card);
+        border: 1px solid var(--border-strong);
+        border-bottom-width: 2px;
+        border-radius: var(--radius-xs);
+    }
+
+    .document pre {
+        overflow-x: auto;
+        padding: var(--space-3) var(--space-4);
+        font-size: 0.82em;
+        line-height: 1.5;
+        background: var(--surface-subtle);
+        border: 1px solid var(--border);
+        border-radius: var(--radius-md);
+        tab-size: 4;
+    }
+
+    .document pre code {
+        font-size: inherit;
+    }
+
+    /* ── Tables ────────────────────────────────────────────────────── */
+
+    .document table {
+        display: block;
+        max-width: 100%;
+        overflow-x: auto;
+        border-collapse: collapse;
+        font-size: 0.9em;
+        font-variant-numeric: lining-nums tabular-nums;
+    }
+
+    .document :is(th, td) {
+        padding: 0.4em 0.75em;
+        text-align: start;
+        vertical-align: top;
+        border-bottom: 1px solid var(--divider);
+    }
+
+    .document :is(th, td):first-child {
+        padding-inline-start: 0;
+    }
+
+    .document th {
+        font: var(--text-label);
+        color: var(--ink-3);
+        border-bottom-color: var(--border-strong);
+    }
+
+    .document caption {
+        caption-side: bottom;
+        padding-top: 0.5em;
+        font: var(--text-meta);
+        color: var(--ink-3);
+        text-align: start;
+    }
+
+    /* ── Figures ───────────────────────────────────────────────────── */
+
+    .document figcaption {
+        margin-top: 0.5em;
+        font: var(--text-meta);
+        color: var(--ink-3);
+    }
+
+    /* ── Formulas ──────────────────────────────────────────────────────
+     *
+     * MathML, typeset by the browser in New Computer Modern Math, drawn to
+     * match the prose face at the same size. A displayed formula scrolls
+     * rather than overflow the text. */
+
+    .document math {
+        font-family: var(--font-math);
+        font-size: 1em;
+    }
+
+    .document math[display="block"] {
+        display: block math;
+        margin: 1em 0;
+        overflow-x: auto;
+        overflow-y: hidden;
+    }
+}
+
+
+/* ── components.css ── */
+
+/* Stemma's components: classes over native HTML, for any consumer.
+ *
+ * Needs `tokens.css` and `base.css`. Every rule sits in a cascade layer, so
+ * a consumer's own unlayered rules win whatever their specificity.
+ * Placement and layout belong to the consumer; a component only says how
+ * it looks.
+ *
+ * Size follows the density: comfortable by default, compact inside
+ * `[data-density="compact"]`. Tone-driven components take an intent or a
+ * categorical tone as a modifier (`.chip--success`, `.chip--teal`); see
+ * "Tones" in `base.css`.
+ */
+
+@layer stemma.base, stemma.document, stemma.components, stemma.tones;
+
+@layer stemma.components {
+    /* A label names a group of things. Sentence case, never a heading. */
+    .label {
+        margin: 0;
+        font: var(--text-label);
+        color: var(--ink-3);
+    }
+
+    .quiet {
+        color: var(--ink-3);
+    }
+
+    .numeric {
+        font-variant-numeric: tabular-nums;
+    }
+
+    /* Identifiers are verbatim: names, paths, versions. One may be longer
+     * than the room it has, so it breaks anywhere rather than push past
+     * it. */
+    .identifier {
+        font-family: var(--font-mono);
+        font-size: 0.87em;
+        font-weight: 400;
+        overflow-wrap: anywhere;
+    }
+
+    .visually-hidden {
+        position: absolute;
+        width: 1px;
+        height: 1px;
+        overflow: hidden;
+        clip-path: inset(50%);
+        white-space: nowrap;
+    }
+
+    /* ── Glyph ─────────────────────────────────────────────────────────
+     *
+     * An inline line glyph, drawn in the colour of its text. */
+
+    .glyph {
+        flex-shrink: 0;
+        width: 18px;
+        height: 18px;
+        fill: none;
+        stroke: currentColor;
+        stroke-width: 1.7;
+        stroke-linecap: round;
+        stroke-linejoin: round;
+    }
+
+    .glyph--small {
+        width: 14px;
+        height: 14px;
+        stroke-width: 2;
+    }
+
+    /* ── Button ────────────────────────────────────────────────────────
+     *
+     * On a `button` or an `a`. Outlined and neutral by default, the
+     * secondary action. `--primary` is the one action a view is for: a
+     * solid fill of its tone, the accent unless an intent says otherwise
+     * (`.button--primary.button--danger`). An intent alone outlines the
+     * button in that intent. `--quiet` is a text button, `--link` reads as
+     * a link, and `--icon` holds a glyph alone and needs an `aria-label`.
+     * `aria-pressed="true"` and `aria-current` mark the one chosen. */
+
+    .button {
+        --tone: var(--accent);
+        --tone-text: var(--accent-text);
+        --tone-on: var(--accent-on);
+
+        box-sizing: border-box;
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        gap: var(--space-2);
+        min-height: var(--control-height);
+        padding: 0 var(--button-inline);
+        font: 500 var(--control-font) / 1.2 var(--font-ui);
+        color: var(--ink-1);
+        text-decoration: none;
+        white-space: nowrap;
+        background: var(--surface-card);
+        border: 1px solid var(--border-strong);
+        border-radius: var(--radius-md);
+        cursor: pointer;
+        transition:
+            background var(--dur-ui) var(--ease-out),
+            border-color var(--dur-ui) var(--ease-out),
+            color var(--dur-ui) var(--ease-out),
+            transform var(--dur-press) var(--ease-out);
+    }
+
+    .button:hover {
+        background: var(--surface-subtle);
+        border-color: var(--ink-4);
+    }
+
+    .button:active:not(:disabled) {
+        transform: scale(0.96);
+    }
+
+    .button[aria-pressed="true"],
+    .button[aria-current]:not([aria-current="false"]) {
+        color: var(--accent-text);
+        background: color-mix(in srgb, var(--accent) var(--mix-soft), transparent);
+        border-color: transparent;
+    }
+
+    /* Outlined in an intent, so it keeps its shape at rest without
+     * competing with `--primary`. */
+    .button:is(
+            .button--neutral,
+            .button--accent,
+            .button--success,
+            .button--warning,
+            .button--danger,
+            .button--info
+        ):not(.button--primary) {
+        color: var(--tone-text);
+        border-color: color-mix(in srgb, var(--tone) var(--mix-border), transparent);
+    }
+
+    .button:is(
+            .button--neutral,
+            .button--accent,
+            .button--success,
+            .button--warning,
+            .button--danger,
+            .button--info
+        ):not(.button--primary):hover {
+        background: color-mix(in srgb, var(--tone) var(--mix-soft), transparent);
+        border-color: var(--tone);
+    }
+
+    .button--primary {
+        color: var(--tone-on);
+        background: var(--tone);
+        border-color: var(--tone);
+        box-shadow: 0 1px 2px rgb(20 40 90 / 12%);
+    }
+
+    .button--primary:hover {
+        background: color-mix(in srgb, var(--tone) var(--mix-hover), black);
+        border-color: color-mix(in srgb, var(--tone) var(--mix-hover), black);
+    }
+
+    .button--quiet {
+        color: var(--ink-2);
+        background: transparent;
+        border-color: transparent;
+    }
+
+    .button--quiet:hover {
+        color: var(--ink-1);
+        background: var(--fill-muted);
+        border-color: transparent;
+    }
+
+    .button--link {
+        min-height: 0;
+        padding: 0;
+        color: var(--link);
+        background: transparent;
+        border: 0;
+        text-decoration: underline;
+        text-decoration-color: color-mix(in srgb, currentColor 40%, transparent);
+        text-underline-offset: 3px;
+    }
+
+    .button--link:hover {
+        background: transparent;
+        text-decoration-color: currentColor;
+    }
+
+    .button--icon {
+        width: var(--control-height);
+        padding: 0;
+        color: var(--ink-3);
+        background: transparent;
+        border-color: transparent;
+        border-radius: var(--radius-sm);
+    }
+
+    .button--icon:hover {
+        color: var(--ink-1);
+        background: var(--fill-muted);
+        border-color: transparent;
+    }
+
+    .button--small {
+        min-height: var(--control-small-height);
+        padding: 0 var(--space-3);
+        font-size: var(--control-small-font);
+        border-radius: var(--radius-sm);
+    }
+
+    .button--icon.button--small {
+        width: var(--control-small-height);
+        padding: 0;
+    }
+
+    .button:disabled,
+    .button[aria-disabled="true"] {
+        color: var(--ink-disabled);
+        background: var(--surface-subtle);
+        border-color: var(--border);
+        box-shadow: none;
+        cursor: not-allowed;
+    }
+
+    .button--quiet:disabled,
+    .button--icon:disabled,
+    .button--link:disabled {
+        background: transparent;
+        border-color: transparent;
+    }
+
+    /* ── Field ─────────────────────────────────────────────────────────
+     *
+     * A label, the control and an optional hint or error, stacked. `.input`
+     * goes on the `input`, `textarea` or `select` itself, so a control
+     * outside a field looks the same. An error says what happened and how
+     * to fix it; the control points at it with `aria-describedby` and
+     * carries `aria-invalid="true"`. */
+
+    .field {
+        display: flex;
+        flex-direction: column;
+        gap: 6px;
+    }
+
+    .field__label {
+        font: 500 var(--control-font) / 1.3 var(--font-ui);
+        color: var(--ink-1);
+    }
+
+    .field__hint {
+        font-size: var(--control-small-font);
+        color: var(--ink-3);
+    }
+
+    .field__error {
+        display: flex;
+        align-items: flex-start;
+        gap: 6px;
+        font-size: var(--control-small-font);
+        color: var(--danger-text);
+    }
+
+    .input {
+        box-sizing: border-box;
+        width: 100%;
+        min-height: var(--control-height);
+        padding: var(--control-block) var(--control-inline);
+        font: 400 var(--control-font) / 1.4 var(--font-ui);
+        color: var(--ink-1);
+        background: var(--surface-field);
+        border: 1px solid var(--border-strong);
+        border-radius: var(--radius-md);
+        transition:
+            border-color var(--dur-ui) var(--ease-out),
+            background var(--dur-ui) var(--ease-out),
+            box-shadow var(--dur-ui) var(--ease-out);
+    }
+
+    .input::placeholder {
+        color: var(--ink-placeholder);
+    }
+
+    .input:focus {
+        outline: none;
+        background: var(--surface-card);
+        border-color: var(--accent);
+        box-shadow: var(--ring-input);
+    }
+
+    .input[aria-invalid="true"] {
+        background: color-mix(in srgb, var(--danger) 5%, var(--surface-field));
+        border-color: var(--danger);
+    }
+
+    .input[aria-invalid="true"]:focus {
+        box-shadow: 0 0 0 3px color-mix(in srgb, var(--danger) 16%, transparent);
+    }
+
+    .input:disabled {
+        color: var(--ink-3);
+        cursor: not-allowed;
+    }
+
+    textarea.input {
+        resize: vertical;
+    }
+
+    select.input {
+        appearance: none;
+        padding-right: calc(var(--control-inline) + 20px);
+        background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23838c9f' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='m7 10 5 5 5-5'/%3E%3C/svg%3E");
+        background-repeat: no-repeat;
+        background-position: right 10px center;
+        background-size: 16px;
+    }
+
+    /* Verbatim input: codes, identifiers, source. */
+    .input--mono {
+        font-family: var(--font-mono);
+        font-size: calc(var(--control-font) - 1px);
+    }
+
+    /* ── Choice ────────────────────────────────────────────────────────
+     *
+     * A checkbox or radio and its words, as one line, so the words are
+     * the target and not the sixteen pixels of the control. */
+
+    .choice {
+        display: flex;
+        align-items: flex-start;
+        gap: var(--space-2);
+        font-size: var(--control-font);
+        line-height: 20px;
+        color: var(--ink-1);
+        cursor: pointer;
+    }
+
+    /* The box sits on the first line of the words, however many there are,
+     * centred on the letters rather than on the line box. */
+    .choice input[type] {
+        margin: 0.2em 0 0;
+    }
+
+    .choice:has(input:disabled) {
+        cursor: default;
+    }
+
+    /* Drawn rather than native, so the box is the same size, colour and
+     * alignment in every browser and webview. At rest it is a field;
+     * chosen, it takes the accent with its own text colour on it, as the
+     * primary button does. The edge is 3:1 against a card. */
+    input[type="checkbox"],
+    input[type="radio"] {
+        box-sizing: border-box;
+        flex-shrink: 0;
+        width: 16px;
+        height: 16px;
+        margin: 0;
+        vertical-align: -3px;
+        background: var(--surface-field) center / 0 no-repeat;
+        border: 1.5px solid var(--ink-4);
+        border-radius: 5px;
+        appearance: none;
+        cursor: pointer;
+        transition:
+            background-color var(--dur-press) var(--ease-out),
+            background-size var(--dur-ui) var(--ease-out),
+            border-color var(--dur-press) var(--ease-out),
+            box-shadow var(--dur-press) var(--ease-out);
+    }
+
+    input[type="checkbox"] {
+        background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 12 12'%3E%3Cpath d='M2.5 6.2 5 8.6l4.5-5' fill='none' stroke='%23fff' stroke-width='1.8' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E");
+    }
+
+    input[type="radio"] {
+        background-image: radial-gradient(circle, var(--accent-on) 0 2.5px, transparent 3px);
+        border-radius: 50%;
+    }
+
+    input[type="checkbox"]:hover:not(:disabled),
+    input[type="radio"]:hover:not(:disabled) {
+        border-color: var(--accent);
+        box-shadow: var(--ring-selected);
+    }
+
+    input[type="checkbox"]:checked,
+    input[type="radio"]:checked {
+        background-color: var(--accent);
+        border-color: var(--accent);
+    }
+
+    input[type="checkbox"]:checked {
+        background-size: 12px;
+    }
+
+    input[type="radio"]:checked {
+        background-size: 100%;
+    }
+
+    input[type="checkbox"]:checked:hover:not(:disabled),
+    input[type="radio"]:checked:hover:not(:disabled) {
+        background-color: color-mix(in srgb, var(--accent) var(--mix-hover), black);
+        border-color: color-mix(in srgb, var(--accent) var(--mix-hover), black);
+    }
+
+    input[type="checkbox"]:disabled,
+    input[type="radio"]:disabled {
+        opacity: 0.5;
+        cursor: default;
+    }
+
+    /* A set of choices: the question is the legend. */
+    .fieldset {
+        display: flex;
+        flex-direction: column;
+        gap: var(--space-2);
+        margin: 0;
+        padding: var(--space-3) var(--space-4) var(--space-4);
+        border: 1px solid var(--border);
+        border-radius: var(--radius-md);
+    }
+
+    /* WebKit lays a legend out as a flex item and stretches it, which
+     * takes the whole top border away with it. */
+    .fieldset > legend {
+        width: fit-content;
+        padding: 0 var(--space-1);
+        font: var(--text-small);
+        color: var(--ink-2);
+    }
+
+    /* ── Chip ──────────────────────────────────────────────────────────
+     *
+     * A state with a fixed meaning, in a tone: neutral by default. Always
+     * words, so colour is never the only cue; a glyph may go before them.
+     * A soft fill by default; `--outline` is a border alone, `--solid` a
+     * solid fill, and `--dashed` says something is missing. */
+
+    .chip {
+        --tone: var(--neutral);
+        --tone-text: var(--neutral-text);
+        --tone-on: var(--neutral-on);
+
+        box-sizing: border-box;
+        display: inline-flex;
+        align-items: center;
+        gap: 6px;
+        padding: 3px 9px;
+        font: var(--text-label);
+        white-space: nowrap;
+        color: var(--tone-text);
+        background: color-mix(in srgb, var(--tone) var(--mix-soft), transparent);
+        border: 1px solid transparent;
+        border-radius: var(--radius-pill);
+    }
+
+    .chip--outline {
+        background: transparent;
+        border-color: color-mix(in srgb, var(--tone) var(--mix-border), transparent);
+    }
+
+    .chip--solid {
+        color: var(--tone-on);
+        background: var(--tone);
+    }
+
+    .chip--dashed {
+        color: var(--ink-3);
+        background: transparent;
+        border: 1px dashed var(--border-dashed);
+    }
+
+    /* A chip that is a toggle, as in a set of filters: outlined while
+     * off, filled while on. */
+    button.chip {
+        cursor: pointer;
+        transition:
+            background var(--dur-ui) var(--ease-out),
+            border-color var(--dur-ui) var(--ease-out);
+    }
+
+    .chip[aria-pressed="false"] {
+        color: var(--ink-2);
+        background: transparent;
+        border-color: var(--border-strong);
+    }
+
+    .chip[aria-pressed="false"]:hover {
+        border-color: color-mix(in srgb, var(--tone) var(--mix-border), transparent);
+    }
+
+    .chip[aria-pressed="true"] {
+        border-color: color-mix(in srgb, var(--tone) var(--mix-border), transparent);
+    }
+
+    .chip .glyph {
+        width: 13px;
+        height: 13px;
+        stroke-width: 2;
+    }
+
+    /* ── Count ─────────────────────────────────────────────────────────
+     *
+     * A small number beside a heading or a destination, in a tone:
+     * neutral by default. */
+
+    .count {
+        --tone: var(--neutral);
+        --tone-text: var(--neutral-text);
+        --tone-on: var(--neutral-on);
+
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        min-width: 20px;
+        box-sizing: border-box;
+        padding: 1px 7px;
+        font: var(--text-label);
+        font-variant-numeric: tabular-nums;
+        color: var(--tone-text);
+        background: color-mix(in srgb, var(--tone) var(--mix-soft), transparent);
+        border-radius: var(--radius-pill);
+    }
+
+    .count--solid {
+        color: var(--tone-on);
+        background: var(--tone);
+    }
+
+    /* ── Avatar ────────────────────────────────────────────────────────
+     *
+     * A person is a circle with an initial; `--square` is a rounded square,
+     * for a group, with its initials. Either may hold an `img` instead. In
+     * a tone, the accent by default; a categorical tone tells people or
+     * groups apart. */
+
+    .avatar {
+        --tone: var(--accent);
+        --tone-text: var(--accent-text);
+        --tone-on: var(--accent-on);
+
+        display: inline-flex;
+        flex-shrink: 0;
+        align-items: center;
+        justify-content: center;
+        width: 34px;
+        height: 34px;
+        font: 600 14px / 1 var(--font-ui);
+        color: var(--tone-on);
+        background: linear-gradient(
+            135deg,
+            color-mix(in srgb, var(--tone) 80%, white),
+            var(--tone) 60%
+        );
+        border-radius: 50%;
+    }
+
+    .avatar--square {
+        width: 42px;
+        height: 42px;
+        font: 500 16px / 1 var(--font-ui);
+        border-radius: var(--radius-md);
+    }
+
+    /* A picture, where there is one, fills the shape in place of the
+     * initials. */
+    .avatar > img {
+        display: block;
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        border-radius: inherit;
+    }
+
+    /* ── Card ──────────────────────────────────────────────────────────
+     *
+     * A surface on the page. `--empty` is an empty state or an invitation
+     * to make something, outlined in dashes. `--raised` stands alone on a
+     * page. */
+
+    .card {
+        box-sizing: border-box;
+        color: var(--ink-1);
+        background: var(--surface-card);
+        border: 1px solid var(--border);
+        border-radius: var(--radius-xl);
+        box-shadow: var(--shadow-card);
+    }
+
+    .card--raised {
+        border-radius: var(--radius-2xl);
+        box-shadow: var(--shadow-raised);
+    }
+
+    .card--empty {
+        background: transparent;
+        border: 1px dashed var(--border-dashed);
+        box-shadow: none;
+    }
+
+    /* A line of text saying there is nothing here yet, and what to do. */
+    .empty {
+        margin: 0;
+        color: var(--ink-3);
+    }
+
+    /* ── Table ─────────────────────────────────────────────────────────
+     *
+     * Rows in a card. A row that goes somewhere is an `a` with the class
+     * `.table__row`, whole, ending in a chevron. The columns are the
+     * consumer's: set `--columns` on the table, as a track list. For
+     * tabular data in running text, use a plain `table` in a document. */
+
+    .table {
+        display: flex;
+        flex-direction: column;
+    }
+
+    .table__head,
+    .table__row {
+        display: grid;
+        grid-template-columns: var(--columns, 1fr);
+        gap: var(--space-4);
+        align-items: center;
+        padding: var(--space-3) var(--space-6);
+    }
+
+    .table__head {
+        padding-block: 10px;
+        font: var(--text-label);
+        color: var(--ink-3);
+        background: var(--surface-subtle);
+        border-block: 1px solid var(--divider);
+    }
+
+    .table__row {
+        min-height: 60px;
+        box-sizing: border-box;
+        color: var(--ink-1);
+        text-decoration: none;
+        border-bottom: 1px solid var(--divider);
+        transition: background var(--dur-ui) var(--ease-out);
+    }
+
+    .table__row:last-child {
+        border-bottom: 0;
+    }
+
+    a.table__row:hover {
+        background: var(--surface-subtle);
+    }
+
+    .chevron {
+        color: var(--ink-4);
+    }
+
+    /* ── Menu ──────────────────────────────────────────────────────────
+     *
+     * A panel of actions or destinations, one `.menu__item` each. Works as
+     * a `popover`; where it opens is the consumer's to say. `aria-current`
+     * or `aria-checked="true"` marks where you are. Destructive items,
+     * `--danger`, go last, after a separator. */
+
+    .menu {
+        box-sizing: border-box;
+        min-width: 200px;
+        margin: 0;
+        padding: 6px;
+        color: var(--ink-1);
+        background: var(--surface-card);
+        border: 1px solid var(--border);
+        border-radius: 12px;
+        box-shadow: var(--shadow-float);
+    }
+
+    .menu__item {
+        box-sizing: border-box;
+        display: flex;
+        align-items: center;
+        gap: 10px;
+        width: 100%;
+        min-height: 36px;
+        padding: 0 10px;
+        font: 400 14px / 1.3 var(--font-ui);
+        color: inherit;
+        text-align: left;
+        text-decoration: none;
+        background: transparent;
+        border: 0;
+        border-radius: var(--radius-sm);
+        cursor: pointer;
+    }
+
+    .menu__item:hover,
+    .menu__item:focus-visible {
+        background: var(--fill-muted);
+        outline-offset: -2px;
+    }
+
+    .menu__item[aria-current]:not([aria-current="false"]),
+    .menu__item[aria-checked="true"] {
+        font-weight: 500;
+        color: var(--accent-text);
+    }
+
+    .menu__item:disabled {
+        color: var(--ink-disabled);
+        background: transparent;
+        cursor: not-allowed;
+    }
+
+    .menu__item--danger {
+        color: var(--tone-text);
+    }
+
+    .menu__item--danger:hover {
+        background: color-mix(in srgb, var(--tone) var(--mix-soft), transparent);
+    }
+
+    .menu__item .glyph {
+        width: 16px;
+        height: 16px;
+        color: var(--ink-3);
+    }
+
+    .menu__item--danger .glyph {
+        color: inherit;
+    }
+
+    .menu__hint {
+        margin-left: auto;
+        font: var(--text-mono-sm);
+        color: var(--ink-3);
+    }
+
+    .menu__separator {
+        height: 1px;
+        margin: 6px 4px;
+        background: var(--divider);
+        border: 0;
+    }
+
+    .menu__heading {
+        margin: 0;
+        padding: 8px 10px 4px;
+        font: var(--text-label);
+        color: var(--ink-3);
+    }
+
+    /* A menu with nothing in it says so in the place of its items, as
+     * tall as one of them. */
+    .menu__empty {
+        box-sizing: border-box;
+        display: flex;
+        align-items: center;
+        min-height: 36px;
+        margin: 0;
+        padding: 0 10px;
+        font: 400 var(--step-2) / 1.3 var(--font-ui);
+        color: var(--ink-3);
+    }
+
+    /* ── Disclosure ────────────────────────────────────────────────────
+     *
+     * On a `details`: what is only wanted now and then waits behind its
+     * summary, which leads with a chevron. Everything in it is inset as far
+     * as the summary, by `--disclosure-inset`; on a `.card` that is the
+     * card's own inset. */
+
+    .disclosure {
+        --disclosure-inset: 16px;
+        --disclosure-block: 12px;
+    }
+
+    .card.disclosure {
+        --disclosure-inset: 24px;
+        --disclosure-block: 16px;
+    }
+
+    .disclosure > summary {
+        display: flex;
+        align-items: center;
+        gap: 10px;
+        padding: var(--disclosure-block) var(--disclosure-inset);
+        font-weight: 500;
+        list-style: none;
+        cursor: pointer;
+    }
+
+    .disclosure > summary::-webkit-details-marker {
+        display: none;
+    }
+
+    .disclosure > summary::before {
+        flex-shrink: 0;
+        width: 7px;
+        height: 7px;
+        content: "";
+        border-right: 1.5px solid var(--ink-3);
+        border-bottom: 1.5px solid var(--ink-3);
+        transform: rotate(-45deg);
+        transition: transform var(--dur-ui) var(--ease-out);
+    }
+
+    .disclosure[open] > summary::before {
+        transform: rotate(45deg);
+    }
+
+    .disclosure > :not(summary) {
+        margin-right: var(--disclosure-inset);
+        margin-left: var(--disclosure-inset);
+    }
+
+    .disclosure > :not(summary) + :not(summary) {
+        margin-top: var(--space-2);
+    }
+
+    .disclosure > :last-child:not(summary) {
+        margin-bottom: var(--disclosure-inset);
+    }
+
+    /* ── Dialog ────────────────────────────────────────────────────────
+     *
+     * On a `dialog` opened with `showModal()`: a title in a sentence, what
+     * will happen, and the buttons at the right, the exact verb last. */
+
+    .dialog {
+        box-sizing: border-box;
+        width: min(520px, calc(100vw - 32px));
+        max-height: calc(100vh - 64px);
+        padding: 0;
+        color: var(--ink-1);
+        background: var(--surface-card);
+        border: 0;
+        border-radius: var(--radius-xl);
+        box-shadow: var(--shadow-float);
+    }
+
+    /* A dialog takes the focus itself when opened; the ring is for its
+     * controls. */
+    .dialog:focus {
+        outline: none;
+    }
+
+    .dialog::backdrop {
+        background: color-mix(in srgb, var(--navy-950) 45%, transparent);
+    }
+
+    .dialog__body {
+        display: flex;
+        flex-direction: column;
+        gap: var(--space-4);
+        padding: var(--space-6);
+    }
+
+    .dialog__title {
+        margin: 0;
+        font: var(--text-heading);
+    }
+
+    .dialog__text {
+        margin: 0;
+        font: var(--text-meta);
+        color: var(--ink-2);
+    }
+
+    .dialog__actions {
+        display: flex;
+        justify-content: flex-end;
+        gap: var(--space-2);
+        padding-top: var(--space-2);
+    }
+
+    /* ── Message ───────────────────────────────────────────────────────
+     *
+     * Anything said to the person about what happened or what to keep in
+     * mind, in an intent: `--danger`, `--warning`, `--success`, `--info`,
+     * or neutral by default. It carries a glyph first, then its words in
+     * `.message__text`, then an optional action and `.message__close`. The
+     * words can always be selected, and links in them are underlined in
+     * the message's colour. */
+
+    .message {
+        --tone: var(--neutral);
+        --tone-text: var(--neutral-text);
+        --tone-on: var(--neutral-on);
+
+        box-sizing: border-box;
+        display: flex;
+        align-items: flex-start;
+        gap: var(--space-2);
+        min-width: 0;
+        margin: 0;
+        padding: 10px 12px 10px 14px;
+        font: var(--text-meta);
+        color: var(--tone-text);
+        background: color-mix(in srgb, var(--tone) var(--mix-soft), var(--surface-card));
+        border: 1px solid color-mix(in srgb, var(--tone) var(--mix-border), transparent);
+        border-radius: var(--radius-md);
+        -webkit-user-select: text;
+        user-select: text;
+    }
+
+    /* The glyph sits on the first line of the words, in the tone. */
+    .message > .glyph {
+        margin-top: 1px;
+        color: var(--tone);
+    }
+
+    .message__text {
+        flex: 1;
+        min-width: 0;
+        margin: 0;
+        overflow-wrap: anywhere;
+        cursor: text;
+        -webkit-user-select: text;
+        user-select: text;
+    }
+
+    .message__text a,
+    .message .button--link {
+        color: inherit;
+        text-decoration: underline;
+        text-underline-offset: 2px;
+    }
+
+    .message .button--link {
+        flex-shrink: 0;
+        font-weight: 600;
+    }
+
+    .message__close {
+        display: flex;
+        flex-shrink: 0;
+        align-items: center;
+        justify-content: center;
+        width: 22px;
+        height: 22px;
+        margin: -1px -4px -1px 0;
+        padding: 0;
+        color: inherit;
+        background: transparent;
+        border: 0;
+        border-radius: var(--radius-xs);
+        opacity: 0.7;
+        cursor: pointer;
+    }
+
+    .message__close:hover {
+        opacity: 1;
+        background: color-mix(in srgb, currentColor 10%, transparent);
+    }
+
+    /* ── Toast ─────────────────────────────────────────────────────────
+     *
+     * A message raised over everything else, on `.message`: it floats, and
+     * when it goes away by itself `.toast__time` shows how long it has
+     * left, from `--toast-life`. The time stops while the pointer is over
+     * it or focus is in it, so it can be read and copied. Where it sits is
+     * the consumer's to say. */
+
+    .toast {
+        position: relative;
+        max-width: min(560px, calc(100vw - 32px));
+        overflow: hidden;
+        box-shadow: var(--shadow-float);
+    }
+
+    .toast__time {
+        position: absolute;
+        right: 0;
+        bottom: 0;
+        left: 0;
+        height: 3px;
+        background: var(--tone);
+        opacity: 0.6;
+        transform-origin: left;
+        animation: stemma-toast-time var(--toast-life, 8s) linear forwards;
+    }
+
+    .toast:hover .toast__time,
+    .toast:focus-within .toast__time {
+        animation-play-state: paused;
+    }
+
+    @keyframes stemma-toast-time {
+        from {
+            transform: scaleX(1);
+        }
+
+        to {
+            transform: scaleX(0);
+        }
+    }
+
+    /* ── Tooltip ───────────────────────────────────────────────────────
+     *
+     * Dark in both appearances, small, for icon-only buttons; with the
+     * shortcut when there is one. */
+
+    .tooltip {
+        box-sizing: border-box;
+        padding: 5px 8px;
+        font: 400 var(--step-2) / 1.3 var(--font-ui);
+        color: var(--on-dark-1);
+        white-space: nowrap;
+        background: var(--navy-800);
+        border-radius: var(--radius-xs);
+        pointer-events: none;
+    }
+
+    .tooltip kbd {
+        margin-left: 6px;
+        font: inherit;
+        color: var(--on-dark-3);
+    }
+
+    /* ── Segmented control ─────────────────────────────────────────────
+     *
+     * Two or three views of one thing. Each option is a button with
+     * `aria-pressed`. */
+
+    .segmented {
+        display: inline-flex;
+        gap: 2px;
+        padding: 3px;
+        background: var(--fill-muted);
+        border-radius: 12px;
+    }
+
+    .segmented > button {
+        display: inline-flex;
+        align-items: center;
+        gap: 8px;
+        height: calc(var(--control-height) - 6px);
+        padding: 0 14px;
+        font: 500 var(--control-font) / 1 var(--font-ui);
+        color: var(--ink-3);
+        background: transparent;
+        border: 0;
+        border-radius: 9px;
+        cursor: pointer;
+        transition:
+            background var(--dur-ui) var(--ease-out),
+            color var(--dur-ui) var(--ease-out);
+    }
+
+    .segmented > button:hover {
+        color: var(--ink-1);
+    }
+
+    .segmented > button[aria-pressed="true"] {
+        color: var(--ink-1);
+        background: var(--surface-card);
+        box-shadow: 0 1px 2px rgb(20 40 90 / 10%);
+    }
+
+    .segmented .glyph {
+        width: 16px;
+        height: 16px;
+    }
+
+    /* ── Loading ───────────────────────────────────────────────────────
+     *
+     * A grey shape where content will be; a spinner only inside a button
+     * or beside a job. */
+
+    .skeleton {
+        background: var(--fill-muted);
+        border-radius: var(--radius-sm);
+    }
+
+    .spinner {
+        display: inline-block;
+        flex-shrink: 0;
+        width: 14px;
+        height: 14px;
+        border: 2px solid currentColor;
+        border-right-color: transparent;
+        border-radius: 50%;
+        animation: stemma-spin 0.8s linear infinite;
+    }
+
+    @keyframes stemma-spin {
+        to {
+            transform: rotate(1turn);
+        }
+    }
+
+    /* ── Highlight ─────────────────────────────────────────────────────
+     *
+     * A block set apart from the text around it by a rule in the margin
+     * and a faint fill of its tone: neutral by default. An optional
+     * `.highlight__title` leads it. What it holds, and what it is called,
+     * is the consumer's to say. */
+
+    .highlight {
+        --tone: var(--neutral);
+        --tone-text: var(--neutral-text);
+        --tone-on: var(--neutral-on);
+
+        box-sizing: border-box;
+        margin-block: 1em;
+        padding: 0.75em 1em;
+        background: color-mix(in srgb, var(--tone) calc(var(--mix-soft) / 2), transparent);
+        border-inline-start: 3px solid var(--tone);
+        border-radius: 0 var(--radius-sm) var(--radius-sm) 0;
+    }
+
+    .highlight > :first-child {
+        margin-top: 0;
+    }
+
+    .highlight > :last-child {
+        margin-bottom: 0;
+    }
+
+    .highlight__title {
+        margin: 0 0 0.35em;
+        font: 600 0.85em / 1.3 var(--font-ui);
+        color: var(--tone-text);
+    }
+
+    /* ── The wordmark ──────────────────────────────────────────────────
+     *
+     * "Stemma" set in the interface face, where the mark's own drawing
+     * cannot be used. */
+
+    .wordmark {
+        font-family: var(--font-ui);
+        font-weight: 500;
+        letter-spacing: -0.035em;
+        line-height: 1;
+    }
+
+    /* ── Floating ──────────────────────────────────────────────────────
+     *
+     * A menu or tooltip shown as a popover is placed by its element, not
+     * by the browser's defaults. */
+
+    .menu[popover],
+    .tooltip[popover] {
+        position: fixed;
+        inset: auto;
+        margin: 0;
+        overflow: visible;
+    }
+
+    .menu[popover] {
+        overflow: auto;
+    }
+
+    /* ── Toast region ──────────────────────────────────────────────────
+     *
+     * Where `<stemma-toast-region>` stacks its toasts, newest last. Where
+     * it sits on the page is the consumer's to say. */
+
+    stemma-toast-region {
+        display: flex;
+        flex-direction: column;
+        gap: var(--space-2);
+    }
+
+    /* ── The brand light ───────────────────────────────────────────────
+     *
+     * The light rising under a navy surface. `.brand-light` draws it with
+     * CSS alone, the brand gradient and grain, for pages without script;
+     * `<stemma-light>` draws it live, over the same. Its content sits above
+     * it, in the colours for dark surfaces. `--light-progress`, from 0 to
+     * 1, fades it. */
+
+    .brand-light {
+        position: relative;
+        isolation: isolate;
+        color: var(--on-dark-1);
+    }
+
+    .brand-light::before {
+        position: absolute;
+        inset: 0;
+        z-index: -1;
+        content: "";
+        background:
+            url("noise.svg") 0 0 / 180px,
+            var(--glow);
+        background-blend-mode: soft-light, normal;
+        opacity: calc(1 - var(--light-progress, 0));
+    }
+
+    stemma-light {
+        display: block;
+    }
+
+    stemma-light > canvas {
+        position: absolute;
+        inset: 0;
+        z-index: -1;
+        display: block;
+        width: 100%;
+        height: 100%;
+    }
+
+    /* ── The mark ──────────────────────────────────────────────────────
+     *
+     * `<stemma-mark>`: the symbol, 4em wide unless said otherwise. */
+
+    stemma-mark {
+        position: relative;
+        display: inline-block;
+        width: 4em;
+        aspect-ratio: 285.196 / 246.702;
+        vertical-align: middle;
+    }
+
+    stemma-mark > svg {
+        display: block;
+        width: 100%;
+        height: 100%;
+    }
+
+    stemma-mark > canvas {
+        position: absolute;
+        pointer-events: none;
+    }
+}
+
+
+/* ── verso-map.css ── */
+
+/* Verso's own variables, in Stemma's tokens.
+ *
+ * Verso defines these on `:root`, once for its HTML output (`verso-vars.css`),
+ * again for the manual genre and for the literate genre, which redefines
+ * them for the dark appearance. `html:root` outweighs `:root` wherever this
+ * stylesheet comes in the page, and the rules sit outside every cascade
+ * layer, as Verso's do. Each value is a token, so it follows the appearance
+ * by itself.
+ */
+
+html:root {
+    /* Typography. */
+    --verso-structure-font-family: var(--font-ui);
+    --verso-text-font-family: var(--font-prose);
+    --verso-code-font-family: var(--font-mono);
+
+    /* Text, surfaces and links. */
+    --verso-text-color: var(--ink-1);
+    --verso-structure-color: var(--ink-1);
+    --verso-code-color: var(--ink-1);
+    --verso-muted-color: var(--ink-3);
+    --verso-background-color: var(--surface-page);
+    --verso-surface-color: var(--surface-subtle);
+    --verso-border-color: var(--border);
+    --verso-link-color: var(--link);
+    --verso-link-visited-color: var(--link);
+    --verso-link-hover-bg: color-mix(in srgb, var(--accent) var(--mix-soft), transparent);
+    --verso-selected-color: color-mix(in srgb, var(--accent) var(--mix-soft), transparent);
+    --verso-current-bg: var(--accent);
+    --verso-current-fg: var(--accent-on);
+    --verso-breadcrumb-color: var(--ink-2);
+
+    /* Blocks. */
+    --verso-code-box-background-color: var(--surface-subtle);
+    --verso-code-box-border-color: var(--border);
+    --verso-inline-code-bg: var(--fill-muted);
+    --verso-blockquote-border-color: var(--border-strong);
+    --verso-blockquote-color: var(--ink-2);
+    --verso-docstring-border-color: var(--border);
+    --verso-imports-summary-color: var(--ink-3);
+    --verso-output-color: var(--ink-2);
+
+    /* The copy button and the menu button. */
+    --verso-copy-button-bg: var(--surface-card);
+    --verso-copy-button-border: var(--border-strong);
+    --verso-copy-button-color: var(--ink-3);
+    --verso-copy-button-hover-bg: var(--fill-muted);
+    --verso-copy-button-copied-color: var(--success-text);
+    --verso-hamburger-bg: var(--surface-card);
+    --verso-hamburger-border: var(--border-strong);
+    --verso-hamburger-bar-color: var(--ink-1);
+
+    /* The table of contents, in the manual genre. */
+    --verso-toc-background-color: var(--surface-subtle);
+    --verso-toc-text-color: var(--ink-2);
+    --verso-toc-border-color: var(--border);
+    --verso-toc-resize-handle-color: var(--ink-4);
+    --verso-toc-transition-time: var(--dur-ui);
+
+    /* Tooltips. */
+    --verso-tooltip-color: var(--ink-1);
+    --verso-tooltip-bg-color: var(--surface-card);
+    --verso-tooltip-border-color: var(--border-strong);
+    --verso-tooltip-separator-color: var(--divider);
+
+    /* Lean's messages, by severity: the info, warning and danger intents. */
+    --verso-code-info-hover-bg-color: color-mix(in srgb, var(--info) var(--mix-soft), transparent);
+    --verso-info-indicator-color: var(--info);
+    --verso-message-info-color: var(--info-text);
+    --verso-tooltip-info-border-color: var(--info);
+    --verso-output-info-color: var(--info);
+
+    --verso-code-warning-hover-bg-color: color-mix(
+        in srgb,
+        var(--warning) var(--mix-soft),
+        transparent
+    );
+    --verso-warning-indicator-color: var(--warning);
+    --verso-message-warning-color: var(--warning-text);
+    --verso-tooltip-warning-border-color: var(--warning);
+    --verso-output-warning-color: var(--warning);
+
+    --verso-code-error-hover-bg-color: color-mix(
+        in srgb,
+        var(--danger) var(--mix-soft),
+        transparent
+    );
+    --verso-error-indicator-color: var(--danger);
+    --verso-message-error-color: var(--danger-text);
+    --verso-tooltip-error-border-color: var(--danger);
+    --verso-output-error-color: var(--danger);
+
+    /* Proof states. */
+    --verso-tactic-state-color: var(--ink-1);
+    --verso-tactic-state-bg-color: var(--surface-card);
+    --verso-tactic-state-border-color: var(--border-strong);
+    --verso-tactic-toggle-color: var(--ink-4);
+    --verso-tactic-toggle-checked-color: var(--ink-3);
+
+    /* Highlighted Lean. */
+    --verso-code-const-color: var(--ink-1);
+    --verso-code-keyword-color: var(--accent-text);
+    --verso-code-keyword-weight: 700;
+    --verso-code-var-color: var(--ink-2);
+    --verso-code-var-style: italic;
+    --verso-code-hover-bg-color: var(--fill-muted);
+}

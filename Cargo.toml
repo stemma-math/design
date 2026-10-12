@@ -1,0 +1,10 @@
+# The Rust targets. Cargo finds each crate by name in a git dependency on
+# this repository.
+[workspace]
+resolver = "3"
+members = ["targets/rust", "targets/terminal"]
+
+[workspace.package]
+version = "0.0.0"
+edition = "2024"
+repository = "https://github.com/stemma-math/design"

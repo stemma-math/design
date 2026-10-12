@@ -1,0 +1,6 @@
+name = "StemmaDesign"
+version = "0.0.0"
+defaultTargets = ["StemmaDesign"]
+
+[[lean_lib]]
+name = "StemmaDesign"

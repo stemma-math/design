@@ -1,0 +1,208 @@
+/* The ground every other stylesheet stands on: the order of the cascade
+ * layers, the page's defaults, focus, reduced motion, and how a tone is
+ * chosen.
+ *
+ * Needs `tokens.css`. Every rule sits in a cascade layer, so a consumer's
+ * own unlayered rules win whatever their specificity.
+ */
+
+@layer stemma.base, stemma.document, stemma.components, stemma.tones;
+
+@layer stemma.base {
+    body {
+        margin: 0;
+        font: var(--text-body);
+        color: var(--ink-1);
+        background: var(--surface-page);
+    }
+
+    code,
+    kbd,
+    samp,
+    pre {
+        font-family: var(--font-mono);
+    }
+
+    /* Formulas are MathML, typeset by the browser in the math face. */
+    math {
+        font-family: var(--font-math);
+    }
+
+    ::selection {
+        background: color-mix(in srgb, var(--accent) 22%, transparent);
+    }
+
+    /* Focus is never removed. */
+    :focus-visible {
+        outline: 2px solid var(--focus-ring);
+        outline-offset: 2px;
+    }
+
+    /* A toast's time left is how long it stays, not motion to spare. */
+    @media (prefers-reduced-motion: reduce) {
+        *:not(.toast__time),
+        *::before,
+        *::after {
+            transition-duration: 1ms !important;
+            animation-duration: 1ms !important;
+            animation-iteration-count: 1 !important;
+        }
+    }
+}
+
+/* ── Tones ─────────────────────────────────────────────────────────────
+ *
+ * A tone-driven component reads three custom properties and derives the
+ * rest from them with `color-mix()`:
+ *
+ *   --tone       solid fills, borders, rules and glyphs;
+ *   --tone-text  text in the tone, on a surface or on the tone's soft fill;
+ *   --tone-on    text on a solid fill of the tone.
+ *
+ * A component sets its default tone on itself, and a modifier named after
+ * an intent or a categorical tone replaces it. These rules sit in the last
+ * layer, so a modifier wins over any component's default. Every pair is
+ * checked for contrast when the tokens are generated. */
+
+@layer stemma.tones {
+    .button--neutral,
+    .chip--neutral,
+    .count--neutral,
+    .avatar--neutral,
+    .message--neutral,
+    .highlight--neutral {
+        --tone: var(--neutral);
+        --tone-text: var(--neutral-text);
+        --tone-on: var(--neutral-on);
+    }
+
+    .button--accent,
+    .chip--accent,
+    .count--accent,
+    .avatar--accent,
+    .message--accent,
+    .highlight--accent {
+        --tone: var(--accent);
+        --tone-text: var(--accent-text);
+        --tone-on: var(--accent-on);
+    }
+
+    .button--success,
+    .chip--success,
+    .count--success,
+    .avatar--success,
+    .message--success,
+    .highlight--success {
+        --tone: var(--success);
+        --tone-text: var(--success-text);
+        --tone-on: var(--success-on);
+    }
+
+    .button--warning,
+    .chip--warning,
+    .count--warning,
+    .avatar--warning,
+    .message--warning,
+    .highlight--warning {
+        --tone: var(--warning);
+        --tone-text: var(--warning-text);
+        --tone-on: var(--warning-on);
+    }
+
+    .button--danger,
+    .chip--danger,
+    .count--danger,
+    .avatar--danger,
+    .message--danger,
+    .highlight--danger,
+    .menu__item--danger {
+        --tone: var(--danger);
+        --tone-text: var(--danger-text);
+        --tone-on: var(--danger-on);
+    }
+
+    .button--info,
+    .chip--info,
+    .count--info,
+    .avatar--info,
+    .message--info,
+    .highlight--info {
+        --tone: var(--info);
+        --tone-text: var(--info-text);
+        --tone-on: var(--info-on);
+    }
+
+    /* The categorical tones: no meaning, only telling things apart. */
+
+    .chip--indigo,
+    .count--indigo,
+    .avatar--indigo,
+    .highlight--indigo {
+        --tone: var(--tone-indigo);
+        --tone-text: var(--tone-indigo-text);
+        --tone-on: var(--tone-indigo-on);
+    }
+
+    .chip--teal,
+    .count--teal,
+    .avatar--teal,
+    .highlight--teal {
+        --tone: var(--tone-teal);
+        --tone-text: var(--tone-teal-text);
+        --tone-on: var(--tone-teal-on);
+    }
+
+    .chip--violet,
+    .count--violet,
+    .avatar--violet,
+    .highlight--violet {
+        --tone: var(--tone-violet);
+        --tone-text: var(--tone-violet-text);
+        --tone-on: var(--tone-violet-on);
+    }
+
+    .chip--ochre,
+    .count--ochre,
+    .avatar--ochre,
+    .highlight--ochre {
+        --tone: var(--tone-ochre);
+        --tone-text: var(--tone-ochre-text);
+        --tone-on: var(--tone-ochre-on);
+    }
+
+    .chip--magenta,
+    .count--magenta,
+    .avatar--magenta,
+    .highlight--magenta {
+        --tone: var(--tone-magenta);
+        --tone-text: var(--tone-magenta-text);
+        --tone-on: var(--tone-magenta-on);
+    }
+
+    .chip--olive,
+    .count--olive,
+    .avatar--olive,
+    .highlight--olive {
+        --tone: var(--tone-olive);
+        --tone-text: var(--tone-olive-text);
+        --tone-on: var(--tone-olive-on);
+    }
+
+    .chip--cerulean,
+    .count--cerulean,
+    .avatar--cerulean,
+    .highlight--cerulean {
+        --tone: var(--tone-cerulean);
+        --tone-text: var(--tone-cerulean-text);
+        --tone-on: var(--tone-cerulean-on);
+    }
+
+    .chip--rust,
+    .count--rust,
+    .avatar--rust,
+    .highlight--rust {
+        --tone: var(--tone-rust);
+        --tone-text: var(--tone-rust-text);
+        --tone-on: var(--tone-rust-on);
+    }
+}

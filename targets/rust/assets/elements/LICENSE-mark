@@ -1,0 +1,22 @@
+The Stemma mark: usage policy
+
+Copyright 2026 Enric Cosme Llópez & Mario Vago Marzal. All rights reserved.
+
+The Stemma mark is the symbol, the wordmark and every lockup of them, in any
+appearance, size or format, including the files in this directory and every
+file generated from them. It is not covered by the MIT licence that applies
+to the code in this repository, nor by the licences of the faces.
+
+You may use the mark, unmodified, to refer to Stemma: to link to it, to say
+that something works with it, or to write about it. When you do, do not
+suggest that the Stemma project endorses you or your work.
+
+Projects of the Stemma organization (`stemma-math`) may use the mark as
+their own.
+
+Any other use, including altering the mark, combining it with another mark,
+or using it as the name or logo of something that is not part of Stemma,
+needs written permission. Ask by opening an issue in `stemma-math/design`.
+
+This policy may be refined. The version in this repository at the time of
+use is the one that applies.

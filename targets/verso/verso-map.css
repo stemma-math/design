@@ -1,0 +1,107 @@
+/* Verso's own variables, in Stemma's tokens.
+ *
+ * Verso defines these on `:root`, once for its HTML output (`verso-vars.css`),
+ * again for the manual genre and for the literate genre, which redefines
+ * them for the dark appearance. `html:root` outweighs `:root` wherever this
+ * stylesheet comes in the page, and the rules sit outside every cascade
+ * layer, as Verso's do. Each value is a token, so it follows the appearance
+ * by itself.
+ */
+
+html:root {
+    /* Typography. */
+    --verso-structure-font-family: var(--font-ui);
+    --verso-text-font-family: var(--font-prose);
+    --verso-code-font-family: var(--font-mono);
+
+    /* Text, surfaces and links. */
+    --verso-text-color: var(--ink-1);
+    --verso-structure-color: var(--ink-1);
+    --verso-code-color: var(--ink-1);
+    --verso-muted-color: var(--ink-3);
+    --verso-background-color: var(--surface-page);
+    --verso-surface-color: var(--surface-subtle);
+    --verso-border-color: var(--border);
+    --verso-link-color: var(--link);
+    --verso-link-visited-color: var(--link);
+    --verso-link-hover-bg: color-mix(in srgb, var(--accent) var(--mix-soft), transparent);
+    --verso-selected-color: color-mix(in srgb, var(--accent) var(--mix-soft), transparent);
+    --verso-current-bg: var(--accent);
+    --verso-current-fg: var(--accent-on);
+    --verso-breadcrumb-color: var(--ink-2);
+
+    /* Blocks. */
+    --verso-code-box-background-color: var(--surface-subtle);
+    --verso-code-box-border-color: var(--border);
+    --verso-inline-code-bg: var(--fill-muted);
+    --verso-blockquote-border-color: var(--border-strong);
+    --verso-blockquote-color: var(--ink-2);
+    --verso-docstring-border-color: var(--border);
+    --verso-imports-summary-color: var(--ink-3);
+    --verso-output-color: var(--ink-2);
+
+    /* The copy button and the menu button. */
+    --verso-copy-button-bg: var(--surface-card);
+    --verso-copy-button-border: var(--border-strong);
+    --verso-copy-button-color: var(--ink-3);
+    --verso-copy-button-hover-bg: var(--fill-muted);
+    --verso-copy-button-copied-color: var(--success-text);
+    --verso-hamburger-bg: var(--surface-card);
+    --verso-hamburger-border: var(--border-strong);
+    --verso-hamburger-bar-color: var(--ink-1);
+
+    /* The table of contents, in the manual genre. */
+    --verso-toc-background-color: var(--surface-subtle);
+    --verso-toc-text-color: var(--ink-2);
+    --verso-toc-border-color: var(--border);
+    --verso-toc-resize-handle-color: var(--ink-4);
+    --verso-toc-transition-time: var(--dur-ui);
+
+    /* Tooltips. */
+    --verso-tooltip-color: var(--ink-1);
+    --verso-tooltip-bg-color: var(--surface-card);
+    --verso-tooltip-border-color: var(--border-strong);
+    --verso-tooltip-separator-color: var(--divider);
+
+    /* Lean's messages, by severity: the info, warning and danger intents. */
+    --verso-code-info-hover-bg-color: color-mix(in srgb, var(--info) var(--mix-soft), transparent);
+    --verso-info-indicator-color: var(--info);
+    --verso-message-info-color: var(--info-text);
+    --verso-tooltip-info-border-color: var(--info);
+    --verso-output-info-color: var(--info);
+
+    --verso-code-warning-hover-bg-color: color-mix(
+        in srgb,
+        var(--warning) var(--mix-soft),
+        transparent
+    );
+    --verso-warning-indicator-color: var(--warning);
+    --verso-message-warning-color: var(--warning-text);
+    --verso-tooltip-warning-border-color: var(--warning);
+    --verso-output-warning-color: var(--warning);
+
+    --verso-code-error-hover-bg-color: color-mix(
+        in srgb,
+        var(--danger) var(--mix-soft),
+        transparent
+    );
+    --verso-error-indicator-color: var(--danger);
+    --verso-message-error-color: var(--danger-text);
+    --verso-tooltip-error-border-color: var(--danger);
+    --verso-output-error-color: var(--danger);
+
+    /* Proof states. */
+    --verso-tactic-state-color: var(--ink-1);
+    --verso-tactic-state-bg-color: var(--surface-card);
+    --verso-tactic-state-border-color: var(--border-strong);
+    --verso-tactic-toggle-color: var(--ink-4);
+    --verso-tactic-toggle-checked-color: var(--ink-3);
+
+    /* Highlighted Lean. */
+    --verso-code-const-color: var(--ink-1);
+    --verso-code-keyword-color: var(--accent-text);
+    --verso-code-keyword-weight: 700;
+    --verso-code-var-color: var(--ink-2);
+    --verso-code-var-style: italic;
+    --verso-code-hover-bg-color: var(--fill-muted);
+}
