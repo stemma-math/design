@@ -6,15 +6,17 @@ no build step; link the stylesheets, or import them through a bundler.
 
 ## What it provides
 
-| File             | What it holds                                                                                                                                                                                         | Generated |
-| ---------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | --------- |
-| `index.css`      | Every file below, imported in order.                                                                                                                                                                  | No        |
-| `fonts.css`      | `@font-face` rules for New Computer Modern, New Computer Modern Math, Instrument Sans, Libertinus Sans and JuliaMono. Text faces are split by `unicode-range`; the math face and JuliaMono are whole. | Yes       |
-| `fonts/`         | The WOFF2 files `fonts.css` refers to, one folder per family, each with its licence.                                                                                                                  | Yes       |
-| `tokens.css`     | Every token as a custom property on `:root`: colour ramps, ink, surfaces, the six intents, the categorical tones, faces, type, space, radius, shadow, motion and density. Light and dark.             | Yes       |
-| `base.css`       | The order of the cascade layers, the page's defaults, focus, reduced motion, and the modifiers that choose a component's tone.                                                                        | No        |
-| `document.css`   | Typography for documents inside `.document`: headings, prose, lists, tables, quotations, code, figures, references and MathML formulas.                                                               | No        |
-| `components.css` | Button, field, input, choice, fieldset, chip, count, avatar, card, table, menu, disclosure, dialog, message, toast, tooltip, segmented control, skeleton, spinner, highlight and the wordmark.        | No        |
+| File             | What it holds                                                                                                                                                                                                                                                                                                     | Generated |
+| ---------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | --------- |
+| `index.css`      | Every file below, imported in order.                                                                                                                                                                                                                                                                              | No        |
+| `fonts.css`      | `@font-face` rules for New Computer Modern, New Computer Modern Math, Instrument Sans, Libertinus Sans and JuliaMono. Text faces are split by `unicode-range`; the math face and JuliaMono are whole.                                                                                                             | Yes       |
+| `fonts/`         | The WOFF2 files `fonts.css` refers to, one folder per family, each with its licence.                                                                                                                                                                                                                              | Yes       |
+| `tokens.css`     | Every token as a custom property on `:root`: colour ramps, ink, surfaces, the six intents, the categorical tones, faces, type, space, radius, shadow, motion and density. Light and dark.                                                                                                                         | Yes       |
+| `base.css`       | The order of the cascade layers, the page's defaults, focus, reduced motion, and the modifiers that choose a component's tone.                                                                                                                                                                                    | No        |
+| `document.css`   | Typography for documents inside `.document`: headings, prose, lists, tables, quotations, code, figures, references and MathML formulas.                                                                                                                                                                           | No        |
+| `components.css` | Button, field, input, choice, fieldset, chip, count, avatar, card, table, menu, disclosure, dialog, message, toast, tooltip, segmented control, skeleton, spinner, highlight and the wordmark. The brand light without script (`.brand-light`), and the layout of the elements in `@stemma-math/design-elements`. | No        |
+| `glyphs.svg`     | The line glyphs, one `symbol` each, on a 24-unit box.                                                                                                                                                                                                                                                             | Yes       |
+| `noise.svg`      | The grain `.brand-light` lays over the brand gradient.                                                                                                                                                                                                                                                            | Yes       |
 
 Generated files are produced from the repository's `source/` and must not
 be edited here.
@@ -62,6 +64,30 @@ Each tone is three tokens, `--{tone}`, `--{tone}-text` and `--{tone}-on`.
 A component derives its borders, soft fills and hover states from them
 with `color-mix()`, and every combination is checked for contrast in both
 appearances.
+
+### Glyphs
+
+Each glyph in `glyphs.svg` is drawn in the colour of its text, at 18px, or
+14px with `.glyph--small`. Give it a label when it stands alone, or hide it
+when words go with it:
+
+```html
+<svg class="glyph" aria-hidden="true"><use href="…/glyphs.svg#settings" /></svg>
+<button class="button button--icon" aria-label="Settings">
+  <svg class="glyph" aria-hidden="true"><use href="…/glyphs.svg#settings" /></svg>
+</button>
+```
+
+The names are the files in the repository's `source/glyphs/`: `add`,
+`alert`, `check`, `chevron-down`, `close`, `copy`, `done`, `info`,
+`settings`, `warning` and so on.
+
+### The brand light
+
+`.brand-light` on any element puts the brand light behind its content,
+as a gradient with grain: the form without script of the WebGL light that
+`<stemma-light>` draws. Text inside it takes the colours for dark
+surfaces. `--light-progress`, from 0 to 1, fades it.
 
 ### Cascade layers
 

@@ -13,9 +13,15 @@ label says.
 
 ## Targets
 
-| Target        | Package               | What it provides                                                                                                                                                                          |
-| ------------- | --------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| `targets/web` | `@stemma-math/design` | Plain CSS: the faces as split WOFF2 with `fonts.css`, every token as a custom property in light and dark, base styles, document typography and components. See its [README](targets/web). |
+| Target              | Package                        | What it provides                                                                                                                                                                                                             |
+| ------------------- | ------------------------------ | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `targets/web`       | `@stemma-math/design`          | Plain CSS: the faces with `fonts.css`, every token as a custom property in light and dark, base styles, document typography, components, the glyph sprite and the brand light without script. See its [README](targets/web). |
+| `targets/elements`  | `@stemma-math/design-elements` | Custom elements as plain ES modules: theme switch, copy button, dialog, toasts, tooltip, menu, segmented control, filter chips, the brand light and the live mark. See its [README](targets/elements).                       |
+| `targets/brand-kit` | files                          | Every mark (symbol, wordmark, lockups) for dark and light surfaces and in one colour, as SVG and PNG; favicons, home-screen and application icons (ICO, ICNS). See its [README](targets/brand-kit).                          |
+
+For a page kept in a single HTML file, `just bundle` writes one inline
+fragment with the stylesheets, the faces as base64 WOFF2 (the whole math
+face with `--math`), the glyph sprite and the chosen elements.
 
 ## Using a target
 
@@ -25,8 +31,8 @@ its own folder.
 
 - **npm.** Install the package tarball attached to a GitHub release, since
   npm cannot install a subdirectory of a git repository.
-- **Files.** Copy `targets/web` from a tagged version and serve it as it
-  is.
+- **Files.** Copy `targets/web`, `targets/elements` or
+  `targets/brand-kit` from a tagged version and use it as it is.
 
 ## Source
 
@@ -34,13 +40,14 @@ its own folder.
 | ---------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------- |
 | `source/tokens/` | Tokens in the Design Tokens Community Group format, by tier: `brand.json` (primitives), `semantic.json` (light), `themes/dark.json` and `density.json`. |
 | `source/fonts/`  | Each face as published upstream, with its licence and an `ORIGIN` note; `faces.json` lists the faces every target ships.                                |
-| `source/brand/`  | The mark, under its own usage policy.                                                                                                                   |
-| `scripts/`       | The generators: `tokens.mjs` (Style Dictionary) and `fonts.py` (fontTools).                                                                             |
+| `source/brand/`  | The drawn masters of the mark, the live mark's data, the grain texture, and `brand.json`, how the wordmark, lockups and icons are built.                |
+| `source/glyphs/` | One SVG per line glyph.                                                                                                                                 |
+| `scripts/`       | The generators: `tokens.mjs` (Style Dictionary), `fonts.py` (fontTools), `glyphs.py`, `brand.py` (HarfBuzz, fontTools, resvg, Pillow) and `bundle.mjs`. |
 
 ## Development
 
-The tools are Node, Python with `fontTools` and Brotli, `resvg` and
-`just`. The Nix flake's development shell provides them; without Nix,
+The tools are Node, Python with `fontTools`, Brotli, `uharfbuzz` and
+Pillow, `resvg` and `just`. The Nix flake's development shell provides them; without Nix,
 install them by hand.
 
 ```sh

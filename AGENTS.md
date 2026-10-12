@@ -33,22 +33,38 @@ This repository belongs to the Stemma organization (`stemma-math`).
     format, by tier (`brand.json`, `semantic.json`, `themes/dark.json`,
     `density.json`);
   - `source/fonts/`: each face as published upstream, with its licence and
-    an `ORIGIN` note;
-  - `source/brand/`: the mark, under its own usage policy.
+    an `ORIGIN` note, and `faces.json`, the faces every target ships;
+  - `source/brand/`: the drawn masters of the mark (`symbol-*.svg`), the
+    live mark's data, the grain texture and `brand.json`, which says how
+    the wordmark, lockups and icons are built from them; under the mark's
+    own usage policy;
+  - `source/glyphs/`: one SVG per line glyph, on a 24-unit box.
 - `targets/` holds one thin entrypoint per ecosystem. Each target keeps its
-  generated files inside its own directory and never refers outside it.
-  `targets/web` is the npm package `@stemma-math/design`.
-- `scripts/` holds the generators. Generated files are committed, and are
+  generated files inside its own directory and never refers outside it:
+  - `targets/web`: the npm package `@stemma-math/design`, plain CSS;
+  - `targets/elements`: the npm package `@stemma-math/design-elements`,
+    custom elements as plain ES modules with `.d.ts` types;
+  - `targets/brand-kit`: every mark and icon, as files.
+- `scripts/` holds the generators: `tokens.mjs`, `fonts.py`, `glyphs.py`
+  and `brand.py`, and `bundle.mjs`, which writes an inline bundle for a
+  single-file page on request. Generated files are committed, and are
   never edited by hand: change `source/` and run `just generate`.
 - `just check` fails while a generated file is out of date, while a colour
-  falls below its contrast requirement, or while a file is not formatted.
+  falls below its contrast requirement, while the inline bundle does not
+  hold together, or while a file is not formatted.
 - Nothing here knows a product's concepts. Tokens and components speak of
   intents (`neutral`, `accent`, `success`, `warning`, `danger`, `info`),
-  categorical tones, scales and document typography. Product layout and
-  labels belong to the products.
+  categorical tones, scales and document typography. Product layout,
+  choreography and labels belong to the products.
 - Font stacks name only the decided faces, then the generic family.
-- The tools are Node (Style Dictionary), Python with `fontTools` and
-  Brotli, `resvg` and `just`. `nix develop` provides them; without Nix,
-  install them by hand and run `npm ci` once.
+  JuliaMono ships exactly as upstream publishes it: its licence reserves
+  its name, so it is never subset or converted.
+- Elements have no build step and no framework. They draw with the classes
+  of `targets/web`, are usable by keyboard, keep ARIA state in step and
+  respect reduced motion.
+- The tools are Node (Style Dictionary), Python with `fontTools`, Brotli,
+  HarfBuzz (`uharfbuzz`) and Pillow, `resvg` and `just`. `nix develop`
+  provides them; without Nix, install them by hand and run `npm ci` once.
 - Code is MIT (`LICENSE`). Each face keeps its own licence beside it, and
-  the mark has its own usage policy in `source/brand/LICENSE`.
+  the mark has its own usage policy in `source/brand/LICENSE`, copied into
+  every target that carries the mark.
