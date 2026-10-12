@@ -1,0 +1,210 @@
+{
+  "$description": "Brand tokens: the primitives every other tier refers to. Colour ramps, faces and the scales for type, space, radius, shadow and motion. Nothing outside this repository should name a brand colour directly; it names the semantic token that says what the colour is for. The first level of every path is its category; the rest is the token's name.",
+  "color": {
+    "$type": "color",
+    "$description": "Ramps by hue. Steps run from 50, the lightest, to 950, the darkest. The neutral greys of ink and surfaces are defined in the semantic tier, since each is used once.",
+    "navy-950": {
+      "$value": "#030e29",
+      "$description": "The darkest brand navy, and the theme colour."
+    },
+    "navy-900": { "$value": "#030f2c" },
+    "navy-850": { "$value": "#04133a" },
+    "navy-800": { "$value": "#061a45" },
+    "navy-700": { "$value": "#0b2a66" },
+    "blue-700": { "$value": "#244a9e" },
+    "blue-600": { "$value": "#1a4f9e" },
+    "blue-500": {
+      "$value": "#2f5fd6",
+      "$description": "The brand blue."
+    },
+    "blue-400": { "$value": "#3f7fd4" },
+    "blue-300": { "$value": "#8cb0ff" },
+    "blue-200": { "$value": "#a9c3ff" },
+    "sky-300": { "$value": "#8fb6e8" },
+    "sky-200": { "$value": "#a8c9f0" },
+    "ice-100": { "$value": "#dbe7ff" },
+    "ice-50": { "$value": "#f4f8ff" },
+    "green-700": { "$value": "#1f6b47" },
+    "green-600": { "$value": "#2a7e4f" },
+    "green-300": { "$value": "#72d3a2" },
+    "amber-800": { "$value": "#8a4a06" },
+    "amber-600": { "$value": "#a06000" },
+    "amber-300": { "$value": "#f2b86a" },
+    "red-700": { "$value": "#b42318" },
+    "red-600": { "$value": "#c4362b" },
+    "red-300": { "$value": "#ff8f86" },
+    "cyan-800": { "$value": "#005374" },
+    "cyan-600": { "$value": "#0078a0" },
+    "cyan-200": { "$value": "#8ecceb" },
+    "indigo-700": { "$value": "#354a8a" },
+    "indigo-600": { "$value": "#506bbc" },
+    "indigo-200": { "$value": "#abc3ff" },
+    "teal-700": { "$value": "#005754" },
+    "teal-600": { "$value": "#007d77" },
+    "teal-200": { "$value": "#8bd0cb" },
+    "violet-700": { "$value": "#5a4083" },
+    "violet-600": { "$value": "#7f5fb3" },
+    "violet-200": { "$value": "#cfb9f9" },
+    "ochre-700": { "$value": "#6e4400" },
+    "ochre-600": { "$value": "#996400" },
+    "ochre-200": { "$value": "#e5bd87" },
+    "magenta-700": { "$value": "#783564" },
+    "magenta-600": { "$value": "#a5528c" },
+    "magenta-200": { "$value": "#f0b0da" },
+    "olive-700": { "$value": "#455300" },
+    "olive-600": { "$value": "#657612" },
+    "olive-200": { "$value": "#bbca8d" },
+    "cerulean-700": { "$value": "#00527a" },
+    "cerulean-600": { "$value": "#0076a8" },
+    "cerulean-200": { "$value": "#8ccbf1" },
+    "rust-700": { "$value": "#81371b" },
+    "rust-600": { "$value": "#b15433" },
+    "rust-200": { "$value": "#fab39a" }
+  },
+  "gradient": {
+    "glow": {
+      "$value": "radial-gradient(150% 48% at 50% 112%, rgba(168, 201, 240, .42) 0%, rgba(63, 127, 212, .30) 30%, rgba(10, 36, 88, 0) 64%), linear-gradient(180deg, {color.navy-900} 0%, {color.navy-800} 100%)",
+      "$description": "The brand light rising from below a navy surface. The same in both appearances."
+    }
+  },
+  "font": {
+    "$type": "fontFamily",
+    "$description": "Each stack names only the decided face, and its fallback face where it has one, then the generic family.",
+    "font-prose": {
+      "$value": ["New Computer Modern", "serif"],
+      "$description": "Running text in documents: New Computer Modern, Book cut."
+    },
+    "font-math": {
+      "$value": ["New Computer Modern Math", "math"],
+      "$description": "Formulas, typeset by the browser from MathML."
+    },
+    "font-ui": {
+      "$value": ["Instrument Sans", "Libertinus Sans", "sans-serif"],
+      "$description": "The interface, document headings and the wordmark. Libertinus Sans supplies the Greek and symbols Instrument Sans lacks."
+    },
+    "font-mono": {
+      "$value": ["JuliaMono", "monospace"],
+      "$description": "Code and identifiers."
+    }
+  },
+  "size": {
+    "$type": "dimension",
+    "$description": "The type scale. A role or a document element takes one of these steps.",
+    "step-1": { "$value": "12px" },
+    "step-2": { "$value": "13px" },
+    "step-3": { "$value": "15px" },
+    "step-4": { "$value": "16px" },
+    "step-5": { "$value": "19px" },
+    "step-6": { "$value": "22px" },
+    "step-7": { "$value": "27px" },
+    "step-8": { "$value": "34px" }
+  },
+  "text": {
+    "$description": "Text roles, as `font` shorthands.",
+    "text-display": {
+      "$value": "600 {size.step-8}/1.1 {font.font-ui}",
+      "$description": "The largest title on a page, with letter-spacing -0.02em."
+    },
+    "text-title": {
+      "$value": "600 {size.step-6}/1.2 {font.font-ui}",
+      "$description": "A page's or a dialog's title."
+    },
+    "text-heading": {
+      "$value": "600 {size.step-5}/1.3 {font.font-ui}",
+      "$description": "A section heading in an interface, with letter-spacing -0.01em."
+    },
+    "text-body": {
+      "$value": "400 {size.step-4}/1.5 {font.font-ui}"
+    },
+    "text-meta": {
+      "$value": "400 14px/1.45 {font.font-ui}",
+      "$description": "Secondary text: dates, counts, descriptions."
+    },
+    "text-small": {
+      "$value": "500 {size.step-2}/1.4 {font.font-ui}"
+    },
+    "text-label": {
+      "$value": "500 {size.step-1}/1.3 {font.font-ui}",
+      "$description": "Chips, table headers, section labels. Sentence case, never uppercase."
+    },
+    "text-mono-sm": {
+      "$value": "400 {size.step-1}/1.4 {font.font-mono}"
+    },
+    "text-prose": {
+      "$value": "400 {size.step-5}/1.55 {font.font-prose}",
+      "$description": "Running text in documents."
+    }
+  },
+  "space": {
+    "$type": "dimension",
+    "$description": "A 4px grid.",
+    "space-1": { "$value": "4px" },
+    "space-2": { "$value": "8px" },
+    "space-3": { "$value": "12px" },
+    "space-4": { "$value": "16px" },
+    "space-5": { "$value": "20px" },
+    "space-6": { "$value": "24px" },
+    "space-8": { "$value": "32px" },
+    "space-11": { "$value": "44px" },
+    "space-12": { "$value": "48px" },
+    "space-14": { "$value": "56px" },
+    "space-16": { "$value": "64px" }
+  },
+  "radius": {
+    "$type": "dimension",
+    "radius-xs": {
+      "$value": "6px",
+      "$description": "Tiny badges and tooltips."
+    },
+    "radius-sm": {
+      "$value": "8px",
+      "$description": "Icon buttons and small controls."
+    },
+    "radius-md": {
+      "$value": "10px",
+      "$description": "Buttons, fields and menu items."
+    },
+    "radius-lg": {
+      "$value": "14px",
+      "$description": "Inner cards and floating bars."
+    },
+    "radius-xl": {
+      "$value": "16px",
+      "$description": "Cards and dialogs."
+    },
+    "radius-2xl": {
+      "$value": "22px",
+      "$description": "A large card standing alone on a page."
+    },
+    "radius-pill": { "$value": "999px" }
+  },
+  "shadow": {
+    "shadow-card": {
+      "$value": "0 1px 2px rgba(20, 40, 90, .04)"
+    },
+    "shadow-float": {
+      "$value": "0 10px 30px -12px rgba(20, 40, 90, .25)",
+      "$description": "Floating bars, popovers, menus, dialogs."
+    },
+    "shadow-raised": {
+      "$value": "0 1px 2px rgba(20, 40, 90, .04), 0 18px 50px -24px rgba(30, 60, 130, .18)",
+      "$description": "A card standing alone on a page."
+    }
+  },
+  "motion": {
+    "dur-press": {
+      "$type": "duration",
+      "$value": "120ms",
+      "$description": "Buttons scale to .96 while pressed."
+    },
+    "dur-ui": {
+      "$type": "duration",
+      "$value": "180ms",
+      "$description": "Hovers and popovers."
+    },
+    "ease-out": {
+      "$type": "cubicBezier",
+      "$value": [0.22, 1, 0.36, 1]
+    }
+  }
+}

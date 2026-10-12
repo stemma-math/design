@@ -1,0 +1,23 @@
+{
+  "$description": "How large controls are. Comfortable is the default; a surface opts into compact with `data-density=\"compact\"`, and back with `data-density=\"comfortable\"`. The first level of every path is the density; the rest is the token's name.",
+  "comfortable": {
+    "$type": "dimension",
+    "control-height": { "$value": "40px" },
+    "control-small-height": { "$value": "32px" },
+    "control-font": { "$value": "{size.step-3}" },
+    "control-small-font": { "$value": "{size.step-2}" },
+    "control-block": { "$value": "{space.space-2}" },
+    "control-inline": { "$value": "{space.space-3}" },
+    "button-inline": { "$value": "{space.space-4}" }
+  },
+  "compact": {
+    "$type": "dimension",
+    "control-height": { "$value": "34px" },
+    "control-small-height": { "$value": "28px" },
+    "control-font": { "$value": "14px" },
+    "control-small-font": { "$value": "{size.step-1}" },
+    "control-block": { "$value": "6px" },
+    "control-inline": { "$value": "10px" },
+    "button-inline": { "$value": "14px" }
+  }
+}

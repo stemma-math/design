@@ -1,0 +1,47 @@
+{
+  "$description": "The dark appearance: semantic tokens redefined for navy-black surfaces. Only semantic tokens are redefined here, and a token left out keeps its light value. The navy surfaces and the text on them are already dark, so they are the same in both. The generator checks every requirement of `semantic.json` again with these values.",
+  "color": {
+    "$type": "color",
+    "surface-page": { "$value": "#0a1120" },
+    "surface-card": { "$value": "#111a2c" },
+    "surface-subtle": { "$value": "#151f33" },
+    "surface-field": { "$value": "#0d1526" },
+    "fill-muted": { "$value": "#1b263d" },
+    "fill-muted-strong": { "$value": "#233049" },
+    "border": { "$value": "#222e46" },
+    "border-strong": { "$value": "#2d3a56" },
+    "border-dashed": { "$value": "#3a4866" },
+    "divider": { "$value": "#1b263d" },
+    "ink-1": { "$value": "#e8eef9" },
+    "ink-2": { "$value": "#c3cde0" },
+    "ink-3": { "$value": "#9ba7be" },
+    "ink-4": { "$value": "#6f7c96" },
+    "ink-placeholder": { "$value": "#8591a9" },
+    "ink-disabled": { "$value": "#56627a" },
+    "link": {
+      "$value": "{color.blue-300}",
+      "$description": "Lighter than the accent, which is too dark to read as text here."
+    },
+    "focus-ring": { "$value": "#6f9cff" },
+    "neutral": { "$value": "#656f84" },
+    "neutral-text": { "$value": "#c3cde0" },
+    "accent-text": { "$value": "{color.blue-200}" },
+    "success-text": { "$value": "{color.green-300}" },
+    "warning-text": { "$value": "{color.amber-300}" },
+    "danger": { "$value": "{color.red-600}" },
+    "danger-text": { "$value": "{color.red-300}" },
+    "info-text": { "$value": "{color.cyan-200}" },
+    "tone-indigo-text": { "$value": "{color.indigo-200}" },
+    "tone-teal-text": { "$value": "{color.teal-200}" },
+    "tone-violet-text": { "$value": "{color.violet-200}" },
+    "tone-ochre-text": { "$value": "{color.ochre-200}" },
+    "tone-magenta-text": { "$value": "{color.magenta-200}" },
+    "tone-olive-text": { "$value": "{color.olive-200}" },
+    "tone-cerulean-text": { "$value": "{color.cerulean-200}" },
+    "tone-rust-text": { "$value": "{color.rust-200}" }
+  },
+  "mix": {
+    "mix-soft": { "$value": "20%" },
+    "mix-border": { "$value": "50%" }
+  }
+}

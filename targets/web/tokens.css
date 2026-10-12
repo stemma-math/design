@@ -1,0 +1,334 @@
+/* Generated from source/tokens by scripts/tokens.mjs. Do not edit. */
+
+:root {
+    color-scheme: light;
+    /* The darkest brand navy, and the theme colour. */
+    --navy-950: #030e29;
+    --navy-900: #030f2c;
+    --navy-850: #04133a;
+    --navy-800: #061a45;
+    --navy-700: #0b2a66;
+    --blue-700: #244a9e;
+    --blue-600: #1a4f9e;
+    /* The brand blue. */
+    --blue-500: #2f5fd6;
+    --blue-400: #3f7fd4;
+    --blue-300: #8cb0ff;
+    --blue-200: #a9c3ff;
+    --sky-300: #8fb6e8;
+    --sky-200: #a8c9f0;
+    --ice-100: #dbe7ff;
+    --ice-50: #f4f8ff;
+    --green-700: #1f6b47;
+    --green-600: #2a7e4f;
+    --green-300: #72d3a2;
+    --amber-800: #8a4a06;
+    --amber-600: #a06000;
+    --amber-300: #f2b86a;
+    --red-700: #b42318;
+    --red-600: #c4362b;
+    --red-300: #ff8f86;
+    --cyan-800: #005374;
+    --cyan-600: #0078a0;
+    --cyan-200: #8ecceb;
+    --indigo-700: #354a8a;
+    --indigo-600: #506bbc;
+    --indigo-200: #abc3ff;
+    --teal-700: #005754;
+    --teal-600: #007d77;
+    --teal-200: #8bd0cb;
+    --violet-700: #5a4083;
+    --violet-600: #7f5fb3;
+    --violet-200: #cfb9f9;
+    --ochre-700: #6e4400;
+    --ochre-600: #996400;
+    --ochre-200: #e5bd87;
+    --magenta-700: #783564;
+    --magenta-600: #a5528c;
+    --magenta-200: #f0b0da;
+    --olive-700: #455300;
+    --olive-600: #657612;
+    --olive-200: #bbca8d;
+    --cerulean-700: #00527a;
+    --cerulean-600: #0076a8;
+    --cerulean-200: #8ccbf1;
+    --rust-700: #81371b;
+    --rust-600: #b15433;
+    --rust-200: #fab39a;
+    /* The brand light rising from below a navy surface. The same in both appearances. */
+    --glow: radial-gradient(150% 48% at 50% 112%, rgba(168, 201, 240, .42) 0%, rgba(63, 127, 212, .30) 30%, rgba(10, 36, 88, 0) 64%), linear-gradient(180deg, var(--navy-900) 0%, var(--navy-800) 100%);
+    /* Running text in documents: New Computer Modern, Book cut. */
+    --font-prose: 'New Computer Modern', serif;
+    /* Formulas, typeset by the browser from MathML. */
+    --font-math: 'New Computer Modern Math', math;
+    /* The interface, document headings and the wordmark. Libertinus Sans supplies the Greek and symbols Instrument Sans lacks. */
+    --font-ui: 'Instrument Sans', 'Libertinus Sans', sans-serif;
+    /* Code and identifiers. */
+    --font-mono: JuliaMono, monospace;
+    --step-1: 12px;
+    --step-2: 13px;
+    --step-3: 15px;
+    --step-4: 16px;
+    --step-5: 19px;
+    --step-6: 22px;
+    --step-7: 27px;
+    --step-8: 34px;
+    /* The largest title on a page, with letter-spacing -0.02em. */
+    --text-display: 600 var(--step-8)/1.1 var(--font-ui);
+    /* A page's or a dialog's title. */
+    --text-title: 600 var(--step-6)/1.2 var(--font-ui);
+    /* A section heading in an interface, with letter-spacing -0.01em. */
+    --text-heading: 600 var(--step-5)/1.3 var(--font-ui);
+    --text-body: 400 var(--step-4)/1.5 var(--font-ui);
+    /* Secondary text: dates, counts, descriptions. */
+    --text-meta: 400 14px/1.45 var(--font-ui);
+    --text-small: 500 var(--step-2)/1.4 var(--font-ui);
+    /* Chips, table headers, section labels. Sentence case, never uppercase. */
+    --text-label: 500 var(--step-1)/1.3 var(--font-ui);
+    --text-mono-sm: 400 var(--step-1)/1.4 var(--font-mono);
+    /* Running text in documents. */
+    --text-prose: 400 var(--step-5)/1.55 var(--font-prose);
+    --space-1: 4px;
+    --space-2: 8px;
+    --space-3: 12px;
+    --space-4: 16px;
+    --space-5: 20px;
+    --space-6: 24px;
+    --space-8: 32px;
+    --space-11: 44px;
+    --space-12: 48px;
+    --space-14: 56px;
+    --space-16: 64px;
+    /* Tiny badges and tooltips. */
+    --radius-xs: 6px;
+    /* Icon buttons and small controls. */
+    --radius-sm: 8px;
+    /* Buttons, fields and menu items. */
+    --radius-md: 10px;
+    /* Inner cards and floating bars. */
+    --radius-lg: 14px;
+    /* Cards and dialogs. */
+    --radius-xl: 16px;
+    /* A large card standing alone on a page. */
+    --radius-2xl: 22px;
+    --radius-pill: 999px;
+    --shadow-card: 0 1px 2px rgba(20, 40, 90, .04);
+    /* Floating bars, popovers, menus, dialogs. */
+    --shadow-float: 0 10px 30px -12px rgba(20, 40, 90, .25);
+    /* A card standing alone on a page. */
+    --shadow-raised: 0 1px 2px rgba(20, 40, 90, .04), 0 18px 50px -24px rgba(30, 60, 130, .18);
+    /* Buttons scale to .96 while pressed. */
+    --dur-press: 120ms;
+    /* Hovers and popovers. */
+    --dur-ui: 180ms;
+    --ease-out: cubic-bezier(0.22, 1, 0.36, 1);
+    /* The page, behind cards. */
+    --surface-page: #f3f5fa;
+    /* Cards, dialogs, menus. */
+    --surface-card: #ffffff;
+    /* Table header rows, hovered rows. */
+    --surface-subtle: #f8fafd;
+    /* Inputs at rest; the card colour when focused. */
+    --surface-field: #f7f9fc;
+    /* Hovered quiet buttons, segmented control tracks, skeletons. */
+    --fill-muted: #eef1f6;
+    /* Counts. */
+    --fill-muted-strong: #e6ebf4;
+    --border: #e3e8f1;
+    /* Outlined buttons and inputs. */
+    --border-strong: #d7deea;
+    /* Empty states and something missing. */
+    --border-dashed: #c6d0e2;
+    --divider: #eef1f6;
+    /* Text. */
+    --ink-1: #111a2e;
+    /* Secondary headings, quiet controls. */
+    --ink-2: #3c4557;
+    /* Meta text and captions. */
+    --ink-3: #5b6477;
+    /* Icons only (chevrons, drag handles): too faint for text. */
+    --ink-4: #838c9f;
+    /* Placeholders in inputs. */
+    --ink-placeholder: #697185;
+    /* Disabled controls. Exempt from contrast requirements. */
+    --ink-disabled: #a3abbb;
+    /* Links and link buttons. */
+    --link: var(--blue-500);
+    /* A 2px outline, 2px from every focusable element. */
+    --focus-ring: var(--blue-500);
+    /* Text on navy surfaces, in both appearances: names, the current item. */
+    --on-dark-1: #f4f8ff;
+    /* Items on navy. */
+    --on-dark-2: #c6d4ee;
+    /* Secondary text on navy. */
+    --on-dark-3: #9fb3d6;
+    /* Labels and identifiers on navy. */
+    --on-dark-4: #8fa6cc;
+    --on-dark-line: rgba(170, 200, 240, .18);
+    --on-dark-fill: rgba(255, 255, 255, .05);
+    /* The current item on navy. */
+    --on-dark-active: rgba(143, 182, 232, .16);
+    /* A card raised on navy. */
+    --on-dark-raised: rgba(3, 15, 44, .62);
+    /* The neutral intent: something with no judgement attached. */
+    --neutral: #5b6477;
+    --neutral-text: #3c4557;
+    --neutral-on: #ffffff;
+    /* The accent intent: the action a view is for, selection, what is current. */
+    --accent: var(--blue-500);
+    --accent-text: var(--blue-700);
+    --accent-on: #ffffff;
+    /* The success intent: something done or in good order. */
+    --success: var(--green-600);
+    --success-text: var(--green-700);
+    --success-on: #ffffff;
+    /* The warning intent: something to keep in mind before going on. */
+    --warning: var(--amber-600);
+    --warning-text: var(--amber-800);
+    --warning-on: #ffffff;
+    /* The danger intent: errors and destructive actions. */
+    --danger: var(--red-700);
+    --danger-text: var(--red-700);
+    --danger-on: #ffffff;
+    /* The info intent: something worth knowing, with no action needed. */
+    --info: var(--cyan-600);
+    --info-text: var(--cyan-800);
+    --info-on: #ffffff;
+    /* The categorical tones tell things apart by colour without judging them. In order: indigo, teal, violet, ochre, magenta, olive, cerulean, rust. A label always goes with the colour. */
+    --tone-indigo: var(--indigo-600);
+    --tone-indigo-text: var(--indigo-700);
+    --tone-indigo-on: #ffffff;
+    --tone-teal: var(--teal-600);
+    --tone-teal-text: var(--teal-700);
+    --tone-teal-on: #ffffff;
+    --tone-violet: var(--violet-600);
+    --tone-violet-text: var(--violet-700);
+    --tone-violet-on: #ffffff;
+    --tone-ochre: var(--ochre-600);
+    --tone-ochre-text: var(--ochre-700);
+    --tone-ochre-on: #ffffff;
+    --tone-magenta: var(--magenta-600);
+    --tone-magenta-text: var(--magenta-700);
+    --tone-magenta-on: #ffffff;
+    --tone-olive: var(--olive-600);
+    --tone-olive-text: var(--olive-700);
+    --tone-olive-on: #ffffff;
+    --tone-cerulean: var(--cerulean-600);
+    --tone-cerulean-text: var(--cerulean-700);
+    --tone-cerulean-on: #ffffff;
+    --tone-rust: var(--rust-600);
+    --tone-rust-text: var(--rust-700);
+    --tone-rust-on: #ffffff;
+    /* Around a selected or hovered choice. */
+    --ring-selected: 0 0 0 3px color-mix(in srgb, var(--accent) 10%, transparent);
+    /* Around a focused input, with an accent border. */
+    --ring-input: 0 0 0 3px color-mix(in srgb, var(--accent) 18%, transparent);
+    --mix-soft: 12%;
+    --mix-border: 35%;
+    --mix-hover: 84%;
+}
+
+@media (prefers-color-scheme: dark) {
+    :root:not([data-theme="light"]) {
+        color-scheme: dark;
+        --surface-page: #0a1120;
+        --surface-card: #111a2c;
+        --surface-subtle: #151f33;
+        --surface-field: #0d1526;
+        --fill-muted: #1b263d;
+        --fill-muted-strong: #233049;
+        --border: #222e46;
+        --border-strong: #2d3a56;
+        --border-dashed: #3a4866;
+        --divider: #1b263d;
+        --ink-1: #e8eef9;
+        --ink-2: #c3cde0;
+        --ink-3: #9ba7be;
+        --ink-4: #6f7c96;
+        --ink-placeholder: #8591a9;
+        --ink-disabled: #56627a;
+        /* Lighter than the accent, which is too dark to read as text here. */
+        --link: var(--blue-300);
+        --focus-ring: #6f9cff;
+        --neutral: #656f84;
+        --neutral-text: #c3cde0;
+        --accent-text: var(--blue-200);
+        --success-text: var(--green-300);
+        --warning-text: var(--amber-300);
+        --danger: var(--red-600);
+        --danger-text: var(--red-300);
+        --info-text: var(--cyan-200);
+        --tone-indigo-text: var(--indigo-200);
+        --tone-teal-text: var(--teal-200);
+        --tone-violet-text: var(--violet-200);
+        --tone-ochre-text: var(--ochre-200);
+        --tone-magenta-text: var(--magenta-200);
+        --tone-olive-text: var(--olive-200);
+        --tone-cerulean-text: var(--cerulean-200);
+        --tone-rust-text: var(--rust-200);
+        --mix-soft: 20%;
+        --mix-border: 50%;
+    }
+}
+
+:root[data-theme="dark"] {
+    color-scheme: dark;
+    --surface-page: #0a1120;
+    --surface-card: #111a2c;
+    --surface-subtle: #151f33;
+    --surface-field: #0d1526;
+    --fill-muted: #1b263d;
+    --fill-muted-strong: #233049;
+    --border: #222e46;
+    --border-strong: #2d3a56;
+    --border-dashed: #3a4866;
+    --divider: #1b263d;
+    --ink-1: #e8eef9;
+    --ink-2: #c3cde0;
+    --ink-3: #9ba7be;
+    --ink-4: #6f7c96;
+    --ink-placeholder: #8591a9;
+    --ink-disabled: #56627a;
+    /* Lighter than the accent, which is too dark to read as text here. */
+    --link: var(--blue-300);
+    --focus-ring: #6f9cff;
+    --neutral: #656f84;
+    --neutral-text: #c3cde0;
+    --accent-text: var(--blue-200);
+    --success-text: var(--green-300);
+    --warning-text: var(--amber-300);
+    --danger: var(--red-600);
+    --danger-text: var(--red-300);
+    --info-text: var(--cyan-200);
+    --tone-indigo-text: var(--indigo-200);
+    --tone-teal-text: var(--teal-200);
+    --tone-violet-text: var(--violet-200);
+    --tone-ochre-text: var(--ochre-200);
+    --tone-magenta-text: var(--magenta-200);
+    --tone-olive-text: var(--olive-200);
+    --tone-cerulean-text: var(--cerulean-200);
+    --tone-rust-text: var(--rust-200);
+    --mix-soft: 20%;
+    --mix-border: 50%;
+}
+
+:root,
+[data-density="comfortable"] {
+    --control-height: 40px;
+    --control-small-height: 32px;
+    --control-font: var(--step-3);
+    --control-small-font: var(--step-2);
+    --control-block: var(--space-2);
+    --control-inline: var(--space-3);
+    --button-inline: var(--space-4);
+}
+
+[data-density="compact"] {
+    --control-height: 34px;
+    --control-small-height: 28px;
+    --control-font: 14px;
+    --control-small-font: var(--step-1);
+    --control-block: 6px;
+    --control-inline: 10px;
+    --button-inline: 14px;
+}

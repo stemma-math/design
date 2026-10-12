@@ -1,0 +1,232 @@
+{
+  "$description": "Semantic tokens, in the light appearance: what each value is for. `themes/dark.json` redefines these, and only these, for the dark appearance. A token's `$extensions.stemma` records what the generator checks: `contrast` lists the surfaces it must reach a ratio against, and `tone` marks a tone, whose text, solid fill and soft fill are checked as a set. Requirements follow WCAG 2: 4.5:1 for text, 3:1 for icons, borders and focus rings.",
+  "color": {
+    "$type": "color",
+    "surface-page": {
+      "$value": "#f3f5fa",
+      "$description": "The page, behind cards."
+    },
+    "surface-card": {
+      "$value": "#ffffff",
+      "$description": "Cards, dialogs, menus."
+    },
+    "surface-subtle": {
+      "$value": "#f8fafd",
+      "$description": "Table header rows, hovered rows."
+    },
+    "surface-field": {
+      "$value": "#f7f9fc",
+      "$description": "Inputs at rest; the card colour when focused."
+    },
+    "fill-muted": {
+      "$value": "#eef1f6",
+      "$description": "Hovered quiet buttons, segmented control tracks, skeletons."
+    },
+    "fill-muted-strong": {
+      "$value": "#e6ebf4",
+      "$description": "Counts."
+    },
+    "border": { "$value": "#e3e8f1" },
+    "border-strong": {
+      "$value": "#d7deea",
+      "$description": "Outlined buttons and inputs."
+    },
+    "border-dashed": {
+      "$value": "#c6d0e2",
+      "$description": "Empty states and something missing."
+    },
+    "divider": { "$value": "#eef1f6" },
+    "ink-1": {
+      "$value": "#111a2e",
+      "$description": "Text.",
+      "$extensions": {
+        "stemma": { "contrast": [{ "on": ["surface-card", "surface-page"], "min": 7 }] }
+      }
+    },
+    "ink-2": {
+      "$value": "#3c4557",
+      "$description": "Secondary headings, quiet controls.",
+      "$extensions": {
+        "stemma": { "contrast": [{ "on": ["surface-card", "surface-page"], "min": 7 }] }
+      }
+    },
+    "ink-3": {
+      "$value": "#5b6477",
+      "$description": "Meta text and captions.",
+      "$extensions": {
+        "stemma": {
+          "contrast": [{ "on": ["surface-card", "surface-page", "surface-subtle"], "min": 4.5 }]
+        }
+      }
+    },
+    "ink-4": {
+      "$value": "#838c9f",
+      "$description": "Icons only (chevrons, drag handles): too faint for text.",
+      "$extensions": {
+        "stemma": { "contrast": [{ "on": ["surface-card", "surface-page"], "min": 3 }] }
+      }
+    },
+    "ink-placeholder": {
+      "$value": "#697185",
+      "$description": "Placeholders in inputs.",
+      "$extensions": {
+        "stemma": { "contrast": [{ "on": ["surface-field", "surface-card"], "min": 4.5 }] }
+      }
+    },
+    "ink-disabled": {
+      "$value": "#a3abbb",
+      "$description": "Disabled controls. Exempt from contrast requirements."
+    },
+    "link": {
+      "$value": "{color.blue-500}",
+      "$description": "Links and link buttons.",
+      "$extensions": {
+        "stemma": { "contrast": [{ "on": ["surface-card", "surface-page"], "min": 4.5 }] }
+      }
+    },
+    "focus-ring": {
+      "$value": "{color.blue-500}",
+      "$description": "A 2px outline, 2px from every focusable element.",
+      "$extensions": {
+        "stemma": { "contrast": [{ "on": ["surface-card", "surface-page"], "min": 3 }] }
+      }
+    },
+    "on-dark-1": {
+      "$value": "#f4f8ff",
+      "$description": "Text on navy surfaces, in both appearances: names, the current item.",
+      "$extensions": { "stemma": { "contrast": [{ "on": ["navy-800", "navy-950"], "min": 7 }] } }
+    },
+    "on-dark-2": {
+      "$value": "#c6d4ee",
+      "$description": "Items on navy.",
+      "$extensions": { "stemma": { "contrast": [{ "on": ["navy-800", "navy-950"], "min": 7 }] } }
+    },
+    "on-dark-3": {
+      "$value": "#9fb3d6",
+      "$description": "Secondary text on navy.",
+      "$extensions": { "stemma": { "contrast": [{ "on": ["navy-800", "navy-950"], "min": 4.5 }] } }
+    },
+    "on-dark-4": {
+      "$value": "#8fa6cc",
+      "$description": "Labels and identifiers on navy.",
+      "$extensions": { "stemma": { "contrast": [{ "on": ["navy-800", "navy-950"], "min": 4.5 }] } }
+    },
+    "on-dark-line": { "$value": "rgba(170, 200, 240, .18)" },
+    "on-dark-fill": { "$value": "rgba(255, 255, 255, .05)" },
+    "on-dark-active": {
+      "$value": "rgba(143, 182, 232, .16)",
+      "$description": "The current item on navy."
+    },
+    "on-dark-raised": {
+      "$value": "rgba(3, 15, 44, .62)",
+      "$description": "A card raised on navy."
+    },
+    "neutral": {
+      "$value": "#5b6477",
+      "$description": "The neutral intent: something with no judgement attached.",
+      "$extensions": { "stemma": { "tone": true } }
+    },
+    "neutral-text": { "$value": "#3c4557" },
+    "neutral-on": { "$value": "#ffffff" },
+    "accent": {
+      "$value": "{color.blue-500}",
+      "$description": "The accent intent: the action a view is for, selection, what is current.",
+      "$extensions": { "stemma": { "tone": true } }
+    },
+    "accent-text": { "$value": "{color.blue-700}" },
+    "accent-on": { "$value": "#ffffff" },
+    "success": {
+      "$value": "{color.green-600}",
+      "$description": "The success intent: something done or in good order.",
+      "$extensions": { "stemma": { "tone": true } }
+    },
+    "success-text": { "$value": "{color.green-700}" },
+    "success-on": { "$value": "#ffffff" },
+    "warning": {
+      "$value": "{color.amber-600}",
+      "$description": "The warning intent: something to keep in mind before going on.",
+      "$extensions": { "stemma": { "tone": true } }
+    },
+    "warning-text": { "$value": "{color.amber-800}" },
+    "warning-on": { "$value": "#ffffff" },
+    "danger": {
+      "$value": "{color.red-700}",
+      "$description": "The danger intent: errors and destructive actions.",
+      "$extensions": { "stemma": { "tone": true } }
+    },
+    "danger-text": { "$value": "{color.red-700}" },
+    "danger-on": { "$value": "#ffffff" },
+    "info": {
+      "$value": "{color.cyan-600}",
+      "$description": "The info intent: something worth knowing, with no action needed.",
+      "$extensions": { "stemma": { "tone": true } }
+    },
+    "info-text": { "$value": "{color.cyan-800}" },
+    "info-on": { "$value": "#ffffff" },
+    "tone-indigo": {
+      "$value": "{color.indigo-600}",
+      "$description": "The categorical tones tell things apart by colour without judging them. In order: indigo, teal, violet, ochre, magenta, olive, cerulean, rust. A label always goes with the colour.",
+      "$extensions": { "stemma": { "tone": true } }
+    },
+    "tone-indigo-text": { "$value": "{color.indigo-700}" },
+    "tone-indigo-on": { "$value": "#ffffff" },
+    "tone-teal": {
+      "$value": "{color.teal-600}",
+      "$extensions": { "stemma": { "tone": true } }
+    },
+    "tone-teal-text": { "$value": "{color.teal-700}" },
+    "tone-teal-on": { "$value": "#ffffff" },
+    "tone-violet": {
+      "$value": "{color.violet-600}",
+      "$extensions": { "stemma": { "tone": true } }
+    },
+    "tone-violet-text": { "$value": "{color.violet-700}" },
+    "tone-violet-on": { "$value": "#ffffff" },
+    "tone-ochre": {
+      "$value": "{color.ochre-600}",
+      "$extensions": { "stemma": { "tone": true } }
+    },
+    "tone-ochre-text": { "$value": "{color.ochre-700}" },
+    "tone-ochre-on": { "$value": "#ffffff" },
+    "tone-magenta": {
+      "$value": "{color.magenta-600}",
+      "$extensions": { "stemma": { "tone": true } }
+    },
+    "tone-magenta-text": { "$value": "{color.magenta-700}" },
+    "tone-magenta-on": { "$value": "#ffffff" },
+    "tone-olive": {
+      "$value": "{color.olive-600}",
+      "$extensions": { "stemma": { "tone": true } }
+    },
+    "tone-olive-text": { "$value": "{color.olive-700}" },
+    "tone-olive-on": { "$value": "#ffffff" },
+    "tone-cerulean": {
+      "$value": "{color.cerulean-600}",
+      "$extensions": { "stemma": { "tone": true } }
+    },
+    "tone-cerulean-text": { "$value": "{color.cerulean-700}" },
+    "tone-cerulean-on": { "$value": "#ffffff" },
+    "tone-rust": {
+      "$value": "{color.rust-600}",
+      "$extensions": { "stemma": { "tone": true } }
+    },
+    "tone-rust-text": { "$value": "{color.rust-700}" },
+    "tone-rust-on": { "$value": "#ffffff" }
+  },
+  "mix": {
+    "$description": "How much of a tone each derived colour takes, for `color-mix(in srgb, …)`. A tone's soft fill is the tone at `mix-soft` over transparent, its border at `mix-border`, and its solid fill while hovered the tone at `mix-hover` over black. The generator checks text against the soft fill over each surface, and `-on` text against the hovered fill.",
+    "mix-soft": { "$value": "12%" },
+    "mix-border": { "$value": "35%" },
+    "mix-hover": { "$value": "84%" }
+  },
+  "shadow": {
+    "ring-selected": {
+      "$value": "0 0 0 3px color-mix(in srgb, {color.accent} 10%, transparent)",
+      "$description": "Around a selected or hovered choice."
+    },
+    "ring-input": {
+      "$value": "0 0 0 3px color-mix(in srgb, {color.accent} 18%, transparent)",
+      "$description": "Around a focused input, with an accent border."
+    }
+  }
+}
