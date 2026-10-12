@@ -26,24 +26,24 @@
 // builds every option in memory and checks that the result holds together.
 
 import { readFile, writeFile } from "node:fs/promises";
-import { fileURLToPath } from "node:url";
+import { fileURLToPath, pathToFileURL } from "node:url";
 import vm from "node:vm";
 
-process.chdir(fileURLToPath(new URL("..", import.meta.url)));
+// Paths are relative to the repository's root, wherever this runs from.
+const ROOT = fileURLToPath(new URL("..", import.meta.url));
+const WEB = `${ROOT}targets/web`;
+const ELEMENTS = `${ROOT}targets/elements`;
 
-const WEB = "targets/web";
-const ELEMENTS = "targets/elements";
-
-const FAMILIES = {
+export const FAMILIES = {
     ui: ["Instrument Sans", "Libertinus Sans"],
     prose: ["New Computer Modern"],
     mono: ["JuliaMono"],
     math: ["New Computer Modern Math"],
 };
 
-const SUBSETS = ["latin", "latin-ext", "greek", "cyrillic", "symbols"];
+export const SUBSETS = ["latin", "latin-ext", "greek", "cyrillic", "symbols"];
 
-const MODULES = [
+export const MODULES = [
     "copy-button",
     "dialog",
     "filter-chips",
@@ -178,10 +178,10 @@ async function sprite() {
 
 // ── Behaviour ──────────────────────────────────────────────────────────────
 
-const IMPORT = /^import\s*\{([^}]*)\}\s*from\s*"(\.\/[^"]+)";\s*$/gm;
+export const IMPORT = /^import\s*\{([^}]*)\}\s*from\s*"(\.\/[^"]+)";\s*$/gm;
 
 /** The modules `entries` need, each once, dependencies first. */
-async function collect(entries) {
+export async function collect(entries) {
     const order = [];
     const seen = new Set();
     const visit = async (path) => {
@@ -196,7 +196,7 @@ async function collect(entries) {
 }
 
 /** One module as a function scope that returns its exports. */
-function wrap({ path, source }) {
+export function wrap({ path, source }) {
     const names = [];
     let body = source.replace(IMPORT, (_, imported, dependency) => {
         const bindings = imported
@@ -225,7 +225,7 @@ async function behaviour(entries) {
 
 // ── The bundle ─────────────────────────────────────────────────────────────
 
-async function bundle(options) {
+export async function bundle(options) {
     const parts = [
         `<!-- Stemma design, inline bundle. Faces: ${[...options.faces, ...(options.math ? ["math"] : [])].join(", ") || "none"}; ` +
             `subsets: ${options.subsets.join(", ")}; elements: ${options.elements.join(", ") || "none"}. -->`,
@@ -237,9 +237,19 @@ async function bundle(options) {
     return { html: parts.join("\n") + "\n", script };
 }
 
-const options = parse(process.argv.slice(2));
+async function main() {
+    const options = parse(process.argv.slice(2));
+    if (options.check) {
+        await check();
+        return;
+    }
+    if (!options.out) throw new Error("Say where to write the bundle with --out.");
+    const { html } = await bundle(options);
+    await writeFile(options.out, html);
+    console.log(`Wrote ${options.out} (${Math.round(html.length / 1024)} KiB)`);
+}
 
-if (options.check) {
+async function check() {
     const { html, script } = await bundle({
         faces: ["ui", "prose", "mono"],
         math: true,
@@ -254,9 +264,6 @@ if (options.check) {
         console.error("The bundle still refers to files beside it.");
         process.exit(1);
     }
-} else {
-    if (!options.out) throw new Error("Say where to write the bundle with --out.");
-    const { html } = await bundle(options);
-    await writeFile(options.out, html);
-    console.log(`Wrote ${options.out} (${Math.round(html.length / 1024)} KiB)`);
 }
+
+if (import.meta.url === pathToFileURL(process.argv[1]).href) await main();
