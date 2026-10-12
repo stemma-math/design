@@ -1,0 +1,184 @@
+<!doctype html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1" />
+        <title>Stemma design: tokens</title>
+        <link rel="icon" href="../targets/brand-kit/web/favicon.svg" />
+        <link rel="stylesheet" href="../targets/web/index.css" />
+        <link rel="stylesheet" href="catalog.css" />
+        <script type="module" src="catalog.js"></script>
+    </head>
+    <body>
+        <main class="catalog-main">
+            <h1>Tokens</h1>
+            <p class="lead">
+                Read from <code class="identifier">tokens.css</code> as it is published.
+            </p>
+
+            <section class="catalog-section">
+                <h2>Intents and categorical tones</h2>
+                <p class="quiet">
+                    Each tone in both appearances: its soft fill with its text, its outline, and its
+                    solid fill with the text on it, on a card.
+                </p>
+                <table class="catalog-tones" id="tones">
+                    <thead>
+                        <tr>
+                            <th>Tone</th>
+                            <th>Light</th>
+                            <th>Dark</th>
+                        </tr>
+                    </thead>
+                    <tbody></tbody>
+                </table>
+            </section>
+
+            <section class="catalog-section">
+                <h2>Ink and surfaces</h2>
+                <div class="catalog-grid" id="neutrals"></div>
+            </section>
+
+            <section class="catalog-section">
+                <h2>Colour ramps</h2>
+                <div class="catalog-grid" id="ramps" style="--catalog-cell: 120px"></div>
+            </section>
+
+            <section class="catalog-section">
+                <h2>Scales</h2>
+                <h3>Type</h3>
+                <div id="type"></div>
+                <h3>Space</h3>
+                <div id="space"></div>
+                <h3>Radius</h3>
+                <div class="catalog-row" id="radius"></div>
+                <h3>Shadow</h3>
+                <div class="catalog-row" id="shadow"></div>
+                <h3>Motion</h3>
+                <div id="motion"></div>
+                <h3>Density</h3>
+                <div id="density"></div>
+            </section>
+
+            <script type="module">
+                import { resolve, tokens } from "./catalog.js";
+
+                const all = await tokens();
+                const names = [...all.light.keys()];
+                const el = (html) => {
+                    const t = document.createElement("template");
+                    t.innerHTML = html.trim();
+                    return t.content.firstElementChild;
+                };
+                // A swatch shows its value in the appearance in effect.
+                const swatch = (name) =>
+                    el(`<div class="catalog-swatch"><div class="colour" style="background:var(--${name})"></div>
+                        <div class="name">${name}</div><div class="value" data-token="${name}"></div></div>`);
+                const values = () => {
+                    const style = getComputedStyle(document.documentElement);
+                    for (const value of document.querySelectorAll("[data-token]"))
+                        value.textContent = style
+                            .getPropertyValue(`--${value.dataset.token}`)
+                            .trim();
+                };
+                document.addEventListener("change", () => requestAnimationFrame(values));
+
+                const intents = ["neutral", "accent", "success", "warning", "danger", "info"];
+                const tones = names.filter((n) => /^tone-[a-z]+$/.test(n));
+                const body = document.querySelector("#tones tbody");
+                for (const tone of [...intents, ...tones]) {
+                    const row = el(`<tr><th><code class="identifier">${tone}</code></th></tr>`);
+                    for (const appearance of ["light", "dark"]) {
+                        const v = (n) => resolve(all, n, appearance);
+                        const [t, text, on, card] = [
+                            v(tone),
+                            v(`${tone}-text`),
+                            v(`${tone}-on`),
+                            v("surface-card"),
+                        ];
+                        const soft = `color-mix(in srgb, ${t} ${v("mix-soft")}, ${card})`;
+                        const border = `color-mix(in srgb, ${t} ${v("mix-border")}, ${card})`;
+                        row.append(
+                            el(`<td><div class="catalog-sample" style="background:${card}">
+                                <span style="background:${soft};color:${text}">Soft</span>
+                                <span style="border-color:${border};color:${text}">Outline</span>
+                                <span style="background:${t};color:${on}">Solid</span>
+                                <span style="color:${text};font:var(--text-meta)">Text</span></div></td>`),
+                        );
+                    }
+                    body.append(row);
+                }
+
+                const neutrals = names.filter((n) =>
+                    /^(ink|surface|fill|border|divider|link|focus|on-dark)/.test(n),
+                );
+                for (const name of neutrals)
+                    document.querySelector("#neutrals").append(swatch(name));
+
+                const ramps = names.filter(
+                    (n) => /^[a-z]+-\d+$/.test(n) && !/^(step|space)-/.test(n),
+                );
+                for (const name of ramps) document.querySelector("#ramps").append(swatch(name));
+
+                const line = (name, sample) =>
+                    el(
+                        `<div class="catalog-scale"><code>${name}<br />${all.light.get(name)}</code>${sample}</div>`,
+                    );
+                for (const name of names.filter((n) => /^step-\d+$/.test(n)))
+                    document
+                        .querySelector("#type")
+                        .append(
+                            line(
+                                name,
+                                `<span style="font-size:var(--${name})">Stemma, a standard for mathematics</span>`,
+                            ),
+                        );
+                for (const name of names.filter((n) => /^text-/.test(n)))
+                    document
+                        .querySelector("#type")
+                        .append(
+                            line(
+                                name,
+                                `<span style="font:var(--${name})">Every finite group of prime order is cyclic</span>`,
+                            ),
+                        );
+                for (const name of names.filter((n) => /^space-\d+$/.test(n)))
+                    document
+                        .querySelector("#space")
+                        .append(
+                            line(
+                                name,
+                                `<span style="display:block;height:12px;width:var(--${name});background:var(--accent);border-radius:2px"></span>`,
+                            ),
+                        );
+                for (const name of names.filter((n) => /^radius-/.test(n)))
+                    document
+                        .querySelector("#radius")
+                        .append(
+                            el(
+                                `<div style="width:96px;height:72px;border:1px solid var(--border-strong);background:var(--surface-card);border-radius:var(--${name});display:grid;place-items:center"><code style="font-size:11px">${name}</code></div>`,
+                            ),
+                        );
+                for (const name of names.filter((n) => /^(shadow|ring)-/.test(n)))
+                    document
+                        .querySelector("#shadow")
+                        .append(
+                            el(
+                                `<div class="card" style="width:160px;height:88px;box-shadow:var(--${name});display:grid;place-items:center"><code style="font-size:11px">${name}</code></div>`,
+                            ),
+                        );
+                for (const name of names.filter((n) => /^(dur|ease)-/.test(n)))
+                    document.querySelector("#motion").append(line(name, ""));
+                for (const [name, value] of all.compact)
+                    document
+                        .querySelector("#density")
+                        .append(
+                            el(
+                                `<div class="catalog-scale"><code>${name}</code><span>comfortable ${all.comfortable.get(name)} · compact ${value}</span></div>`,
+                            ),
+                        );
+                values();
+            </script>
+        </main>
+    </body>
+</html>

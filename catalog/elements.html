@@ -1,0 +1,217 @@
+<!doctype html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1" />
+        <title>Stemma design: elements</title>
+        <link rel="icon" href="../targets/brand-kit/web/favicon.svg" />
+        <link rel="stylesheet" href="../targets/web/index.css" />
+        <link rel="stylesheet" href="catalog.css" />
+        <script type="module" src="catalog.js"></script>
+    </head>
+    <body>
+        <main class="catalog-main">
+            <h1>Elements</h1>
+            <p class="lead">
+                Behaviour from <code class="identifier">@stemma-math/design-elements</code>, drawn
+                with the web target's classes.
+            </p>
+
+            <section class="catalog-section">
+                <h2>Controls</h2>
+                <div class="catalog-row">
+                    <stemma-segmented label="View"
+                        ><div class="segmented">
+                            <button value="list" aria-pressed="true">List</button
+                            ><button value="graph">Graph</button
+                            ><button value="table">Table</button>
+                        </div></stemma-segmented
+                    >
+                    <stemma-copy-button value="thm:fermat"></stemma-copy-button>
+                    <button class="button button--icon" id="settings" aria-label="Settings">
+                        <svg class="glyph" aria-hidden="true">
+                            <use href="../targets/web/glyphs.svg#settings" />
+                        </svg>
+                    </button>
+                    <stemma-tooltip for="settings">Settings <kbd>⌘,</kbd></stemma-tooltip>
+                    <stemma-menu>
+                        <button class="button">Options</button>
+                        <div class="menu">
+                            <button class="menu__item" data-value="rename">Rename</button>
+                            <button class="menu__item" data-value="duplicate">Duplicate</button>
+                            <hr class="menu__separator" />
+                            <button class="menu__item menu__item--danger" data-value="delete">
+                                Delete
+                            </button>
+                        </div>
+                    </stemma-menu>
+                    <button class="button" data-opens="confirm">Open a dialog</button>
+                    <button class="button" id="toast">Show a toast</button>
+                </div>
+                <stemma-filter-chips label="Show" class="catalog-row">
+                    <button class="chip chip--success" value="done" aria-pressed="true">
+                        Done
+                    </button>
+                    <button class="chip chip--warning" value="open">Open</button>
+                    <button class="chip chip--danger" value="failing">Failing</button>
+                    <button class="chip chip--teal" value="teal">Teal</button>
+                </stemma-filter-chips>
+                <p class="quiet" id="events">Events appear here.</p>
+                <stemma-dialog id="confirm">
+                    <dialog class="dialog" aria-labelledby="confirm-title">
+                        <form class="dialog__body" method="dialog">
+                            <h2 class="dialog__title" id="confirm-title">Delete this draft?</h2>
+                            <p class="dialog__text">It cannot be recovered.</p>
+                            <div class="dialog__actions">
+                                <button class="button" value="cancel">Cancel</button
+                                ><button
+                                    class="button button--primary button--danger"
+                                    value="delete"
+                                >
+                                    Delete
+                                </button>
+                            </div>
+                        </form>
+                    </dialog>
+                </stemma-dialog>
+                <stemma-toast-region
+                    style="
+                        position: fixed;
+                        right: 24px;
+                        bottom: 24px;
+                        width: min(380px, calc(100vw - 48px));
+                        z-index: 20;
+                    "
+                ></stemma-toast-region>
+            </section>
+
+            <section class="catalog-section">
+                <h2>The brand light</h2>
+                <div class="catalog-columns">
+                    <div>
+                        <h3 class="label">Hero</h3>
+                        <stemma-light
+                            preset="hero"
+                            id="hero"
+                            style="
+                                height: 260px;
+                                border-radius: 16px;
+                                overflow: hidden;
+                                display: flex;
+                                align-items: end;
+                                padding: 20px;
+                            "
+                        >
+                            <stemma-mark
+                                animated
+                                appearance="dark"
+                                style="width: 4em"
+                            ></stemma-mark>
+                        </stemma-light>
+                        <div class="catalog-row" style="margin-top: 12px">
+                            <button class="button button--small" id="withdraw">Withdraw</button>
+                            <button class="button button--small" id="restore">Restore</button>
+                            <label class="choice"
+                                >Progress
+                                <input
+                                    type="range"
+                                    min="0"
+                                    max="1"
+                                    step="0.01"
+                                    value="0"
+                                    id="progress"
+                            /></label>
+                        </div>
+                    </div>
+                    <div>
+                        <h3 class="label">Still</h3>
+                        <stemma-light
+                            preset="still"
+                            style="
+                                height: 260px;
+                                border-radius: 16px;
+                                overflow: hidden;
+                                padding: 20px;
+                            "
+                        >
+                            <p style="margin: 0; color: var(--on-dark-2)">
+                                A side menu over the still light.
+                            </p>
+                        </stemma-light>
+                        <h3 class="label" style="margin-top: 16px">Without script</h3>
+                        <div
+                            class="brand-light"
+                            style="
+                                height: 80px;
+                                border-radius: 16px;
+                                overflow: hidden;
+                                padding: 20px;
+                            "
+                        >
+                            .brand-light
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <section class="catalog-section">
+                <h2>The mark</h2>
+                <div class="catalog-row">
+                    <div class="catalog-kit on-dark">
+                        <stemma-mark animated appearance="dark" style="width: 6em"></stemma-mark>
+                    </div>
+                    <div class="catalog-kit on-light">
+                        <stemma-mark appearance="light" style="width: 6em"></stemma-mark>
+                    </div>
+                    <div class="catalog-kit on-light" style="color: var(--accent)">
+                        <stemma-mark appearance="mono" style="width: 6em"></stemma-mark>
+                    </div>
+                    <div class="catalog-kit"><stemma-mark style="width: 6em"></stemma-mark></div>
+                </div>
+            </section>
+
+            <script type="module">
+                const events = document.getElementById("events");
+                const say = (text) => (events.textContent = text);
+                document
+                    .querySelector("stemma-segmented")
+                    .addEventListener("change", (e) => say(`View: ${e.target.value}`));
+                document
+                    .querySelector("stemma-filter-chips")
+                    .addEventListener("change", (e) =>
+                        say(`Showing: ${e.target.value.join(", ") || "nothing"}`),
+                    );
+                document
+                    .querySelector("stemma-menu")
+                    .addEventListener("select", (e) => say(`Chose: ${e.detail.value}`));
+                document
+                    .getElementById("confirm")
+                    .addEventListener("close", (e) =>
+                        say(`Dialog: ${e.target.returnValue || "dismissed"}`),
+                    );
+                const region = document.querySelector("stemma-toast-region");
+                const intents = ["success", "info", "warning", "danger"];
+                let n = 0;
+                document.getElementById("toast").addEventListener("click", () => {
+                    const intent = intents[n++ % intents.length];
+                    region.show({
+                        text: `A ${intent} toast.`,
+                        intent,
+                        action: intent === "danger" ? { label: "Retry" } : undefined,
+                    });
+                });
+                const hero = document.getElementById("hero");
+                const progress = document.getElementById("progress");
+                progress.addEventListener("input", () => (hero.progress = progress.valueAsNumber));
+                document
+                    .getElementById("withdraw")
+                    .addEventListener("click", () => hero.withdraw());
+                document.getElementById("restore").addEventListener("click", () => hero.restore());
+                if (location.hash === "#toasts")
+                    for (const intent of intents)
+                        region.show({ text: `A ${intent} toast.`, intent, life: 0 });
+                if (location.hash === "#withdrawn") hero.progress = 0.5;
+            </script>
+        </main>
+    </body>
+</html>

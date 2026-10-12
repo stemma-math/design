@@ -1,0 +1,179 @@
+<!doctype html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1" />
+        <title>Stemma design: typography</title>
+        <link rel="icon" href="../targets/brand-kit/web/favicon.svg" />
+        <link rel="stylesheet" href="../targets/web/index.css" />
+        <link rel="stylesheet" href="catalog.css" />
+        <script type="module" src="catalog.js"></script>
+    </head>
+    <body>
+        <main class="catalog-main">
+            <h1>Typography</h1>
+            <p class="lead">
+                The faces, and document typography inside <code class="identifier">.document</code>.
+            </p>
+
+            <section class="catalog-section">
+                <h2>Faces</h2>
+                <div class="catalog-grid" style="--catalog-cell: 480px">
+                    <div class="card catalog-panel">
+                        <p class="label">Prose: New Computer Modern, Book</p>
+                        <p style="font: 400 26px/1.3 var(--font-prose); margin: 0.3em 0">
+                            Aa Bb Cc, <em>italic</em>, <strong>bold</strong>; col·lecció, αβγ,
+                            ∀ε&gt;0
+                        </p>
+                    </div>
+                    <div class="card catalog-panel">
+                        <p class="label">Interface and headings: Instrument Sans</p>
+                        <p style="font: 400 26px/1.3 var(--font-ui); margin: 0.3em 0">
+                            Aa Bb Cc <span style="font-weight: 500">500</span>
+                            <span style="font-weight: 600">600</span> <strong>700</strong>; ŀ, α ≤ β
+                        </p>
+                    </div>
+                    <div class="card catalog-panel">
+                        <p class="label">Code: JuliaMono</p>
+                        <p style="font: 400 20px/1.4 var(--font-mono); margin: 0.3em 0">
+                            theorem foo : ∀ ε &gt; 0, ∃ δ, ‖x‖ ≤ δ → ⊢ 𝔼[X] ∈ ℝ≥0
+                        </p>
+                    </div>
+                    <div class="card catalog-panel">
+                        <p class="label">Formulas: New Computer Modern Math</p>
+                        <p style="font-size: 24px; margin: 0.3em 0">
+                            <math display="block">
+                                <mrow>
+                                    <msubsup><mo>∫</mo><mn>0</mn><mi>∞</mi></msubsup>
+                                    <msup
+                                        ><mi>e</mi
+                                        ><mrow
+                                            ><mo>−</mo><msup><mi>x</mi><mn>2</mn></msup></mrow
+                                        ></msup
+                                    >
+                                    <mi>d</mi><mi>x</mi><mo>=</mo>
+                                    <mfrac
+                                        ><msqrt><mi>π</mi></msqrt
+                                        ><mn>2</mn></mfrac
+                                    >
+                                </mrow>
+                            </math>
+                        </p>
+                    </div>
+                </div>
+            </section>
+
+            <section class="catalog-section">
+                <h2>A document</h2>
+                <div class="card catalog-panel">
+                    <article class="document" style="max-width: 46em">
+                        <h1>Finite groups of prime order</h1>
+                        <p>
+                            Let <math><mi>G</mi></math> be a group of order <math><mi>p</mi></math
+                            >, where <math><mi>p</mi></math> is prime. By Lagrange's theorem the
+                            order of every element divides <math><mi>p</mi></math
+                            >, so every element other than the identity has order
+                            <math><mi>p</mi></math> and generates <math><mi>G</mi></math>
+                            <a class="ref" href="#lagrange">(Theorem 2.1)</a>.<sup
+                                ><a href="#note">1</a></sup
+                            >
+                        </p>
+                        <div class="highlight highlight--accent">
+                            <p class="highlight__title">Theorem 2.2</p>
+                            <p>Every group of prime order is cyclic, and so abelian.</p>
+                        </div>
+                        <h2>The proof in Lean</h2>
+                        <p>The statement, as Mathlib states it:</p>
+                        <pre><code>theorem isCyclic_of_prime_card {α : Type u} [Group α] [Fintype α]
+    {p : ℕ} [hp : Fact p.Prime] (h : Fintype.card α = p) : IsCyclic α := by
+  obtain ⟨g, hg⟩ := exists_ne (1 : α)
+  refine ⟨g, fun x ↦ ?_⟩
+  -- ⊢ x ∈ Subgroup.zpowers g
+  simp_all [← orderOf_eq_card_of_forall_mem_zpowers, Nat.Prime.eq_one_or_self_of_dvd]</code></pre>
+                        <h3>Displayed formulas</h3>
+                        <math display="block">
+                            <mrow>
+                                <mo stretchy="false">|</mo><mi>G</mi><mo stretchy="false">|</mo
+                                ><mo>=</mo> <mo stretchy="false">[</mo><mi>G</mi><mo>:</mo><mi>H</mi
+                                ><mo stretchy="false">]</mo> <mo>·</mo><mo stretchy="false">|</mo
+                                ><mi>H</mi><mo stretchy="false">|</mo>
+                                <mspace width="1em"></mspace>
+                                <mi>ζ</mi><mo stretchy="false">(</mo><mn>2</mn
+                                ><mo stretchy="false">)</mo><mo>=</mo>
+                                <munderover
+                                    ><mo>∑</mo><mrow><mi>n</mi><mo>=</mo><mn>1</mn></mrow
+                                    ><mi>∞</mi></munderover
+                                >
+                                <mfrac
+                                    ><mn>1</mn><msup><mi>n</mi><mn>2</mn></msup></mfrac
+                                >
+                                <mo>=</mo
+                                ><mfrac
+                                    ><msup><mi>π</mi><mn>2</mn></msup
+                                    ><mn>6</mn></mfrac
+                                >
+                            </mrow>
+                        </math>
+                        <h3>Lists, quotations and tables</h3>
+                        <ul>
+                            <li>
+                                A group of order <math><mn>4</mn></math> need not be cyclic.
+                            </li>
+                            <li>
+                                Its two shapes:
+                                <ol>
+                                    <li>
+                                        the cyclic group
+                                        <math
+                                            ><msub><mi>C</mi><mn>4</mn></msub></math
+                                        >;
+                                    </li>
+                                    <li>the Klein four-group.</li>
+                                </ol>
+                            </li>
+                        </ul>
+                        <blockquote>
+                            <p>
+                                Mathematics is the art of giving the same name to different things.
+                            </p>
+                        </blockquote>
+                        <table>
+                            <thead>
+                                <tr>
+                                    <th>Order</th>
+                                    <th>Groups</th>
+                                    <th>Abelian</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>1</td>
+                                    <td>1</td>
+                                    <td>1</td>
+                                </tr>
+                                <tr>
+                                    <td>4</td>
+                                    <td>2</td>
+                                    <td>2</td>
+                                </tr>
+                                <tr>
+                                    <td>8</td>
+                                    <td>5</td>
+                                    <td>3</td>
+                                </tr>
+                            </tbody>
+                            <caption>
+                                Groups of small order, up to isomorphism.
+                            </caption>
+                        </table>
+                        <h4>A fourth-level heading</h4>
+                        <p>
+                            Press <kbd>⌘</kbd> <kbd>K</kbd> to search.
+                            <small id="note">1. A footnote.</small>
+                        </p>
+                    </article>
+                </div>
+            </section>
+        </main>
+    </body>
+</html>
