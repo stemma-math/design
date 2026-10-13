@@ -6,7 +6,7 @@
     python -m tools catalog [port]      serve the catalog
 
 The steps run in this order, each from what the ones before it wrote:
-tokens, fonts, glyphs, brand and targets. `check` also builds every inline
+version, tokens, fonts, glyphs, brand and targets. `check` also builds every inline
 bundle once, to see that it holds together.
 """
 
@@ -14,7 +14,7 @@ import importlib
 import sys
 import time
 
-STEPS = ["tokens", "fonts", "glyphs", "brand", "targets"]
+STEPS = ["version", "tokens", "fonts", "glyphs", "brand", "targets"]
 
 
 def steps(asked):

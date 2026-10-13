@@ -217,7 +217,97 @@
       "$extensions": { "stemma": { "tone": true } }
     },
     "tone-rust-text": { "$value": "{color.rust-700}" },
-    "tone-rust-on": { "$value": "#ffffff" }
+    "tone-rust-on": { "$value": "#ffffff" },
+    "code-text": {
+      "$value": "{color.ink-1}",
+      "$description": "Code: everything without a role of its own.",
+      "$extensions": {
+        "stemma": {
+          "contrast": [{ "on": ["surface-subtle", "surface-card", "fill-muted"], "min": 4.5 }]
+        }
+      }
+    },
+    "code-keyword": {
+      "$value": "{color.tone-violet-text}",
+      "$description": "Code: keywords, as `theorem` or `fun`.",
+      "$extensions": {
+        "stemma": {
+          "contrast": [{ "on": ["surface-subtle", "surface-card", "fill-muted"], "min": 4.5 }]
+        }
+      }
+    },
+    "code-definition": {
+      "$value": "{color.accent-text}",
+      "$description": "Code: names of definitions and functions, and Lean's constants.",
+      "$extensions": {
+        "stemma": {
+          "contrast": [{ "on": ["surface-subtle", "surface-card", "fill-muted"], "min": 4.5 }]
+        }
+      }
+    },
+    "code-type": {
+      "$value": "{color.tone-teal-text}",
+      "$description": "Code: types and classes, where a highlighter tells them apart.",
+      "$extensions": {
+        "stemma": {
+          "contrast": [{ "on": ["surface-subtle", "surface-card", "fill-muted"], "min": 4.5 }]
+        }
+      }
+    },
+    "code-string": {
+      "$value": "{color.tone-olive-text}",
+      "$description": "Code: strings and characters.",
+      "$extensions": {
+        "stemma": {
+          "contrast": [{ "on": ["surface-subtle", "surface-card", "fill-muted"], "min": 4.5 }]
+        }
+      }
+    },
+    "code-number": {
+      "$value": "{color.tone-ochre-text}",
+      "$description": "Code: numbers and other literals.",
+      "$extensions": {
+        "stemma": {
+          "contrast": [{ "on": ["surface-subtle", "surface-card", "fill-muted"], "min": 4.5 }]
+        }
+      }
+    },
+    "code-variable": {
+      "$value": "{color.ink-2}",
+      "$description": "Code: bound variables and parameters, set in italic.",
+      "$extensions": {
+        "stemma": {
+          "contrast": [{ "on": ["surface-subtle", "surface-card", "fill-muted"], "min": 4.5 }]
+        }
+      }
+    },
+    "code-comment": {
+      "$value": "{color.ink-3}",
+      "$description": "Code: comments, set in italic.",
+      "$extensions": {
+        "stemma": {
+          "contrast": [{ "on": ["surface-subtle", "surface-card", "fill-muted"], "min": 4.5 }]
+        }
+      }
+    },
+    "code-punctuation": {
+      "$value": "{color.ink-3}",
+      "$description": "Code: punctuation and delimiters.",
+      "$extensions": {
+        "stemma": {
+          "contrast": [{ "on": ["surface-subtle", "surface-card", "fill-muted"], "min": 4.5 }]
+        }
+      }
+    },
+    "code-error": {
+      "$value": "{color.danger-text}",
+      "$description": "Code: errors, and Lean's `sorry`.",
+      "$extensions": {
+        "stemma": {
+          "contrast": [{ "on": ["surface-subtle", "surface-card", "fill-muted"], "min": 4.5 }]
+        }
+      }
+    }
   },
   "mix": {
     "$description": "How much of a tone each derived colour takes, for `color-mix(in srgb, …)`. A tone's soft fill is the tone at `mix-soft` over transparent, its border at `mix-border`, and its solid fill while hovered the tone at `mix-hover` over black. The generator checks text against the soft fill over each surface, and `-on` text against the hovered fill.",

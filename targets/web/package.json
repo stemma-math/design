@@ -23,6 +23,7 @@
     "./tokens.css": "./tokens.css",
     "./base.css": "./base.css",
     "./document.css": "./document.css",
+    "./code.css": "./code.css",
     "./components.css": "./components.css",
     "./glyphs.svg": "./glyphs.svg",
     "./noise.svg": "./noise.svg",

@@ -17,7 +17,7 @@ html:root {
     /* Text, surfaces and links. */
     --verso-text-color: var(--ink-1);
     --verso-structure-color: var(--ink-1);
-    --verso-code-color: var(--ink-1);
+    --verso-code-color: var(--code-text);
     --verso-muted-color: var(--ink-3);
     --verso-background-color: var(--surface-page);
     --verso-surface-color: var(--surface-subtle);
@@ -97,11 +97,31 @@ html:root {
     --verso-tactic-toggle-color: var(--ink-4);
     --verso-tactic-toggle-checked-color: var(--ink-3);
 
-    /* Highlighted Lean. */
-    --verso-code-const-color: var(--ink-1);
-    --verso-code-keyword-color: var(--accent-text);
-    --verso-code-keyword-weight: 700;
-    --verso-code-var-color: var(--ink-2);
+    /* Highlighted Lean, in the `--code-*` tokens. */
+    --verso-code-const-color: var(--code-definition);
+    --verso-code-keyword-color: var(--code-keyword);
+    --verso-code-keyword-weight: 500;
+    --verso-code-var-color: var(--code-variable);
     --verso-code-var-style: italic;
     --verso-code-hover-bg-color: var(--fill-muted);
+}
+
+/* The tokens Verso draws in its plain code colour, with no variable of
+ * their own. `html` outweighs Verso's own rules, wherever this comes. */
+html .hl.lean .literal.string,
+html .hl.lean .literal.char {
+    color: var(--code-string);
+}
+
+html .hl.lean .number {
+    color: var(--code-number);
+}
+
+html .hl.lean .comment {
+    font-style: italic;
+    color: var(--code-comment);
+}
+
+html .hl.lean :is(.punctuation, .delim) {
+    color: var(--code-punctuation);
 }

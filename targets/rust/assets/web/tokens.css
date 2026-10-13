@@ -225,6 +225,26 @@
     --tone-rust: var(--rust-600);
     --tone-rust-text: var(--rust-700);
     --tone-rust-on: #ffffff;
+    /* Code: everything without a role of its own. */
+    --code-text: var(--ink-1);
+    /* Code: keywords, as `theorem` or `fun`. */
+    --code-keyword: var(--tone-violet-text);
+    /* Code: names of definitions and functions, and Lean's constants. */
+    --code-definition: var(--accent-text);
+    /* Code: types and classes, where a highlighter tells them apart. */
+    --code-type: var(--tone-teal-text);
+    /* Code: strings and characters. */
+    --code-string: var(--tone-olive-text);
+    /* Code: numbers and other literals. */
+    --code-number: var(--tone-ochre-text);
+    /* Code: bound variables and parameters, set in italic. */
+    --code-variable: var(--ink-2);
+    /* Code: comments, set in italic. */
+    --code-comment: var(--ink-3);
+    /* Code: punctuation and delimiters. */
+    --code-punctuation: var(--ink-3);
+    /* Code: errors, and Lean's `sorry`. */
+    --code-error: var(--danger-text);
     --mix-soft: 12%;
     --mix-border: 35%;
     --mix-hover: 84%;

@@ -1,0 +1,60 @@
+# The checks every pull request, and every change to main, must pass.
+name: Checks
+
+on:
+  pull_request:
+  push:
+    branches: [main]
+
+concurrency:
+  group: checks-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  nix:
+    name: Generated targets, Rust and formatting (${{ matrix.os }})
+    strategy:
+      fail-fast: false
+      matrix:
+        os: [ubuntu-latest, ubuntu-24.04-arm, macos-latest]
+    runs-on: ${{ matrix.os }}
+    steps:
+      - uses: actions/checkout@v7
+      - uses: cachix/install-nix-action@v31
+      - name: Cache the Nix store
+        uses: nix-community/cache-nix-action@v7
+        with:
+          primary-key: nix-${{ runner.os }}-${{ runner.arch }}-${{ hashFiles('flake.lock', 'nix/**', 'Cargo.lock', 'uv.lock') }}
+          restore-prefixes-first-match: nix-${{ runner.os }}-${{ runner.arch }}-
+      # Every target regenerated from source/ and compared with the
+      # committed one, the Rust tests, Clippy and formatting.
+      - name: Check the flake
+        run: nix flake check --print-build-logs
+
+  lean:
+    name: Lean package
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v7
+      - uses: leanprover/lean-action@v1
+        with:
+          lake-package-directory: targets/verso
+          # Only `lake build`: no tests, no linter, no Mathlib cache.
+          auto-config: false
+          build: true
+          use-mathlib-cache: false
+
+  uv:
+    name: The tools without Nix
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v7
+      - uses: astral-sh/setup-uv@v10.3.0 # it publishes no major tag
+      - name: uv.lock matches pyproject.toml
+        run: uv lock --check
+      - name: Install the locked packages
+        run: uv sync --locked
+      # Rendering the brand kit needs resvg, which only the Nix shell
+      # provides; the flake checks it.
+      - name: Check the generated files
+        run: uv run python -m tools check tokens fonts glyphs targets

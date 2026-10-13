@@ -363,11 +363,17 @@ fn stylesheets() -> String {
         "url(\"data:image/svg+xml;base64,{}\")",
         base64(asset("web/noise.svg"))
     );
-    ["tokens.css", "base.css", "document.css", "components.css"]
-        .iter()
-        .map(|name| text(&format!("web/{name}")).replacen("url(\"noise.svg\")", &noise, 1))
-        .collect::<Vec<_>>()
-        .join("\n")
+    [
+        "tokens.css",
+        "base.css",
+        "document.css",
+        "code.css",
+        "components.css",
+    ]
+    .iter()
+    .map(|name| text(&format!("web/{name}")).replacen("url(\"noise.svg\")", &noise, 1))
+    .collect::<Vec<_>>()
+    .join("\n")
 }
 
 fn sprite() -> String {

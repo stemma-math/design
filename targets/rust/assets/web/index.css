@@ -1,5 +1,5 @@
 /* Everything in this package, in order: faces, tokens, the base, document
- * typography and components. Import the files one by one instead to leave
+ * typography, code colours and components. Import the files one by one instead to leave
  * some out; the cascade layers keep their order either way.
  */
 
@@ -7,4 +7,5 @@
 @import url("tokens.css");
 @import url("base.css");
 @import url("document.css");
+@import url("code.css");
 @import url("components.css");

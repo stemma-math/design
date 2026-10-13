@@ -7,8 +7,8 @@
 default:
     @just --list --unsorted
 
-# Regenerate every generated file from `source/`, or only some steps:
-# tokens, fonts, glyphs, brand, targets.
+# Regenerate every generated file from `source/` and `VERSION`, or only
+# some steps: version, tokens, fonts, glyphs, brand, targets.
 [group('generate')]
 generate *STEPS:
     python -m tools generate {{ STEPS }}
@@ -44,6 +44,5 @@ alias fmt := format
 [group('development')]
 check:
     python -m tools check
-    cargo clippy --workspace --all-targets --all-features -- --deny warnings
     just test
     nix flake check
