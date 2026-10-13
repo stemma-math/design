@@ -43,8 +43,12 @@ its own folder. Take a tagged version with the ecosystem's own tools:
   ```
 - **Lean.** Require `StemmaDesign` from the repository, with
   `subDir = "targets/verso"`.
-- **npm.** Install the package tarballs attached to a GitHub release,
-  since npm cannot install a subdirectory of a git repository.
+- **npm.** Install the package tarballs attached to the GitHub release,
+  since npm cannot install a subdirectory of a git repository:
+  ```sh
+  npm install https://github.com/stemma-math/design/releases/download/vX.Y.Z/stemma-math-design-X.Y.Z.tgz
+  npm install https://github.com/stemma-math/design/releases/download/vX.Y.Z/stemma-math-design-elements-X.Y.Z.tgz
+  ```
 - **Files.** Copy `targets/web`, `targets/elements` or `targets/brand-kit`
   from a tagged version and use it as it is.
 
@@ -95,6 +99,17 @@ just format     # format every file
 
 `just check` fails while a generated file is out of date, or while a
 colour falls below its contrast requirement in either appearance.
+
+## Versions
+
+Every target shares one version, written in `VERSION`. `just generate`
+copies it everywhere else it appears (the crates, the npm packages, the
+Lake package), and `just check` fails while any of them differs.
+
+Releasing is changing `VERSION` in a pull request. When it reaches `main`,
+the release workflow tags it `vX.Y.Z`, which is what Cargo, Lake and Nix
+take, and publishes a GitHub release with the npm tarballs. While the
+version is 0.0.0, nothing is released.
 
 ## Licences
 

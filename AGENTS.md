@@ -65,6 +65,9 @@ This repository belongs to the Stemma organization (`stemma-math`).
   a generator writes its files or checks them. Generated files are
   committed, and are never edited by hand: change `source/` and run
   `just generate`.
+- `VERSION` is the one version of every target. Change it there and run
+  `just generate`; never edit a version in a manifest by hand. Releasing
+  is a pull request that changes `VERSION`.
 - `just check` fails while a generated file is out of date, while a colour
   falls below its contrast requirement, while the inline bundle does not
   hold together or differs from the Rust crate's, while Clippy warns, a
