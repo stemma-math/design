@@ -5,6 +5,7 @@ copies what the other steps write, so it runs after them.
 
 import json
 import re
+import textwrap
 
 from . import bundle
 from .common import ROOT, Outputs
@@ -216,11 +217,21 @@ VERSO_CONTENT = "main > .content-wrapper > section"
 
 
 def verso_document(css):
-    """Document typography for Verso's content as well as for `.document`.
-    Verso's own rules sit outside the cascade layers and win, so this only
-    fills in what Verso leaves unstyled: references, tables, quotations."""
-    # Selectors only, not the comments that name the class in backticks.
-    return re.sub(r"(?<!`)\.document\b", f":is(.document, {VERSO_CONTENT})", css)
+    """The document typography again, for Verso's content: the rules of
+    `.document`, outside the cascade layers and under `html`, so that they
+    outweigh the genre's own and a page reads as a document does."""
+    start = css.index("@layer stemma.document {")
+    rules = css[start + len("@layer stemma.document {") : css.rstrip().rindex("}")]
+    # `:where` keeps the weight of the selectors as low as `html` and the
+    # elements they name: enough for the genre's own, little enough that a
+    # site's rules for its own classes still win.
+    rules = re.sub(r"(?<!`)\.document\b", f"html :where({VERSO_CONTENT})", rules)
+    return (
+        "/* The document typography of `document.css`, for Verso's content,\n"
+        " * outside the cascade layers. Generated. */\n"
+        + textwrap.dedent(rules).strip()
+        + "\n"
+    )
 
 
 def verso(out):
@@ -250,10 +261,13 @@ def verso(out):
         "targets/verso/verso-map.css",
     ):
         name = path.split("/")[-1]
-        text = (ROOT / path).read_text()
-        if name == "document.css":
-            text = verso_document(text)
-        css += [f"\n/* ── {name} ── */\n", text]
+        css += [f"\n/* ── {name} ── */\n", (ROOT / path).read_text()]
+    document = verso_document((ROOT / "targets/web/document.css").read_text())
+    css += ["\n/* ── document.css, for Verso's content ── */\n", document]
+    css += [
+        "\n/* ── verso-skin.css ── */\n",
+        (ROOT / "targets/verso/verso-skin.css").read_text(),
+    ]
     out.add(f"{target}/verso-theme.css", "\n".join(css))
 
     listed = ",\n".join(f"  {json.dumps(path)}" for path in copied)

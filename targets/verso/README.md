@@ -15,16 +15,16 @@ subDir = "targets/verso"
 
 ## What it provides
 
-| Item                         | What it is                                                                                                                                                                         |
-| ---------------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| `verso-theme.css`            | The theme: Stemma's faces and tokens, Verso's own `--verso-*` variables mapped onto those tokens (`verso-map.css`), and the web target's base, document typography and components. |
-| `StemmaDesign.themeCss`      | The theme, as a string, for a site's extra CSS.                                                                                                                                    |
-| `StemmaDesign.files`         | The files the theme refers to, relative to it: the faces, their licences, the grain texture, the glyph sprite and the custom elements.                                             |
-| `StemmaDesign.glyphs`        | The glyph sprite, `glyphs.svg`, relative to the theme.                                                                                                                             |
-| `StemmaDesign.elements`      | The module that defines every custom element, `elements/index.js`, relative to the theme; a site loads it with `<script type="module">`.                                           |
-| `StemmaDesign.copyFiles dir` | Copies those files into `dir`, the directory the theme is served from.                                                                                                             |
-| `StemmaDesign.directory`     | Where this package was compiled, where the files are.                                                                                                                              |
-| `fonts/`, `noise.svg`, …     | The files themselves.                                                                                                                                                              |
+| Item                         | What it is                                                                                                                                                                                                                      |
+| ---------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `verso-theme.css`            | The theme: Stemma's faces and tokens, Verso's own `--verso-*` variables mapped onto those tokens (`verso-map.css`), the web target's base, document typography and components, and the manual genre's frame (`verso-skin.css`). |
+| `StemmaDesign.themeCss`      | The theme, as a string, for a site's extra CSS.                                                                                                                                                                                 |
+| `StemmaDesign.files`         | The files the theme refers to, relative to it: the faces, their licences, the grain texture, the glyph sprite and the custom elements.                                                                                          |
+| `StemmaDesign.glyphs`        | The glyph sprite, `glyphs.svg`, relative to the theme.                                                                                                                                                                          |
+| `StemmaDesign.elements`      | The module that defines every custom element, `elements/index.js`, relative to the theme; a site loads it with `<script type="module">`.                                                                                        |
+| `StemmaDesign.copyFiles dir` | Copies those files into `dir`, the directory the theme is served from.                                                                                                                                                          |
+| `StemmaDesign.directory`     | Where this package was compiled, where the files are.                                                                                                                                                                           |
+| `fonts/`, `noise.svg`, …     | The files themselves.                                                                                                                                                                                                           |
 
 The mapping covers the variables of Verso's HTML output (`verso-vars.css`),
 of the manual genre and of the literate genre, as of Verso v4.34.0, and the
@@ -32,10 +32,20 @@ colours the manual genre's `book.css` writes without a variable. It
 outweighs Verso's own definitions wherever the theme comes in the page, and
 each value is a token, so it follows the appearance by itself.
 
-A page's content in Verso's HTML (`main > .content-wrapper > section`) is
-set as a document, as `.document` is: Verso's own rules win where it has
-them, and the document typography fills in the rest, such as references,
-tables and quotations.
+`verso-skin.css`, written by hand, dresses the manual genre's frame: the
+header, the table of contents, the search box, the buttons to the previous
+and next pages, and highlighted Lean in blocks, which takes a document's
+code box. A page's content (`main > .content-wrapper > section`) is set as a
+document, as `.document` is, and outweighs the genre's own typography; a
+site's rules for its own classes still outweigh it. Formulas, which Verso
+draws with KaTeX, are shown as the MathML KaTeX writes beside its drawing,
+in New Computer Modern Math at the size of the text.
+
+A site's own controls go in an element with the class `verso-toc-foot`,
+put in every page (the manual genre's `extraContents`): it sits at the foot
+of the table of contents, or at the end of the page on narrow screens. For
+an appearance switch, load `StemmaDesign.elements` in the head
+(`extraHead`) and put `<stemma-theme-switch>` in it.
 
 Formulas should be MathML, which the browser sets in New Computer Modern
 Math; the theme provides the face and its size, not the markup.
