@@ -23,6 +23,7 @@
       "targets/terminal/src/tokens.rs"
       "targets/verso/verso-theme.css"
       "targets/verso/StemmaDesign/Files.lean"
+      "targets/verso/elements/**"
     ];
 
     # Nix.
