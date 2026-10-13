@@ -89,8 +89,9 @@ jobs:
       url: ${{ steps.deploy.outputs.page_url }}
     steps:
       - uses: actions/checkout@v7
-      # The catalog at the root, and the targets it is drawn with where its
-      # `../targets/` reaches them.
+      # The catalog at the root, and the targets it is drawn with beside it.
+      # The site lives under a path (`/design/`), so the catalog's
+      # `../targets/` becomes `./targets/`.
       - name: Lay out the site
         run: |
           mkdir -p site/targets
@@ -98,6 +99,7 @@ jobs:
           for target in web elements brand-kit; do
             cp -r "targets/$target" site/targets/
           done
+          sed -i 's#\.\./targets/#./targets/#g' site/*.html site/*.js site/*.css
       - uses: actions/configure-pages@v6
       - uses: actions/upload-pages-artifact@v5
         with:
