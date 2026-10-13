@@ -56,7 +56,8 @@ This repository belongs to the Stemma organization (`stemma-math`).
   feedback, navigation and overlays) and the brand. `catalog.js` draws the
   frame around each page. Add every new token, component or element to
   its page, as a `.specimen`: its name, what it is for, the classes and
-  elements it is made with, and a stage showing it.
+  elements it is made with, and a stage showing it. Code in it is
+  highlighted with the `hljs-*` classes `code.css` maps.
 - `tools/` is one Python package with every generator, run in this order
   by `just generate`: `tokens`, `fonts`, `glyphs`, `brand`, then
   `targets`, which copies the other targets' outputs into the Rust crate

@@ -146,12 +146,14 @@
                         </div>
                         <h2>The proof in Lean</h2>
                         <p>The statement, as Mathlib states it:</p>
-                        <pre><code>theorem isCyclic_of_prime_card {α : Type u} [Group α] [Fintype α]
-    {p : ℕ} [hp : Fact p.Prime] (h : Fintype.card α = p) : IsCyclic α := by
-  obtain ⟨g, hg⟩ := exists_ne (1 : α)
-  refine ⟨g, fun x ↦ ?_⟩
-  -- ⊢ x ∈ Subgroup.zpowers g
-  simp_all [← orderOf_eq_card_of_forall_mem_zpowers, Nat.Prime.eq_one_or_self_of_dvd]</code></pre>
+                        <pre
+                            class="hljs"
+                        ><code><span class="hljs-keyword">theorem</span> <span class="hljs-title function_">isCyclic_of_prime_card</span> <span class="hljs-punctuation">{</span><span class="hljs-variable">α</span> <span class="hljs-punctuation">:</span> <span class="hljs-type">Type</span> <span class="hljs-variable">u</span><span class="hljs-punctuation">}</span> <span class="hljs-punctuation">[</span><span class="hljs-type">Group</span> <span class="hljs-variable">α</span><span class="hljs-punctuation">]</span> <span class="hljs-punctuation">[</span><span class="hljs-type">Fintype</span> <span class="hljs-variable">α</span><span class="hljs-punctuation">]</span>
+    <span class="hljs-punctuation">{</span><span class="hljs-variable">p</span> <span class="hljs-punctuation">:</span> <span class="hljs-type">ℕ</span><span class="hljs-punctuation">}</span> <span class="hljs-punctuation">[</span><span class="hljs-variable">hp</span> <span class="hljs-punctuation">:</span> <span class="hljs-type">Fact</span> <span class="hljs-type">p.Prime</span><span class="hljs-punctuation">]</span> <span class="hljs-punctuation">(</span><span class="hljs-variable">h</span> <span class="hljs-punctuation">:</span> <span class="hljs-title function_">Fintype.card</span> <span class="hljs-variable">α</span> <span class="hljs-punctuation">=</span> <span class="hljs-variable">p</span><span class="hljs-punctuation">)</span> <span class="hljs-punctuation">:</span> <span class="hljs-type">IsCyclic</span> <span class="hljs-variable">α</span> <span class="hljs-punctuation">:=</span> <span class="hljs-keyword">by</span>
+  <span class="hljs-keyword">obtain</span> <span class="hljs-punctuation">⟨</span><span class="hljs-variable">g</span><span class="hljs-punctuation">,</span> <span class="hljs-variable">hg</span><span class="hljs-punctuation">⟩</span> <span class="hljs-punctuation">:=</span> <span class="hljs-title function_">exists_ne</span> <span class="hljs-punctuation">(</span><span class="hljs-number">1</span> <span class="hljs-punctuation">:</span> <span class="hljs-variable">α</span><span class="hljs-punctuation">)</span>
+  <span class="hljs-keyword">refine</span> <span class="hljs-punctuation">⟨</span><span class="hljs-variable">g</span><span class="hljs-punctuation">,</span> <span class="hljs-keyword">fun</span> <span class="hljs-variable">x</span> <span class="hljs-punctuation">↦</span> <span class="hljs-variable">?_</span><span class="hljs-punctuation">⟩</span>
+  <span class="hljs-comment">-- ⊢ x ∈ Subgroup.zpowers g</span>
+  <span class="hljs-keyword">simp_all</span> <span class="hljs-punctuation">[</span><span class="hljs-punctuation">←</span> <span class="hljs-title function_">orderOf_eq_card_of_forall_mem_zpowers</span><span class="hljs-punctuation">,</span> <span class="hljs-title function_">Nat.Prime.eq_one_or_self_of_dvd</span><span class="hljs-punctuation">]</span></code></pre>
                         <h3>Displayed formulas</h3>
                         <math display="block">
                             <mrow>
