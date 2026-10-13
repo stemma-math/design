@@ -1,0 +1,66 @@
+# Publishes a release when the version in VERSION reaches main with no tag
+# for it yet. Releasing is changing VERSION in a pull request and running
+# `just generate`. While it is 0.0.0, nothing is released.
+#
+# The tag is what Cargo, Lake and Nix take a version by. The release only
+# adds what they cannot reach: the npm packages, as tarballs, since npm
+# cannot install a subdirectory of a git repository.
+name: Release
+
+on:
+  push:
+    branches: [main]
+
+permissions:
+  contents: write
+
+jobs:
+  version:
+    name: Is this a new version?
+    runs-on: ubuntu-latest
+    outputs:
+      version: ${{ steps.version.outputs.version }}
+      new: ${{ steps.version.outputs.new }}
+    steps:
+      - uses: actions/checkout@v7
+      - id: version
+        run: |
+          version=$(tr -d '[:space:]' < VERSION)
+          echo "version=$version" >> "$GITHUB_OUTPUT"
+          if [[ "$version" == 0.0.0 ]] \
+            || git ls-remote --exit-code --tags origin "refs/tags/v$version" > /dev/null; then
+            echo "new=false" >> "$GITHUB_OUTPUT"
+          else
+            echo "new=true" >> "$GITHUB_OUTPUT"
+          fi
+
+  release:
+    name: Publish v${{ needs.version.outputs.version }}
+    needs: version
+    if: needs.version.outputs.new == 'true'
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v7
+      - name: Pack the npm packages
+        run: |
+          mkdir dist
+          for target in web elements; do
+            npm pack "./targets/$target" --pack-destination dist
+          done
+      - name: Checksums
+        working-directory: dist
+        run: sha256sum -- *.tgz > SHA256SUMS
+      - name: Create the tag and the release
+        env:
+          GH_TOKEN: ${{ github.token }}
+          VERSION: ${{ needs.version.outputs.version }}
+        run: |
+          # While the design system is 0.x, every release is a pre-release.
+          prerelease=()
+          [[ "$VERSION" == 0.* ]] && prerelease=(--prerelease)
+          # Written notes go first, followed by the list GitHub generates.
+          notes=docs/releases/v$VERSION.md
+          [[ -f "$notes" ]] && notes_file=(--notes-file "$notes") || notes_file=()
+          gh release create "v$VERSION" dist/*.tgz dist/SHA256SUMS \
+            --repo "$GITHUB_REPOSITORY" --target "$GITHUB_SHA" \
+            --title "v$VERSION" "${notes_file[@]}" --generate-notes "${prerelease[@]}"
