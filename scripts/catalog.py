@@ -14,6 +14,11 @@ CATALOG = ROOT / "catalog"
 
 
 class Handler(http.server.SimpleHTTPRequestHandler):
+    # The targets change while the catalog is open; never serve a stale one.
+    def end_headers(self):
+        self.send_header("Cache-Control", "no-store")
+        super().end_headers()
+
     def translate_path(self, path):
         translated = pathlib.Path(super().translate_path(path))
         try:
