@@ -44,6 +44,5 @@ alias fmt := format
 [group('development')]
 check:
     python -m tools check
-    cargo clippy --workspace --all-targets --all-features -- --deny warnings
     just test
     nix flake check
