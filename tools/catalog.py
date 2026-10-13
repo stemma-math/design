@@ -33,6 +33,9 @@ class Handler(http.server.SimpleHTTPRequestHandler):
 def main(argv):
     port = int(argv[0]) if argv else 8000
     handler = functools.partial(Handler, directory=str(CATALOG))
+    # A page asks for every module of the elements at once; the default
+    # queue of five turns some of them away.
+    http.server.ThreadingHTTPServer.request_queue_size = 64
     server = http.server.ThreadingHTTPServer(("127.0.0.1", port), handler)
     print(f"The catalog is at http://localhost:{port}/")
     try:
