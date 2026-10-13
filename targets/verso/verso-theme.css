@@ -2943,7 +2943,7 @@
      *
      * A native `progress.progress`: how much of a job is done, in a tone,
      * the accent by default. A sunken track, and the part done lit from
-     * above, brightening towards its head; a faint sheen runs along it now
+     * above, deepening towards its head; a faint sheen runs along it now
      * and then while the job goes on. Without a `value` it says only that
      * the job is under way: a short trail of light runs along it. A job
      * that fails turns it `--danger`. `--small` is a hairline for tight
@@ -2954,7 +2954,6 @@
         --tone: var(--accent);
         --tone-text: var(--accent-text);
         --tone-on: var(--accent-on);
-        --progress-head: color-mix(in srgb, var(--tone) 50%, white);
         --progress-lit: linear-gradient(to bottom, rgb(255 255 255 / 18%), transparent 55%);
         --progress-body: linear-gradient(
             to right,
@@ -2982,8 +2981,6 @@
 
     .progress::-webkit-progress-value {
         background:
-            radial-gradient(closest-side, var(--progress-head), transparent) right center / 32px
-                100% no-repeat,
             linear-gradient(
                     100deg,
                     transparent 35%,
@@ -3002,11 +2999,7 @@
     }
 
     .progress::-moz-progress-bar {
-        background:
-            radial-gradient(closest-side, var(--progress-head), transparent) right center / 32px
-                100% no-repeat,
-            var(--progress-lit),
-            var(--progress-body);
+        background: var(--progress-lit), var(--progress-body);
         border-radius: var(--radius-pill);
         box-shadow:
             inset 0 0 0 1px color-mix(in srgb, var(--tone) 70%, black 10%),
@@ -3019,8 +3012,7 @@
                     to right,
                     transparent,
                     color-mix(in srgb, var(--tone) 45%, transparent) 50%,
-                    var(--tone) 86%,
-                    var(--progress-head) 95%,
+                    var(--tone) 92%,
                     transparent
                 ) -35%
                 0 / 35% 100% no-repeat,
@@ -3039,10 +3031,7 @@
     }
 
     .progress--small::-webkit-progress-value {
-        background:
-            radial-gradient(closest-side, var(--progress-head), transparent) right center / 20px
-                100% no-repeat,
-            var(--progress-body);
+        background: var(--progress-body);
         box-shadow: 0 0 6px color-mix(in srgb, var(--tone) 35%, transparent);
         animation: none;
     }
@@ -3079,7 +3068,6 @@
     @keyframes stemma-progress-sheen {
         0% {
             background-position:
-                right center,
                 -200px 0,
                 0 0,
                 0 0;
@@ -3088,7 +3076,6 @@
         55%,
         100% {
             background-position:
-                right center,
                 calc(100% + 200px) 0,
                 0 0,
                 0 0;
