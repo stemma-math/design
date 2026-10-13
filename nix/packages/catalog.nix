@@ -1,6 +1,6 @@
-# The catalog, with the targets it is drawn with under `targets/`, where
-# its `../targets/` reaches them from a server's root: serve this
-# directory.
+# The catalog, with the targets it is drawn with beside it under
+# `targets/`, its `../targets/` made `./targets/` so it can be served from
+# any path: serve this directory.
 {
   pkgs,
   perSystem,
@@ -15,4 +15,5 @@ in
     for target in web elements brand-kit; do
       cp -r ${generated}/targets/$target $out/targets/$target
     done
+    sed -i 's#\.\./targets/#./targets/#g' $out/*.html $out/*.js $out/*.css
   ''
