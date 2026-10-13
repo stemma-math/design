@@ -92,7 +92,8 @@
      * solid fill of its tone, the accent unless an intent says otherwise
      * (`.button--primary.button--danger`). An intent alone outlines the
      * button in that intent. `--quiet` is a text button, `--link` reads as
-     * a link, and `--icon` holds a glyph alone and needs an `aria-label`.
+     * a link, `--icon` holds a glyph alone and needs an `aria-label`, and
+     * `--inline` sits inside a line of text, as large as it.
      * `aria-pressed="true"` and `aria-current` mark the one chosen. */
 
     .button {
@@ -229,6 +230,30 @@
     .button--icon.button--small {
         width: var(--control-small-height);
         padding: 0;
+    }
+
+    /* A quiet button as large as the text around it, for an action inside a
+     * line, as "copy" beside a label. */
+    .button--inline {
+        min-height: 0;
+        padding: 0 0.3em;
+        font: inherit;
+        font-size: 0.85em;
+        color: var(--ink-3);
+        background: transparent;
+        border-color: transparent;
+        border-radius: var(--radius-xs);
+        vertical-align: baseline;
+    }
+
+    .button--inline:hover {
+        color: var(--ink-1);
+        background: var(--fill-muted);
+        border-color: transparent;
+    }
+
+    .button--inline:active:not(:disabled) {
+        transform: none;
     }
 
     .button:disabled,
@@ -1450,8 +1475,17 @@
             color var(--dur-ui) var(--ease-out);
     }
 
-    .segmented > button:hover {
+    .segmented > button:hover:not(:disabled) {
         color: var(--ink-1);
+    }
+
+    .segmented > button:disabled {
+        color: var(--ink-disabled);
+        cursor: not-allowed;
+    }
+
+    .segmented > button[aria-pressed="true"]:disabled {
+        color: var(--ink-3);
     }
 
     .segmented > button[aria-pressed="true"] {
