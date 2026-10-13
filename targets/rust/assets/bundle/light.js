@@ -9,8 +9,8 @@ modules["light.js"] = (() => {
 // one quiet frame with no motion, for side menus and panels.
 //
 // `progress`, from 0 to 1, withdraws the light towards `edge` (`top`,
-// `bottom`, `left` or `right`; `bottom` by default), leaving the page's own
-// surface behind. Set it directly, or call `withdraw()` and `restore()`,
+// `bottom`, `left` or `right`; `top` by default, so the mist rises and
+// sweeps the dark away upwards), leaving the page's own surface behind. Set it directly, or call `withdraw()` and `restore()`,
 // which move it over `--dur-long` along `--ease-in-out`.
 //
 // Its colours are the tokens', read again whenever the appearance changes.
@@ -340,7 +340,7 @@ class StemmaLight extends HTMLElement {
         const settings = this.#settings;
         const still = reducedMotion() ? { ...settings, wob: 0, speed: 0 } : settings;
         if (this.#moves || moving) this.#drawing.advance(still, seconds, moving);
-        this.#drawing.draw(still, this.#progress, EDGES[this.getAttribute("edge")] ?? EDGES.bottom);
+        this.#drawing.draw(still, this.#progress, EDGES[this.getAttribute("edge")] ?? EDGES.top);
         if (this.#moves || this.#transition) this.#request();
     }
 }

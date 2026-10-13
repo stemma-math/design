@@ -3,4 +3,4 @@
 	false	latin			true	85478	92d1c3a0aab25a8d
 ui	false	latin,latin-ext	400		false	188898	f439e4a58265e7e9
 prose,mono	true	latin	400,700	theme-switch,copy-button,mark	true	1415004	2a07ec252986219f
-ui,prose,mono	true	latin,latin-ext,greek,cyrillic,symbols		copy-button,dialog,filter-chips,light,mark,menu,range,segmented,select,stepper,tabs,theme-switch,toast-region,tooltip	true	9172110	7c748bdb389806f5
+ui,prose,mono	true	latin,latin-ext,greek,cyrillic,symbols		copy-button,dialog,filter-chips,light,mark,menu,range,segmented,select,stepper,tabs,theme-switch,toast-region,tooltip	true	9172913	460f833226b0f11a

@@ -92,8 +92,16 @@ export class StemmaSelect extends HTMLElement {
             });
         }
 
-        this.#button.addEventListener("click", () => {
-            if (this.isOpen) this.close();
+        // A press on the button closes an open popover before its click
+        // arrives, so whether it was open is read as the press begins.
+        let wasOpen = false;
+        this.#button.addEventListener("pointerdown", () => {
+            wasOpen = this.isOpen;
+        });
+        this.#button.addEventListener("click", (event) => {
+            const open = event.detail === 0 ? this.isOpen : wasOpen;
+            wasOpen = false;
+            if (open) this.close();
             else this.open();
         });
         this.#button.addEventListener("keydown", (event) => {
