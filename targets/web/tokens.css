@@ -136,8 +136,10 @@
     --surface-field: #f7f9fc;
     /* Hovered quiet buttons, segmented control tracks, skeletons. */
     --fill-muted: #eef1f6;
-    /* Counts. */
+    /* Counts, range tracks. */
     --fill-muted-strong: #e6ebf4;
+    /* What sits on a muted fill: the chosen option of a segmented control, the thumb of a switch or a range. */
+    --surface-raised: #ffffff;
     --border: #e3e8f1;
     /* Outlined buttons and inputs. */
     --border-strong: #d7deea;
@@ -241,6 +243,7 @@
         --surface-field: #0d1526;
         --fill-muted: #1b263d;
         --fill-muted-strong: #233049;
+        --surface-raised: #2c3a57;
         --border: #222e46;
         --border-strong: #2d3a56;
         --border-dashed: #3a4866;
@@ -283,6 +286,7 @@
     --surface-field: #0d1526;
     --fill-muted: #1b263d;
     --fill-muted-strong: #233049;
+    --surface-raised: #2c3a57;
     --border: #222e46;
     --border-strong: #2d3a56;
     --border-dashed: #3a4866;

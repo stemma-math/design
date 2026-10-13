@@ -8,6 +8,7 @@
     "surface-field": { "$value": "#0d1526" },
     "fill-muted": { "$value": "#1b263d" },
     "fill-muted-strong": { "$value": "#233049" },
+    "surface-raised": { "$value": "#2c3a57" },
     "border": { "$value": "#222e46" },
     "border-strong": { "$value": "#2d3a56" },
     "border-dashed": { "$value": "#3a4866" },

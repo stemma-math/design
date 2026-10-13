@@ -620,6 +620,16 @@
         flex-direction: column;
     }
 
+    /* In a card, the rows are cut to its rounded corners, and the head
+     * needs no rule of its own against the card's edge. */
+    .card:has(> .table) {
+        overflow: clip;
+    }
+
+    .card > .table > .table__head:first-child {
+        border-top: 0;
+    }
+
     .table__head,
     .table__row {
         display: grid;
@@ -652,6 +662,10 @@
 
     a.table__row:hover {
         background: var(--surface-subtle);
+    }
+
+    a.table__row:focus-visible {
+        outline-offset: -2px;
     }
 
     .chevron {
@@ -1004,6 +1018,7 @@
 
     .tooltip {
         box-sizing: border-box;
+        width: fit-content;
         padding: 5px 8px;
         font: 400 var(--step-2) / 1.3 var(--font-ui);
         color: var(--on-dark-1);
@@ -1025,11 +1040,13 @@
      * `aria-pressed`. */
 
     .segmented {
+        box-sizing: border-box;
         display: inline-flex;
         gap: 2px;
+        width: fit-content;
         padding: 3px;
         background: var(--fill-muted);
-        border-radius: 12px;
+        border-radius: var(--radius-md);
     }
 
     .segmented > button {
@@ -1042,7 +1059,7 @@
         color: var(--ink-3);
         background: transparent;
         border: 0;
-        border-radius: 9px;
+        border-radius: calc(var(--radius-md) - 3px);
         cursor: pointer;
         transition:
             background var(--dur-ui) var(--ease-out),
@@ -1055,7 +1072,7 @@
 
     .segmented > button[aria-pressed="true"] {
         color: var(--ink-1);
-        background: var(--surface-card);
+        background: var(--surface-raised);
         box-shadow: 0 1px 2px rgb(20 40 90 / 10%);
     }
 

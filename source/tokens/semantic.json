@@ -24,7 +24,11 @@
     },
     "fill-muted-strong": {
       "$value": "#e6ebf4",
-      "$description": "Counts."
+      "$description": "Counts, range tracks."
+    },
+    "surface-raised": {
+      "$value": "#ffffff",
+      "$description": "What sits on a muted fill: the chosen option of a segmented control, the thumb of a switch or a range."
     },
     "border": { "$value": "#e3e8f1" },
     "border-strong": {
@@ -40,7 +44,9 @@
       "$value": "#111a2e",
       "$description": "Text.",
       "$extensions": {
-        "stemma": { "contrast": [{ "on": ["surface-card", "surface-page"], "min": 7 }] }
+        "stemma": {
+          "contrast": [{ "on": ["surface-card", "surface-page", "surface-raised"], "min": 7 }]
+        }
       }
     },
     "ink-2": {
