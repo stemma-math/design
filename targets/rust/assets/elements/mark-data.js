@@ -1,4 +1,4 @@
-// Generated from source/brand by scripts/brand.py. Do not edit.
+// Generated from source/brand by tools/brand.py. Do not edit.
 
 /** The symbol as SVG, for each appearance. */
 export const stillMarks = {

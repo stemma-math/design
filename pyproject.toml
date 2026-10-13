@@ -1,0 +1,21 @@
+# The Python the tools in `tools/` run with. `uv.lock` pins every version;
+# `uv sync` installs them, and the Nix flake builds the same set from it.
+[project]
+name = "stemma-design-tools"
+version = "0.0.0"
+description = "The generators of Stemma's design system, and the catalog's server."
+requires-python = ">=3.12"
+license = "MIT"
+dependencies = [
+  # WOFF2 compression.
+  "brotli==1.2.0",  # Subsets and converts the faces, and outlines the wordmark.
+  "fonttools==4.63.0",
+  # Writes the ICO and ICNS icons, and compares rendered images.
+  "pillow==12.3.0",
+  # Shapes the wordmark.
+  "uharfbuzz==0.53.2",
+]
+
+# The tools run from the repository; they are not a package to install.
+[tool.uv]
+package = false

@@ -1,15 +1,17 @@
 """Serves the catalog at the root of a local server, and the targets it is
 drawn with at `/targets/`, as `catalog/` reaches them by `../targets/`.
 
-    python3 scripts/catalog.py [port]
+    python -m tools catalog [port]
+
+Nothing is cached, so a change to a target shows on the next reload.
 """
 
 import functools
 import http.server
 import pathlib
-import sys
 
-ROOT = pathlib.Path(__file__).resolve().parent.parent
+from .common import ROOT
+
 CATALOG = ROOT / "catalog"
 
 
@@ -28,8 +30,8 @@ class Handler(http.server.SimpleHTTPRequestHandler):
         return str(ROOT / "targets" / rest)
 
 
-def main():
-    port = int(sys.argv[1]) if len(sys.argv) > 1 else 8000
+def main(argv):
+    port = int(argv[0]) if argv else 8000
     handler = functools.partial(Handler, directory=str(CATALOG))
     server = http.server.ThreadingHTTPServer(("127.0.0.1", port), handler)
     print(f"The catalog is at http://localhost:{port}/")
@@ -37,7 +39,3 @@ def main():
         server.serve_forever()
     except KeyboardInterrupt:
         pass
-
-
-if __name__ == "__main__":
-    main()

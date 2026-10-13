@@ -1,18 +1,17 @@
 """Generates the glyph sprite and the glyphs the elements draw, from
 `source/glyphs/`, one SVG per glyph on a 24-unit box.
 
-    python3 scripts/glyphs.py          write targets/web/glyphs.svg and targets/elements/glyphs.js
-    python3 scripts/glyphs.py --check  fail if either differs from what would be written
+It writes targets/web/glyphs.svg and targets/elements/glyphs.js.
 """
 
 import json
 import re
 import sys
-from pathlib import Path
 
-ROOT = Path(__file__).resolve().parent.parent
+from .common import ROOT, Outputs, header
+
 SOURCE = ROOT / "source" / "glyphs"
-HEADER = "Generated from source/glyphs by scripts/glyphs.py. Do not edit."
+HEADER = header("source/glyphs", "glyphs")
 
 
 def glyphs():
@@ -67,27 +66,9 @@ def module(found):
     )
 
 
-def main():
+def generate():
     found = glyphs()
-    outputs = {
-        ROOT / "targets/web/glyphs.svg": sprite(found),
-        ROOT / "targets/elements/glyphs.js": module(found),
-    }
-    if "--check" in sys.argv:
-        stale = [
-            p for p, text in outputs.items() if not p.exists() or p.read_text() != text
-        ]
-        for path in stale:
-            print(f"Out of date: {path.relative_to(ROOT)}", file=sys.stderr)
-        if stale:
-            print("Run `just generate`.", file=sys.stderr)
-            sys.exit(1)
-        return
-    for path, text in outputs.items():
-        path.parent.mkdir(parents=True, exist_ok=True)
-        path.write_text(text)
-    print(f"Wrote {len(outputs)} files")
-
-
-if __name__ == "__main__":
-    main()
+    out = Outputs()
+    out.add("targets/web/glyphs.svg", sprite(found))
+    out.add("targets/elements/glyphs.js", module(found))
+    return out

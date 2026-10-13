@@ -1,7 +1,6 @@
 """Generates the web faces from `source/fonts/`.
 
-    python3 scripts/fonts.py          write targets/web/fonts/ and targets/web/fonts.css
-    python3 scripts/fonts.py --check  fail if any differs from what would be written
+It writes targets/web/fonts/ and targets/web/fonts.css.
 
 Text faces are split by `unicode-range`, so a browser downloads only the
 ranges a page uses and nothing is cut away. Math faces ship whole. A family
@@ -17,21 +16,17 @@ Copied files must be byte for byte identical to their source.
 import io
 import json
 import logging
-import shutil
-import sys
 from concurrent.futures import ProcessPoolExecutor
-from pathlib import Path
 
 from fontTools import subset
 from fontTools.ttLib import TTFont, woff2
 from fontTools.ttLib.tables._g_l_y_f import Glyph, GlyphComponent
 
-ROOT = Path(__file__).resolve().parent.parent
-SOURCE = ROOT / "source" / "fonts"
-TARGET = ROOT / "targets" / "web"
-FONTS = TARGET / "fonts"
+from .common import ROOT, Outputs, header
 
-HEADER = "Generated from source/fonts by scripts/fonts.py. Do not edit."
+SOURCE = ROOT / "source" / "fonts"
+
+HEADER = header("source/fonts", "fonts")
 
 # fontTools packs layout tables with HarfBuzz when `uharfbuzz` happens to be
 # installed, and with its own packer otherwise, and the two differ. Always
@@ -230,7 +225,7 @@ def build_face(family, face):
     return files, rules
 
 
-def generate():
+def faces():
     """Returns {path relative to the target: bytes} for every output, and
     the paths that must match their source byte for byte."""
     config = json.loads((SOURCE / "faces.json").read_text())
@@ -284,32 +279,13 @@ def same(path, data, exact):
     return decompressed(current) == decompressed(data)
 
 
-def main():
-    outputs, exact = generate()
-    existing = {str(p.relative_to(TARGET)) for p in FONTS.rglob("*") if p.is_file()}
-    extra = sorted(existing - set(outputs))
-    if "--check" in sys.argv:
-        stale = [
-            name
-            for name, data in outputs.items()
-            if not same(TARGET / name, data, name in exact)
-        ]
-        if stale or extra:
-            for name in stale:
-                print(f"Out of date: targets/web/{name}", file=sys.stderr)
-            for name in extra:
-                print(f"Not generated: targets/web/{name}", file=sys.stderr)
-            print("Run `just generate`.", file=sys.stderr)
-            sys.exit(1)
-        return
-    if FONTS.exists():
-        shutil.rmtree(FONTS)
-    for name, data in outputs.items():
-        path = TARGET / name
-        path.parent.mkdir(parents=True, exist_ok=True)
-        path.write_bytes(data)
-    print(f"Wrote {len(outputs)} files in targets/web")
-
-
-if __name__ == "__main__":
-    main()
+def generate():
+    files, exact = faces()
+    exact = {f"targets/web/{name}" for name in exact}
+    out = Outputs(
+        owned=["targets/web/fonts"],
+        same=lambda name, path, data: same(path, data, name in exact),
+    )
+    for name, data in files.items():
+        out.add(f"targets/web/{name}", data)
+    return out

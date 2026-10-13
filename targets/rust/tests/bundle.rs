@@ -1,4 +1,4 @@
-//! The inline bundle is the same, byte for byte, as `scripts/bundle.mjs`
+//! The inline bundle is the same, byte for byte, as `tools/bundle.py`
 //! gives for the same options. `bundles.tsv` holds that script's results:
 //! the length and the FNV-1a hash of each.
 

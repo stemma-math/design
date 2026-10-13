@@ -6,7 +6,7 @@
 //! It is built here, from the files this crate carries, rather than chosen
 //! from bundles prepared in advance: a page asks for a few faces, ranges,
 //! weights and elements, and every combination would not fit in the crate.
-//! The result is the same, byte for byte, as `scripts/bundle.mjs` gives for
+//! The result is the same, byte for byte, as `tools/bundle.py` gives for
 //! the same options, which the tests check.
 //!
 //! ```

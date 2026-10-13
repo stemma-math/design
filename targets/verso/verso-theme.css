@@ -1,8 +1,8 @@
-/* Generated from targets/web, targets/elements and targets/brand-kit by scripts/targets.mjs. Do not edit. */
+/* Generated from targets/web, targets/elements and targets/brand-kit by tools/targets.py. Do not edit. */
 
 /* ── fonts.css ── */
 
-/* Generated from source/fonts by scripts/fonts.py. Do not edit.
+/* Generated from source/fonts by tools/fonts.py. Do not edit.
 
  *
 
@@ -482,7 +482,7 @@
 
 /* ── tokens.css ── */
 
-/* Generated from source/tokens by scripts/tokens.mjs. Do not edit. */
+/* Generated from source/tokens by tools/tokens.py. Do not edit. */
 
 :root {
     color-scheme: light;
@@ -709,13 +709,13 @@
     --tone-rust: var(--rust-600);
     --tone-rust-text: var(--rust-700);
     --tone-rust-on: #ffffff;
+    --mix-soft: 12%;
+    --mix-border: 35%;
+    --mix-hover: 84%;
     /* Around a selected or hovered choice. */
     --ring-selected: 0 0 0 3px color-mix(in srgb, var(--accent) 10%, transparent);
     /* Around a focused input, with an accent border. */
     --ring-input: 0 0 0 3px color-mix(in srgb, var(--accent) 18%, transparent);
-    --mix-soft: 12%;
-    --mix-border: 35%;
-    --mix-hover: 84%;
 }
 
 @media (prefers-color-scheme: dark) {

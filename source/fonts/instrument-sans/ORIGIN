@@ -20,5 +20,5 @@ L with the face's own middle dot (U+00B7). Upstream lacks the precomposed
 letters, though it has the middle dot, so l·l already sets well; the
 composites only make pasted text that uses U+0140 or U+013F render in this
 face. Nothing else changes. The files above stay as published, and the
-modification is applied by scripts/fonts.py (add_ldot). The OFL allows it,
+modification is applied by tools/fonts.py (add_ldot). The OFL allows it,
 and needs no renaming, since the face names no Reserved Font Name.

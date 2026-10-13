@@ -36,7 +36,7 @@ The versions of clap (4.6), cliclack (0.5) and indicatif (0.18) are those
 the `stemma` command line uses.
 
 `src/tokens.rs` is generated from the design tokens by the repository's
-`scripts/tokens.mjs`, and must not be edited here.
+`tools/tokens.py`, and must not be edited here.
 
 ## Licence
 

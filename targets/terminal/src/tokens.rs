@@ -1,4 +1,4 @@
-// Generated from source/tokens by scripts/tokens.mjs. Do not edit.
+// Generated from source/tokens by tools/tokens.py. Do not edit.
 
 use crate::{Palette, Rgb};
 

@@ -1,5 +1,5 @@
 modules["glyphs.js"] = (() => {
-// Generated from source/glyphs by scripts/glyphs.py. Do not edit.
+// Generated from source/glyphs by tools/glyphs.py. Do not edit.
 
 /** Each glyph's inner SVG markup, on a 24-unit box. */
 const glyphs = {

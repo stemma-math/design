@@ -2,8 +2,8 @@
 result
 result-*
 
-# Node dependencies of the generators.
-node_modules/
+# The environment `uv sync` makes for the tools, without Nix.
+.venv/
 
 # Python caches.
 __pycache__/

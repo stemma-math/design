@@ -1,4 +1,4 @@
-// Generated from targets/web, targets/elements and targets/brand-kit by scripts/targets.mjs. Do not edit.
+// Generated from targets/web, targets/elements and targets/brand-kit by tools/targets.py. Do not edit.
 
 use crate::Asset;
 

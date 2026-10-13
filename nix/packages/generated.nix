@@ -4,46 +4,24 @@
 # it builds in the sandbox, with the tools pinned by this flake.
 {
   pkgs,
+  inputs,
   flake,
   ...
 }: let
-  inherit (pkgs) lib;
-  root = ../..;
-  python = pkgs.python3.withPackages (ps: [
-    ps.fonttools
-    ps.brotli
-    ps.uharfbuzz
-    ps.pillow
-  ]);
-  # The generators' Node dependencies, from the lock file.
-  nodeModules = pkgs.importNpmLock.buildNodeModules {
-    inherit (pkgs) nodejs;
-    npmRoot = lib.fileset.toSource {
-      inherit root;
-      fileset = lib.fileset.unions [
-        (root + "/package.json")
-        (root + "/package-lock.json")
-      ];
-    };
-  };
+  python = import ../python.nix {inherit pkgs inputs;};
 in
   pkgs.stdenvNoCC.mkDerivation {
     name = "design-generated";
     src = flake;
 
-    nativeBuildInputs = [pkgs.nodejs python pkgs.resvg];
+    nativeBuildInputs = [python pkgs.resvg];
 
     # The outputs are data; nothing to patch.
     dontFixup = true;
 
     buildPhase = ''
       runHook preBuild
-      ln -s ${nodeModules}/node_modules node_modules
-      node scripts/tokens.mjs
-      python3 scripts/fonts.py
-      python3 scripts/glyphs.py
-      python3 scripts/brand.py
-      node scripts/targets.mjs
+      python -m tools generate
       runHook postBuild
     '';
 

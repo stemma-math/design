@@ -1,8 +1,7 @@
 """Generates the brand kit, and the marks the other targets carry, from the
 drawn masters in `source/brand/`.
 
-    python3 scripts/brand.py          write targets/brand-kit/ and the marks in other targets
-    python3 scripts/brand.py --check  fail if any differs from what would be written
+It writes targets/brand-kit/ and the marks in other targets.
 
 The wordmark is "stemma" in Instrument Sans, shaped with HarfBuzz and
 outlined with fontTools, so no font is needed to show it. Lockups place it
@@ -15,7 +14,6 @@ import io
 import json
 import re
 import subprocess
-import sys
 import tempfile
 from pathlib import Path
 
@@ -26,43 +24,29 @@ from fontTools.pens.transformPen import TransformPen
 from fontTools.ttLib import TTFont
 from PIL import Image
 
-ROOT = Path(__file__).resolve().parent.parent
+from . import tokens
+from .common import ROOT, Outputs, header
+
 BRAND = ROOT / "source" / "brand"
 FONTS = ROOT / "source" / "fonts"
-TOKENS = ROOT / "source" / "tokens"
 KIT = ROOT / "targets" / "brand-kit"
 
 APPEARANCES = ("on-dark", "on-light", "mono")
 CONFIG = json.loads((BRAND / "brand.json").read_text())
-HEADER = "Generated from source/brand by scripts/brand.py. Do not edit."
+HEADER = header("source/brand", "brand")
 
 
 # ── Values ───────────────────────────────────────────────────────────────
 
 
-def token_values():
-    """Every colour token's light value, by name, references resolved."""
-    values = {}
-    for file in ("brand.json", "semantic.json"):
-        data = json.loads((TOKENS / file).read_text())
-        for name, token in data.get("color", {}).items():
-            if isinstance(token, dict) and "$value" in token:
-                values[name] = token["$value"]
-
-    def resolve(value):
-        match = re.fullmatch(r"\{color\.([^}]+)\}", value)
-        return resolve(values[match.group(1)]) if match else value
-
-    return {name: resolve(value) for name, value in values.items()}
-
-
-TOKEN_VALUES = token_values()
+# The light appearance, whose colours the marks are drawn in.
+LIGHT = tokens.Appearance(["brand.json", "semantic.json"])
 
 
 def color(value):
     """A colour from the configuration: a literal, or a token reference."""
-    match = re.fullmatch(r"\{color\.([^}]+)\}", value)
-    return TOKEN_VALUES[match.group(1)] if match else value
+    match = tokens.REFERENCE.fullmatch(value)
+    return LIGHT.resolved(match.group(1).split(".", 1)[1]) if match else value
 
 
 def number(x):
@@ -311,7 +295,7 @@ def icns(image, smaller):
 # ── Outputs ──────────────────────────────────────────────────────────────
 
 
-def generate():
+def kit():
     """Returns {path relative to the repository: (bytes, description)}."""
     out = {}
 
@@ -518,31 +502,10 @@ def same(path, data):
     return False
 
 
-def main():
-    outputs = generate()
-    existing = {str(p.relative_to(ROOT)) for p in KIT.rglob("*") if p.is_file()}
-    extra = sorted(existing - set(outputs))
-    if "--check" in sys.argv:
-        stale = [
-            name for name, (data, _) in outputs.items() if not same(ROOT / name, data)
-        ]
-        for name in stale:
-            print(f"Out of date: {name}", file=sys.stderr)
-        for name in extra:
-            print(f"Not generated: {name}", file=sys.stderr)
-        if stale or extra:
-            print("Run `just generate`.", file=sys.stderr)
-            sys.exit(1)
-        return
-    for name in extra:
-        (ROOT / name).unlink()
-    for name, (data, _) in outputs.items():
-        path = ROOT / name
-        path.parent.mkdir(parents=True, exist_ok=True)
-        if not same(path, data):
-            path.write_bytes(data)
-    print(f"Wrote {len(outputs)} files")
-
-
-if __name__ == "__main__":
-    main()
+def generate():
+    out = Outputs(
+        owned=["targets/brand-kit"], same=lambda _name, path, data: same(path, data)
+    )
+    for name, (data, _) in kit().items():
+        out.add(name, data)
+    return out

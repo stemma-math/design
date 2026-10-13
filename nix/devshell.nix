@@ -1,6 +1,10 @@
 # Development shell: the tools the generators call. None of them is needed
 # to consume a target, only to regenerate one after changing `source/`.
-{pkgs, ...}: let
+{
+  pkgs,
+  inputs,
+  ...
+}: let
   inherit (pkgs) lib stdenv;
 in
   pkgs.devshell.mkShell {
@@ -8,16 +12,9 @@ in
       name = "design";
 
       packages = [
-        # Faces are subset and converted with fontTools, and WOFF2 needs
-        # Brotli. The wordmark is shaped with HarfBuzz and outlined with
-        # fontTools. Pillow writes the ICO and ICNS icons and compares
-        # rendered images.
-        (pkgs.python3.withPackages (ps: [
-          ps.fonttools
-          ps.brotli
-          ps.uharfbuzz
-          ps.pillow
-        ]))
+        # The tools' Python, with the packages `uv.lock` pins: fontTools,
+        # Brotli, HarfBuzz and Pillow.
+        (import ./python.nix {inherit pkgs inputs;})
         # The Rust targets.
         pkgs.rustc
         pkgs.clippy
@@ -53,8 +50,8 @@ in
         help = "Run the repository's recipes; type 'just' to list them";
       }
       {
-        package = pkgs.nodejs;
-        help = "Runs Style Dictionary, which generates the tokens";
+        package = pkgs.uv;
+        help = "Updates uv.lock, the versions of the tools' Python packages";
       }
       {
         package = pkgs.resvg;

@@ -53,10 +53,12 @@ This repository belongs to the Stemma organization (`stemma-math`).
   - `targets/brand-kit`: every mark and icon, as files.
 - `catalog/` is a static gallery drawn only with the targets, with no
   framework. Add every new token, component or element to it.
-- `scripts/` holds the generators: `tokens.mjs`, `fonts.py`, `glyphs.py`,
-  `brand.py`, then `targets.mjs`, which copies the other targets' outputs
-  into the Rust crate and the Verso theme; and `bundle.mjs`, which writes an
-  inline bundle for a single-file page on request. Generated files are
+- `tools/` is one Python package with every generator, run in this order
+  by `just generate`: `tokens`, `fonts`, `glyphs`, `brand`, then
+  `targets`, which copies the other targets' outputs into the Rust crate
+  and the Verso theme. `bundle` writes an inline bundle for a single-file
+  page on request, and `catalog` serves the catalog. `common.py` holds how
+  a generator writes its files or checks them. Generated files are
   committed, and are never edited by hand: change `source/` and run
   `just generate`.
 - `just check` fails while a generated file is out of date, while a colour
@@ -78,10 +80,10 @@ This repository belongs to the Stemma organization (`stemma-math`).
 - Elements have no build step and no framework. They draw with the classes
   of `targets/web`, are usable by keyboard, keep ARIA state in step and
   respect reduced motion.
-- The tools are Node (Style Dictionary), Python with `fontTools`, Brotli,
-  HarfBuzz (`uharfbuzz`) and Pillow, `resvg`, Rust, `elan` and `just`.
-  `nix develop` provides them; without Nix, install them by hand, the
-  Python packages from `scripts/requirements.txt`, and run `npm ci` once.
+- The tools are Python, with the packages `uv.lock` pins, `resvg`, Rust,
+  `elan` and `just`. `nix develop` provides them, building the Python from
+  `uv.lock`; without Nix, run `uv sync` and install the rest by hand. A
+  new Python package goes in `pyproject.toml`, then `uv lock`.
 - Code is MIT (`LICENSE`). Each face keeps its own licence beside it, and
   the mark has its own usage policy in `source/brand/LICENSE`, copied into
   every target that carries the mark.

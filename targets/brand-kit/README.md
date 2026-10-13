@@ -1,6 +1,6 @@
 # Stemma brand kit
 
-<!-- Generated from source/brand by scripts/brand.py. Do not edit. -->
+<!-- Generated from source/brand by tools/brand.py. Do not edit. -->
 
 Every mark, in each appearance, size and format, generated from the
 drawn masters in the repository's `source/brand/`. Use the SVG files

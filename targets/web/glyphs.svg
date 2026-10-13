@@ -1,5 +1,5 @@
 <svg xmlns="http://www.w3.org/2000/svg">
-  <!-- Generated from source/glyphs by scripts/glyphs.py. Do not edit.
+  <!-- Generated from source/glyphs by tools/glyphs.py. Do not edit.
        Line glyphs on a 24-unit box, stroked in the colour of their text.
        Draw one with <svg class="glyph"><use href="glyphs.svg#name"/></svg>. -->
   <symbol id="add-person" viewBox="0 0 24 24"><circle cx="10" cy="8" r="4"/><path d="M3 20c.8-3.5 3.6-5.5 7-5.5s6.2 2 7 5.5M19 8v6M16 11h6"/></symbol>

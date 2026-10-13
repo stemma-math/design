@@ -1,51 +1,31 @@
 # Recipes for working on Stemma's design system. Run `just` to list them.
+#
+# The tools in `tools/` run with the Python of the Nix development shell,
+# or, without Nix, of the environment `uv sync` makes: `uv run just …`.
 
 [private]
 default:
     @just --list --unsorted
 
-# Regenerate every generated file from `source/`.
+# Regenerate every generated file from `source/`, or only some steps:
+# tokens, fonts, glyphs, brand, targets.
 [group('generate')]
-generate: tokens fonts glyphs brand targets
+generate *STEPS:
+    python -m tools generate {{ STEPS }}
 
 alias build := generate
 
-# Generate the tokens of every target, and check their contrast.
-[group('generate')]
-tokens: _node-modules
-    node scripts/tokens.mjs
-
-# Generate the web faces: WOFF2 split by Unicode range, and fonts.css.
-[group('generate')]
-fonts:
-    python3 scripts/fonts.py
-
-# Generate the glyph sprite and the glyphs the elements draw.
-[group('generate')]
-glyphs:
-    python3 scripts/glyphs.py
-
-# Generate the brand kit, and the marks the other targets carry.
-[group('generate')]
-brand:
-    python3 scripts/brand.py
-
-# Copy the web target's files into the Rust crate and the Verso theme. Runs last.
-[group('generate')]
-targets:
-    node scripts/targets.mjs
-
-# Write an inline bundle for a single-file page; see scripts/bundle.mjs for the options.
+# Write an inline bundle for a single-file page; see tools/bundle.py for the options.
 [group('generate')]
 bundle *ARGS:
-    node scripts/bundle.mjs {{ ARGS }}
+    python -m tools bundle {{ ARGS }}
 
 # Serve the catalog at http://localhost:8000/.
 [group('development')]
 catalog port="8000":
-    python3 scripts/catalog.py {{ port }}
+    python -m tools catalog {{ port }}
 
-# Run the Rust tests, with and without the optional features.
+# Run the Rust tests, with and without the optional features, and build the Lean package.
 [group('development')]
 test:
     cargo test --workspace --all-features
@@ -62,18 +42,8 @@ alias fmt := format
 # Run every check: generated files up to date, contrast, the bundle, the
 # Rust and Lean targets, formatting and the flake's checks.
 [group('development')]
-check: _node-modules
-    node scripts/tokens.mjs --check
-    python3 scripts/fonts.py --check
-    python3 scripts/glyphs.py --check
-    python3 scripts/brand.py --check
-    node scripts/targets.mjs --check
-    node scripts/bundle.mjs --check
+check:
+    python -m tools check
     cargo clippy --workspace --all-targets --all-features -- --deny warnings
     just test
     nix flake check
-
-# Install the generators' Node dependencies, once.
-[private]
-_node-modules:
-    @test -d node_modules || npm ci --no-audit --no-fund

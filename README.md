@@ -66,22 +66,24 @@ is committed in `targets/` and `catalog/`.
 
 ## Source
 
-| Folder           | What it holds                                                                                                                                                                                                          |
-| ---------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| `source/tokens/` | Tokens in the Design Tokens Community Group format, by tier: `brand.json` (primitives), `semantic.json` (light), `themes/dark.json` and `density.json`.                                                                |
-| `source/fonts/`  | Each face as published upstream, with its licence and an `ORIGIN` note; `faces.json` lists the faces every target ships.                                                                                               |
-| `source/brand/`  | The drawn masters of the mark, the live mark's data, the grain texture, and `brand.json`, how the wordmark, lockups and icons are built.                                                                               |
-| `source/glyphs/` | One SVG per line glyph.                                                                                                                                                                                                |
-| `scripts/`       | The generators: `tokens.mjs` (Style Dictionary), `fonts.py` (fontTools), `glyphs.py`, `brand.py` (HarfBuzz, fontTools, resvg, Pillow), `targets.mjs` (the Rust crate's and the Verso theme's copies) and `bundle.mjs`. |
+| Folder           | What it holds                                                                                                                                                                                                                                             |
+| ---------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `source/tokens/` | Tokens in the Design Tokens Community Group format, by tier: `brand.json` (primitives), `semantic.json` (light), `themes/dark.json` and `density.json`.                                                                                                   |
+| `source/fonts/`  | Each face as published upstream, with its licence and an `ORIGIN` note; `faces.json` lists the faces every target ships.                                                                                                                                  |
+| `source/brand/`  | The drawn masters of the mark, the live mark's data, the grain texture, and `brand.json`, how the wordmark, lockups and icons are built.                                                                                                                  |
+| `source/glyphs/` | One SVG per line glyph.                                                                                                                                                                                                                                   |
+| `tools/`         | The generators, as one Python package: `tokens` (and the contrast checks), `fonts` (fontTools), `glyphs`, `brand` (HarfBuzz, fontTools, resvg, Pillow), `targets` (the Rust crate's and the Verso theme's copies) and `bundle`; and the catalog's server. |
 
 ## Development
 
-The tools are Node, Python with `fontTools`, Brotli, `uharfbuzz` and
-Pillow, `resvg`, Rust, `elan` and `just`. The Nix flake's development shell
-provides them. Without Nix, install Node 24, `resvg`, Rust, `elan` and
-`just` by hand, the Python packages with
-`python3 -m pip install -r scripts/requirements.txt`, and the Node ones
-with `npm ci`.
+The tools are Python, `resvg`, Rust, `elan` and `just`. The Python
+packages are declared in `pyproject.toml` and pinned in `uv.lock`, which
+both ways of working install from:
+
+- With Nix, `nix develop` provides every tool, the Python built from
+  `uv.lock`.
+- Without Nix, `uv sync` makes the Python environment, and `uv run just …`
+  runs a recipe in it; install `resvg`, Rust, `elan` and `just` by hand.
 
 ```sh
 nix develop     # enter the development shell

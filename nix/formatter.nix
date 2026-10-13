@@ -11,7 +11,7 @@
 
     # Generated files are checked against their generators instead.
     settings.global.excludes = [
-      "package-lock.json"
+      "uv.lock"
       "targets/web/tokens.css"
       "targets/web/fonts.css"
       "targets/elements/glyphs.js"
