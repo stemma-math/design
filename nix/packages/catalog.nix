@@ -1,5 +1,6 @@
-# The catalog, with the targets it is drawn with, at the same relative
-# paths: serve this directory and open `catalog/`.
+# The catalog, with the targets it is drawn with under `targets/`, where
+# its `../targets/` reaches them from a server's root: serve this
+# directory.
 {
   pkgs,
   perSystem,
@@ -8,8 +9,9 @@
   generated = perSystem.self.generated;
 in
   pkgs.runCommand "design-catalog" {} ''
+    cp -r ${generated}/catalog $out
+    chmod -R u+w $out
     mkdir -p $out/targets
-    cp -r ${generated}/catalog $out/catalog
     for target in web elements brand-kit; do
       cp -r ${generated}/targets/$target $out/targets/$target
     done

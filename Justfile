@@ -40,11 +40,10 @@ targets:
 bundle *ARGS:
     node scripts/bundle.mjs {{ ARGS }}
 
-# Serve the catalog at http://localhost:8000/catalog/.
+# Serve the catalog at http://localhost:8000/.
 [group('development')]
 catalog port="8000":
-    @echo "The catalog is at http://localhost:{{ port }}/catalog/"
-    python3 -m http.server {{ port }} --bind 127.0.0.1
+    python3 scripts/catalog.py {{ port }}
 
 # Run the Rust tests, with and without the optional features.
 [group('development')]

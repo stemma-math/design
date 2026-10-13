@@ -12,7 +12,7 @@ typography; a product decides when something is `danger` and what its
 label says.
 
 `catalog/` is a living gallery of all of it, drawn with the targets
-themselves: run `just catalog` and open <http://localhost:8000/catalog/>.
+themselves: run `just catalog` and open <http://localhost:8000/>.
 
 ## Targets
 
