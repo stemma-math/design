@@ -28,8 +28,8 @@
     # Nix.
     programs.alejandra.enable = true;
 
-    # CSS, JavaScript, JSON and Markdown. Stylesheets and scripts are
-    # indented by four spaces; data and prose by two.
+    # CSS, JavaScript, JSON, Markdown and YAML. Stylesheets and scripts are
+    # indented by four spaces; data, prose and workflows by two.
     programs.prettier = {
       enable = true;
       settings = {
@@ -37,7 +37,7 @@
         printWidth = 100;
         overrides = [
           {
-            files = ["*.json" "*.md"];
+            files = ["*.json" "*.md" "*.yml" "*.yaml"];
             options.tabWidth = 2;
           }
         ];
