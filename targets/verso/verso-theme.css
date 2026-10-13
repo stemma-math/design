@@ -4021,7 +4021,9 @@ html .prev-next-buttons {
     font: 500 var(--step-3) / 1.3 var(--font-ui);
 }
 
-html .prev-next-buttons > * {
+/* The buttons are links; Verso leaves an empty `div` where there is no
+ * page before or after, which stays empty. */
+html .prev-next-buttons > a {
     flex: 0 1 auto;
     padding: var(--space-2) var(--space-3);
     color: var(--ink-2);
@@ -4036,7 +4038,7 @@ html .prev-next-buttons > [rel="next"] {
     margin-left: auto;
 }
 
-html .prev-next-buttons > *:hover {
+html .prev-next-buttons > a:hover {
     color: var(--ink-1);
     background: var(--fill-muted);
 }
