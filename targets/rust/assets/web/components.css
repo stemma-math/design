@@ -1619,67 +1619,75 @@
     /* ── Progress ──────────────────────────────────────────────────────
      *
      * A native `progress.progress`: how much of a job is done, in a tone,
-     * the accent by default. The part done brightens towards its head,
-     * which glows a little, and a faint sheen runs along it now and then
-     * while the job goes on. Without a `value` it says only that the job
-     * is under way: a short trail of light runs along it. A job that
-     * fails turns it `--danger`. */
+     * the accent by default. A sunken track, and the part done lit from
+     * above, brightening towards its head; a faint sheen runs along it now
+     * and then while the job goes on. Without a `value` it says only that
+     * the job is under way: a short trail of light runs along it. A job
+     * that fails turns it `--danger`. `--small` is a hairline for tight
+     * places. `.progress-label` goes above it: what the job is, and how
+     * far it has got. */
 
     .progress {
         --tone: var(--accent);
         --tone-text: var(--accent-text);
         --tone-on: var(--accent-on);
-        --progress-head: color-mix(in srgb, var(--tone) 55%, white);
+        --progress-head: color-mix(in srgb, var(--tone) 50%, white);
+        --progress-lit: linear-gradient(to bottom, rgb(255 255 255 / 18%), transparent 55%);
+        --progress-body: linear-gradient(
+            to right,
+            color-mix(in srgb, var(--tone) 60%, var(--fill-muted-strong)),
+            var(--tone) 75%
+        );
 
         display: block;
         box-sizing: border-box;
         width: 100%;
-        height: 6px;
+        height: 10px;
+        padding: 0;
         color: var(--tone);
         background: var(--fill-muted-strong);
         border: 0;
         border-radius: var(--radius-pill);
+        box-shadow: inset 0 1px 2px rgb(10 20 50 / 14%);
         appearance: none;
     }
 
     .progress::-webkit-progress-bar {
         background: transparent;
-        border-radius: inherit;
+        border-radius: var(--radius-pill);
     }
 
     .progress::-webkit-progress-value {
         background:
-            radial-gradient(closest-side, var(--progress-head), transparent) right center / 28px
+            radial-gradient(closest-side, var(--progress-head), transparent) right center / 32px
                 100% no-repeat,
             linear-gradient(
                     100deg,
                     transparent 35%,
-                    rgb(255 255 255 / 30%) 50%,
+                    rgb(255 255 255 / 32%) 50%,
                     transparent 65%
-                ) -160px
-                0 / 160px 100% no-repeat,
-            linear-gradient(
-                to right,
-                color-mix(in srgb, var(--tone) 55%, var(--fill-muted-strong)),
-                var(--tone) 70%
-            );
+                ) -200px
+                0 / 200px 100% no-repeat,
+            var(--progress-lit),
+            var(--progress-body);
         border-radius: var(--radius-pill);
-        box-shadow: 0 0 6px color-mix(in srgb, var(--tone) 40%, transparent);
+        box-shadow:
+            inset 0 0 0 1px color-mix(in srgb, var(--tone) 70%, black 10%),
+            0 0 8px color-mix(in srgb, var(--tone) 35%, transparent);
         transition: inline-size var(--dur-ui) var(--ease-out);
-        animation: stemma-progress-sheen 2.8s var(--ease-in-out) 0.6s infinite;
+        animation: stemma-progress-sheen 3s var(--ease-in-out) 0.6s infinite;
     }
 
     .progress::-moz-progress-bar {
         background:
-            radial-gradient(closest-side, var(--progress-head), transparent) right center / 28px
+            radial-gradient(closest-side, var(--progress-head), transparent) right center / 32px
                 100% no-repeat,
-            linear-gradient(
-                to right,
-                color-mix(in srgb, var(--tone) 55%, var(--fill-muted-strong)),
-                var(--tone) 70%
-            );
+            var(--progress-lit),
+            var(--progress-body);
         border-radius: var(--radius-pill);
-        box-shadow: 0 0 6px color-mix(in srgb, var(--tone) 40%, transparent);
+        box-shadow:
+            inset 0 0 0 1px color-mix(in srgb, var(--tone) 70%, black 10%),
+            0 0 8px color-mix(in srgb, var(--tone) 35%, transparent);
     }
 
     .progress:indeterminate {
@@ -1687,9 +1695,9 @@
             linear-gradient(
                     to right,
                     transparent,
-                    color-mix(in srgb, var(--tone) 50%, transparent) 55%,
-                    var(--tone) 88%,
-                    var(--progress-head) 96%,
+                    color-mix(in srgb, var(--tone) 45%, transparent) 50%,
+                    var(--tone) 86%,
+                    var(--progress-head) 95%,
                     transparent
                 ) -35%
                 0 / 35% 100% no-repeat,
@@ -1704,6 +1712,36 @@
 
     .progress--small {
         height: 4px;
+        box-shadow: none;
+    }
+
+    .progress--small::-webkit-progress-value {
+        background:
+            radial-gradient(closest-side, var(--progress-head), transparent) right center / 20px
+                100% no-repeat,
+            var(--progress-body);
+        box-shadow: 0 0 6px color-mix(in srgb, var(--tone) 35%, transparent);
+        animation: none;
+    }
+
+    .progress--small::-moz-progress-bar {
+        box-shadow: 0 0 6px color-mix(in srgb, var(--tone) 35%, transparent);
+    }
+
+    /* What the job is, and how far it has got, over its bar. */
+    .progress-label {
+        display: flex;
+        gap: var(--space-3);
+        align-items: baseline;
+        justify-content: space-between;
+        margin-bottom: var(--space-2);
+        font: var(--text-meta);
+        color: var(--ink-2);
+    }
+
+    .progress-label > :last-child:not(:first-child) {
+        font-variant-numeric: tabular-nums;
+        color: var(--ink-3);
     }
 
     @keyframes stemma-progress {
@@ -1719,7 +1757,8 @@
         0% {
             background-position:
                 right center,
-                -160px 0,
+                -200px 0,
+                0 0,
                 0 0;
         }
 
@@ -1727,7 +1766,8 @@
         100% {
             background-position:
                 right center,
-                calc(100% + 160px) 0,
+                calc(100% + 200px) 0,
+                0 0,
                 0 0;
         }
     }

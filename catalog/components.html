@@ -109,7 +109,12 @@
                     >
                 </div>
                 <div class="catalog-stack">
-                    <progress class="progress" max="100" value="0" data-fills></progress>
+                    <div style="justify-self: stretch">
+                        <div class="progress-label">
+                            <span>Checking proofs</span><span data-fills-label>0%</span>
+                        </div>
+                        <progress class="progress" max="100" value="0" data-fills></progress>
+                    </div>
                     <progress class="progress progress--success" max="100" value="100"></progress>
                     <progress
                         class="progress progress--danger progress--small"
@@ -281,6 +286,8 @@
                 setInterval(() => {
                     done = done >= 100 ? 0 : Math.min(done + 4 + Math.random() * 10, 100);
                     for (const bar of bars) bar.value = done;
+                    for (const label of document.querySelectorAll("[data-fills-label]"))
+                        label.textContent = `${Math.round(done)}%`;
                 }, 400);
             </script>
         </main>
