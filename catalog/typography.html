@@ -3,69 +3,106 @@
     <head>
         <meta charset="utf-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1" />
-        <title>Stemma design: typography</title>
+        <title>Typography · Stemma design</title>
         <link rel="icon" href="../targets/brand-kit/web/favicon.svg" />
         <link rel="stylesheet" href="../targets/web/index.css" />
         <link rel="stylesheet" href="catalog.css" />
         <script type="module" src="catalog.js"></script>
     </head>
     <body>
-        <main class="catalog-main">
-            <h1>Typography</h1>
-            <p class="lead">
-                The faces, and document typography inside <code class="identifier">.document</code>.
-            </p>
+        <main>
+            <header class="catalog-intro">
+                <p class="label">Foundations</p>
+                <h1>Typography</h1>
+                <p>
+                    Four faces, each for one job, and nothing after them but the system's generic
+                    family. Documents are set inside <code class="identifier">.document</code>; the
+                    interface uses the type styles.
+                </p>
+            </header>
 
-            <section class="catalog-section">
-                <h2>Faces</h2>
-                <div class="catalog-grid" style="--catalog-cell: 480px">
-                    <div class="card catalog-panel">
-                        <p class="label">Prose: New Computer Modern, Book</p>
-                        <p style="font: 400 26px/1.3 var(--font-prose); margin: 0.3em 0">
-                            Aa Bb Cc, <em>italic</em>, <strong>bold</strong>; col·lecció, αβγ,
-                            ∀ε&gt;0
-                        </p>
-                    </div>
-                    <div class="card catalog-panel">
-                        <p class="label">Interface and headings: Instrument Sans</p>
-                        <p style="font: 400 26px/1.3 var(--font-ui); margin: 0.3em 0">
-                            Aa Bb Cc <span style="font-weight: 500">500</span>
-                            <span style="font-weight: 600">600</span> <strong>700</strong>; ŀ, α ≤ β
-                        </p>
-                    </div>
-                    <div class="card catalog-panel">
-                        <p class="label">Code: JuliaMono</p>
-                        <p style="font: 400 20px/1.4 var(--font-mono); margin: 0.3em 0">
-                            theorem foo : ∀ ε &gt; 0, ∃ δ, ‖x‖ ≤ δ → ⊢ 𝔼[X] ∈ ℝ≥0
-                        </p>
-                    </div>
-                    <div class="card catalog-panel">
-                        <p class="label">Formulas: New Computer Modern Math</p>
-                        <p style="font-size: 24px; margin: 0.3em 0">
-                            <math display="block">
-                                <mrow>
-                                    <msubsup><mo>∫</mo><mn>0</mn><mi>∞</mi></msubsup>
-                                    <msup
-                                        ><mi>e</mi
-                                        ><mrow
-                                            ><mo>−</mo><msup><mi>x</mi><mn>2</mn></msup></mrow
-                                        ></msup
-                                    >
-                                    <mi>d</mi><mi>x</mi><mo>=</mo>
-                                    <mfrac
-                                        ><msqrt><mi>π</mi></msqrt
-                                        ><mn>2</mn></mfrac
-                                    >
-                                </mrow>
-                            </math>
-                        </p>
-                    </div>
+            <section class="specimen" id="prose">
+                <h2>Prose</h2>
+                <p>New Computer Modern, Book, for running text in documents.</p>
+                <div class="specimen__api"><code>--font-prose</code><code>--text-prose</code></div>
+                <div class="specimen__stage">
+                    <p style="margin: 0; font: 400 30px/1.3 var(--font-prose)">
+                        Every group of prime order is <em>cyclic</em>, and so
+                        <strong>abelian</strong>; col·lecció, αβγ.
+                    </p>
                 </div>
             </section>
 
-            <section class="catalog-section">
+            <section class="specimen" id="interface">
+                <h2>Interface and headings</h2>
+                <p>
+                    Instrument Sans, for the interface, headings and the wordmark. Libertinus Sans
+                    stands in for the scripts it lacks.
+                </p>
+                <div class="specimen__api"><code>--font-ui</code></div>
+                <div class="specimen__stage">
+                    <p style="margin: 0; font: 400 30px/1.3 var(--font-ui)">
+                        Regular <span style="font-weight: 500">Medium</span>
+                        <span style="font-weight: 600">Semibold</span> <strong>Bold</strong>
+                    </p>
+                    <p style="margin: 0; font: 400 20px/1.4 var(--font-ui); color: var(--ink-2)">
+                        Paral·lel, ŀl, Ŀl · Ελληνικά · Кириллица · α ≤ β
+                    </p>
+                </div>
+            </section>
+
+            <section class="specimen" id="code">
+                <h2>Code</h2>
+                <p>JuliaMono, for code and identifiers, with the symbols Lean uses.</p>
+                <div class="specimen__api"><code>--font-mono</code><code>.identifier</code></div>
+                <div class="specimen__stage">
+                    <p style="margin: 0; font: 400 19px/1.5 var(--font-mono)">
+                        theorem foo : ∀ ε &gt; 0, ∃ δ, ‖x‖ ≤ δ → ⊢ 𝔼[X] ∈ ℝ≥0
+                    </p>
+                </div>
+            </section>
+
+            <section class="specimen" id="formulas">
+                <h2>Formulas</h2>
+                <p>New Computer Modern Math, for MathML, shipped whole for its stretchy forms.</p>
+                <div class="specimen__api"><code>--font-math</code></div>
+                <div class="specimen__stage" style="font-size: 22px">
+                    <math display="block">
+                        <mrow>
+                            <msubsup><mo>∫</mo><mn>0</mn><mi>∞</mi></msubsup>
+                            <msup
+                                ><mi>e</mi
+                                ><mrow
+                                    ><mo>−</mo><msup><mi>x</mi><mn>2</mn></msup></mrow
+                                ></msup
+                            >
+                            <mi>d</mi><mi>x</mi><mo>=</mo>
+                            <mfrac
+                                ><msqrt><mi>π</mi></msqrt
+                                ><mn>2</mn></mfrac
+                            >
+                        </mrow>
+                    </math>
+                </div>
+            </section>
+
+            <section class="specimen" id="styles">
+                <h2>Type styles</h2>
+                <p>
+                    The interface's styles, each a whole <code class="identifier">font</code>
+                    shorthand, and the size steps they are made of.
+                </p>
+                <div class="specimen__stage"><div id="text-styles"></div></div>
+                <div class="specimen__stage"><div id="steps"></div></div>
+            </section>
+
+            <section class="specimen" id="document">
                 <h2>A document</h2>
-                <div class="card catalog-panel">
+                <p>
+                    Headings, prose, references, highlights, code, displayed formulas, lists,
+                    quotations and tables, as <code class="identifier">.document</code> sets them.
+                </p>
+                <div class="specimen__stage" style="padding: var(--space-8)">
                     <article class="document" style="max-width: 46em">
                         <h1>Finite groups of prime order</h1>
                         <p>
@@ -174,6 +211,35 @@
                     </article>
                 </div>
             </section>
+
+            <script type="module">
+                import { html, tokens } from "./catalog.js";
+
+                const all = await tokens();
+                const names = [...all.light.keys()];
+                const line = (name, sample) =>
+                    html(
+                        `<div class="scale"><code>${name}<small>${all.light.get(name)}</small></code><div class="sample">${sample}</div></div>`,
+                    );
+                for (const name of names.filter((n) => /^text-/.test(n)))
+                    document
+                        .getElementById("text-styles")
+                        .append(
+                            line(
+                                name,
+                                `<span style="font:var(--${name})">Every finite group of prime order is cyclic</span>`,
+                            ),
+                        );
+                for (const name of names.filter((n) => /^step-\d+$/.test(n)))
+                    document
+                        .getElementById("steps")
+                        .append(
+                            line(
+                                name,
+                                `<span style="font-size:var(--${name})">Stemma, a standard for mathematics</span>`,
+                            ),
+                        );
+            </script>
         </main>
     </body>
 </html>

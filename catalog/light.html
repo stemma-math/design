@@ -1,0 +1,105 @@
+<!doctype html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1" />
+        <title>The light · Stemma design</title>
+        <link rel="icon" href="../targets/brand-kit/web/favicon.svg" />
+        <link rel="stylesheet" href="../targets/web/index.css" />
+        <link rel="stylesheet" href="catalog.css" />
+        <script type="module" src="catalog.js"></script>
+    </head>
+    <body>
+        <main>
+            <header class="catalog-intro">
+                <p class="label">Brand</p>
+                <h1>The light</h1>
+                <p>
+                    A dome of dark with the light rising under it, mist and grain, drawn live in
+                    WebGL by <code class="identifier">&lt;stemma-light&gt;</code>. Without script or
+                    WebGL, <code class="identifier">.brand-light</code> draws it still, in CSS.
+                </p>
+            </header>
+
+            <section class="specimen" id="hero">
+                <h2>Hero</h2>
+                <p>
+                    For a page that opens on the light. It moves slowly, and withdraws when the page
+                    moves on: the mist rises and takes the dark with it.
+                </p>
+                <div class="specimen__api">
+                    <code>preset="hero"</code><code>progress</code><code>withdraw()</code
+                    ><code>restore()</code><code>edge</code>
+                </div>
+                <stemma-light
+                    preset="hero"
+                    id="hero-light"
+                    class="catalog-hero"
+                    style="margin-top: var(--space-4)"
+                >
+                    <stemma-mark animated appearance="dark" style="width: 3em"></stemma-mark>
+                </stemma-light>
+                <div class="row" style="margin-top: var(--space-4)">
+                    <button class="button button--small" id="withdraw">Withdraw</button>
+                    <button class="button button--small" id="restore">Restore</button>
+                    <stemma-range style="flex: 1; min-width: 240px">
+                        <label class="range"
+                            >Progress
+                            <input type="range" min="0" max="1" step="0.01" value="0" id="progress"
+                        /></label>
+                    </stemma-range>
+                </div>
+            </section>
+
+            <section class="specimen" id="still">
+                <h2>Still</h2>
+                <p>One quiet frame, with no motion, for side menus and panels.</p>
+                <div class="split" style="margin-top: var(--space-4)">
+                    <stemma-light
+                        preset="still"
+                        style="
+                            height: 320px;
+                            box-sizing: border-box;
+                            padding: var(--space-5);
+                            overflow: hidden;
+                            border-radius: var(--radius-xl);
+                        "
+                    >
+                        <p style="margin: 0; font: var(--text-heading); color: var(--on-dark-1)">
+                            A side menu
+                        </p>
+                        <p style="margin: var(--space-1) 0 0; color: var(--on-dark-3)">
+                            over the still light.
+                        </p>
+                    </stemma-light>
+                    <div
+                        class="brand-light"
+                        style="
+                            height: 320px;
+                            box-sizing: border-box;
+                            padding: var(--space-5);
+                            overflow: hidden;
+                            border-radius: var(--radius-xl);
+                        "
+                    >
+                        <p style="margin: 0; font: var(--text-heading)">Without script</p>
+                        <p style="margin: var(--space-1) 0 0; color: var(--on-dark-3)">
+                            <code class="identifier">.brand-light</code>, in CSS.
+                        </p>
+                    </div>
+                </div>
+            </section>
+
+            <script type="module">
+                const hero = document.getElementById("hero-light");
+                const progress = document.getElementById("progress");
+                progress.addEventListener("input", () => (hero.progress = progress.valueAsNumber));
+                document
+                    .getElementById("withdraw")
+                    .addEventListener("click", () => hero.withdraw());
+                document.getElementById("restore").addEventListener("click", () => hero.restore());
+                if (location.hash === "#withdrawn") hero.progress = 0.5;
+            </script>
+        </main>
+    </body>
+</html>

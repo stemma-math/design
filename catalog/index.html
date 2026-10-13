@@ -3,50 +3,82 @@
     <head>
         <meta charset="utf-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1" />
-        <title>Stemma design: overview</title>
+        <title>Stemma design</title>
         <link rel="icon" href="../targets/brand-kit/web/favicon.svg" />
         <link rel="stylesheet" href="../targets/web/index.css" />
         <link rel="stylesheet" href="catalog.css" />
         <script type="module" src="catalog.js"></script>
     </head>
     <body>
-        <main class="catalog-main">
-            <h1>Stemma design</h1>
-            <p class="lead">
-                How everything Stemma makes looks: tokens, faces, components, behaviour and the
-                mark. Every page of this catalog is drawn with the targets themselves.
-            </p>
-            <div class="catalog-grid" style="--catalog-cell: 300px">
-                <a class="card catalog-panel" href="tokens.html" style="text-decoration: none">
-                    <h2 class="label">Tokens</h2>
+        <main>
+            <stemma-light preset="hero" class="catalog-hero">
+                <stemma-mark animated appearance="dark" style="width: 3.5em"></stemma-mark>
+                <h1>Stemma design</h1>
+                <p>
+                    How everything Stemma makes looks: tokens, faces, components, behaviour and the
+                    mark, with an entrypoint for each ecosystem. Every page here is drawn with the
+                    targets themselves.
+                </p>
+            </stemma-light>
+
+            <div class="catalog-cards">
+                <a class="card catalog-card" href="colour.html">
+                    <h2>
+                        <svg class="glyph" aria-hidden="true">
+                            <use href="../targets/web/glyphs.svg#sparkle" /></svg
+                        >Foundations
+                    </h2>
                     <p>
-                        Colour ramps, the six intents, the categorical tones and every scale, in
-                        both appearances.
+                        Colour, the six intents and the categorical tones, the faces and document
+                        typography, every scale, and the glyphs.
                     </p>
                 </a>
-                <a class="card catalog-panel" href="typography.html" style="text-decoration: none">
-                    <h2 class="label">Typography</h2>
+                <a class="card catalog-card" href="controls.html">
+                    <h2>
+                        <svg class="glyph" aria-hidden="true">
+                            <use href="../targets/web/glyphs.svg#blocks" /></svg
+                        >Components
+                    </h2>
                     <p>
-                        The faces, and document typography: prose, headings, lists, tables, code and
-                        formulas.
+                        Controls, content, feedback, navigation and overlays: classes over native
+                        HTML, and the custom elements that give them behaviour.
                     </p>
                 </a>
-                <a class="card catalog-panel" href="components.html" style="text-decoration: none">
-                    <h2 class="label">Components</h2>
-                    <p>Every component in its variants and intents, in both densities.</p>
-                </a>
-                <a class="card catalog-panel" href="elements.html" style="text-decoration: none">
-                    <h2 class="label">Elements</h2>
-                    <p>
-                        Behaviour: theme switch, dialogs, toasts, menus, the brand light and the
-                        live mark.
-                    </p>
-                </a>
-                <a class="card catalog-panel" href="brand.html" style="text-decoration: none">
-                    <h2 class="label">Brand</h2>
-                    <p>The symbol, the wordmark, the lockups and the icons of the brand kit.</p>
+                <a class="card catalog-card" href="brand.html">
+                    <h2>
+                        <svg class="glyph" aria-hidden="true">
+                            <use href="../targets/web/glyphs.svg#star" /></svg
+                        >Brand
+                    </h2>
+                    <p>The symbol, the wordmark, the lockups, the icons and the brand light.</p>
                 </a>
             </div>
+
+            <section class="specimen" style="margin-top: var(--space-12)">
+                <h2>Using it</h2>
+                <p>
+                    A page loads <code class="identifier">@stemma-math/design</code> for the look,
+                    and <code class="identifier">@stemma-math/design-elements</code> for behaviour.
+                    Rust, Lean and Verso, and the terminal have their own targets. Components speak
+                    of intents (<code class="identifier">neutral</code>,
+                    <code class="identifier">accent</code>, <code class="identifier">success</code>,
+                    <code class="identifier">warning</code>, <code class="identifier">danger</code>,
+                    <code class="identifier">info</code>) and scales; what a label says, and where
+                    things go, is each product's to decide.
+                </p>
+                <div class="specimen__stage">
+                    <pre
+                        style="margin: 0; font: var(--text-mono-sm); color: var(--ink-2)"
+                    ><code>&lt;link rel="stylesheet" href="…/@stemma-math/design/index.css" /&gt;
+&lt;script type="module" src="…/@stemma-math/design-elements/index.js"&gt;&lt;/script&gt;
+
+&lt;button class="button button--primary"&gt;Save&lt;/button&gt;
+&lt;span class="chip chip--success"&gt;Done&lt;/span&gt;</code></pre>
+                </div>
+                <p class="specimen__note">
+                    The appearance and the density, at the foot of the sidebar, apply to every page.
+                </p>
+            </section>
         </main>
     </body>
 </html>

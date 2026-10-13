@@ -1,0 +1,317 @@
+<!doctype html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1" />
+        <title>Controls · Stemma design</title>
+        <link rel="icon" href="../targets/brand-kit/web/favicon.svg" />
+        <link rel="stylesheet" href="../targets/web/index.css" />
+        <link rel="stylesheet" href="catalog.css" />
+        <script type="module" src="catalog.js"></script>
+    </head>
+    <body>
+        <main>
+            <header class="catalog-intro">
+                <p class="label">Components</p>
+                <h1>Controls</h1>
+                <p>
+                    What a person acts with: buttons, and every way to enter or choose a value. Each
+                    is a native control with a class; an element adds behaviour where HTML has none.
+                </p>
+            </header>
+
+            <section class="specimen" id="button">
+                <h2>Button</h2>
+                <p>
+                    Outlined and neutral by default, the secondary action. The primary button is the
+                    one action a view is for, in the accent unless an intent says otherwise.
+                </p>
+                <div class="specimen__api">
+                    <code>.button</code><code>--primary</code><code>--quiet</code><code>--link</code
+                    ><code>--icon</code><code>--small</code><code>--success</code
+                    ><code>--warning</code><code>--danger</code>
+                </div>
+                <div class="specimen__stage">
+                    <div class="row">
+                        <button class="button button--primary">Primary</button>
+                        <button class="button">Secondary</button>
+                        <button class="button button--quiet">Quiet</button>
+                        <button class="button button--link">Link</button>
+                        <button class="button button--icon" aria-label="Settings">
+                            <svg class="glyph" aria-hidden="true">
+                                <use href="../targets/web/glyphs.svg#settings" />
+                            </svg>
+                        </button>
+                        <button class="button" disabled>Disabled</button>
+                    </div>
+                    <div class="row">
+                        <button class="button button--success">Success</button>
+                        <button class="button button--warning">Warning</button>
+                        <button class="button button--danger">Danger</button>
+                        <button class="button button--primary button--success">Sign</button>
+                        <button class="button button--primary button--danger">Delete</button>
+                    </div>
+                    <div class="row">
+                        <button class="button button--small button--primary">Small primary</button>
+                        <button class="button button--small">Small</button>
+                        <button class="button button--small button--icon" aria-label="Add">
+                            <svg class="glyph" aria-hidden="true">
+                                <use href="../targets/web/glyphs.svg#add" />
+                            </svg>
+                        </button>
+                        <button class="button button--small" aria-pressed="true">Pressed</button>
+                    </div>
+                </div>
+            </section>
+
+            <section class="specimen" id="field">
+                <h2>Field</h2>
+                <p>
+                    A label, the control, and a hint or an error under it. An error says what
+                    happened and how to fix it.
+                </p>
+                <div class="specimen__api">
+                    <code>.field</code><code>.field__label</code><code>.field__hint</code
+                    ><code>.field__error</code><code>.input</code><code>.input--mono</code>
+                </div>
+                <div class="specimen__stage">
+                    <div class="split">
+                        <div class="field">
+                            <label class="field__label" for="name">Name</label>
+                            <input class="input" id="name" placeholder="Fermat's little theorem" />
+                            <span class="field__hint">As it appears in the index.</span>
+                        </div>
+                        <div class="field">
+                            <label class="field__label" for="identifier">Identifier</label>
+                            <input
+                                class="input input--mono"
+                                id="identifier"
+                                value="thm:"
+                                aria-invalid="true"
+                                aria-describedby="identifier-error"
+                            />
+                            <span class="field__error" id="identifier-error"
+                                ><svg class="glyph glyph--small" aria-hidden="true">
+                                    <use href="../targets/web/glyphs.svg#alert" /></svg
+                                >An identifier needs a name after its colon.</span
+                            >
+                        </div>
+                    </div>
+                    <div class="field">
+                        <label class="field__label" for="statement">Statement</label>
+                        <textarea class="input" id="statement" rows="3">
+If p is prime, then a^p ≡ a (mod p).</textarea>
+                    </div>
+                </div>
+            </section>
+
+            <section class="specimen" id="select">
+                <h2>Select</h2>
+                <p>
+                    One option among many. <code class="identifier">&lt;stemma-select&gt;</code>
+                    draws its own list over a native
+                    <code class="identifier">select</code>, which stays, hidden, for forms and
+                    events. Without script, the native one is shown, styled.
+                </p>
+                <div class="specimen__api">
+                    <code>&lt;stemma-select&gt;</code><code>select.input</code
+                    ><code>placeholder</code>
+                </div>
+                <div class="specimen__stage">
+                    <div class="row" style="align-items: flex-end">
+                        <div class="field">
+                            <label class="field__label" for="kind">Kind</label>
+                            <stemma-select>
+                                <select class="input" id="kind">
+                                    <option>Theorem</option>
+                                    <option selected>Lemma</option>
+                                    <option>Corollary</option>
+                                    <optgroup label="Others">
+                                        <option>Definition</option>
+                                        <option>Remark</option>
+                                        <option disabled>Conjecture</option>
+                                    </optgroup>
+                                </select>
+                            </stemma-select>
+                        </div>
+                        <stemma-select placeholder="Choose a licence">
+                            <select class="input" aria-label="Licence">
+                                <option value="" selected hidden></option>
+                                <option>MIT</option>
+                                <option>Apache 2.0</option>
+                            </select>
+                        </stemma-select>
+                        <select class="input" style="width: auto" aria-label="Without script">
+                            <option>Without script</option>
+                        </select>
+                    </div>
+                    <p class="events" data-events>Choose an option.</p>
+                </div>
+            </section>
+
+            <section class="specimen" id="choice">
+                <h2>Checkbox, radio and switch</h2>
+                <p>
+                    A choice and its words on one line, so the words are the target. A switch is a
+                    checkbox with <code class="identifier">role="switch"</code>, for a setting that
+                    takes effect at once.
+                </p>
+                <div class="specimen__api">
+                    <code>.choice</code><code>.fieldset</code><code>role="switch"</code>
+                </div>
+                <div class="specimen__stage">
+                    <div class="split">
+                        <fieldset class="fieldset">
+                            <legend>Notify me about</legend>
+                            <label class="choice"><input type="checkbox" checked /> Comments</label>
+                            <label class="choice"><input type="checkbox" /> Mentions</label>
+                            <label class="choice"
+                                ><input type="checkbox" disabled /> Releases (soon)</label
+                            >
+                        </fieldset>
+                        <fieldset class="fieldset">
+                            <legend>Proofs</legend>
+                            <label class="choice"
+                                ><input type="radio" name="proofs" checked /> Shown</label
+                            >
+                            <label class="choice"
+                                ><input type="radio" name="proofs" /> Folded</label
+                            >
+                            <label class="choice"
+                                ><input type="radio" name="proofs" /> Hidden</label
+                            >
+                        </fieldset>
+                    </div>
+                    <div class="row">
+                        <label class="choice"
+                            ><input type="checkbox" role="switch" checked /> Check on save</label
+                        >
+                        <label class="choice"
+                            ><input type="checkbox" role="switch" /> Show line numbers</label
+                        >
+                    </div>
+                </div>
+            </section>
+
+            <section class="specimen" id="range">
+                <h2>Range</h2>
+                <p>
+                    A value along a scale, where where it sits matters more than the exact number.
+                    <code class="identifier">&lt;stemma-range&gt;</code> fills the track up to the
+                    value in every engine and shows it.
+                </p>
+                <div class="specimen__api">
+                    <code>input[type="range"]</code><code>.range</code
+                    ><code>&lt;stemma-range&gt;</code>
+                </div>
+                <div class="specimen__stage">
+                    <stemma-range>
+                        <label class="range"
+                            >Zoom
+                            <input type="range" min="50" max="200" value="100" /><output></output
+                        ></label>
+                    </stemma-range>
+                    <stemma-range>
+                        <label class="range"
+                            >Opacity
+                            <input type="range" min="0" max="100" value="40" /><output></output
+                        ></label>
+                    </stemma-range>
+                </div>
+            </section>
+
+            <section class="specimen" id="stepper">
+                <h2>Stepper</h2>
+                <p>
+                    A number taken down and up by its step. Holding a button repeats it; the input
+                    can still be typed into.
+                </p>
+                <div class="specimen__api">
+                    <code>.stepper</code><code>--small</code><code>&lt;stemma-stepper&gt;</code>
+                </div>
+                <div class="specimen__stage">
+                    <div class="row">
+                        <stemma-stepper
+                            ><input
+                                type="number"
+                                value="1"
+                                min="1"
+                                max="20"
+                                aria-label="Copies"
+                                data-events-for
+                        /></stemma-stepper>
+                        <stemma-stepper small
+                            ><input
+                                type="number"
+                                value="0.5"
+                                min="0"
+                                max="1"
+                                step="0.1"
+                                aria-label="Scale"
+                        /></stemma-stepper>
+                    </div>
+                </div>
+            </section>
+
+            <section class="specimen" id="segmented">
+                <h2>Segmented control</h2>
+                <p>
+                    Two or three views of one thing.
+                    <code class="identifier">&lt;stemma-segmented&gt;</code> makes it one choice,
+                    with the arrow keys.
+                </p>
+                <div class="specimen__api">
+                    <code>.segmented</code><code>&lt;stemma-segmented&gt;</code>
+                </div>
+                <div class="specimen__stage">
+                    <stemma-segmented label="View"
+                        ><div class="segmented">
+                            <button value="list" aria-pressed="true">List</button
+                            ><button value="graph">Graph</button
+                            ><button value="table">Table</button>
+                        </div></stemma-segmented
+                    >
+                </div>
+            </section>
+
+            <section class="specimen" id="filter-chips">
+                <h2>Filter chips</h2>
+                <p>
+                    Chips turned on and off to filter a view.
+                    <code class="identifier">single</code> allows one at a time.
+                </p>
+                <div class="specimen__api">
+                    <code>button.chip</code><code>&lt;stemma-filter-chips&gt;</code>
+                </div>
+                <div class="specimen__stage">
+                    <stemma-filter-chips label="Show" class="row">
+                        <button class="chip chip--success" value="done" aria-pressed="true">
+                            Done
+                        </button>
+                        <button class="chip chip--warning" value="open">Open</button>
+                        <button class="chip chip--danger" value="failing">Failing</button>
+                    </stemma-filter-chips>
+                </div>
+            </section>
+
+            <section class="specimen" id="copy">
+                <h2>Copy button</h2>
+                <p>Copies a value or another element's text, and says so.</p>
+                <div class="specimen__api"><code>&lt;stemma-copy-button&gt;</code></div>
+                <div class="specimen__stage">
+                    <div class="row">
+                        <code class="identifier">thm:fermat-little</code>
+                        <stemma-copy-button value="thm:fermat-little"></stemma-copy-button>
+                    </div>
+                </div>
+            </section>
+
+            <script type="module">
+                const say = (text) => (document.querySelector("[data-events]").textContent = text);
+                document
+                    .getElementById("kind")
+                    .addEventListener("change", (e) => say(`change: ${e.target.value}`));
+            </script>
+        </main>
+    </body>
+</html>

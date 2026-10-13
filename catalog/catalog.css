@@ -1,160 +1,491 @@
-/* The catalog's own layout. Everything else comes from the targets. */
+/* The catalog's own layout: the frame around the pages, and how a
+ * specimen is shown. What is shown comes from the targets alone. */
 
 body {
     min-height: 100vh;
 }
 
-.catalog-header {
+/* ── The frame ──────────────────────────────────────────────────────── */
+
+.catalog {
+    display: grid;
+    grid-template-columns: 264px minmax(0, 1fr);
+    min-height: 100vh;
+}
+
+.catalog-sidebar {
     position: sticky;
     top: 0;
-    z-index: 10;
     display: flex;
-    flex-wrap: wrap;
-    gap: var(--space-4);
-    align-items: center;
-    padding: var(--space-3) var(--space-6);
+    flex-direction: column;
+    gap: var(--space-6);
+    height: 100vh;
+    box-sizing: border-box;
+    padding: var(--space-6) var(--space-4) var(--space-4);
+    overflow-y: auto;
     background: var(--surface-card);
-    border-bottom: 1px solid var(--border);
+    border-right: 1px solid var(--border);
 }
 
-.catalog-header nav {
-    display: flex;
-    flex-wrap: wrap;
-    gap: var(--space-1);
-    margin-right: auto;
-}
-
-.catalog-header .brand {
+.catalog-brand {
     display: flex;
     gap: var(--space-2);
     align-items: center;
+    padding: 0 var(--space-2);
     color: inherit;
     text-decoration: none;
 }
 
-.catalog-main {
-    max-width: 1120px;
-    margin: 0 auto;
-    padding: var(--space-8) var(--space-6) var(--space-16);
+.catalog-brand .label {
+    margin-top: 3px;
 }
 
-.catalog-main > h1 {
-    margin: 0 0 var(--space-2);
+.catalog-nav {
+    display: flex;
+    flex: 1;
+    flex-direction: column;
+    gap: var(--space-5);
+}
+
+.catalog-nav h2 {
+    margin: 0 0 var(--space-1);
+    padding: 0 var(--space-2);
+}
+
+.catalog-nav ul {
+    display: flex;
+    flex-direction: column;
+    gap: 1px;
+    margin: 0;
+    padding: 0;
+    list-style: none;
+}
+
+.catalog-nav a {
+    display: flex;
+    gap: var(--space-2);
+    align-items: center;
+    min-height: 32px;
+    padding: 0 var(--space-2);
+    font: var(--text-meta);
+    color: var(--ink-2);
+    text-decoration: none;
+    border-radius: var(--radius-sm);
+}
+
+.catalog-nav a:hover {
+    color: var(--ink-1);
+    background: var(--fill-muted);
+}
+
+.catalog-nav a[aria-current="page"] {
+    font-weight: 500;
+    color: var(--accent-text);
+    background: color-mix(in srgb, var(--accent) var(--mix-soft), transparent);
+}
+
+.catalog-nav .glyph {
+    width: 16px;
+    height: 16px;
+}
+
+/* The appearance and the density, at the foot of the sidebar. */
+.catalog-settings {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-3);
+    padding: var(--space-4) var(--space-2) 0;
+    border-top: 1px solid var(--divider);
+}
+
+.catalog-settings > div {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-1);
+}
+
+.catalog-settings .segmented {
+    width: 100%;
+}
+
+.catalog-settings .segmented > button {
+    flex: 1;
+    justify-content: center;
+    padding: 0 var(--space-2);
+}
+
+/* ── A page ─────────────────────────────────────────────────────────── */
+
+.catalog-page {
+    display: grid;
+    grid-template-columns: minmax(0, 880px) 200px;
+    gap: var(--space-12);
+    justify-content: center;
+    padding: var(--space-12) var(--space-8) var(--space-16);
+}
+
+.catalog-page > main {
+    min-width: 0;
+}
+
+.catalog-intro {
+    margin-bottom: var(--space-12);
+}
+
+.catalog-intro .label {
+    margin-bottom: var(--space-2);
+}
+
+.catalog-intro h1 {
+    margin: 0;
     font: var(--text-display);
     letter-spacing: -0.02em;
 }
 
-.catalog-main > p.lead {
-    margin: 0 0 var(--space-8);
+.catalog-intro p:not(.label) {
+    max-width: 62ch;
+    margin: var(--space-3) 0 0;
     font: var(--text-body);
     color: var(--ink-2);
 }
 
-.catalog-section {
-    margin-top: var(--space-12);
+/* "On this page": the sections of a long page, beside it. */
+.catalog-toc {
+    position: sticky;
+    top: var(--space-12);
+    align-self: start;
+    max-height: calc(100vh - 2 * var(--space-12));
+    overflow-y: auto;
 }
 
-.catalog-section > h2 {
-    margin: 0 0 var(--space-4);
+.catalog-toc ul {
+    margin: var(--space-2) 0 0;
+    padding: 0;
+    list-style: none;
+    border-left: 1px solid var(--divider);
+}
+
+.catalog-toc a {
+    display: block;
+    margin-left: -1px;
+    padding: 3px var(--space-3);
+    font: var(--text-small);
+    font-weight: 400;
+    color: var(--ink-3);
+    text-decoration: none;
+    border-left: 1px solid transparent;
+}
+
+.catalog-toc a:hover {
+    color: var(--ink-1);
+}
+
+.catalog-toc a[aria-current="true"] {
+    color: var(--accent-text);
+    border-left-color: var(--accent);
+}
+
+.catalog-toc .catalog-toc__group {
+    padding: var(--space-3) var(--space-3) 2px;
+    font: var(--text-label);
+    color: var(--ink-3);
+}
+
+/* A group of sections, as "Inputs" on the components page. */
+.catalog-group {
+    margin: var(--space-16) 0 var(--space-6);
+    padding-bottom: var(--space-3);
     font: var(--text-title);
+    border-bottom: 1px solid var(--divider);
 }
 
-.catalog-section > h3 {
-    margin: var(--space-6) 0 var(--space-3);
+.catalog-group:first-child {
+    margin-top: 0;
+}
+
+/* ── A specimen ─────────────────────────────────────────────────────── */
+
+.specimen {
+    margin-bottom: var(--space-12);
+    scroll-margin-top: var(--space-8);
+}
+
+.specimen > h2,
+.specimen > h3 {
+    margin: 0;
     font: var(--text-heading);
 }
 
-.catalog-row {
+.specimen > p {
+    max-width: 66ch;
+    margin: var(--space-1) 0 0;
+    font: var(--text-meta);
+    color: var(--ink-2);
+}
+
+/* The classes and elements a specimen is made with. */
+.specimen__api {
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--space-1) var(--space-2);
+    margin-top: var(--space-2);
+}
+
+.specimen__api code {
+    padding: 1px 6px;
+    font: var(--text-mono-sm);
+    color: var(--ink-2);
+    background: var(--fill-muted);
+    border-radius: var(--radius-xs);
+}
+
+.specimen__stage {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-4);
+    margin-top: var(--space-4);
+    padding: var(--space-6);
+    background: var(--surface-card);
+    border: 1px solid var(--border);
+    border-radius: var(--radius-lg);
+}
+
+/* A stage on the page's own surface, for what sits on the page. */
+.specimen__stage--page {
+    background:
+        radial-gradient(circle, var(--border) 1px, transparent 1.5px) 0 0 / 16px 16px,
+        var(--surface-page);
+}
+
+.specimen__stage--flush {
+    padding: 0;
+    overflow: hidden;
+}
+
+.catalog-intro a,
+.specimen > p a {
+    color: var(--link);
+    text-decoration-color: color-mix(in srgb, currentColor 40%, transparent);
+    text-underline-offset: 3px;
+}
+
+.specimen__note {
+    margin: var(--space-2) 0 0;
+    font: var(--text-small);
+    font-weight: 400;
+    color: var(--ink-3);
+}
+
+/* Things side by side, wrapping. */
+.row {
     display: flex;
     flex-wrap: wrap;
     gap: var(--space-3);
     align-items: center;
-    margin-bottom: var(--space-3);
 }
 
-/* Things one under another, each as wide as it wants to be, unless it
- * fills its line by nature (a progress bar, a range). */
-.catalog-stack {
+/* Things one under another, each as wide as it wants to be. */
+.stack {
     display: grid;
     gap: var(--space-3);
     justify-items: start;
-    margin-bottom: var(--space-3);
 }
 
-.catalog-stack > .progress {
+.stack > .progress,
+.stack > .stretch {
     justify-self: stretch;
 }
 
-.catalog-section > stemma-tabs,
-.catalog-section > stemma-range,
-.catalog-section > .breadcrumbs {
-    display: block;
-    margin-bottom: var(--space-3);
-}
-
-.catalog-section stemma-tabs [data-tab] {
-    margin: var(--space-3) 0 0;
-}
-
-.catalog-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(var(--catalog-cell, 160px), 1fr));
-    gap: var(--space-3);
-}
-
-.catalog-columns {
+.split {
     display: grid;
     grid-template-columns: 1fr 1fr;
     gap: var(--space-6);
 }
 
-.catalog-panel {
-    padding: var(--space-6);
+/* A label over what it names, inside a stage. */
+.caption {
+    margin: 0 0 var(--space-2);
+    font: var(--text-label);
+    color: var(--ink-3);
 }
 
-.catalog-swatch {
+/* What an element said last. */
+.events {
+    margin: 0;
+    font: var(--text-mono-sm);
+    color: var(--ink-3);
+}
+
+/* ── Overview ───────────────────────────────────────────────────────── */
+
+.catalog-hero {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    min-height: 360px;
+    box-sizing: border-box;
+    padding: var(--space-8);
+    overflow: hidden;
+    border-radius: var(--radius-2xl);
+}
+
+.catalog-hero h1 {
+    margin: var(--space-4) 0 0;
+    font: var(--text-display);
+    font-size: 44px;
+    letter-spacing: -0.03em;
+    color: var(--on-dark-1);
+}
+
+.catalog-hero p {
+    max-width: 52ch;
+    margin: var(--space-2) 0 0;
+    font: var(--text-body);
+    color: var(--on-dark-2);
+}
+
+.catalog-cards {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+    gap: var(--space-4);
+    margin-top: var(--space-8);
+}
+
+.catalog-card {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-2);
+    padding: var(--space-5);
+    color: inherit;
+    text-decoration: none;
+    transition:
+        border-color var(--dur-ui) var(--ease-out),
+        transform var(--dur-ui) var(--ease-out);
+}
+
+.catalog-card:hover {
+    border-color: var(--border-strong);
+    transform: translateY(-2px);
+}
+
+.catalog-card h2 {
+    display: flex;
+    gap: var(--space-2);
+    align-items: center;
+    margin: 0;
+    font: var(--text-heading);
+}
+
+.catalog-card h2 .glyph {
+    color: var(--accent);
+}
+
+.catalog-card p {
+    margin: 0;
+    font: var(--text-meta);
+    color: var(--ink-3);
+}
+
+/* ── Colour ─────────────────────────────────────────────────────────── */
+
+.swatches {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(148px, 1fr));
+    gap: var(--space-3);
+}
+
+.swatch {
     display: flex;
     flex-direction: column;
     overflow: hidden;
-    font: var(--text-meta);
+    font: var(--text-small);
+    font-weight: 400;
+    background: var(--surface-card);
     border: 1px solid var(--border);
     border-radius: var(--radius-md);
 }
 
-.catalog-swatch > .colour {
-    height: 56px;
+.swatch > .colour {
+    height: 52px;
+    border-bottom: 1px solid var(--divider);
 }
 
-.catalog-swatch > .name {
+.swatch > code {
     padding: var(--space-2) var(--space-3) 0;
-    font-family: var(--font-mono);
-    font-size: var(--step-1);
+    font: var(--text-mono-sm);
 }
 
-.catalog-swatch > .value {
+.swatch > .value {
     padding: 0 var(--space-3) var(--space-2);
-    font-size: var(--step-1);
     color: var(--ink-3);
 }
 
-.catalog-tones {
+/* Swatches of what goes on navy, on navy. */
+.on-dark .swatch {
+    color: var(--on-dark-1);
+    background: var(--navy-900);
+    border-color: var(--on-dark-line);
+}
+
+.on-dark .swatch > .colour {
+    border-color: var(--on-dark-line);
+}
+
+.on-dark .swatch > .value {
+    color: var(--on-dark-3);
+}
+
+/* A ramp: one colour's steps, side by side. */
+.ramps {
+    display: grid;
+    gap: var(--space-2);
+}
+
+/* Six columns, the most steps a ramp has, so steps line up across ramps. */
+.ramp {
+    display: grid;
+    grid-template-columns: 96px repeat(6, minmax(0, 1fr));
+    gap: 2px;
+}
+
+.ramp > code {
+    align-self: center;
+    font: var(--text-mono-sm);
+    color: var(--ink-2);
+}
+
+.ramp > span {
+    display: flex;
+    align-items: flex-end;
+    height: 48px;
+    padding: 4px 6px;
+    font: 500 10px / 1 var(--font-mono);
+    border-radius: var(--radius-xs);
+}
+
+.tones {
     width: 100%;
     border-collapse: collapse;
     font: var(--text-meta);
 }
 
-.catalog-tones th,
-.catalog-tones td {
+.tones th,
+.tones td {
     padding: var(--space-2) var(--space-3);
     text-align: left;
     border-bottom: 1px solid var(--divider);
 }
 
-.catalog-tones td.appearance {
-    border-radius: var(--radius-sm);
+.tones thead th {
+    font: var(--text-label);
+    color: var(--ink-3);
 }
 
-.catalog-sample {
+.tones tr:last-child > * {
+    border-bottom: 0;
+}
+
+.tone-sample {
     display: inline-flex;
     gap: var(--space-2);
     align-items: center;
@@ -162,53 +493,226 @@ body {
     border-radius: var(--radius-sm);
 }
 
-.catalog-sample > span {
+.tone-sample > span {
     padding: 2px 9px;
     font: var(--text-label);
     border: 1px solid transparent;
     border-radius: var(--radius-pill);
 }
 
-.catalog-scale {
-    display: flex;
+/* ── Scales ─────────────────────────────────────────────────────────── */
+
+.scale {
+    display: grid;
+    grid-template-columns: 180px minmax(0, 1fr);
     gap: var(--space-4);
-    align-items: baseline;
+    align-items: center;
     padding: var(--space-2) 0;
     border-bottom: 1px solid var(--divider);
 }
 
-.catalog-scale > code {
-    width: 140px;
-    flex-shrink: 0;
-    font-size: var(--step-1);
+.scale:last-child {
+    border-bottom: 0;
+}
+
+.scale > code {
+    font: var(--text-mono-sm);
+    color: var(--ink-2);
+}
+
+.scale > code small {
+    display: block;
     color: var(--ink-3);
 }
 
-.catalog-kit {
+.scale > .sample {
+    min-width: 0;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+.bar {
+    display: block;
+    height: 10px;
+    background: var(--accent);
+    border-radius: 2px;
+}
+
+.tiles {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+    gap: var(--space-4);
+}
+
+.tile {
+    display: grid;
+    place-items: center;
+    height: 96px;
+    font: var(--text-mono-sm);
+    color: var(--ink-2);
+    background: var(--surface-card);
+    border: 1px solid var(--border-strong);
+}
+
+/* A dot that crosses its track in a duration, along an easing. */
+.motion-track {
+    position: relative;
+    height: 28px;
+    background: var(--fill-muted);
+    border-radius: var(--radius-pill);
+}
+
+.motion-track > span {
+    position: absolute;
+    top: 4px;
+    left: 4px;
+    width: 20px;
+    height: 20px;
+    background: var(--accent);
+    border-radius: 50%;
+    transition-property: left;
+}
+
+.motion-track.is-across > span {
+    left: calc(100% - 24px);
+}
+
+/* ── Glyphs ─────────────────────────────────────────────────────────── */
+
+.glyphs {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(112px, 1fr));
+    gap: var(--space-2);
+}
+
+.glyphs > figure {
     display: flex;
+    flex-direction: column;
+    gap: var(--space-3);
     align-items: center;
-    justify-content: center;
-    min-height: 160px;
-    padding: var(--space-6);
+    margin: 0;
+    padding: var(--space-5) var(--space-2) var(--space-3);
+    color: var(--ink-1);
+    background: var(--surface-card);
+    border: 1px solid var(--border);
+    border-radius: var(--radius-md);
+}
+
+.glyphs .glyph {
+    width: 24px;
+    height: 24px;
+}
+
+.glyphs figcaption {
+    font: var(--text-mono-sm);
+    font-size: 11px;
+    color: var(--ink-3);
+}
+
+/* ── Brand ──────────────────────────────────────────────────────────── */
+
+.specimen > .kit {
+    margin-top: var(--space-4);
+}
+
+.kit {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(var(--kit-cell, 220px), 1fr));
+    gap: var(--space-3);
+}
+
+.kit > figure {
+    display: flex;
+    flex-direction: column;
+    margin: 0;
+    overflow: hidden;
+    border: 1px solid var(--border);
     border-radius: var(--radius-lg);
 }
 
-.catalog-kit.on-dark {
+.kit > figure > div {
+    display: grid;
+    flex: 1;
+    place-items: center;
+    min-height: 168px;
+    padding: var(--space-6);
+}
+
+.kit > figure > figcaption {
+    padding: var(--space-2) var(--space-3);
+    font: var(--text-small);
+    font-weight: 400;
+    color: var(--ink-3);
+    background: var(--surface-card);
+    border-top: 1px solid var(--divider);
+}
+
+.kit img {
+    max-width: 100%;
+    max-height: 112px;
+}
+
+.on-dark {
     background: var(--navy-950);
 }
 
-.catalog-kit.on-light {
+.on-light {
     background: #ffffff;
-    border: 1px solid var(--border);
 }
 
-.catalog-kit img {
-    max-width: 100%;
-    max-height: 120px;
+.icons {
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--space-6);
+    align-items: flex-end;
 }
 
-@media (max-width: 760px) {
-    .catalog-columns {
-        grid-template-columns: 1fr;
+.icons > figure {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-2);
+    align-items: center;
+    margin: 0;
+    font: var(--text-small);
+    font-weight: 400;
+    color: var(--ink-3);
+}
+
+/* ── Narrow screens ─────────────────────────────────────────────────── */
+
+@media (max-width: 1180px) {
+    .catalog-page {
+        grid-template-columns: minmax(0, 880px);
+    }
+
+    .catalog-toc {
+        display: none;
+    }
+}
+
+@media (max-width: 860px) {
+    .catalog {
+        grid-template-columns: minmax(0, 1fr);
+    }
+
+    .catalog-sidebar {
+        position: static;
+        height: auto;
+        border-right: 0;
+        border-bottom: 1px solid var(--border);
+    }
+
+    .catalog-nav {
+        flex-direction: row;
+        flex-wrap: wrap;
+    }
+
+    .catalog-page {
+        padding: var(--space-8) var(--space-4) var(--space-12);
+    }
+
+    .split {
+        grid-template-columns: minmax(0, 1fr);
     }
 }

@@ -3,131 +3,215 @@
     <head>
         <meta charset="utf-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1" />
-        <title>Stemma design: brand</title>
+        <title>Marks and icons · Stemma design</title>
         <link rel="icon" href="../targets/brand-kit/web/favicon.svg" />
         <link rel="stylesheet" href="../targets/web/index.css" />
         <link rel="stylesheet" href="catalog.css" />
         <script type="module" src="catalog.js"></script>
     </head>
     <body>
-        <main class="catalog-main">
-            <h1>Brand</h1>
-            <p class="lead">
-                The brand kit: every mark in each appearance, as SVG and PNG, and the icons. The
-                mark has its own usage policy, in the kit's <code class="identifier">LICENSE</code>.
-            </p>
-
-            <section class="catalog-section">
-                <h2>The symbol</h2>
-                <div class="catalog-grid" style="--catalog-cell: 220px">
-                    <div class="catalog-kit on-dark">
-                        <img
-                            src="../targets/brand-kit/svg/symbol-on-dark.svg"
-                            alt="The symbol, for dark surfaces"
-                        />
-                    </div>
-                    <div class="catalog-kit on-light">
-                        <img
-                            src="../targets/brand-kit/svg/symbol-on-light.svg"
-                            alt="The symbol, for light surfaces"
-                        />
-                    </div>
-                    <div class="catalog-kit on-light">
-                        <img
-                            src="../targets/brand-kit/svg/symbol-mono.svg"
-                            alt="The symbol, in one colour"
-                        />
-                    </div>
-                </div>
-            </section>
-
-            <section class="catalog-section">
-                <h2>Wordmark and lockups</h2>
-                <div class="catalog-grid" style="--catalog-cell: 340px">
-                    <div class="catalog-kit on-dark">
-                        <img
-                            src="../targets/brand-kit/svg/lockup-horizontal-on-dark.svg"
-                            alt="The horizontal lockup, for dark surfaces"
-                        />
-                    </div>
-                    <div class="catalog-kit on-light">
-                        <img
-                            src="../targets/brand-kit/svg/lockup-horizontal-on-light.svg"
-                            alt="The horizontal lockup, for light surfaces"
-                        />
-                    </div>
-                    <div class="catalog-kit on-dark">
-                        <img
-                            src="../targets/brand-kit/svg/lockup-stacked-on-dark.svg"
-                            alt="The stacked lockup, for dark surfaces"
-                        />
-                    </div>
-                    <div class="catalog-kit on-light">
-                        <img
-                            src="../targets/brand-kit/svg/lockup-stacked-on-light.svg"
-                            alt="The stacked lockup, for light surfaces"
-                        />
-                    </div>
-                    <div class="catalog-kit on-light">
-                        <img
-                            src="../targets/brand-kit/svg/lockup-horizontal-mono.svg"
-                            alt="The horizontal lockup, in one colour"
-                        />
-                    </div>
-                    <div class="catalog-kit on-light">
-                        <img
-                            src="../targets/brand-kit/svg/wordmark-on-light.svg"
-                            alt="The wordmark"
-                            style="max-height: 48px"
-                        />
-                    </div>
-                </div>
-            </section>
-
-            <section class="catalog-section">
-                <h2>Icons</h2>
-                <div class="catalog-row" style="align-items: end">
-                    <img
-                        src="../targets/brand-kit/app/icon-256.png"
-                        width="128"
-                        height="128"
-                        alt="The application icon"
-                    />
-                    <img
-                        src="../targets/brand-kit/app/icon-64.png"
-                        width="64"
-                        height="64"
-                        alt="The application icon, 64px"
-                    />
-                    <img
-                        src="../targets/brand-kit/app/icon-32.png"
-                        width="32"
-                        height="32"
-                        alt="The application icon, 32px"
-                    />
-                    <img
-                        src="../targets/brand-kit/app/icon-16.png"
-                        width="16"
-                        height="16"
-                        alt="The application icon, 16px"
-                    />
-                    <img
-                        src="../targets/brand-kit/web/icon-192.png"
-                        width="96"
-                        height="96"
-                        alt="The home-screen icon"
-                    />
-                    <img
-                        src="../targets/brand-kit/web/favicon.svg"
-                        width="32"
-                        height="32"
-                        alt="The favicon"
-                    />
-                </div>
-                <p class="quiet">
-                    Every file is listed in the kit's
-                    <a class="button button--link" href="../targets/brand-kit/README.md">README</a>.
+        <main>
+            <header class="catalog-intro">
+                <p class="label">Brand</p>
+                <h1>Marks and icons</h1>
+                <p>
+                    The brand kit: every mark in each appearance, as SVG and PNG, and the icons. The
+                    mark has its own usage policy, in the kit's
+                    <code class="identifier">LICENSE</code>; every file is listed in its
+                    <a href="../targets/brand-kit/README.md">README</a>.
                 </p>
+            </header>
+
+            <section class="specimen" id="symbol">
+                <h2>The symbol</h2>
+                <p>For dark surfaces, for light ones, and in one colour, its text's.</p>
+                <div class="kit">
+                    <figure>
+                        <div class="on-dark">
+                            <img src="../targets/brand-kit/svg/symbol-on-dark.svg" alt="" />
+                        </div>
+                        <figcaption>symbol-on-dark</figcaption>
+                    </figure>
+                    <figure>
+                        <div class="on-light">
+                            <img src="../targets/brand-kit/svg/symbol-on-light.svg" alt="" />
+                        </div>
+                        <figcaption>symbol-on-light</figcaption>
+                    </figure>
+                    <figure>
+                        <div class="on-light">
+                            <img src="../targets/brand-kit/svg/symbol-mono.svg" alt="" />
+                        </div>
+                        <figcaption>symbol-mono</figcaption>
+                    </figure>
+                </div>
+            </section>
+
+            <section class="specimen" id="lockups">
+                <h2>Wordmark and lockups</h2>
+                <p>
+                    "stemma", in Instrument Sans, beside the symbol or below it. Outlined, so no
+                    face is needed to show it.
+                </p>
+                <div class="kit" style="--kit-cell: 340px">
+                    <figure>
+                        <div class="on-dark">
+                            <img
+                                src="../targets/brand-kit/svg/lockup-horizontal-on-dark.svg"
+                                alt=""
+                                style="max-height: 72px"
+                            />
+                        </div>
+                        <figcaption>lockup-horizontal-on-dark</figcaption>
+                    </figure>
+                    <figure>
+                        <div class="on-light">
+                            <img
+                                src="../targets/brand-kit/svg/lockup-horizontal-on-light.svg"
+                                alt=""
+                                style="max-height: 72px"
+                            />
+                        </div>
+                        <figcaption>lockup-horizontal-on-light</figcaption>
+                    </figure>
+                    <figure>
+                        <div class="on-dark">
+                            <img src="../targets/brand-kit/svg/lockup-stacked-on-dark.svg" alt="" />
+                        </div>
+                        <figcaption>lockup-stacked-on-dark</figcaption>
+                    </figure>
+                    <figure>
+                        <div class="on-light">
+                            <img
+                                src="../targets/brand-kit/svg/lockup-stacked-on-light.svg"
+                                alt=""
+                            />
+                        </div>
+                        <figcaption>lockup-stacked-on-light</figcaption>
+                    </figure>
+                    <figure>
+                        <div class="on-light">
+                            <img
+                                src="../targets/brand-kit/svg/lockup-horizontal-mono.svg"
+                                alt=""
+                                style="max-height: 72px"
+                            />
+                        </div>
+                        <figcaption>lockup-horizontal-mono</figcaption>
+                    </figure>
+                    <figure>
+                        <div class="on-light">
+                            <img
+                                src="../targets/brand-kit/svg/wordmark-on-light.svg"
+                                alt=""
+                                style="max-height: 44px"
+                            />
+                        </div>
+                        <figcaption>wordmark-on-light</figcaption>
+                    </figure>
+                </div>
+            </section>
+
+            <section class="specimen" id="icons">
+                <h2>Icons</h2>
+                <p>
+                    The application icon, from 1024 pixels down; at 32 and below it is drawn with
+                    the simple symbol. The favicon follows the appearance.
+                </p>
+                <div class="specimen__stage">
+                    <div class="icons">
+                        <figure>
+                            <img
+                                src="../targets/brand-kit/app/icon-256.png"
+                                width="128"
+                                height="128"
+                                alt=""
+                            />128
+                        </figure>
+                        <figure>
+                            <img
+                                src="../targets/brand-kit/app/icon-128.png"
+                                width="64"
+                                height="64"
+                                alt=""
+                            />64
+                        </figure>
+                        <figure>
+                            <img
+                                src="../targets/brand-kit/app/icon-32.png"
+                                width="32"
+                                height="32"
+                                alt=""
+                            />32
+                        </figure>
+                        <figure>
+                            <img
+                                src="../targets/brand-kit/app/icon-16.png"
+                                width="16"
+                                height="16"
+                                alt=""
+                            />16
+                        </figure>
+                        <figure>
+                            <img
+                                src="../targets/brand-kit/web/icon-192.png"
+                                width="96"
+                                height="96"
+                                alt=""
+                            />Home screen
+                        </figure>
+                        <figure>
+                            <img
+                                src="../targets/brand-kit/web/favicon.svg"
+                                width="32"
+                                height="32"
+                                alt=""
+                            />Favicon
+                        </figure>
+                    </div>
+                </div>
+            </section>
+
+            <section class="specimen" id="live">
+                <h2>The live mark</h2>
+                <p>
+                    <code class="identifier">&lt;stemma-mark&gt;</code> draws the symbol in the
+                    page's appearance or a chosen one. With
+                    <code class="identifier">animated</code>, on dark surfaces, it comes alive.
+                </p>
+                <div class="specimen__api">
+                    <code>&lt;stemma-mark&gt;</code><code>appearance</code><code>animated</code>
+                </div>
+                <div class="kit" style="--kit-cell: 180px">
+                    <figure>
+                        <div class="on-dark">
+                            <stemma-mark
+                                animated
+                                appearance="dark"
+                                style="width: 6em"
+                            ></stemma-mark>
+                        </div>
+                        <figcaption>animated, dark</figcaption>
+                    </figure>
+                    <figure>
+                        <div class="on-light">
+                            <stemma-mark appearance="light" style="width: 6em"></stemma-mark>
+                        </div>
+                        <figcaption>light</figcaption>
+                    </figure>
+                    <figure>
+                        <div class="on-light" style="color: var(--accent)">
+                            <stemma-mark appearance="mono" style="width: 6em"></stemma-mark>
+                        </div>
+                        <figcaption>mono, in the accent</figcaption>
+                    </figure>
+                    <figure>
+                        <div style="background: var(--surface-card)">
+                            <stemma-mark style="width: 6em"></stemma-mark>
+                        </div>
+                        <figcaption>the page's appearance</figcaption>
+                    </figure>
+                </div>
             </section>
         </main>
     </body>

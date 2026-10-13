@@ -1,0 +1,198 @@
+<!doctype html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1" />
+        <title>Colour · Stemma design</title>
+        <link rel="icon" href="../targets/brand-kit/web/favicon.svg" />
+        <link rel="stylesheet" href="../targets/web/index.css" />
+        <link rel="stylesheet" href="catalog.css" />
+        <script type="module" src="catalog.js"></script>
+    </head>
+    <body>
+        <main>
+            <header class="catalog-intro">
+                <p class="label">Foundations</p>
+                <h1>Colour</h1>
+                <p>
+                    Three tiers: the brand's ramps, the semantic colours that say what a value is
+                    for, and the tones components take. Every value is read from
+                    <code class="identifier">tokens.css</code> as it is published, and every pairing
+                    is checked for contrast in both appearances when it is generated.
+                </p>
+            </header>
+
+            <section class="specimen" id="intents">
+                <h2>Intents</h2>
+                <p>
+                    What a component means, not what it is called in a product. Each intent has a
+                    colour, a text colour for soft fills and outlines, and a colour for text on its
+                    solid fill. Shown on a card, in both appearances at once.
+                </p>
+                <div class="specimen__stage specimen__stage--flush">
+                    <table class="tones">
+                        <thead>
+                            <tr>
+                                <th>Intent</th>
+                                <th>Light</th>
+                                <th>Dark</th>
+                            </tr>
+                        </thead>
+                        <tbody id="intents-table"></tbody>
+                    </table>
+                </div>
+            </section>
+
+            <section class="specimen" id="tones">
+                <h2>Categorical tones</h2>
+                <p>
+                    Tones with no meaning, only for telling things apart: people, groups, kinds.
+                    They take the same modifiers as the intents, as
+                    <code class="identifier">.chip--teal</code>.
+                </p>
+                <div class="specimen__stage specimen__stage--flush">
+                    <table class="tones">
+                        <thead>
+                            <tr>
+                                <th>Tone</th>
+                                <th>Light</th>
+                                <th>Dark</th>
+                            </tr>
+                        </thead>
+                        <tbody id="tones-table"></tbody>
+                    </table>
+                </div>
+            </section>
+
+            <section class="specimen" id="ink">
+                <h2>Ink</h2>
+                <p>
+                    Text from the most to the least prominent, and colours for placeholders,
+                    disabled controls, links and focus. Shown in the appearance in effect.
+                </p>
+                <div class="specimen__stage"><div class="swatches" id="ink-swatches"></div></div>
+            </section>
+
+            <section class="specimen" id="surfaces">
+                <h2>Surfaces, fills and lines</h2>
+                <p>The page, the cards on it, fields, muted fills, borders and dividers.</p>
+                <div class="specimen__stage">
+                    <div class="swatches" id="surface-swatches"></div>
+                </div>
+            </section>
+
+            <section class="specimen" id="on-dark">
+                <h2>On navy</h2>
+                <p>
+                    Text and lines on the navy surfaces of the brand light, the same in both
+                    appearances.
+                </p>
+                <div class="specimen__stage on-dark" style="border-color: transparent">
+                    <div class="swatches" id="dark-swatches"></div>
+                </div>
+            </section>
+
+            <section class="specimen" id="ramps">
+                <h2>Ramps</h2>
+                <p>
+                    The brand's primitives. Components never use them directly; the semantic tier
+                    chooses among them.
+                </p>
+                <div class="specimen__stage"><div class="ramps" id="ramp-rows"></div></div>
+            </section>
+
+            <script type="module">
+                import { html, resolve, tokens } from "./catalog.js";
+
+                const all = await tokens();
+                const names = [...all.light.keys()];
+
+                const sample = (tone, appearance) => {
+                    const v = (n) => resolve(all, n, appearance);
+                    const [t, text, on, card] = [
+                        v(tone),
+                        v(`${tone}-text`),
+                        v(`${tone}-on`),
+                        v("surface-card"),
+                    ];
+                    const soft = `color-mix(in srgb, ${t} ${v("mix-soft")}, ${card})`;
+                    const border = `color-mix(in srgb, ${t} ${v("mix-border")}, ${card})`;
+                    return `<td><div class="tone-sample" style="background:${card}">
+                        <span style="background:${soft};color:${text}">Soft</span>
+                        <span style="border-color:${border};color:${text}">Outline</span>
+                        <span style="background:${t};color:${on}">Solid</span>
+                        <span style="color:${text};font:var(--text-meta)">Text</span></div></td>`;
+                };
+                const rows = (tones, body) => {
+                    for (const tone of tones)
+                        document
+                            .getElementById(body)
+                            .append(
+                                html(
+                                    `<tr><th><code class="identifier">${tone}</code></th>${sample(tone, "light")}${sample(tone, "dark")}</tr>`,
+                                ),
+                            );
+                };
+                rows(
+                    ["neutral", "accent", "success", "warning", "danger", "info"],
+                    "intents-table",
+                );
+                rows(
+                    names.filter((n) => /^tone-[a-z]+$/.test(n)),
+                    "tones-table",
+                );
+
+                const swatch = (name) =>
+                    html(`<div class="swatch"><div class="colour" style="background:var(--${name})"></div>
+                        <code>${name}</code><span class="value" data-token="${name}"></span></div>`);
+                const fill = (id, pattern) => {
+                    for (const name of names.filter((n) => pattern.test(n)))
+                        document.getElementById(id).append(swatch(name));
+                };
+                fill("ink-swatches", /^(ink-|link$|focus-ring$)/);
+                fill("surface-swatches", /^(surface-|fill-|border|divider)/);
+                fill("dark-swatches", /^on-dark-/);
+
+                const hues = new Map();
+                for (const name of names) {
+                    const match = /^([a-z]+)-(\d+)$/.exec(name);
+                    if (!match || ["step", "space", "ink"].includes(match[1])) continue;
+                    if (!hues.has(match[1])) hues.set(match[1], []);
+                    hues.get(match[1]).push([name, match[2]]);
+                }
+                for (const [hue, steps] of hues) {
+                    const row = html(`<div class="ramp"><code>${hue}</code></div>`);
+                    for (const [name, step] of steps) {
+                        const value = all.light.get(name);
+                        const light =
+                            parseInt(value.slice(1, 3), 16) * 0.299 +
+                                parseInt(value.slice(3, 5), 16) * 0.587 +
+                                parseInt(value.slice(5, 7), 16) * 0.114 >
+                            150;
+                        row.append(
+                            html(
+                                `<span style="background:${value};color:${light ? "#111a2e" : "#ffffff"}" title="${name}: ${value}">${step}</span>`,
+                            ),
+                        );
+                    }
+                    document.getElementById("ramp-rows").append(row);
+                }
+
+                // A swatch shows its value in the appearance in effect.
+                const values = () => {
+                    const style = getComputedStyle(document.documentElement);
+                    for (const value of document.querySelectorAll("[data-token]"))
+                        value.textContent = style
+                            .getPropertyValue(`--${value.dataset.token}`)
+                            .trim();
+                };
+                new MutationObserver(() => requestAnimationFrame(values)).observe(
+                    document.documentElement,
+                    { attributes: true, attributeFilter: ["data-theme"] },
+                );
+                matchMedia("(prefers-color-scheme: dark)").addEventListener("change", values);
+                values();
+            </script>
+        </main>
+    </body>
+</html>

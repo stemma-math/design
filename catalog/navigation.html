@@ -1,0 +1,194 @@
+<!doctype html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1" />
+        <title>Navigation and overlays · Stemma design</title>
+        <link rel="icon" href="../targets/brand-kit/web/favicon.svg" />
+        <link rel="stylesheet" href="../targets/web/index.css" />
+        <link rel="stylesheet" href="catalog.css" />
+        <script type="module" src="catalog.js"></script>
+    </head>
+    <body>
+        <main>
+            <header class="catalog-intro">
+                <p class="label">Components</p>
+                <h1>Navigation and overlays</h1>
+                <p>
+                    Where a person is and where they can go, and what opens over the page: menus,
+                    dialogs and tooltips. Where each sits on the page is the product's to say.
+                </p>
+            </header>
+
+            <section class="specimen" id="tabs">
+                <h2>Tabs</h2>
+                <p>
+                    Views of one place, each with its own panel. Tabs that go to other pages are
+                    links with <code class="identifier">aria-current</code>, and need no element.
+                </p>
+                <div class="specimen__api">
+                    <code>.tabs</code><code>.tabs__tab</code><code>&lt;stemma-tabs&gt;</code>
+                </div>
+                <div class="specimen__stage">
+                    <stemma-tabs label="Sections">
+                        <div class="tabs">
+                            <button class="tabs__tab" value="overview" aria-selected="true">
+                                Overview</button
+                            ><button class="tabs__tab" value="history">
+                                History <span class="count">4</span></button
+                            ><button class="tabs__tab" value="settings">Settings</button
+                            ><button class="tabs__tab" disabled>Disabled</button>
+                        </div>
+                        <p class="quiet" data-tab="overview">The overview's panel.</p>
+                        <p class="quiet" data-tab="history">The history's panel.</p>
+                        <p class="quiet" data-tab="settings">The settings' panel.</p>
+                    </stemma-tabs>
+                </div>
+            </section>
+
+            <section class="specimen" id="breadcrumbs">
+                <h2>Breadcrumbs</h2>
+                <p>Where a page sits, the last crumb the page itself.</p>
+                <div class="specimen__api">
+                    <code>nav.breadcrumbs</code><code>aria-current="page"</code>
+                </div>
+                <div class="specimen__stage">
+                    <nav class="breadcrumbs" aria-label="Breadcrumbs">
+                        <ol>
+                            <li><a href="#breadcrumbs">Number theory</a></li>
+                            <li><a href="#breadcrumbs">Congruences</a></li>
+                            <li><span aria-current="page">Fermat's little theorem</span></li>
+                        </ol>
+                    </nav>
+                </div>
+            </section>
+
+            <section class="specimen" id="menu">
+                <h2>Menu</h2>
+                <p>
+                    A panel of actions or destinations, opened from a button. Destructive items go
+                    last, after a separator.
+                </p>
+                <div class="specimen__api">
+                    <code>.menu</code><code>.menu__item</code><code>.menu__heading</code
+                    ><code>.menu__separator</code><code>&lt;stemma-menu&gt;</code>
+                </div>
+                <div class="specimen__stage">
+                    <div class="row" style="align-items: flex-start; gap: var(--space-8)">
+                        <stemma-menu>
+                            <button class="button">
+                                Options
+                                <svg class="glyph glyph--small" aria-hidden="true">
+                                    <use href="../targets/web/glyphs.svg#chevron-down" />
+                                </svg>
+                            </button>
+                            <div class="menu">
+                                <button class="menu__item" data-value="rename">
+                                    <svg class="glyph" aria-hidden="true">
+                                        <use href="../targets/web/glyphs.svg#edit" /></svg
+                                    >Rename<span class="menu__hint">R</span>
+                                </button>
+                                <button class="menu__item" data-value="duplicate">
+                                    <svg class="glyph" aria-hidden="true">
+                                        <use href="../targets/web/glyphs.svg#copy" /></svg
+                                    >Duplicate
+                                </button>
+                                <hr class="menu__separator" />
+                                <button class="menu__item menu__item--danger" data-value="delete">
+                                    Delete
+                                </button>
+                            </div>
+                        </stemma-menu>
+                        <div class="menu" style="position: static">
+                            <p class="menu__heading">Open in</p>
+                            <button class="menu__item" aria-current="true">This window</button>
+                            <button class="menu__item">A new window</button>
+                            <button class="menu__item" disabled>The editor</button>
+                        </div>
+                    </div>
+                    <p class="events" data-events>Choose an item.</p>
+                </div>
+            </section>
+
+            <section class="specimen" id="dialog">
+                <h2>Dialog</h2>
+                <p>
+                    A title in a sentence, what will happen, and the buttons at the right, the exact
+                    verb last. Opens as a native modal; focus returns where it was.
+                </p>
+                <div class="specimen__api">
+                    <code>dialog.dialog</code><code>.dialog__body</code><code>.dialog__actions</code
+                    ><code>&lt;stemma-dialog&gt;</code>
+                </div>
+                <div class="specimen__stage specimen__stage--page">
+                    <div class="row">
+                        <button class="button" data-opens="confirm">Open the dialog</button>
+                    </div>
+                    <div
+                        class="dialog"
+                        style="position: static; display: block; box-shadow: var(--shadow-float)"
+                    >
+                        <div class="dialog__body">
+                            <h3 class="dialog__title">Delete this draft?</h3>
+                            <p class="dialog__text">It cannot be recovered.</p>
+                            <div class="dialog__actions">
+                                <button class="button">Cancel</button
+                                ><button class="button button--primary button--danger">
+                                    Delete
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                    <stemma-dialog id="confirm">
+                        <dialog class="dialog" aria-labelledby="confirm-title">
+                            <form class="dialog__body" method="dialog">
+                                <h3 class="dialog__title" id="confirm-title">Delete this draft?</h3>
+                                <p class="dialog__text">It cannot be recovered.</p>
+                                <div class="dialog__actions">
+                                    <button class="button" value="cancel">Cancel</button
+                                    ><button
+                                        class="button button--primary button--danger"
+                                        value="delete"
+                                    >
+                                        Delete
+                                    </button>
+                                </div>
+                            </form>
+                        </dialog>
+                    </stemma-dialog>
+                </div>
+            </section>
+
+            <section class="specimen" id="tooltip">
+                <h2>Tooltip</h2>
+                <p>
+                    Dark in both appearances, for icon-only buttons, with the shortcut when there is
+                    one. Shown when the pointer rests or focus arrives.
+                </p>
+                <div class="specimen__api">
+                    <code>.tooltip</code><code>&lt;stemma-tooltip&gt;</code>
+                </div>
+                <div class="specimen__stage">
+                    <div class="row" style="gap: var(--space-8)">
+                        <span>
+                            <button class="button button--icon" id="settings" aria-label="Settings">
+                                <svg class="glyph" aria-hidden="true">
+                                    <use href="../targets/web/glyphs.svg#settings" />
+                                </svg>
+                            </button>
+                            <stemma-tooltip for="settings">Settings <kbd>⌘,</kbd></stemma-tooltip>
+                        </span>
+                        <span class="tooltip">Settings <kbd>⌘,</kbd></span>
+                    </div>
+                </div>
+            </section>
+
+            <script type="module">
+                const say = (text) => (document.querySelector("[data-events]").textContent = text);
+                document
+                    .querySelector("stemma-menu")
+                    .addEventListener("select", (e) => say(`select: ${e.detail.value}`));
+            </script>
+        </main>
+    </body>
+</html>

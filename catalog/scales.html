@@ -1,0 +1,142 @@
+<!doctype html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1" />
+        <title>Scales · Stemma design</title>
+        <link rel="icon" href="../targets/brand-kit/web/favicon.svg" />
+        <link rel="stylesheet" href="../targets/web/index.css" />
+        <link rel="stylesheet" href="catalog.css" />
+        <script type="module" src="catalog.js"></script>
+    </head>
+    <body>
+        <main>
+            <header class="catalog-intro">
+                <p class="label">Foundations</p>
+                <h1>Scales</h1>
+                <p>
+                    The steps everything is measured in. A product picks from them for its own
+                    layout; components already use them.
+                </p>
+            </header>
+
+            <section class="specimen" id="space">
+                <h2>Space</h2>
+                <p>Gaps, padding and margins, on a base of four pixels.</p>
+                <div class="specimen__stage"><div id="space-rows"></div></div>
+            </section>
+
+            <section class="specimen" id="radius">
+                <h2>Radius</h2>
+                <p>From small controls to the largest cards, and pills.</p>
+                <div class="specimen__stage"><div class="tiles" id="radius-tiles"></div></div>
+            </section>
+
+            <section class="specimen" id="shadow">
+                <h2>Shadow and rings</h2>
+                <p>
+                    Cards on the page, what floats over it, and the rings around a chosen or focused
+                    control.
+                </p>
+                <div class="specimen__stage specimen__stage--page">
+                    <div class="tiles" id="shadow-tiles"></div>
+                </div>
+            </section>
+
+            <section class="specimen" id="motion">
+                <h2>Motion</h2>
+                <p>
+                    Durations and easings. Press <em>Play</em> to see each duration along the
+                    standard easing, and each easing over the long duration. With reduced motion,
+                    every transition is all but instant.
+                </p>
+                <div class="specimen__stage">
+                    <div id="motion-rows"></div>
+                    <div><button class="button button--small" id="play">Play</button></div>
+                </div>
+            </section>
+
+            <section class="specimen" id="density">
+                <h2>Density</h2>
+                <p>
+                    The sizes of controls, comfortable by default and compact inside
+                    <code class="identifier">[data-density="compact"]</code>. The switch at the foot
+                    of the sidebar sets it for the whole catalog.
+                </p>
+                <div class="specimen__stage specimen__stage--flush">
+                    <table class="tones">
+                        <thead>
+                            <tr>
+                                <th>Token</th>
+                                <th>Comfortable</th>
+                                <th>Compact</th>
+                            </tr>
+                        </thead>
+                        <tbody id="density-rows"></tbody>
+                    </table>
+                </div>
+            </section>
+
+            <script type="module">
+                import { html, tokens } from "./catalog.js";
+
+                const all = await tokens();
+                const names = [...all.light.keys()];
+                const value = (name) => all.light.get(name);
+
+                for (const name of names.filter((n) => /^space-\d+$/.test(n)))
+                    document
+                        .getElementById("space-rows")
+                        .append(
+                            html(
+                                `<div class="scale"><code>${name}<small>${value(name)}</small></code><div><span class="bar" style="width:var(--${name})"></span></div></div>`,
+                            ),
+                        );
+                for (const name of names.filter((n) => /^radius-/.test(n)))
+                    document
+                        .getElementById("radius-tiles")
+                        .append(
+                            html(
+                                `<div class="tile" style="border-radius:var(--${name})">${name}</div>`,
+                            ),
+                        );
+                for (const name of names.filter((n) => /^(shadow|ring)-/.test(n)))
+                    document
+                        .getElementById("shadow-tiles")
+                        .append(
+                            html(
+                                `<div class="tile" style="border-color:var(--border);border-radius:var(--radius-lg);box-shadow:var(--${name})">${name}</div>`,
+                            ),
+                        );
+
+                const tracks = [];
+                const track = (name, duration, easing) => {
+                    const row = html(
+                        `<div class="scale"><code>${name}<small>${value(name)}</small></code><div class="motion-track"><span></span></div></div>`,
+                    );
+                    const dot = row.querySelector("span");
+                    dot.style.transitionDuration = duration;
+                    dot.style.transitionTimingFunction = easing;
+                    tracks.push(row.querySelector(".motion-track"));
+                    document.getElementById("motion-rows").append(row);
+                };
+                for (const name of names.filter((n) => /^dur-/.test(n)))
+                    track(name, `var(--${name})`, "var(--ease-out)");
+                for (const name of names.filter((n) => /^ease-/.test(n)))
+                    track(name, "var(--dur-long)", `var(--${name})`);
+                document.getElementById("play").addEventListener("click", () => {
+                    for (const t of tracks) t.classList.toggle("is-across");
+                });
+
+                for (const [name, compact] of all.compact)
+                    document
+                        .getElementById("density-rows")
+                        .append(
+                            html(
+                                `<tr><th><code class="identifier">${name}</code></th><td>${all.comfortable.get(name)}</td><td>${compact}</td></tr>`,
+                            ),
+                        );
+            </script>
+        </main>
+    </body>
+</html>

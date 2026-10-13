@@ -1,0 +1,230 @@
+<!doctype html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1" />
+        <title>Content · Stemma design</title>
+        <link rel="icon" href="../targets/brand-kit/web/favicon.svg" />
+        <link rel="stylesheet" href="../targets/web/index.css" />
+        <link rel="stylesheet" href="catalog.css" />
+        <script type="module" src="catalog.js"></script>
+    </head>
+    <body>
+        <main>
+            <header class="catalog-intro">
+                <p class="label">Components</p>
+                <h1>Content</h1>
+                <p>
+                    What a page shows: states and counts, people, cards and tables, and the small
+                    pieces of text that need a look of their own.
+                </p>
+            </header>
+
+            <section class="specimen" id="chip">
+                <h2>Chip</h2>
+                <p>
+                    A state with a fixed meaning, in an intent or a tone. Always words, so colour is
+                    never the only cue.
+                </p>
+                <div class="specimen__api">
+                    <code>.chip</code><code>--outline</code><code>--solid</code><code>--dashed</code
+                    ><code>--{intent}</code><code>--{tone}</code>
+                </div>
+                <div class="specimen__stage">
+                    <div class="row">
+                        <span class="chip">Neutral</span>
+                        <span class="chip chip--accent">Accent</span>
+                        <span class="chip chip--success">Success</span>
+                        <span class="chip chip--warning">Warning</span>
+                        <span class="chip chip--danger">Danger</span>
+                        <span class="chip chip--info">Info</span>
+                    </div>
+                    <div class="row">
+                        <span class="chip chip--outline chip--success">Outline</span>
+                        <span class="chip chip--solid chip--accent">Solid</span>
+                        <span class="chip chip--dashed">Missing</span>
+                        <span class="chip chip--success"
+                            ><svg class="glyph" aria-hidden="true">
+                                <use href="../targets/web/glyphs.svg#done" /></svg
+                            >With a glyph</span
+                        >
+                    </div>
+                    <div class="row">
+                        <span class="chip chip--indigo">Indigo</span>
+                        <span class="chip chip--teal">Teal</span>
+                        <span class="chip chip--violet">Violet</span>
+                        <span class="chip chip--ochre">Ochre</span>
+                        <span class="chip chip--magenta">Magenta</span>
+                        <span class="chip chip--olive">Olive</span>
+                        <span class="chip chip--cerulean">Cerulean</span>
+                        <span class="chip chip--rust">Rust</span>
+                    </div>
+                </div>
+            </section>
+
+            <section class="specimen" id="count">
+                <h2>Count</h2>
+                <p>A small number beside a heading or a destination.</p>
+                <div class="specimen__api">
+                    <code>.count</code><code>--solid</code><code>--{intent}</code>
+                </div>
+                <div class="specimen__stage">
+                    <div class="row">
+                        <span class="count">12</span>
+                        <span class="count count--accent">3</span>
+                        <span class="count count--solid count--danger">9</span>
+                        <span>Comments <span class="count">128</span></span>
+                    </div>
+                </div>
+            </section>
+
+            <section class="specimen" id="avatar">
+                <h2>Avatar</h2>
+                <p>
+                    A person is a circle with an initial; a group is a rounded square. A tone tells
+                    them apart.
+                </p>
+                <div class="specimen__api">
+                    <code>.avatar</code><code>--square</code><code>--{tone}</code>
+                </div>
+                <div class="specimen__stage">
+                    <div class="row">
+                        <span class="avatar">M</span>
+                        <span class="avatar avatar--teal">E</span>
+                        <span class="avatar avatar--violet">A</span>
+                        <span class="avatar avatar--square avatar--ochre">NT</span>
+                        <span class="avatar avatar--square avatar--cerulean">GR</span>
+                    </div>
+                </div>
+            </section>
+
+            <section class="specimen" id="card">
+                <h2>Card</h2>
+                <p>
+                    A surface on the page. Raised, it stands alone; empty, in dashes, it invites
+                    something to be made.
+                </p>
+                <div class="specimen__api">
+                    <code>.card</code><code>--raised</code><code>--empty</code><code>.empty</code>
+                </div>
+                <div class="specimen__stage specimen__stage--page">
+                    <div class="split">
+                        <div class="card" style="padding: var(--space-6)">
+                            <p class="label">Card</p>
+                            <p style="margin: var(--space-2) 0 0">On the page.</p>
+                        </div>
+                        <div class="card card--raised" style="padding: var(--space-6)">
+                            <p class="label">Raised</p>
+                            <p style="margin: var(--space-2) 0 0">Standing alone.</p>
+                        </div>
+                    </div>
+                    <div class="card card--empty" style="padding: var(--space-6)">
+                        <p class="empty">Nothing here yet. Add a theorem to start.</p>
+                    </div>
+                </div>
+            </section>
+
+            <section class="specimen" id="table">
+                <h2>Table</h2>
+                <p>
+                    Rows in a card. A row that goes somewhere is a link, whole, ending in a chevron.
+                    The columns are the consumer's, as a track list in
+                    <code class="identifier">--columns</code>.
+                </p>
+                <div class="specimen__api">
+                    <code>.table</code><code>.table__head</code><code>.table__row</code
+                    ><code>--columns</code>
+                </div>
+                <div class="specimen__stage specimen__stage--page">
+                    <div class="card">
+                        <div class="table" style="--columns: 1fr auto 20px">
+                            <div class="table__head">
+                                <span>Name</span><span>State</span><span></span>
+                            </div>
+                            <a class="table__row" href="#table"
+                                ><span>Fermat's little theorem</span
+                                ><span class="chip chip--success">Done</span
+                                ><svg class="glyph chevron" aria-hidden="true">
+                                    <use href="../targets/web/glyphs.svg#chevron-right" /></svg
+                            ></a>
+                            <a class="table__row" href="#table"
+                                ><span>Wilson's theorem</span
+                                ><span class="chip chip--warning">Open</span
+                                ><svg class="glyph chevron" aria-hidden="true">
+                                    <use href="../targets/web/glyphs.svg#chevron-right" /></svg
+                            ></a>
+                            <a class="table__row" href="#table"
+                                ><span>Lagrange's theorem</span
+                                ><span class="chip chip--dashed">Missing</span
+                                ><svg class="glyph chevron" aria-hidden="true">
+                                    <use href="../targets/web/glyphs.svg#chevron-right" /></svg
+                            ></a>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <section class="specimen" id="disclosure">
+                <h2>Disclosure</h2>
+                <p>What is only wanted now and then waits behind its summary.</p>
+                <div class="specimen__api"><code>details.disclosure</code></div>
+                <div class="specimen__stage specimen__stage--page">
+                    <details class="card disclosure" open>
+                        <summary>Details</summary>
+                        <p class="quiet">Checked three days ago, with every dependency.</p>
+                    </details>
+                    <details class="card disclosure">
+                        <summary>Dependencies</summary>
+                        <p class="quiet">Lagrange's theorem, and the order of an element.</p>
+                    </details>
+                </div>
+            </section>
+
+            <section class="specimen" id="highlight">
+                <h2>Highlight</h2>
+                <p>
+                    A block set apart by a rule in the margin and a faint fill of its tone. What it
+                    holds, and what it is called, is the consumer's to say.
+                </p>
+                <div class="specimen__api">
+                    <code>.highlight</code><code>.highlight__title</code><code>--{intent}</code
+                    ><code>--{tone}</code>
+                </div>
+                <div class="specimen__stage">
+                    <div class="highlight highlight--accent" style="margin: 0">
+                        <p class="highlight__title">Theorem 2.2</p>
+                        <p>Every group of prime order is cyclic, and so abelian.</p>
+                    </div>
+                    <div class="highlight highlight--warning" style="margin: 0">
+                        <p class="highlight__title">Careful</p>
+                        <p>The converse does not hold.</p>
+                    </div>
+                </div>
+            </section>
+
+            <section class="specimen" id="text">
+                <h2>Labels, identifiers and keys</h2>
+                <p>
+                    A label names a group of things, in sentence case. Identifiers are verbatim and
+                    break anywhere. Keys are what a person presses.
+                </p>
+                <div class="specimen__api">
+                    <code>.label</code><code>.quiet</code><code>.numeric</code
+                    ><code>.identifier</code><code>.kbd</code><code>.wordmark</code>
+                </div>
+                <div class="specimen__stage">
+                    <div class="row">
+                        <span class="label">A label</span>
+                        <span class="quiet">Quiet text</span>
+                        <span class="numeric">1,024.50</span>
+                        <code class="identifier">Mathlib.GroupTheory.OrderOfElement</code>
+                    </div>
+                    <div class="row">
+                        <span>Search with <kbd class="kbd">⌘</kbd> <kbd class="kbd">K</kbd></span>
+                        <span class="wordmark" style="font-size: 28px">stemma</span>
+                    </div>
+                </div>
+            </section>
+        </main>
+    </body>
+</html>

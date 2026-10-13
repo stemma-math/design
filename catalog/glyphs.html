@@ -1,0 +1,48 @@
+<!doctype html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1" />
+        <title>Glyphs · Stemma design</title>
+        <link rel="icon" href="../targets/brand-kit/web/favicon.svg" />
+        <link rel="stylesheet" href="../targets/web/index.css" />
+        <link rel="stylesheet" href="catalog.css" />
+        <script type="module" src="catalog.js"></script>
+    </head>
+    <body>
+        <main>
+            <header class="catalog-intro">
+                <p class="label">Foundations</p>
+                <h1>Glyphs</h1>
+                <p>
+                    Line glyphs on a 24-unit box, stroked in the colour of their text. A page draws
+                    one from the sprite, and an element from
+                    <code class="identifier">glyphs.js</code>.
+                </p>
+            </header>
+
+            <section class="specimen" id="every">
+                <div class="specimen__api">
+                    <code
+                        >&lt;svg class="glyph"&gt;&lt;use href="glyphs.svg#name"
+                        /&gt;&lt;/svg&gt;</code
+                    >
+                    <code>.glyph--small</code>
+                </div>
+                <div class="glyphs" id="glyphs" style="margin-top: var(--space-4)"></div>
+            </section>
+
+            <script type="module">
+                import { glyph, glyphs } from "../targets/elements/glyphs.js";
+                import { html } from "./catalog.js";
+
+                for (const name of Object.keys(glyphs))
+                    document
+                        .getElementById("glyphs")
+                        .append(
+                            html(`<figure>${glyph(name)}<figcaption>${name}</figcaption></figure>`),
+                        );
+            </script>
+        </main>
+    </body>
+</html>

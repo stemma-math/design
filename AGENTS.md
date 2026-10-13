@@ -52,7 +52,11 @@ This repository belongs to the Stemma organization (`stemma-math`).
     it never imports Verso;
   - `targets/brand-kit`: every mark and icon, as files.
 - `catalog/` is a static gallery drawn only with the targets, with no
-  framework. Add every new token, component or element to it.
+  framework: foundations, components by group (controls, content,
+  feedback, navigation and overlays) and the brand. `catalog.js` draws the
+  frame around each page. Add every new token, component or element to
+  its page, as a `.specimen`: its name, what it is for, the classes and
+  elements it is made with, and a stage showing it.
 - `tools/` is one Python package with every generator, run in this order
   by `just generate`: `tokens`, `fonts`, `glyphs`, `brand`, then
   `targets`, which copies the other targets' outputs into the Rust crate

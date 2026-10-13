@@ -1,0 +1,194 @@
+<!doctype html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1" />
+        <title>Feedback · Stemma design</title>
+        <link rel="icon" href="../targets/brand-kit/web/favicon.svg" />
+        <link rel="stylesheet" href="../targets/web/index.css" />
+        <link rel="stylesheet" href="catalog.css" />
+        <script type="module" src="catalog.js"></script>
+    </head>
+    <body>
+        <main>
+            <header class="catalog-intro">
+                <p class="label">Components</p>
+                <h1>Feedback</h1>
+                <p>
+                    What is said to a person about what happened, what to keep in mind, and how far
+                    a job has got.
+                </p>
+            </header>
+
+            <section class="specimen" id="message">
+                <h2>Message</h2>
+                <p>
+                    In an intent: a glyph, the words, an optional action and a close button. The
+                    words can always be selected.
+                </p>
+                <div class="specimen__api">
+                    <code>.message</code><code>.message__text</code><code>.message__close</code
+                    ><code>--{intent}</code>
+                </div>
+                <div class="specimen__stage">
+                    <p class="message message--danger">
+                        <svg class="glyph" aria-hidden="true">
+                            <use href="../targets/web/glyphs.svg#alert" /></svg
+                        ><span class="message__text"
+                            >The proof no longer checks. <a href="#message">See the error</a>.</span
+                        >
+                    </p>
+                    <p class="message message--warning">
+                        <svg class="glyph" aria-hidden="true">
+                            <use href="../targets/web/glyphs.svg#warning" /></svg
+                        ><span class="message__text">This statement depends on an axiom.</span>
+                    </p>
+                    <p class="message message--success">
+                        <svg class="glyph" aria-hidden="true">
+                            <use href="../targets/web/glyphs.svg#done" /></svg
+                        ><span class="message__text">Every proof checks.</span>
+                    </p>
+                    <p class="message message--info">
+                        <svg class="glyph" aria-hidden="true">
+                            <use href="../targets/web/glyphs.svg#info" /></svg
+                        ><span class="message__text">A newer version is available.</span
+                        ><button class="message__close" aria-label="Dismiss">
+                            <svg class="glyph glyph--small" aria-hidden="true">
+                                <use href="../targets/web/glyphs.svg#close" />
+                            </svg>
+                        </button>
+                    </p>
+                </div>
+            </section>
+
+            <section class="specimen" id="toast">
+                <h2>Toast</h2>
+                <p>
+                    A message raised over everything else. When it goes away by itself, a line shows
+                    how long it has left; the time stops while the pointer or focus is on it.
+                </p>
+                <div class="specimen__api">
+                    <code>.toast</code><code>.toast__time</code
+                    ><code>&lt;stemma-toast-region&gt;</code>
+                </div>
+                <div class="specimen__stage">
+                    <div class="row">
+                        <button class="button" data-toast="success">Success</button>
+                        <button class="button" data-toast="info">Info</button>
+                        <button class="button" data-toast="warning">Warning</button>
+                        <button class="button" data-toast="danger">Danger, with an action</button>
+                    </div>
+                </div>
+                <stemma-toast-region
+                    style="
+                        position: fixed;
+                        right: 24px;
+                        bottom: 24px;
+                        z-index: 20;
+                        width: min(380px, calc(100vw - 48px));
+                    "
+                ></stemma-toast-region>
+            </section>
+
+            <section class="specimen" id="progress">
+                <h2>Progress</h2>
+                <p>
+                    How much of a job is done. Without a value, only that it is under way. A label
+                    above it can say what the job is and how far it has got.
+                </p>
+                <div class="specimen__api">
+                    <code>progress.progress</code><code>--small</code><code>--{intent}</code
+                    ><code>.progress-label</code>
+                </div>
+                <div class="specimen__stage">
+                    <div>
+                        <div class="progress-label">
+                            <span>Checking proofs</span><span data-fills-label>0%</span>
+                        </div>
+                        <progress class="progress" max="100" value="0" data-fills></progress>
+                    </div>
+                    <div>
+                        <div class="progress-label"><span>Downloading Mathlib</span></div>
+                        <progress class="progress" aria-label="Downloading Mathlib"></progress>
+                    </div>
+                    <div class="split">
+                        <div>
+                            <div class="progress-label"><span>Done</span><span>100%</span></div>
+                            <progress
+                                class="progress progress--success"
+                                max="100"
+                                value="100"
+                            ></progress>
+                        </div>
+                        <div>
+                            <div class="progress-label"><span>Failed</span><span>62%</span></div>
+                            <progress
+                                class="progress progress--danger"
+                                max="100"
+                                value="62"
+                            ></progress>
+                        </div>
+                    </div>
+                    <div>
+                        <p class="caption">Small</p>
+                        <progress class="progress progress--small" max="100" value="45"></progress>
+                    </div>
+                </div>
+            </section>
+
+            <section class="specimen" id="loading">
+                <h2>Loading</h2>
+                <p>
+                    A grey shape where content will be; a spinner only inside a button or beside a
+                    job.
+                </p>
+                <div class="specimen__api"><code>.skeleton</code><code>.spinner</code></div>
+                <div class="specimen__stage">
+                    <div class="row">
+                        <button class="button button--primary" disabled>
+                            <span class="spinner"></span>Checking
+                        </button>
+                        <span class="quiet row" style="gap: var(--space-2)"
+                            ><span class="spinner"></span>Building the index</span
+                        >
+                    </div>
+                    <div class="stack" style="gap: var(--space-2)">
+                        <span class="skeleton" style="width: 40%; height: 18px"></span>
+                        <span class="skeleton" style="width: 90%; height: 12px"></span>
+                        <span class="skeleton" style="width: 75%; height: 12px"></span>
+                    </div>
+                </div>
+            </section>
+
+            <script type="module">
+                const region = document.querySelector("stemma-toast-region");
+                const words = {
+                    success: "Saved.",
+                    info: "A newer version is available.",
+                    warning: "This statement depends on an axiom.",
+                    danger: "The proof no longer checks.",
+                };
+                for (const button of document.querySelectorAll("[data-toast]")) {
+                    const intent = button.dataset.toast;
+                    button.addEventListener("click", () =>
+                        region.show({
+                            text: words[intent],
+                            intent,
+                            action: intent === "danger" ? { label: "Retry" } : undefined,
+                        }),
+                    );
+                }
+
+                // A job that fills up, again and again.
+                const bar = document.querySelector("[data-fills]");
+                const label = document.querySelector("[data-fills-label]");
+                let done = 0;
+                setInterval(() => {
+                    done = done >= 100 ? 0 : Math.min(done + 4 + Math.random() * 10, 100);
+                    bar.value = done;
+                    label.textContent = `${Math.round(done)}%`;
+                }, 400);
+            </script>
+        </main>
+    </body>
+</html>
