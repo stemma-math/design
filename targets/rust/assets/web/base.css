@@ -70,6 +70,7 @@
     .count--neutral,
     .avatar--neutral,
     .message--neutral,
+    .progress--neutral,
     .highlight--neutral {
         --tone: var(--neutral);
         --tone-text: var(--neutral-text);
@@ -81,6 +82,7 @@
     .count--accent,
     .avatar--accent,
     .message--accent,
+    .progress--accent,
     .highlight--accent {
         --tone: var(--accent);
         --tone-text: var(--accent-text);
@@ -92,6 +94,7 @@
     .count--success,
     .avatar--success,
     .message--success,
+    .progress--success,
     .highlight--success {
         --tone: var(--success);
         --tone-text: var(--success-text);
@@ -103,6 +106,7 @@
     .count--warning,
     .avatar--warning,
     .message--warning,
+    .progress--warning,
     .highlight--warning {
         --tone: var(--warning);
         --tone-text: var(--warning-text);
@@ -114,6 +118,7 @@
     .count--danger,
     .avatar--danger,
     .message--danger,
+    .progress--danger,
     .highlight--danger,
     .menu__item--danger {
         --tone: var(--danger);
@@ -126,6 +131,7 @@
     .count--info,
     .avatar--info,
     .message--info,
+    .progress--info,
     .highlight--info {
         --tone: var(--info);
         --tone-text: var(--info-text);

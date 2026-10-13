@@ -84,7 +84,11 @@ pub enum Element {
     Light,
     Mark,
     Menu,
+    Range,
     Segmented,
+    Select,
+    Stepper,
+    Tabs,
     ThemeSwitch,
     ToastRegion,
     Tooltip,
@@ -93,14 +97,18 @@ pub enum Element {
 #[cfg(feature = "elements")]
 impl Element {
     /// Every element.
-    pub const ALL: [Element; 10] = [
+    pub const ALL: [Element; 14] = [
         Element::CopyButton,
         Element::Dialog,
         Element::FilterChips,
         Element::Light,
         Element::Mark,
         Element::Menu,
+        Element::Range,
         Element::Segmented,
+        Element::Select,
+        Element::Stepper,
+        Element::Tabs,
         Element::ThemeSwitch,
         Element::ToastRegion,
         Element::Tooltip,
@@ -115,7 +123,11 @@ impl Element {
             Element::Light => "light",
             Element::Mark => "mark",
             Element::Menu => "menu",
+            Element::Range => "range",
             Element::Segmented => "segmented",
+            Element::Select => "select",
+            Element::Stepper => "stepper",
+            Element::Tabs => "tabs",
             Element::ThemeSwitch => "theme-switch",
             Element::ToastRegion => "toast-region",
             Element::Tooltip => "tooltip",

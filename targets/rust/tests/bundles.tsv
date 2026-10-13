@@ -1,6 +1,6 @@
 # Generated from targets/web, targets/elements and targets/brand-kit by scripts/targets.mjs. Do not edit.
 # faces	math	subsets	weights	elements	sprite	length	fnv1a64
-	false	latin			true	68859	da2e4f32d8b28b3b
-ui	false	latin,latin-ext	400		false	172279	a25acca7ad42e313
-prose,mono	true	latin	400,700	theme-switch,copy-button,mark	true	1398385	7d39f05b7a3cf687
-ui,prose,mono	true	latin,latin-ext,greek,cyrillic,symbols		copy-button,dialog,filter-chips,light,mark,menu,segmented,theme-switch,toast-region,tooltip	true	9131778	0dd447a00391c672
+	false	latin			true	85478	92d1c3a0aab25a8d
+ui	false	latin,latin-ext	400		false	188898	f439e4a58265e7e9
+prose,mono	true	latin	400,700	theme-switch,copy-button,mark	true	1415004	2a07ec252986219f
+ui,prose,mono	true	latin,latin-ext,greek,cyrillic,symbols		copy-button,dialog,filter-chips,light,mark,menu,range,segmented,select,stepper,tabs,theme-switch,toast-region,tooltip	true	9172110	7c748bdb389806f5

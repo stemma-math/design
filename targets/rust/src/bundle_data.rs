@@ -776,9 +776,29 @@ pub(crate) static MODULES: &[crate::bundle::Module] = &[
         code: include_str!("../assets/bundle/menu.js"),
     },
     crate::bundle::Module {
+        name: "range",
+        imports: &["internal"],
+        code: include_str!("../assets/bundle/range.js"),
+    },
+    crate::bundle::Module {
         name: "segmented",
         imports: &["internal"],
         code: include_str!("../assets/bundle/segmented.js"),
+    },
+    crate::bundle::Module {
+        name: "select",
+        imports: &["glyphs", "internal"],
+        code: include_str!("../assets/bundle/select.js"),
+    },
+    crate::bundle::Module {
+        name: "stepper",
+        imports: &["glyphs", "internal"],
+        code: include_str!("../assets/bundle/stepper.js"),
+    },
+    crate::bundle::Module {
+        name: "tabs",
+        imports: &["internal"],
+        code: include_str!("../assets/bundle/tabs.js"),
     },
     crate::bundle::Module {
         name: "theme-switch",

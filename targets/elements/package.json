@@ -42,9 +42,25 @@
       "types": "./menu.d.ts",
       "default": "./menu.js"
     },
+    "./range.js": {
+      "types": "./range.d.ts",
+      "default": "./range.js"
+    },
     "./segmented.js": {
       "types": "./segmented.d.ts",
       "default": "./segmented.js"
+    },
+    "./select.js": {
+      "types": "./select.d.ts",
+      "default": "./select.js"
+    },
+    "./stepper.js": {
+      "types": "./stepper.d.ts",
+      "default": "./stepper.js"
+    },
+    "./tabs.js": {
+      "types": "./tabs.d.ts",
+      "default": "./tabs.js"
     },
     "./theme-switch.js": {
       "types": "./theme-switch.d.ts",

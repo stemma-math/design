@@ -900,6 +900,7 @@
     .count--neutral,
     .avatar--neutral,
     .message--neutral,
+    .progress--neutral,
     .highlight--neutral {
         --tone: var(--neutral);
         --tone-text: var(--neutral-text);
@@ -911,6 +912,7 @@
     .count--accent,
     .avatar--accent,
     .message--accent,
+    .progress--accent,
     .highlight--accent {
         --tone: var(--accent);
         --tone-text: var(--accent-text);
@@ -922,6 +924,7 @@
     .count--success,
     .avatar--success,
     .message--success,
+    .progress--success,
     .highlight--success {
         --tone: var(--success);
         --tone-text: var(--success-text);
@@ -933,6 +936,7 @@
     .count--warning,
     .avatar--warning,
     .message--warning,
+    .progress--warning,
     .highlight--warning {
         --tone: var(--warning);
         --tone-text: var(--warning-text);
@@ -944,6 +948,7 @@
     .count--danger,
     .avatar--danger,
     .message--danger,
+    .progress--danger,
     .highlight--danger,
     .menu__item--danger {
         --tone: var(--danger);
@@ -956,6 +961,7 @@
     .count--info,
     .avatar--info,
     .message--info,
+    .progress--info,
     .highlight--info {
         --tone: var(--info);
         --tone-text: var(--info-text);
@@ -1356,6 +1362,22 @@
         overflow-wrap: anywhere;
     }
 
+    /* A key, or a combination of keys, as the person presses it. */
+    .kbd {
+        display: inline-block;
+        min-width: 1.6em;
+        box-sizing: border-box;
+        padding: 0.1em 0.4em;
+        font: 500 0.85em / 1.3 var(--font-ui);
+        color: var(--ink-2);
+        text-align: center;
+        white-space: nowrap;
+        background: var(--surface-subtle);
+        border: 1px solid var(--border-strong);
+        border-bottom-width: 2px;
+        border-radius: var(--radius-xs);
+    }
+
     .visually-hidden {
         position: absolute;
         width: 1px;
@@ -1748,6 +1770,367 @@
         padding: 0 var(--space-1);
         font: var(--text-small);
         color: var(--ink-2);
+    }
+
+    /* ── Switch ────────────────────────────────────────────────────────
+     *
+     * A checkbox with `role="switch"`: a setting that takes effect at
+     * once, on or off. In a `.choice`, like any checkbox. */
+
+    input[type="checkbox"][role="switch"] {
+        width: 30px;
+        height: 18px;
+        margin-top: 0.1em;
+        background:
+            radial-gradient(circle closest-side, var(--ink-4) 92%, transparent) left 1px center /
+                14px 14px no-repeat,
+            var(--fill-muted-strong);
+        border-color: var(--border-strong);
+        border-radius: var(--radius-pill);
+        transition:
+            background-color var(--dur-ui) var(--ease-out),
+            background-position var(--dur-ui) var(--ease-out),
+            border-color var(--dur-ui) var(--ease-out),
+            box-shadow var(--dur-press) var(--ease-out);
+    }
+
+    input[type="checkbox"][role="switch"]:checked {
+        background:
+            radial-gradient(circle closest-side, var(--accent-on) 92%, transparent) right 1px
+                center / 14px 14px no-repeat,
+            var(--accent);
+        border-color: var(--accent);
+    }
+
+    input[type="checkbox"][role="switch"]:checked:hover:not(:disabled) {
+        background-color: color-mix(in srgb, var(--accent) var(--mix-hover), black);
+    }
+
+    .choice input[role="switch"] {
+        margin-top: 0.1em;
+    }
+
+    /* ── Range ─────────────────────────────────────────────────────────
+     *
+     * A native `input type="range"`: a value along a scale, for when the
+     * exact number matters less than where it sits. The part chosen fills
+     * in the accent; WebKit and Blink draw that part from `--range-fill`,
+     * which `<stemma-range>` keeps in step. */
+
+    input[type="range"] {
+        --range-fill: 0%;
+
+        box-sizing: border-box;
+        width: 100%;
+        min-width: 120px;
+        height: 20px;
+        margin: 0;
+        background: transparent;
+        appearance: none;
+        cursor: pointer;
+    }
+
+    input[type="range"]::-webkit-slider-runnable-track {
+        height: 4px;
+        background: linear-gradient(
+            to right,
+            var(--accent) var(--range-fill),
+            var(--fill-muted-strong) var(--range-fill)
+        );
+        border-radius: var(--radius-pill);
+    }
+
+    input[type="range"]::-moz-range-track {
+        height: 4px;
+        background: var(--fill-muted-strong);
+        border-radius: var(--radius-pill);
+    }
+
+    input[type="range"]::-moz-range-progress {
+        height: 4px;
+        background: var(--accent);
+        border-radius: var(--radius-pill);
+    }
+
+    input[type="range"]::-webkit-slider-thumb {
+        box-sizing: border-box;
+        width: 16px;
+        height: 16px;
+        margin-top: -6px;
+        background: var(--surface-raised);
+        border: 1.5px solid var(--accent);
+        border-radius: 50%;
+        box-shadow: 0 1px 3px rgb(20 40 90 / 20%);
+        appearance: none;
+        transition:
+            transform var(--dur-press) var(--ease-out),
+            box-shadow var(--dur-press) var(--ease-out);
+    }
+
+    input[type="range"]::-moz-range-thumb {
+        box-sizing: border-box;
+        width: 16px;
+        height: 16px;
+        background: var(--surface-raised);
+        border: 1.5px solid var(--accent);
+        border-radius: 50%;
+        box-shadow: 0 1px 3px rgb(20 40 90 / 20%);
+        transition:
+            transform var(--dur-press) var(--ease-out),
+            box-shadow var(--dur-press) var(--ease-out);
+    }
+
+    input[type="range"]:hover:not(:disabled)::-webkit-slider-thumb {
+        box-shadow: var(--ring-selected);
+    }
+
+    input[type="range"]:hover:not(:disabled)::-moz-range-thumb {
+        box-shadow: var(--ring-selected);
+    }
+
+    input[type="range"]:active:not(:disabled)::-webkit-slider-thumb {
+        transform: scale(1.12);
+    }
+
+    input[type="range"]:active:not(:disabled)::-moz-range-thumb {
+        transform: scale(1.12);
+    }
+
+    /* The ring goes on the thumb, which is what moves. */
+    input[type="range"]:focus-visible {
+        outline: none;
+    }
+
+    input[type="range"]:focus-visible::-webkit-slider-thumb {
+        outline: 2px solid var(--focus-ring);
+        outline-offset: 2px;
+    }
+
+    input[type="range"]:focus-visible::-moz-range-thumb {
+        outline: 2px solid var(--focus-ring);
+        outline-offset: 2px;
+    }
+
+    input[type="range"]:disabled {
+        opacity: 0.5;
+        cursor: default;
+    }
+
+    /* A range with its words before it and its value after, on one line. */
+    .range {
+        display: flex;
+        align-items: center;
+        gap: var(--space-3);
+        font-size: var(--control-font);
+        color: var(--ink-1);
+    }
+
+    .range > input[type="range"] {
+        flex: 1;
+    }
+
+    .range > output {
+        min-width: 3ch;
+        font-variant-numeric: tabular-nums;
+        color: var(--ink-2);
+        text-align: end;
+    }
+
+    /* ── Stepper ───────────────────────────────────────────────────────
+     *
+     * A number with buttons that take it down and up by its `step`: an
+     * `input type="number"` between two `.stepper__button`s, in one field.
+     * `<stemma-stepper>` makes the buttons work and holds them down to
+     * repeat. */
+
+    .stepper {
+        box-sizing: border-box;
+        display: inline-flex;
+        align-items: stretch;
+        height: var(--control-height);
+        background: var(--surface-field);
+        border: 1px solid var(--border-strong);
+        border-radius: var(--radius-md);
+        transition:
+            border-color var(--dur-ui) var(--ease-out),
+            background var(--dur-ui) var(--ease-out),
+            box-shadow var(--dur-ui) var(--ease-out);
+    }
+
+    .stepper:focus-within {
+        background: var(--surface-card);
+        border-color: var(--accent);
+        box-shadow: var(--ring-input);
+    }
+
+    .stepper:has(input[aria-invalid="true"]) {
+        border-color: var(--danger);
+    }
+
+    .stepper > input {
+        box-sizing: border-box;
+        width: 6ch;
+        min-width: 0;
+        padding: 0 var(--space-1);
+        font: 400 var(--control-font) / 1 var(--font-ui);
+        font-variant-numeric: tabular-nums;
+        color: var(--ink-1);
+        text-align: center;
+        background: transparent;
+        border: 0;
+        appearance: textfield;
+    }
+
+    .stepper > input:focus {
+        outline: none;
+    }
+
+    .stepper > input::-webkit-inner-spin-button,
+    .stepper > input::-webkit-outer-spin-button {
+        margin: 0;
+        appearance: none;
+    }
+
+    .stepper__button {
+        display: inline-flex;
+        flex-shrink: 0;
+        align-items: center;
+        justify-content: center;
+        width: calc(var(--control-height) - 2px);
+        padding: 0;
+        color: var(--ink-3);
+        background: transparent;
+        border: 0;
+        border-radius: calc(var(--radius-md) - 1px);
+        cursor: pointer;
+        transition:
+            background var(--dur-ui) var(--ease-out),
+            color var(--dur-ui) var(--ease-out);
+    }
+
+    .stepper__button:hover:not(:disabled) {
+        color: var(--ink-1);
+        background: var(--fill-muted);
+    }
+
+    .stepper__button:focus-visible {
+        outline-offset: -2px;
+    }
+
+    .stepper__button:disabled {
+        color: var(--ink-disabled);
+        cursor: not-allowed;
+    }
+
+    .stepper__button .glyph {
+        width: 16px;
+        height: 16px;
+    }
+
+    .stepper--small {
+        height: var(--control-small-height);
+        border-radius: var(--radius-sm);
+    }
+
+    .stepper--small > input {
+        font-size: var(--control-small-font);
+    }
+
+    .stepper--small > .stepper__button {
+        width: calc(var(--control-small-height) - 2px);
+        border-radius: calc(var(--radius-sm) - 1px);
+    }
+
+    /* ── Select ────────────────────────────────────────────────────────
+     *
+     * `<stemma-select>` around a native `select.input` draws its own list:
+     * a `.select` button showing the chosen option, and a `.menu` of
+     * options under it, the chosen one checked. The native `select` stays,
+     * hidden, so forms and `change` events work as before; without script
+     * it is the one shown. */
+
+    stemma-select {
+        display: inline-block;
+    }
+
+    stemma-select > select {
+        display: none;
+    }
+
+    .select {
+        display: inline-flex;
+        align-items: center;
+        gap: var(--space-2);
+        width: 100%;
+        text-align: start;
+        cursor: pointer;
+    }
+
+    /* The chosen option's words, over every option's unseen, so the
+     * button is as wide as the longest. */
+    .select__value {
+        display: grid;
+        flex: 1;
+        grid-template-columns: minmax(0, 1fr);
+        min-width: 0;
+    }
+
+    .select__value > * {
+        grid-area: 1 / 1;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        white-space: nowrap;
+    }
+
+    .select__value > .select__sizer {
+        visibility: hidden;
+    }
+
+    .select__value > :empty::before {
+        content: attr(data-placeholder);
+        color: var(--ink-placeholder);
+    }
+
+    .select > .glyph {
+        width: 16px;
+        height: 16px;
+        margin-inline-end: -4px;
+        color: var(--ink-4);
+    }
+
+    .select[aria-expanded="true"] {
+        background: var(--surface-card);
+        border-color: var(--accent);
+        box-shadow: var(--ring-input);
+    }
+
+    .select:disabled {
+        cursor: not-allowed;
+    }
+
+    .menu[role="listbox"] {
+        max-height: min(320px, 50vh);
+        overflow: auto;
+    }
+
+    .menu__item[role="option"] .select__check {
+        margin-inline-start: auto;
+        color: var(--accent-text);
+        visibility: hidden;
+    }
+
+    .menu__item[role="option"][aria-selected="true"] {
+        font-weight: 500;
+    }
+
+    .menu__item[role="option"][aria-selected="true"] .select__check {
+        visibility: visible;
+    }
+
+    .menu__item[aria-disabled="true"] {
+        color: var(--ink-disabled);
+        background: transparent;
+        cursor: not-allowed;
     }
 
     /* ── Chip ──────────────────────────────────────────────────────────
@@ -2398,6 +2781,137 @@
         height: 16px;
     }
 
+    /* ── Tabs ──────────────────────────────────────────────────────────
+     *
+     * Views of one place, each a `.tabs__tab` in a `.tabs` list, the
+     * chosen one with `aria-selected="true"`, underlined in the accent.
+     * Unlike a segmented control, the views are different things and
+     * each has its own panel. `<stemma-tabs>` adds the roles, the arrow
+     * keys and the panels. A tab may hold a `.count`. */
+
+    .tabs {
+        display: flex;
+        gap: var(--space-1);
+        overflow-x: auto;
+        border-bottom: 1px solid var(--divider);
+        scrollbar-width: none;
+    }
+
+    .tabs__tab {
+        position: relative;
+        display: inline-flex;
+        flex-shrink: 0;
+        align-items: center;
+        gap: var(--space-2);
+        height: var(--control-height);
+        padding: 0 var(--space-3);
+        font: 500 var(--control-font) / 1 var(--font-ui);
+        color: var(--ink-3);
+        text-decoration: none;
+        white-space: nowrap;
+        background: transparent;
+        border: 0;
+        cursor: pointer;
+        transition: color var(--dur-ui) var(--ease-out);
+    }
+
+    .tabs__tab::after {
+        position: absolute;
+        right: var(--space-2);
+        bottom: -1px;
+        left: var(--space-2);
+        height: 2px;
+        content: "";
+        background: transparent;
+        border-radius: 2px 2px 0 0;
+        transition: background var(--dur-ui) var(--ease-out);
+    }
+
+    .tabs__tab:hover {
+        color: var(--ink-1);
+    }
+
+    .tabs__tab:hover::after {
+        background: var(--border-strong);
+    }
+
+    .tabs__tab:focus-visible {
+        outline-offset: -2px;
+        border-radius: var(--radius-sm);
+    }
+
+    .tabs__tab[aria-selected="true"],
+    .tabs__tab[aria-current]:not([aria-current="false"]) {
+        color: var(--ink-1);
+    }
+
+    .tabs__tab[aria-selected="true"]::after,
+    .tabs__tab[aria-current]:not([aria-current="false"])::after {
+        background: var(--accent);
+    }
+
+    .tabs__tab:disabled {
+        color: var(--ink-disabled);
+        cursor: not-allowed;
+    }
+
+    .tabs__tab .glyph {
+        width: 16px;
+        height: 16px;
+    }
+
+    /* ── Breadcrumbs ───────────────────────────────────────────────────
+     *
+     * Where a page sits: a `nav.breadcrumbs` holding an `ol` of links,
+     * the last one the page itself, with `aria-current="page"`. */
+
+    .breadcrumbs > ol {
+        display: flex;
+        flex-wrap: wrap;
+        align-items: center;
+        gap: var(--space-1) var(--space-2);
+        margin: 0;
+        padding: 0;
+        font: var(--text-meta);
+        list-style: none;
+    }
+
+    .breadcrumbs li {
+        display: inline-flex;
+        align-items: center;
+        gap: var(--space-2);
+        min-width: 0;
+    }
+
+    .breadcrumbs li + li::before {
+        width: 5px;
+        height: 5px;
+        content: "";
+        border-top: 1.5px solid var(--ink-4);
+        border-right: 1.5px solid var(--ink-4);
+        transform: rotate(45deg);
+    }
+
+    .breadcrumbs a {
+        color: var(--ink-3);
+        text-decoration: none;
+        border-radius: var(--radius-xs);
+    }
+
+    .breadcrumbs a:hover {
+        color: var(--ink-1);
+        text-decoration: underline;
+        text-underline-offset: 3px;
+    }
+
+    .breadcrumbs [aria-current="page"] {
+        overflow: hidden;
+        font-weight: 500;
+        color: var(--ink-1);
+        text-overflow: ellipsis;
+        white-space: nowrap;
+    }
+
     /* ── Loading ───────────────────────────────────────────────────────
      *
      * A grey shape where content will be; a spinner only inside a button
@@ -2422,6 +2936,69 @@
     @keyframes stemma-spin {
         to {
             transform: rotate(1turn);
+        }
+    }
+
+    /* ── Progress ──────────────────────────────────────────────────────
+     *
+     * A native `progress.progress`: how much of a job is done, in a tone,
+     * the accent by default. Without a `value` it says only that the job
+     * is under way, with a band that runs along it. A job that fails
+     * turns it `--danger`. */
+
+    .progress {
+        --tone: var(--accent);
+        --tone-text: var(--accent-text);
+        --tone-on: var(--accent-on);
+
+        display: block;
+        box-sizing: border-box;
+        width: 100%;
+        height: 6px;
+        overflow: hidden;
+        color: var(--tone);
+        background: var(--fill-muted-strong);
+        border: 0;
+        border-radius: var(--radius-pill);
+        appearance: none;
+    }
+
+    .progress::-webkit-progress-bar {
+        background: transparent;
+    }
+
+    .progress::-webkit-progress-value {
+        background: var(--tone);
+        border-radius: var(--radius-pill);
+        transition: inline-size var(--dur-ui) var(--ease-out);
+    }
+
+    .progress::-moz-progress-bar {
+        background: var(--tone);
+        border-radius: var(--radius-pill);
+    }
+
+    .progress:indeterminate {
+        background:
+            linear-gradient(to right, transparent, var(--tone) 30% 70%, transparent) -40% 0 / 40%
+                100% no-repeat,
+            var(--fill-muted-strong);
+        animation: stemma-progress 1.4s var(--ease-in-out) infinite;
+    }
+
+    .progress:indeterminate::-moz-progress-bar {
+        background: transparent;
+    }
+
+    .progress--small {
+        height: 4px;
+    }
+
+    @keyframes stemma-progress {
+        to {
+            background-position:
+                140% 0,
+                0 0;
         }
     }
 

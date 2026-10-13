@@ -408,9 +408,29 @@ pub(crate) static ELEMENTS: &[Asset] = &[
         bytes: include_bytes!("../assets/elements/menu.js"),
     },
     Asset {
+        path: "elements/range.js",
+        content_type: "text/javascript; charset=utf-8",
+        bytes: include_bytes!("../assets/elements/range.js"),
+    },
+    Asset {
         path: "elements/segmented.js",
         content_type: "text/javascript; charset=utf-8",
         bytes: include_bytes!("../assets/elements/segmented.js"),
+    },
+    Asset {
+        path: "elements/select.js",
+        content_type: "text/javascript; charset=utf-8",
+        bytes: include_bytes!("../assets/elements/select.js"),
+    },
+    Asset {
+        path: "elements/stepper.js",
+        content_type: "text/javascript; charset=utf-8",
+        bytes: include_bytes!("../assets/elements/stepper.js"),
+    },
+    Asset {
+        path: "elements/tabs.js",
+        content_type: "text/javascript; charset=utf-8",
+        bytes: include_bytes!("../assets/elements/tabs.js"),
     },
     Asset {
         path: "elements/theme-switch.js",

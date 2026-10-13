@@ -56,19 +56,89 @@
                     >
                 </div>
                 <div class="catalog-row" style="margin-top: var(--space-3)">
-                    <select class="input" style="width: auto">
-                        <option>A choice</option>
+                    <stemma-select>
+                        <select class="input" aria-label="Kind">
+                            <option>Theorem</option>
+                            <option selected>Lemma</option>
+                            <option>Corollary</option>
+                            <optgroup label="Others">
+                                <option>Definition</option>
+                                <option>Remark</option>
+                                <option disabled>Conjecture</option>
+                            </optgroup>
+                        </select>
+                    </stemma-select>
+                    <select class="input" style="width: auto" aria-label="Native">
+                        <option>Without script</option>
                     </select>
+                </div>
+                <div class="catalog-row">
                     <label class="choice"><input type="checkbox" checked /> Checked</label>
                     <label class="choice"><input type="checkbox" /> Not</label>
                     <label class="choice"><input type="radio" name="r" checked /> One</label>
                     <label class="choice"><input type="radio" name="r" /> Two</label>
+                    <label class="choice"><input type="checkbox" role="switch" checked /> On</label>
+                    <label class="choice"><input type="checkbox" role="switch" /> Off</label>
                 </div>
                 <fieldset class="fieldset">
                     <legend>A set of choices</legend>
                     <label class="choice"><input type="checkbox" checked /> Comments</label>
                     <label class="choice"><input type="checkbox" /> Mentions</label>
                 </fieldset>
+                <h3 class="label">Values and progress</h3>
+                <stemma-range>
+                    <label class="range"
+                        >Opacity <input type="range" min="0" max="100" value="40" /><output></output
+                    ></label>
+                </stemma-range>
+                <div class="catalog-row">
+                    <stemma-stepper
+                        ><input type="number" value="1" min="0" max="9" aria-label="Copies"
+                    /></stemma-stepper>
+                    <stemma-stepper small
+                        ><input
+                            type="number"
+                            value="0.5"
+                            min="0"
+                            max="1"
+                            step="0.1"
+                            aria-label="Scale"
+                    /></stemma-stepper>
+                    <span class="quiet"
+                        >Press <kbd class="kbd">⌘</kbd> <kbd class="kbd">K</kbd></span
+                    >
+                </div>
+                <div class="catalog-stack">
+                    <progress class="progress" max="100" value="0" data-fills></progress>
+                    <progress class="progress progress--success" max="100" value="100"></progress>
+                    <progress
+                        class="progress progress--danger progress--small"
+                        max="100"
+                        value="62"
+                    ></progress>
+                    <progress class="progress" aria-label="Under way"></progress>
+                </div>
+                <h3 class="label">Navigation</h3>
+                <nav class="breadcrumbs" aria-label="Breadcrumbs">
+                    <ol>
+                        <li><a href="#">Number theory</a></li>
+                        <li><a href="#">Congruences</a></li>
+                        <li><span aria-current="page">Fermat's little theorem</span></li>
+                    </ol>
+                </nav>
+                <stemma-tabs label="Sections">
+                    <div class="tabs">
+                        <button class="tabs__tab" value="overview" aria-selected="true">
+                            Overview</button
+                        ><button class="tabs__tab" value="history">
+                            History <span class="count">4</span></button
+                        ><button class="tabs__tab" value="settings">Settings</button
+                        ><button class="tabs__tab" disabled>Disabled</button>
+                    </div>
+                    <p class="quiet" data-tab="overview">The overview panel.</p>
+                    <p class="quiet" data-tab="history">The history panel.</p>
+                    <p class="quiet" data-tab="settings">The settings panel.</p>
+                </stemma-tabs>
                 <h3 class="label">Chips and counts</h3>
                 <div class="catalog-row">
                     <span class="chip">Neutral</span><span class="chip chip--accent">Accent</span>
@@ -165,7 +235,7 @@
                         <hr class="menu__separator" />
                         <button class="menu__item menu__item--danger">Delete</button>
                     </div>
-                    <div style="display: grid; gap: 12px">
+                    <div class="catalog-stack">
                         <span class="tooltip">Settings <kbd>⌘,</kbd></span>
                         <div class="segmented">
                             <button aria-pressed="true">List</button><button>Graph</button>
@@ -205,6 +275,13 @@
                 const set = document.getElementById("set");
                 for (const id of ["comfortable", "compact"])
                     document.getElementById(id).append(set.content.cloneNode(true));
+                // A job that fills up, again and again.
+                const bars = document.querySelectorAll("[data-fills]");
+                let done = 0;
+                setInterval(() => {
+                    done = done >= 100 ? 0 : Math.min(done + 4 + Math.random() * 10, 100);
+                    for (const bar of bars) bar.value = done;
+                }, 400);
             </script>
         </main>
     </body>

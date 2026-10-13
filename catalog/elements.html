@@ -56,6 +56,25 @@
                     <button class="chip chip--danger" value="failing">Failing</button>
                     <button class="chip chip--teal" value="teal">Teal</button>
                 </stemma-filter-chips>
+                <div class="catalog-row">
+                    <stemma-select placeholder="Choose a kind">
+                        <select class="input" aria-label="Kind" id="kind">
+                            <option value="" selected hidden></option>
+                            <option value="theorem">Theorem</option>
+                            <option value="lemma">Lemma</option>
+                            <option value="definition">Definition</option>
+                        </select>
+                    </stemma-select>
+                    <stemma-stepper
+                        ><input
+                            type="number"
+                            id="copies"
+                            value="1"
+                            min="1"
+                            max="20"
+                            aria-label="Copies"
+                    /></stemma-stepper>
+                </div>
                 <p class="quiet" id="events">Events appear here.</p>
                 <stemma-dialog id="confirm">
                     <dialog class="dialog" aria-labelledby="confirm-title">
@@ -111,16 +130,18 @@
                         <div class="catalog-row" style="margin-top: 12px">
                             <button class="button button--small" id="withdraw">Withdraw</button>
                             <button class="button button--small" id="restore">Restore</button>
-                            <label class="choice"
-                                >Progress
-                                <input
-                                    type="range"
-                                    min="0"
-                                    max="1"
-                                    step="0.01"
-                                    value="0"
-                                    id="progress"
-                            /></label>
+                            <stemma-range style="flex: 1">
+                                <label class="range"
+                                    >Progress
+                                    <input
+                                        type="range"
+                                        min="0"
+                                        max="1"
+                                        step="0.01"
+                                        value="0"
+                                        id="progress"
+                                /></label>
+                            </stemma-range>
                         </div>
                     </div>
                     <div>
@@ -189,6 +210,12 @@
                     .addEventListener("close", (e) =>
                         say(`Dialog: ${e.target.returnValue || "dismissed"}`),
                     );
+                document
+                    .getElementById("kind")
+                    .addEventListener("change", (e) => say(`Kind: ${e.target.value}`));
+                document
+                    .getElementById("copies")
+                    .addEventListener("change", (e) => say(`Copies: ${e.target.value}`));
                 const region = document.querySelector("stemma-toast-region");
                 const intents = ["success", "info", "warning", "danger"];
                 let n = 0;

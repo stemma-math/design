@@ -72,6 +72,30 @@ body {
     margin-bottom: var(--space-3);
 }
 
+/* Things one under another, each as wide as it wants to be, unless it
+ * fills its line by nature (a progress bar, a range). */
+.catalog-stack {
+    display: grid;
+    gap: var(--space-3);
+    justify-items: start;
+    margin-bottom: var(--space-3);
+}
+
+.catalog-stack > .progress {
+    justify-self: stretch;
+}
+
+.catalog-section > stemma-tabs,
+.catalog-section > stemma-range,
+.catalog-section > .breadcrumbs {
+    display: block;
+    margin-bottom: var(--space-3);
+}
+
+.catalog-section stemma-tabs [data-tab] {
+    margin: var(--space-3) 0 0;
+}
+
 .catalog-grid {
     display: grid;
     grid-template-columns: repeat(auto-fill, minmax(var(--catalog-cell, 160px), 1fr));

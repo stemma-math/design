@@ -24,6 +24,10 @@ or one module for one element.
 | `tooltip.js`      | `<stemma-tooltip>`      | Describes an icon-only control, on rest of the pointer or keyboard focus.                                                                                        |
 | `menu.js`         | `<stemma-menu>`         | Opens a `.menu` from its button, with arrow keys, Home, End and Escape, and sends `select`.                                                                      |
 | `segmented.js`    | `<stemma-segmented>`    | A single choice among the buttons of a `.segmented` control, with arrow keys.                                                                                    |
+| `select.js`       | `<stemma-select>`       | Draws a native `select` with its own list, keyboard and typeahead; the `select` stays, hidden, for forms and events.                                             |
+| `stepper.js`      | `<stemma-stepper>`      | Buttons that take a number input down and up by its step, repeating while held.                                                                                  |
+| `range.js`        | `<stemma-range>`        | Fills a range's track up to its value in every engine, and shows the value in an `output`.                                                                       |
+| `tabs.js`         | `<stemma-tabs>`         | Tabs over a `.tabs` list, each showing its panel, with arrow keys.                                                                                               |
 | `filter-chips.js` | `<stemma-filter-chips>` | Chips turned on and off to filter a view; `single` allows one at a time.                                                                                         |
 | `light.js`        | `<stemma-light>`        | The brand light in WebGL: `preset="hero"` moves, `preset="still"` is one quiet frame. `progress` and `withdraw()` take it away towards an `edge`.                |
 | `mark.js`         | `<stemma-mark>`         | The symbol, in the page's appearance or a chosen one; `animated` brings it alive in WebGL on dark surfaces.                                                      |
