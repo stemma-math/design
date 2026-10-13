@@ -28,8 +28,8 @@
                 </p>
                 <div class="specimen__api">
                     <code>.button</code><code>--primary</code><code>--quiet</code><code>--link</code
-                    ><code>--icon</code><code>--small</code><code>--success</code
-                    ><code>--warning</code><code>--danger</code>
+                    ><code>--icon</code><code>--inline</code><code>--small</code
+                    ><code>--success</code><code>--warning</code><code>--danger</code>
                 </div>
                 <div class="specimen__stage">
                     <div class="row">
@@ -61,6 +61,11 @@
                         </button>
                         <button class="button button--small" aria-pressed="true">Pressed</button>
                     </div>
+                    <p style="margin: 0">
+                        <code class="identifier">thm:fermat-little</code
+                        ><button class="button button--inline">copy</button> An inline button, as
+                        large as the text around it.
+                    </p>
                 </div>
             </section>
 
@@ -271,6 +276,10 @@ If p is prime, then a^p ≡ a (mod p).</textarea>
                             ><button value="table">Table</button>
                         </div></stemma-segmented
                     >
+                    <div class="segmented" role="group" aria-label="Disabled">
+                        <button aria-pressed="true" disabled>Chosen</button
+                        ><button disabled>Disabled</button>
+                    </div>
                 </div>
             </section>
 

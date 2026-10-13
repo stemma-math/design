@@ -27,6 +27,14 @@ pub fn spinner(output: &Output) -> ProgressStyle {
         .tick_strings(&tick_strings(output))
 }
 
+/// A spinner in the accent, the message, then the time it has taken,
+/// muted: for a step long enough that its time is worth knowing.
+pub fn timed_spinner(output: &Output) -> ProgressStyle {
+    ProgressStyle::with_template("{spinner:.blue} {msg} {elapsed:.dim}")
+        .expect("a valid template")
+        .tick_strings(&tick_strings(output))
+}
+
 /// A spinner, the message, a bar in the accent and the count.
 pub fn bar(output: &Output) -> ProgressStyle {
     let characters = if output.unicode() { "━━─" } else { "=> " };

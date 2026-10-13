@@ -15,6 +15,10 @@ Options:
                             `latin,latin-ext` by default. JuliaMono ships
                             whole, or, when only `latin` is asked for, as
                             upstream's Latin files alone
+    --subsets-ui …,         ranges for one group of faces alone, in place of
+    --subsets-prose …,      `--subsets`: as `--subsets-mono latin`, to keep
+    --subsets-mono …        JuliaMono to its Latin files while the other
+                            faces carry more
     --weights 400,700       weights to embed; every weight by default
     --elements all|a,b      elements to include, by module name
                             (`theme-switch`, `copy-button`, …); none by
@@ -62,6 +66,8 @@ class Options:
     faces: list = field(default_factory=lambda: ["ui"])
     math: bool = False
     subsets: list = field(default_factory=lambda: ["latin", "latin-ext"])
+    # A group of faces' own ranges, in place of `subsets`, by group.
+    face_subsets: dict = field(default_factory=dict)
     weights: list = field(default_factory=list)
     elements: list = field(default_factory=list)
     sprite: bool = True
@@ -86,6 +92,8 @@ def parse(argv):
             options.math = True
         elif arg == "--subsets":
             options.subsets = listed()
+        elif arg in ("--subsets-ui", "--subsets-prose", "--subsets-mono"):
+            options.face_subsets[arg.removeprefix("--subsets-")] = listed()
         elif arg == "--elements":
             asked = listed()
             options.elements = MODULES if "all" in asked else asked
@@ -96,7 +104,10 @@ def parse(argv):
     for face in options.faces:
         if face not in FAMILIES or face == "math":
             sys.exit(f"Unknown faces: {face}")
-    for subset in options.subsets:
+    for subset in [
+        *options.subsets,
+        *(s for v in options.face_subsets.values() for s in v),
+    ]:
         if subset not in SUBSETS:
             sys.exit(f"Unknown subset: {subset}")
     for name in options.elements:
@@ -114,7 +125,7 @@ def faces(options):
     css = (WEB / "fonts.css").read_text()
     asked = [*options.faces, *(["math"] if options.math else [])]
     families = {family for face in asked for family in FAMILIES[face]}
-    only_latin = options.subsets == ["latin"]
+    group = {family: face for face, names in FAMILIES.items() for family in names}
     rules = []
     for rule in FONT_FACE.findall(css):
         family = re.search(r'font-family: "([^"]+)"', rule).group(1)
@@ -123,7 +134,8 @@ def faces(options):
         url = re.search(r'url\("([^"]+)"\)', rule).group(1)
         match = SUBSET.search(url)
         subset = match.group(1) if match else None
-        if subset and subset not in options.subsets:
+        subsets = options.face_subsets.get(group[family], options.subsets)
+        if subset and subset not in subsets:
             continue
         # Libertinus Sans only stands in for what Instrument Sans lacks.
         if family == "Libertinus Sans" and subset in ("latin", "latin-ext"):
@@ -139,7 +151,7 @@ def faces(options):
             # Only upstream's Latin files, when only Latin is asked for: a
             # style without one is left to the browser to synthesise.
             latin = url.endswith("Latin.woff2")
-            if latin != only_latin:
+            if latin != (subsets == ["latin"]):
                 continue
         data = base64.b64encode((WEB / url).read_bytes()).decode()
         rules.append(rule.replace(url, f"data:font/woff2;base64,{data}", 1))
@@ -254,7 +266,12 @@ def bundle(options):
     parts = [
         f"<!-- Stemma design, inline bundle. Faces: {', '.join(asked) or 'none'}; "
         f"subsets: {', '.join(options.subsets)}; "
-        f"elements: {', '.join(options.elements) or 'none'}. -->",
+        + "".join(
+            f"{face} subsets: {', '.join(options.face_subsets[face])}; "
+            for face in ("ui", "prose", "mono")
+            if face in options.face_subsets
+        )
+        + f"elements: {', '.join(options.elements) or 'none'}. -->",
         f"<style>\n{faces(options)}\n\n{stylesheets()}</style>",
     ]
     if options.sprite:

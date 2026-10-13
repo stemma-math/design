@@ -76,3 +76,14 @@ pub fn serve(prefix: &str, request_path: &str) -> Option<&'static Asset> {
     let rest = request_path.strip_prefix(prefix)?;
     rest.strip_prefix('/').and_then(get)
 }
+
+/// Where a glyph is when the files are served under `prefix`, for
+/// `<use href>`: in the web target's sprite. A page that inlines a bundle
+/// takes [`bundle::Bundle::glyph_href`] instead.
+///
+/// ```
+/// assert_eq!(stemma_design::glyph_href("/design", "info"), "/design/web/glyphs.svg#info");
+/// ```
+pub fn glyph_href(prefix: &str, name: &str) -> String {
+    format!("{}/web/glyphs.svg#{name}", prefix.trim_end_matches('/'))
+}

@@ -18,7 +18,8 @@ import { define } from "./internal.js";
 const THEMES = ["system", "light", "dark"];
 const DEFAULT_KEY = "stemma-theme";
 
-/** The stored choice: `system`, `light` or `dark`. */
+/** The stored choice: `system`, `light` or `dark`. Anything else stored
+ * under the key, as an older page's `auto`, counts as `system`. */
 export function storedTheme(key = DEFAULT_KEY) {
     try {
         const value = localStorage.getItem(key);

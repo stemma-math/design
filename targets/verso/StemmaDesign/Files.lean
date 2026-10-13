@@ -3,7 +3,8 @@
 namespace StemmaDesign
 
 /-- The files a site copies beside `verso-theme.css`, as paths relative to this package's
-directory and to the stylesheet alike: the faces, their licences and the grain texture. -/
+directory and to the stylesheet alike: the faces, their licences, the grain texture, the
+glyph sprite and the elements. -/
 def files : Array String := #[
   "fonts/instrument-sans/OFL.txt",
   "fonts/instrument-sans/instrument-sans-400-italic-latin-ext.woff2",
@@ -64,7 +65,28 @@ def files : Array String := #[
   "fonts/new-computer-modern/new-computer-modern-700-latin-ext.woff2",
   "fonts/new-computer-modern/new-computer-modern-700-latin.woff2",
   "fonts/new-computer-modern/new-computer-modern-700-symbols.woff2",
-  "noise.svg"
+  "noise.svg",
+  "glyphs.svg",
+  "elements/LICENSE",
+  "elements/LICENSE-mark",
+  "elements/copy-button.js",
+  "elements/dialog.js",
+  "elements/filter-chips.js",
+  "elements/glyphs.js",
+  "elements/index.js",
+  "elements/internal.js",
+  "elements/light.js",
+  "elements/mark-data.js",
+  "elements/mark.js",
+  "elements/menu.js",
+  "elements/range.js",
+  "elements/segmented.js",
+  "elements/select.js",
+  "elements/stepper.js",
+  "elements/tabs.js",
+  "elements/theme-switch.js",
+  "elements/toast-region.js",
+  "elements/tooltip.js"
 ]
 
 end StemmaDesign
