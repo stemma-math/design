@@ -50,6 +50,13 @@ impl Faces {
             Faces::Mono => &["JuliaMono"],
         }
     }
+
+    /// The group a family belongs to; none for the math face.
+    fn of(family: &str) -> Option<Faces> {
+        [Faces::Ui, Faces::Prose, Faces::Mono]
+            .into_iter()
+            .find(|faces| faces.families().contains(&family))
+    }
 }
 
 /// A range of a split face.
@@ -159,6 +166,7 @@ pub struct Bundle {
     faces: Vec<Faces>,
     math: bool,
     subsets: Vec<Subset>,
+    face_subsets: Vec<(Faces, Vec<Subset>)>,
     weights: Vec<u16>,
     #[cfg(feature = "elements")]
     elements: Vec<Element>,
@@ -171,6 +179,7 @@ impl Default for Bundle {
             faces: vec![Faces::Ui],
             math: false,
             subsets: vec![Subset::Latin, Subset::LatinExt],
+            face_subsets: Vec::new(),
             weights: Vec::new(),
             #[cfg(feature = "elements")]
             elements: Vec::new(),
@@ -199,6 +208,21 @@ impl Bundle {
         self
     }
 
+    /// The ranges of one group of faces, in place of `subsets`: as
+    /// `face_subsets(Faces::Mono, &[Subset::Latin])`, to keep JuliaMono to
+    /// its Latin files while the other faces carry more.
+    pub fn face_subsets(mut self, faces: Faces, subsets: &[Subset]) -> Self {
+        self.face_subsets.retain(|(f, _)| *f != faces);
+        self.face_subsets.push((faces, subsets.to_vec()));
+        self
+    }
+
+    /// Where a glyph is in this bundle's sprite, for `<use href>`: `#name`.
+    /// The bundle must carry the sprite, as it does by default.
+    pub fn glyph_href(&self, name: &str) -> String {
+        format!("#{name}")
+    }
+
     /// The weights to embed; every weight when empty.
     pub fn weights(mut self, weights: &[u16]) -> Self {
         self.weights = weights.to_vec();
@@ -225,12 +249,20 @@ impl Bundle {
             faces.push("math");
         }
         let subsets: Vec<&str> = self.subsets.iter().map(|s| s.name()).collect();
+        let mut per_face = String::new();
+        for faces in [Faces::Ui, Faces::Prose, Faces::Mono] {
+            if let Some(subsets) = self.face_subsets_of(faces) {
+                let names: Vec<&str> = subsets.iter().map(|s| s.name()).collect();
+                per_face += &format!("{} subsets: {}; ", faces.name(), names.join(", "));
+            }
+        }
         let elements = self.element_names();
         let mut parts = vec![
             format!(
-                "<!-- Stemma design, inline bundle. Faces: {}; subsets: {}; elements: {}. -->",
+                "<!-- Stemma design, inline bundle. Faces: {}; subsets: {}; {}elements: {}. -->",
                 or_none(&faces.join(", ")),
                 subsets.join(", "),
+                per_face,
                 or_none(&elements.join(", ")),
             ),
             format!(
@@ -247,6 +279,20 @@ impl Bundle {
             parts.push(format!("<script type=\"module\">\n{script}\n</script>"));
         }
         parts.join("\n") + "\n"
+    }
+
+    fn face_subsets_of(&self, faces: Faces) -> Option<&[Subset]> {
+        self.face_subsets
+            .iter()
+            .find(|(f, _)| *f == faces)
+            .map(|(_, subsets)| subsets.as_slice())
+    }
+
+    /// The ranges a family is embedded in.
+    fn subsets_of(&self, family: &str) -> &[Subset] {
+        Faces::of(family)
+            .and_then(|faces| self.face_subsets_of(faces))
+            .unwrap_or(&self.subsets)
     }
 
     fn element_names(&self) -> Vec<&'static str> {
@@ -266,15 +312,15 @@ impl Bundle {
         if self.math {
             families.push("New Computer Modern Math");
         }
-        let only_latin = self.subsets == [Subset::Latin];
-        let subsets: Vec<&str> = self.subsets.iter().map(|s| s.name()).collect();
         let mut rules = Vec::new();
         for rule in FONT_RULES {
             if !families.contains(&rule.family) {
                 continue;
             }
+            let ranges = self.subsets_of(rule.family);
+            let only_latin = ranges == [Subset::Latin];
             if let Some(subset) = rule.subset {
-                if !subsets.contains(&subset) {
+                if !ranges.iter().any(|s| s.name() == subset) {
                     continue;
                 }
                 // Libertinus Sans only stands in for what Instrument Sans lacks.

@@ -76,6 +76,7 @@ fn bundles_match_the_script() {
             faces_f,
             math,
             subsets_f,
+            face_subsets_f,
             weights,
             elements,
             sprite,
@@ -86,12 +87,16 @@ fn bundles_match_the_script() {
             panic!("a malformed line: {line}");
         };
         let weights: Vec<u16> = list(weights).iter().map(|w| w.parse().unwrap()).collect();
-        let bundle = Bundle::default()
+        let mut bundle = Bundle::default()
             .faces(&faces(faces_f))
             .math(math == "true")
             .subsets(&subsets(subsets_f))
             .weights(&weights)
             .sprite(sprite == "true");
+        for entry in face_subsets_f.split(';').filter(|e| !e.is_empty()) {
+            let (face, ranges) = entry.split_once('=').expect("face=subsets");
+            bundle = bundle.face_subsets(faces(face)[0], &subsets(ranges));
+        }
         let Some(bundle) = with_elements(bundle, elements) else {
             continue;
         };

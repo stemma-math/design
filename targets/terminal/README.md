@@ -19,7 +19,7 @@ stemma-design-terminal = { git = "https://github.com/stemma-math/design", tag = 
 | `Output`                     | The one colour policy: no colour when `NO_COLOR` is set, when the stream is not a terminal or when `TERM=dumb`; `Output::plain()` or `with_plain(true)` for `--json` and other output a program reads. `paint`, `symbol` and `spinner` follow it. |
 | `themes::clap::styles()`     | `Styles` for clap's help and errors. Feature `clap`.                                                                                                                                                                                              |
 | `themes::cliclack::Theme`    | A theme for cliclack's prompts. Feature `cliclack`.                                                                                                                                                                                               |
-| `themes::indicatif`          | `ProgressStyle` presets (`spinner`, `bar`, `download`) and tick strings. Feature `indicatif`.                                                                                                                                                     |
+| `themes::indicatif`          | `ProgressStyle` presets (`spinner`, `timed_spinner`, `bar`, `download`) and tick strings. Feature `indicatif`.                                                                                                                                    |
 | `Output::apply_to_console`   | Makes `console`, which cliclack and indicatif draw with, follow the policy. With either feature.                                                                                                                                                  |
 
 ```rust
