@@ -12,7 +12,9 @@ typography; a product decides when something is `danger` and what its
 label says.
 
 `catalog/` is a living gallery of all of it, drawn with the targets
-themselves: run `just catalog` and open <http://localhost:8000/>.
+themselves. The latest release's is at <https://stemma-math.github.io/design/>;
+to see the working copy's, run `just catalog` and open
+<http://localhost:8000/>.
 
 ## Targets
 
@@ -108,7 +110,8 @@ Lake package), and `just check` fails while any of them differs.
 
 Releasing is changing `VERSION` in a pull request. When it reaches `main`,
 the release workflow tags it `vX.Y.Z`, which is what Cargo, Lake and Nix
-take, and publishes a GitHub release with the npm tarballs. While the
+take, publishes a GitHub release with the npm tarballs, and publishes
+that version's catalog on GitHub Pages. While the
 version is 0.0.0, nothing is released.
 
 ## Licences
