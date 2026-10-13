@@ -152,7 +152,13 @@ def faces(options):
 def stylesheets():
     noise = base64.b64encode((WEB / "noise.svg").read_bytes()).decode()
     parts = []
-    for name in ("tokens.css", "base.css", "document.css", "components.css"):
+    for name in (
+        "tokens.css",
+        "base.css",
+        "document.css",
+        "code.css",
+        "components.css",
+    ):
         css = (WEB / name).read_text()
         css = css.replace(
             'url("noise.svg")', f'url("data:image/svg+xml;base64,{noise}")', 1

@@ -1,0 +1,110 @@
+/* Stemma's colours for highlighted code, for the highlighters a page may
+ * use. Needs `tokens.css`, whose `--code-*` tokens say what each role
+ * looks like in either appearance; the rules below only map a
+ * highlighter's names onto them.
+ *
+ * - Shiki: use its CSS variables theme (`createCssVariablesTheme`), whose
+ *   `--shiki-*` properties are set here.
+ * - highlight.js: its `hljs-*` classes, with no theme of its own loaded.
+ * - Verso: `verso-theme.css` maps its highlighted Lean the same way.
+ *
+ * Code blocks themselves, the box around them, are `document.css`'s.
+ */
+
+@layer stemma.base, stemma.document, stemma.components, stemma.tones;
+
+@layer stemma.document {
+    :root {
+        --shiki-foreground: var(--code-text);
+        --shiki-background: transparent;
+        --shiki-token-keyword: var(--code-keyword);
+        --shiki-token-function: var(--code-definition);
+        --shiki-token-constant: var(--code-number);
+        --shiki-token-string: var(--code-string);
+        --shiki-token-string-expression: var(--code-string);
+        --shiki-token-parameter: var(--code-variable);
+        --shiki-token-comment: var(--code-comment);
+        --shiki-token-punctuation: var(--code-punctuation);
+        --shiki-token-link: var(--link);
+    }
+
+    .hljs {
+        color: var(--code-text);
+        background: transparent;
+    }
+
+    .hljs-keyword,
+    .hljs-selector-tag,
+    .hljs-meta .hljs-keyword,
+    .hljs-tag .hljs-name {
+        color: var(--code-keyword);
+    }
+
+    .hljs-title,
+    .hljs-title.function_,
+    .hljs-section,
+    .hljs-attr,
+    .hljs-attribute,
+    .hljs-property,
+    .hljs-selector-id,
+    .hljs-selector-class {
+        color: var(--code-definition);
+    }
+
+    .hljs-type,
+    .hljs-title.class_,
+    .hljs-title.class_.inherited__,
+    .hljs-built_in {
+        color: var(--code-type);
+    }
+
+    .hljs-string,
+    .hljs-regexp,
+    .hljs-char.escape_,
+    .hljs-symbol {
+        color: var(--code-string);
+    }
+
+    .hljs-number,
+    .hljs-literal,
+    .hljs-variable.constant_ {
+        color: var(--code-number);
+    }
+
+    .hljs-variable,
+    .hljs-params,
+    .hljs-template-variable {
+        font-style: italic;
+        color: var(--code-variable);
+    }
+
+    .hljs-comment,
+    .hljs-quote,
+    .hljs-meta {
+        font-style: italic;
+        color: var(--code-comment);
+    }
+
+    .hljs-punctuation,
+    .hljs-operator {
+        color: var(--code-punctuation);
+    }
+
+    .hljs-deletion {
+        color: var(--danger-text);
+        background: color-mix(in srgb, var(--danger) var(--mix-soft), transparent);
+    }
+
+    .hljs-addition {
+        color: var(--success-text);
+        background: color-mix(in srgb, var(--success) var(--mix-soft), transparent);
+    }
+
+    .hljs-emphasis {
+        font-style: italic;
+    }
+
+    .hljs-strong {
+        font-weight: 700;
+    }
+}

@@ -709,6 +709,26 @@
     --tone-rust: var(--rust-600);
     --tone-rust-text: var(--rust-700);
     --tone-rust-on: #ffffff;
+    /* Code: everything without a role of its own. */
+    --code-text: var(--ink-1);
+    /* Code: keywords, as `theorem` or `fun`. */
+    --code-keyword: var(--tone-violet-text);
+    /* Code: names of definitions and functions, and Lean's constants. */
+    --code-definition: var(--accent-text);
+    /* Code: types and classes, where a highlighter tells them apart. */
+    --code-type: var(--tone-teal-text);
+    /* Code: strings and characters. */
+    --code-string: var(--tone-olive-text);
+    /* Code: numbers and other literals. */
+    --code-number: var(--tone-ochre-text);
+    /* Code: bound variables and parameters, set in italic. */
+    --code-variable: var(--ink-2);
+    /* Code: comments, set in italic. */
+    --code-comment: var(--ink-3);
+    /* Code: punctuation and delimiters. */
+    --code-punctuation: var(--ink-3);
+    /* Code: errors, and Lean's `sorry`. */
+    --code-error: var(--danger-text);
     --mix-soft: 12%;
     --mix-border: 35%;
     --mix-hover: 84%;
@@ -1315,6 +1335,120 @@
         margin: 1em 0;
         overflow-x: auto;
         overflow-y: hidden;
+    }
+}
+
+
+/* ── code.css ── */
+
+/* Stemma's colours for highlighted code, for the highlighters a page may
+ * use. Needs `tokens.css`, whose `--code-*` tokens say what each role
+ * looks like in either appearance; the rules below only map a
+ * highlighter's names onto them.
+ *
+ * - Shiki: use its CSS variables theme (`createCssVariablesTheme`), whose
+ *   `--shiki-*` properties are set here.
+ * - highlight.js: its `hljs-*` classes, with no theme of its own loaded.
+ * - Verso: `verso-theme.css` maps its highlighted Lean the same way.
+ *
+ * Code blocks themselves, the box around them, are `document.css`'s.
+ */
+
+@layer stemma.base, stemma.document, stemma.components, stemma.tones;
+
+@layer stemma.document {
+    :root {
+        --shiki-foreground: var(--code-text);
+        --shiki-background: transparent;
+        --shiki-token-keyword: var(--code-keyword);
+        --shiki-token-function: var(--code-definition);
+        --shiki-token-constant: var(--code-number);
+        --shiki-token-string: var(--code-string);
+        --shiki-token-string-expression: var(--code-string);
+        --shiki-token-parameter: var(--code-variable);
+        --shiki-token-comment: var(--code-comment);
+        --shiki-token-punctuation: var(--code-punctuation);
+        --shiki-token-link: var(--link);
+    }
+
+    .hljs {
+        color: var(--code-text);
+        background: transparent;
+    }
+
+    .hljs-keyword,
+    .hljs-selector-tag,
+    .hljs-meta .hljs-keyword,
+    .hljs-tag .hljs-name {
+        color: var(--code-keyword);
+    }
+
+    .hljs-title,
+    .hljs-title.function_,
+    .hljs-section,
+    .hljs-attr,
+    .hljs-attribute,
+    .hljs-property,
+    .hljs-selector-id,
+    .hljs-selector-class {
+        color: var(--code-definition);
+    }
+
+    .hljs-type,
+    .hljs-title.class_,
+    .hljs-title.class_.inherited__,
+    .hljs-built_in {
+        color: var(--code-type);
+    }
+
+    .hljs-string,
+    .hljs-regexp,
+    .hljs-char.escape_,
+    .hljs-symbol {
+        color: var(--code-string);
+    }
+
+    .hljs-number,
+    .hljs-literal,
+    .hljs-variable.constant_ {
+        color: var(--code-number);
+    }
+
+    .hljs-variable,
+    .hljs-params,
+    .hljs-template-variable {
+        font-style: italic;
+        color: var(--code-variable);
+    }
+
+    .hljs-comment,
+    .hljs-quote,
+    .hljs-meta {
+        font-style: italic;
+        color: var(--code-comment);
+    }
+
+    .hljs-punctuation,
+    .hljs-operator {
+        color: var(--code-punctuation);
+    }
+
+    .hljs-deletion {
+        color: var(--danger-text);
+        background: color-mix(in srgb, var(--danger) var(--mix-soft), transparent);
+    }
+
+    .hljs-addition {
+        color: var(--success-text);
+        background: color-mix(in srgb, var(--success) var(--mix-soft), transparent);
+    }
+
+    .hljs-emphasis {
+        font-style: italic;
+    }
+
+    .hljs-strong {
+        font-weight: 700;
     }
 }
 
@@ -3248,7 +3382,7 @@ html:root {
     /* Text, surfaces and links. */
     --verso-text-color: var(--ink-1);
     --verso-structure-color: var(--ink-1);
-    --verso-code-color: var(--ink-1);
+    --verso-code-color: var(--code-text);
     --verso-muted-color: var(--ink-3);
     --verso-background-color: var(--surface-page);
     --verso-surface-color: var(--surface-subtle);
@@ -3328,11 +3462,31 @@ html:root {
     --verso-tactic-toggle-color: var(--ink-4);
     --verso-tactic-toggle-checked-color: var(--ink-3);
 
-    /* Highlighted Lean. */
-    --verso-code-const-color: var(--ink-1);
-    --verso-code-keyword-color: var(--accent-text);
-    --verso-code-keyword-weight: 700;
-    --verso-code-var-color: var(--ink-2);
+    /* Highlighted Lean, in the `--code-*` tokens. */
+    --verso-code-const-color: var(--code-definition);
+    --verso-code-keyword-color: var(--code-keyword);
+    --verso-code-keyword-weight: 500;
+    --verso-code-var-color: var(--code-variable);
     --verso-code-var-style: italic;
     --verso-code-hover-bg-color: var(--fill-muted);
+}
+
+/* The tokens Verso draws in its plain code colour, with no variable of
+ * their own. `html` outweighs Verso's own rules, wherever this comes. */
+html .hl.lean .literal.string,
+html .hl.lean .literal.char {
+    color: var(--code-string);
+}
+
+html .hl.lean .number {
+    color: var(--code-number);
+}
+
+html .hl.lean .comment {
+    font-style: italic;
+    color: var(--code-comment);
+}
+
+html .hl.lean :is(.punctuation, .delim) {
+    color: var(--code-punctuation);
 }

@@ -214,6 +214,7 @@ def verso(out):
         "targets/web/tokens.css",
         "targets/web/base.css",
         "targets/web/document.css",
+        "targets/web/code.css",
         "targets/web/components.css",
         "targets/verso/verso-map.css",
     ):

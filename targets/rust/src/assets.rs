@@ -14,6 +14,11 @@ pub(crate) static WEB: &[Asset] = &[
         bytes: include_bytes!("../assets/web/base.css"),
     },
     Asset {
+        path: "web/code.css",
+        content_type: "text/css; charset=utf-8",
+        bytes: include_bytes!("../assets/web/code.css"),
+    },
+    Asset {
         path: "web/components.css",
         content_type: "text/css; charset=utf-8",
         bytes: include_bytes!("../assets/web/components.css"),
