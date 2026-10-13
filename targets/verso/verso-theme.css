@@ -1077,27 +1077,27 @@
  * `.highlight` component, in `components.css`.
  */
 
-@layer stemma.base, stemma.document, stemma.components, stemma.tones;
+@layer stemma.base, stemma:is(.document, main > .content-wrapper > section), stemma.components, stemma.tones;
 
-@layer stemma.document {
-    .document {
+@layer stemma:is(.document, main > .content-wrapper > section) {
+    :is(.document, main > .content-wrapper > section) {
         font: var(--text-prose);
         color: var(--ink-1);
         font-kerning: normal;
         overflow-wrap: break-word;
     }
 
-    .document > :first-child {
+    :is(.document, main > .content-wrapper > section) > :first-child {
         margin-top: 0;
     }
 
-    .document > :last-child {
+    :is(.document, main > .content-wrapper > section) > :last-child {
         margin-bottom: 0;
     }
 
     /* ── Headings ──────────────────────────────────────────────────── */
 
-    .document :is(h1, h2, h3, h4, h5, h6) {
+    :is(.document, main > .content-wrapper > section) :is(h1, h2, h3, h4, h5, h6) {
         margin: 1.6em 0 0.5em;
         font-family: var(--font-ui);
         font-weight: 600;
@@ -1106,47 +1106,47 @@
         text-wrap: balance;
     }
 
-    .document h1 {
+    :is(.document, main > .content-wrapper > section) h1 {
         margin-top: 0;
         font-size: var(--step-8);
         line-height: 1.1;
         letter-spacing: -0.02em;
     }
 
-    .document h2 {
+    :is(.document, main > .content-wrapper > section) h2 {
         font-size: var(--step-7);
         letter-spacing: -0.015em;
     }
 
-    .document h3 {
+    :is(.document, main > .content-wrapper > section) h3 {
         font-size: var(--step-6);
         letter-spacing: -0.01em;
     }
 
-    .document h4 {
+    :is(.document, main > .content-wrapper > section) h4 {
         font-size: var(--step-5);
     }
 
-    .document :is(h5, h6) {
+    :is(.document, main > .content-wrapper > section) :is(h5, h6) {
         font-size: var(--step-4);
     }
 
-    .document h6 {
+    :is(.document, main > .content-wrapper > section) h6 {
         color: var(--ink-2);
     }
 
     /* A heading's next block follows it closely. */
-    .document :is(h1, h2, h3, h4, h5, h6) + * {
+    :is(.document, main > .content-wrapper > section) :is(h1, h2, h3, h4, h5, h6) + * {
         margin-top: 0;
     }
 
     /* ── Text ──────────────────────────────────────────────────────── */
 
-    .document :is(p, ul, ol, dl, blockquote, pre, table, figure) {
+    :is(.document, main > .content-wrapper > section) :is(p, ul, ol, dl, blockquote, pre, table, figure) {
         margin: 0 0 1em;
     }
 
-    .document a {
+    :is(.document, main > .content-wrapper > section) a {
         color: var(--link);
         text-decoration: underline;
         text-decoration-color: color-mix(in srgb, currentColor 40%, transparent);
@@ -1154,85 +1154,85 @@
         text-underline-offset: 0.18em;
     }
 
-    .document a:hover {
+    :is(.document, main > .content-wrapper > section) a:hover {
         text-decoration-color: currentColor;
     }
 
     /* A reference: a link to a numbered or named thing elsewhere in the
      * text, a citation or a footnote. In the link's colour, without an
      * underline until hovered, so a paragraph full of them stays calm. */
-    .document .ref,
-    .document sup > a {
+    :is(.document, main > .content-wrapper > section) .ref,
+    :is(.document, main > .content-wrapper > section) sup > a {
         text-decoration: none;
         font-variant-numeric: lining-nums tabular-nums;
     }
 
-    .document .ref:hover,
-    .document sup > a:hover {
+    :is(.document, main > .content-wrapper > section) .ref:hover,
+    :is(.document, main > .content-wrapper > section) sup > a:hover {
         text-decoration: underline;
     }
 
-    .document :is(strong, b) {
+    :is(.document, main > .content-wrapper > section) :is(strong, b) {
         font-weight: 700;
     }
 
-    .document small {
+    :is(.document, main > .content-wrapper > section) small {
         font-size: 0.85em;
     }
 
-    .document :is(sub, sup) {
+    :is(.document, main > .content-wrapper > section) :is(sub, sup) {
         font-size: 0.75em;
         line-height: 0;
     }
 
-    .document hr {
+    :is(.document, main > .content-wrapper > section) hr {
         height: 0;
         margin: 2em 0;
         border: 0;
         border-top: 1px solid var(--border);
     }
 
-    .document img {
+    :is(.document, main > .content-wrapper > section) img {
         max-width: 100%;
         height: auto;
     }
 
     /* ── Lists ─────────────────────────────────────────────────────── */
 
-    .document :is(ul, ol) {
+    :is(.document, main > .content-wrapper > section) :is(ul, ol) {
         padding-inline-start: 1.5em;
     }
 
-    .document li + li,
-    .document li > :is(ul, ol) {
+    :is(.document, main > .content-wrapper > section) li + li,
+    :is(.document, main > .content-wrapper > section) li > :is(ul, ol) {
         margin-top: 0.25em;
     }
 
-    .document li > :is(ul, ol) {
+    :is(.document, main > .content-wrapper > section) li > :is(ul, ol) {
         margin-bottom: 0;
     }
 
-    .document li::marker {
+    :is(.document, main > .content-wrapper > section) li::marker {
         color: var(--ink-3);
     }
 
-    .document dt {
+    :is(.document, main > .content-wrapper > section) dt {
         font-weight: 700;
     }
 
-    .document dd {
+    :is(.document, main > .content-wrapper > section) dd {
         margin: 0 0 0.5em 1.5em;
     }
 
     /* ── Quotations ────────────────────────────────────────────────── */
 
-    .document blockquote {
+    :is(.document, main > .content-wrapper > section) blockquote {
         padding-inline-start: 1em;
         color: var(--ink-2);
         border-inline-start: 3px solid var(--border-strong);
     }
 
-    .document blockquote > :last-child {
+    :is(.document, main > .content-wrapper > section) blockquote > :last-child {
         margin-bottom: 0;
     }
 
@@ -1241,18 +1241,18 @@
      * JuliaMono sits large beside the prose face, so code is set smaller
      * than the text around it. */
 
-    .document :is(code, kbd, samp) {
+    :is(.document, main > .content-wrapper > section) :is(code, kbd, samp) {
         font-family: var(--font-mono);
         font-size: 0.82em;
     }
 
-    .document :not(pre) > code {
+    :is(.document, main > .content-wrapper > section) :not(pre) > code {
         padding: 0.1em 0.3em;
         background: var(--fill-muted);
         border-radius: var(--radius-xs);
     }
 
-    .document kbd {
+    :is(.document, main > .content-wrapper > section) kbd {
         padding: 0.05em 0.35em;
         background: var(--surface-card);
         border: 1px solid var(--border-strong);
@@ -1260,7 +1260,7 @@
         border-radius: var(--radius-xs);
     }
 
-    .document pre {
+    :is(.document, main > .content-wrapper > section) pre {
         overflow-x: auto;
         padding: var(--space-3) var(--space-4);
         font-size: 0.82em;
@@ -1271,13 +1271,13 @@
         tab-size: 4;
     }
 
-    .document pre code {
+    :is(.document, main > .content-wrapper > section) pre code {
         font-size: inherit;
     }
 
     /* ── Tables ────────────────────────────────────────────────────── */
 
-    .document table {
+    :is(.document, main > .content-wrapper > section) table {
         display: block;
         max-width: 100%;
         overflow-x: auto;
@@ -1286,24 +1286,24 @@
         font-variant-numeric: lining-nums tabular-nums;
     }
 
-    .document :is(th, td) {
+    :is(.document, main > .content-wrapper > section) :is(th, td) {
         padding: 0.4em 0.75em;
         text-align: start;
         vertical-align: top;
         border-bottom: 1px solid var(--divider);
     }
 
-    .document :is(th, td):first-child {
+    :is(.document, main > .content-wrapper > section) :is(th, td):first-child {
         padding-inline-start: 0;
     }
 
-    .document th {
+    :is(.document, main > .content-wrapper > section) th {
         font: var(--text-label);
         color: var(--ink-3);
         border-bottom-color: var(--border-strong);
     }
 
-    .document caption {
+    :is(.document, main > .content-wrapper > section) caption {
         caption-side: bottom;
         padding-top: 0.5em;
         font: var(--text-meta);
@@ -1313,7 +1313,7 @@
 
     /* ── Figures ───────────────────────────────────────────────────── */
 
-    .document figcaption {
+    :is(.document, main > .content-wrapper > section) figcaption {
         margin-top: 0.5em;
         font: var(--text-meta);
         color: var(--ink-3);
@@ -1325,12 +1325,12 @@
      * match the prose face at the same size. A displayed formula scrolls
      * rather than overflow the text. */
 
-    .document math {
+    :is(.document, main > .content-wrapper > section) math {
         font-family: var(--font-math);
         font-size: 1em;
     }
 
-    .document math[display="block"] {
+    :is(.document, main > .content-wrapper > section) math[display="block"] {
         display: block math;
         margin: 1em 0;
         overflow-x: auto;
@@ -1549,7 +1549,8 @@
      * solid fill of its tone, the accent unless an intent says otherwise
      * (`.button--primary.button--danger`). An intent alone outlines the
      * button in that intent. `--quiet` is a text button, `--link` reads as
-     * a link, and `--icon` holds a glyph alone and needs an `aria-label`.
+     * a link, `--icon` holds a glyph alone and needs an `aria-label`, and
+     * `--inline` sits inside a line of text, as large as it.
      * `aria-pressed="true"` and `aria-current` mark the one chosen. */
 
     .button {
@@ -1686,6 +1687,30 @@
     .button--icon.button--small {
         width: var(--control-small-height);
         padding: 0;
+    }
+
+    /* A quiet button as large as the text around it, for an action inside a
+     * line, as "copy" beside a label. */
+    .button--inline {
+        min-height: 0;
+        padding: 0 0.3em;
+        font: inherit;
+        font-size: 0.85em;
+        color: var(--ink-3);
+        background: transparent;
+        border-color: transparent;
+        border-radius: var(--radius-xs);
+        vertical-align: baseline;
+    }
+
+    .button--inline:hover {
+        color: var(--ink-1);
+        background: var(--fill-muted);
+        border-color: transparent;
+    }
+
+    .button--inline:active:not(:disabled) {
+        transform: none;
     }
 
     .button:disabled,
@@ -2907,8 +2932,17 @@
             color var(--dur-ui) var(--ease-out);
     }
 
-    .segmented > button:hover {
+    .segmented > button:hover:not(:disabled) {
         color: var(--ink-1);
+    }
+
+    .segmented > button:disabled {
+        color: var(--ink-disabled);
+        cursor: not-allowed;
+    }
+
+    .segmented > button[aria-pressed="true"]:disabled {
+        color: var(--ink-3);
     }
 
     .segmented > button[aria-pressed="true"] {
@@ -3421,6 +3455,9 @@ html:root {
     --verso-toc-border-color: var(--border);
     --verso-toc-resize-handle-color: var(--ink-4);
     --verso-toc-transition-time: var(--dur-ui);
+    --verso-burger-toc-visible-shadow-color: var(--surface-page);
+    --verso-burger-toc-hidden-color: var(--ink-1);
+    --verso-burger-toc-hidden-shadow-color: var(--surface-page);
 
     /* Tooltips. */
     --verso-tooltip-color: var(--ink-1);
@@ -3489,4 +3526,31 @@ html .hl.lean .comment {
 
 html .hl.lean :is(.punctuation, .delim) {
     color: var(--code-punctuation);
+}
+
+/* The manual genre's own stylesheet (`book.css`) writes some colours for a
+ * light page, with no variable: the header, the table of contents' links
+ * and the buttons to the previous and next pages. */
+html header {
+    background: var(--surface-page);
+}
+
+html :is(.header-title, .prev-next-buttons > *) {
+    color: var(--ink-1);
+}
+
+html #toc a {
+    color: var(--ink-2);
+}
+
+html #toc a:hover {
+    color: var(--ink-1);
+}
+
+html #toc .split-toc label.toggle-split-toc::before {
+    background-color: var(--ink-1);
+}
+
+html body:has(#toggle-toc:checked) .toc-backdrop {
+    background-color: color-mix(in srgb, var(--navy-950) 45%, transparent);
 }

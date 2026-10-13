@@ -56,6 +56,9 @@ html:root {
     --verso-toc-border-color: var(--border);
     --verso-toc-resize-handle-color: var(--ink-4);
     --verso-toc-transition-time: var(--dur-ui);
+    --verso-burger-toc-visible-shadow-color: var(--surface-page);
+    --verso-burger-toc-hidden-color: var(--ink-1);
+    --verso-burger-toc-hidden-shadow-color: var(--surface-page);
 
     /* Tooltips. */
     --verso-tooltip-color: var(--ink-1);
@@ -124,4 +127,31 @@ html .hl.lean .comment {
 
 html .hl.lean :is(.punctuation, .delim) {
     color: var(--code-punctuation);
+}
+
+/* The manual genre's own stylesheet (`book.css`) writes some colours for a
+ * light page, with no variable: the header, the table of contents' links
+ * and the buttons to the previous and next pages. */
+html header {
+    background: var(--surface-page);
+}
+
+html :is(.header-title, .prev-next-buttons > *) {
+    color: var(--ink-1);
+}
+
+html #toc a {
+    color: var(--ink-2);
+}
+
+html #toc a:hover {
+    color: var(--ink-1);
+}
+
+html #toc .split-toc label.toggle-split-toc::before {
+    background-color: var(--ink-1);
+}
+
+html body:has(#toggle-toc:checked) .toc-backdrop {
+    background-color: color-mix(in srgb, var(--navy-950) 45%, transparent);
 }

@@ -103,6 +103,13 @@ VARIANTS = [
         subsets=bundle.SUBSETS,
         elements=bundle.MODULES,
     ),
+    bundle.Options(
+        faces=["ui", "prose", "mono"],
+        subsets=["latin", "latin-ext"],
+        face_subsets={"mono": ["latin"], "ui": ["latin"]},
+        weights=[400, 600],
+        elements=["theme-switch"],
+    ),
 ]
 
 
@@ -173,7 +180,7 @@ def rust(out):
 
     lines = [
         f"# {HEADER}",
-        "# faces\tmath\tsubsets\tweights\telements\tsprite\tlength\tfnv1a64",
+        "# faces\tmath\tsubsets\tface subsets\tweights\telements\tsprite\tlength\tfnv1a64",
     ]
     for variant in VARIANTS:
         html, _ = bundle.bundle(variant)
@@ -183,6 +190,11 @@ def rust(out):
                     ",".join(variant.faces),
                     str(variant.math).lower(),
                     ",".join(variant.subsets),
+                    ";".join(
+                        f"{face}={','.join(variant.face_subsets[face])}"
+                        for face in ("ui", "prose", "mono")
+                        if face in variant.face_subsets
+                    ),
                     ",".join(str(w) for w in variant.weights),
                     ",".join(variant.elements),
                     str(variant.sprite).lower(),
@@ -199,6 +211,18 @@ def rust(out):
 # ── Verso ──────────────────────────────────────────────────────────────────
 
 
+# Verso puts a page's content in this; the theme sets it as a document.
+VERSO_CONTENT = "main > .content-wrapper > section"
+
+
+def verso_document(css):
+    """Document typography for Verso's content as well as for `.document`.
+    Verso's own rules sit outside the cascade layers and win, so this only
+    fills in what Verso leaves unstyled: references, tables, quotations."""
+    # Selectors only, not the comments that name the class in backticks.
+    return re.sub(r"(?<!`)\.document\b", f":is(.document, {VERSO_CONTENT})", css)
+
+
 def verso(out):
     target = "targets/verso"
     copied = []
@@ -207,6 +231,13 @@ def verso(out):
         copied.append(f"fonts/{path}")
     out.add(f"{target}/noise.svg", read("targets/web/noise.svg"))
     copied.append("noise.svg")
+    out.add(f"{target}/glyphs.svg", read("targets/web/glyphs.svg"))
+    copied.append("glyphs.svg")
+    # The elements, for a site that loads `elements/index.js` as a module.
+    for path in files("targets/elements"):
+        if path.endswith(".js") or path.startswith("LICENSE"):
+            out.add(f"{target}/elements/{path}", read(f"targets/elements/{path}"))
+            copied.append(f"elements/{path}")
 
     css = [f"/* {HEADER} */"]
     for path in (
@@ -219,7 +250,10 @@ def verso(out):
         "targets/verso/verso-map.css",
     ):
         name = path.split("/")[-1]
-        css += [f"\n/* ── {name} ── */\n", (ROOT / path).read_text()]
+        text = (ROOT / path).read_text()
+        if name == "document.css":
+            text = verso_document(text)
+        css += [f"\n/* ── {name} ── */\n", text]
     out.add(f"{target}/verso-theme.css", "\n".join(css))
 
     listed = ",\n".join(f"  {json.dumps(path)}" for path in copied)
@@ -232,7 +266,8 @@ def verso(out):
                 "namespace StemmaDesign",
                 "",
                 "/-- The files a site copies beside `verso-theme.css`, as paths relative to this package's",
-                "directory and to the stylesheet alike: the faces, their licences and the grain texture. -/",
+                "directory and to the stylesheet alike: the faces, their licences, the grain texture, the",
+                "glyph sprite and the elements. -/",
                 "def files : Array String := #[",
                 listed,
                 "]",
@@ -247,7 +282,9 @@ def verso(out):
 
 def generate():
     # Folders wholly generated: anything in them not generated is stale.
-    out = Outputs(owned=["targets/rust/assets", "targets/verso/fonts"])
+    out = Outputs(
+        owned=["targets/rust/assets", "targets/verso/fonts", "targets/verso/elements"]
+    )
     rust(out)
     verso(out)
     return out
