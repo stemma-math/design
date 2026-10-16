@@ -1,7 +1,8 @@
 """Generates the brand kit, and the marks the other targets carry, from the
 drawn masters in `source/brand/`.
 
-It writes targets/brand-kit/ and the marks in other targets.
+It writes targets/brand-kit/ and the marks in other targets: the icons a
+page links from its `head` in targets/web/icons/.
 
 The wordmark is "stemma" in Instrument Sans, shaped with HarfBuzz and
 outlined with fontTools, so no font is needed to show it. Lockups place it
@@ -384,6 +385,12 @@ def kit():
         + ", ".join(map(str, favicon_sizes))
         + " px.",
     )
+    fallback = CONFIG["favicon"]["png"]
+    kit(
+        f"web/favicon-{fallback}.png",
+        png(render(small, width=fallback)),
+        f"The favicon, the small application icon, {fallback}px, where SVG is not taken.",
+    )
 
     kit(
         "LICENSE",
@@ -397,6 +404,11 @@ def kit():
     out["targets/web/noise.svg"] = (noise, None)
     out["targets/elements/mark-data.js"] = (mark_module().encode(), None)
     out["targets/elements/LICENSE-mark"] = ((BRAND / "LICENSE").read_bytes(), None)
+    for path, (data, _) in list(out.items()):
+        if path.startswith("targets/brand-kit/web/"):
+            name = path.removeprefix("targets/brand-kit/web/")
+            out[f"targets/web/icons/{name}"] = (data, None)
+    out["targets/web/LICENSE-mark"] = ((BRAND / "LICENSE").read_bytes(), None)
     return out
 
 
@@ -504,7 +516,8 @@ def same(path, data):
 
 def generate():
     out = Outputs(
-        owned=["targets/brand-kit"], same=lambda _name, path, data: same(path, data)
+        owned=["targets/brand-kit", "targets/web/icons"],
+        same=lambda _name, path, data: same(path, data),
     )
     for name, (data, _) in kit().items():
         out.add(name, data)

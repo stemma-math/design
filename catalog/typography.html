@@ -239,6 +239,46 @@
                 </div>
             </section>
 
+            <section class="specimen" id="references">
+                <h2>References and links</h2>
+                <p>
+                    A reference names a numbered or named thing elsewhere, in the link's colour and
+                    without an underline until hovered. One that resolves to nothing is muted, with
+                    a dotted underline that stays. A status after a reference is a small chip, on
+                    the line's baseline.
+                </p>
+                <div class="specimen__api">
+                    <code>.ref</code><code>.ref--unresolved</code><code>.chip--small</code>
+                </div>
+                <div class="specimen__stage" style="padding: var(--space-8)">
+                    <div class="document" style="max-width: var(--measure)">
+                        <p>
+                            The proof follows <a class="ref" href="#references">Theorem 2.1</a>, and
+                            uses
+                            <a class="ref" href="#references"><code>Subgroup.zpowers</code></a>
+                            <span class="chip chip--small chip--success">proved</span>, through
+                            <a class="ref" href="#references"><code>orderOf_dvd_card</code></a>
+                            <span class="chip chip--small chip--warning">open</span>. It once cited
+                            <a class="ref ref--unresolved" href="#references">Lemma 4.7</a>, which
+                            is gone, and <a class="ref ref--unresolved"><code>Foo.bar</code></a
+                            >, which never was.
+                        </p>
+                    </div>
+                </div>
+                <p>
+                    Outside a document, a link in interface text without a class of its own takes
+                    the link's colour and a faint underline; <code class="identifier">.link</code>
+                    gives one that has a class the same look.
+                </p>
+                <div class="specimen__api"><code>a</code><code>.link</code></div>
+                <div class="specimen__stage">
+                    <p style="margin: 0">
+                        Signed in as Ada. <a href="#references">Settings</a> ·
+                        <a class="link identifier" href="#references">ada@example.org</a>
+                    </p>
+                </div>
+            </section>
+
             <script type="module">
                 import { html, tokens } from "./catalog.js";
 

@@ -262,13 +262,6 @@ body {
     overflow: hidden;
 }
 
-.catalog-intro a,
-.specimen > p a {
-    color: var(--link);
-    text-decoration-color: color-mix(in srgb, currentColor 40%, transparent);
-    text-underline-offset: 3px;
-}
-
 .specimen__note {
     margin: var(--space-2) 0 0;
     font: var(--text-small);

@@ -2,7 +2,7 @@
   "name": "@stemma-math/design",
   "version": "0.3.1",
   "description": "Stemma's design system for the web: faces, tokens, base styles, document typography and components, as plain CSS.",
-  "license": "MIT AND OFL-1.1 AND LPPL-1.3c",
+  "license": "MIT AND OFL-1.1 AND LPPL-1.3c AND LicenseRef-Stemma-Mark",
   "repository": {
     "type": "git",
     "url": "git+https://github.com/stemma-math/design.git",
@@ -28,13 +28,16 @@
     "./glyphs.svg": "./glyphs.svg",
     "./noise.svg": "./noise.svg",
     "./fonts/*": "./fonts/*",
+    "./icons/*": "./icons/*",
     "./package.json": "./package.json"
   },
   "files": [
     "*.css",
     "*.svg",
     "fonts/",
+    "icons/",
     "README.md",
-    "LICENSE"
+    "LICENSE",
+    "LICENSE-mark"
   ]
 }

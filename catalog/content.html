@@ -15,8 +15,8 @@
                 <p class="label">Components</p>
                 <h1>Content</h1>
                 <p>
-                    What a page shows: states and counts, people, cards and tables, and the small
-                    pieces of text that need a look of their own.
+                    What a page shows: states and counts, people, cards and tables, a conversation,
+                    text to copy, and the small pieces of text that need a look of their own.
                 </p>
             </header>
 
@@ -28,7 +28,7 @@
                 </p>
                 <div class="specimen__api">
                     <code>.chip</code><code>--outline</code><code>--solid</code><code>--dashed</code
-                    ><code>--{intent}</code><code>--{tone}</code>
+                    ><code>--small</code><code>--{intent}</code><code>--{tone}</code>
                 </div>
                 <div class="specimen__stage">
                     <div class="row">
@@ -59,6 +59,12 @@
                         <span class="chip chip--cerulean">Cerulean</span>
                         <span class="chip chip--rust">Rust</span>
                     </div>
+                    <p style="margin: 0">
+                        Small, in a line of text: <code class="identifier">Foo.bar</code>
+                        <span class="chip chip--small chip--success">proved</span> and
+                        <code class="identifier">Foo.baz</code>
+                        <span class="chip chip--small chip--dashed">missing</span>.
+                    </p>
                 </div>
             </section>
 
@@ -82,10 +88,11 @@
                 <h2>Avatar</h2>
                 <p>
                     A person is a circle with an initial; a group is a rounded square. A tone tells
-                    them apart.
+                    them apart. An agent is drawn on the brand's navy, with a glyph or an initial.
                 </p>
                 <div class="specimen__api">
-                    <code>.avatar</code><code>--square</code><code>--{tone}</code>
+                    <code>.avatar</code><code>--square</code><code>--agent</code
+                    ><code>--{tone}</code>
                 </div>
                 <div class="specimen__stage">
                     <div class="row">
@@ -94,6 +101,11 @@
                         <span class="avatar avatar--violet">A</span>
                         <span class="avatar avatar--square avatar--ochre">NT</span>
                         <span class="avatar avatar--square avatar--cerulean">GR</span>
+                        <span class="avatar avatar--agent"
+                            ><svg class="glyph" aria-hidden="true">
+                                <use href="../targets/web/glyphs.svg#sparkle" /></svg
+                        ></span>
+                        <span class="avatar avatar--agent">C</span>
                     </div>
                 </div>
             </section>
@@ -129,7 +141,8 @@
                 <p>
                     Rows in a card. A row that goes somewhere is a link, whole, ending in a chevron.
                     The columns are the consumer's, as a track list in
-                    <code class="identifier">--columns</code>.
+                    <code class="identifier">--columns</code>; the head and every row share them, so
+                    a column sized by its content lines up across rows.
                 </p>
                 <div class="specimen__api">
                     <code>.table</code><code>.table__head</code><code>.table__row</code
@@ -137,29 +150,155 @@
                 </div>
                 <div class="specimen__stage specimen__stage--page">
                     <div class="card">
-                        <div class="table" style="--columns: 1fr auto 20px">
+                        <div class="table" style="--columns: auto 1fr auto 20px">
                             <div class="table__head">
-                                <span>Name</span><span>State</span><span></span>
+                                <span>Number</span><span>Name</span><span>State</span><span></span>
                             </div>
                             <a class="table__row" href="#table"
+                                ><span class="numeric quiet">2.1</span
                                 ><span>Fermat's little theorem</span
                                 ><span class="chip chip--success">Done</span
                                 ><svg class="glyph chevron" aria-hidden="true">
                                     <use href="../targets/web/glyphs.svg#chevron-right" /></svg
                             ></a>
                             <a class="table__row" href="#table"
-                                ><span>Wilson's theorem</span
+                                ><span class="numeric quiet">2.14</span><span>Wilson's theorem</span
                                 ><span class="chip chip--warning">Open</span
                                 ><svg class="glyph chevron" aria-hidden="true">
                                     <use href="../targets/web/glyphs.svg#chevron-right" /></svg
                             ></a>
                             <a class="table__row" href="#table"
-                                ><span>Lagrange's theorem</span
+                                ><span class="numeric quiet">11</span><span>Lagrange's theorem</span
                                 ><span class="chip chip--dashed">Missing</span
                                 ><svg class="glyph chevron" aria-hidden="true">
                                     <use href="../targets/web/glyphs.svg#chevron-right" /></svg
                             ></a>
                         </div>
+                    </div>
+                </div>
+            </section>
+
+            <section class="specimen" id="post">
+                <h2>Post</h2>
+                <p>
+                    A message in a conversation, in a forum's thread or a chat. Its actions show on
+                    hover or focus; its body runs at the reading measure; the post a link points to
+                    is lit.
+                </p>
+                <div class="specimen__api">
+                    <code>.posts</code><code>.post</code><code>.post__head</code
+                    ><code>.post__author</code><code>.post__attribution</code
+                    ><code>.post__number</code><code>.post__time</code><code>.post__actions</code
+                    ><code>.post__body</code><code>.post__attachments</code
+                    ><code>.post__attachment</code><code>--highlighted</code><code>:target</code>
+                </div>
+                <div class="specimen__stage specimen__stage--page">
+                    <ol class="posts">
+                        <li class="post" id="post-44">
+                            <span class="avatar avatar--teal">A</span>
+                            <header class="post__head">
+                                <span class="post__author">Ada</span>
+                                <a class="post__number" href="#post-44">#44</a>
+                                <time class="post__time" datetime="2026-10-16T09:12">09:12</time>
+                                <div class="post__actions">
+                                    <button
+                                        class="button button--icon button--small"
+                                        aria-label="Reply"
+                                    >
+                                        <svg class="glyph" aria-hidden="true">
+                                            <use href="../targets/web/glyphs.svg#reply" />
+                                        </svg>
+                                    </button>
+                                    <stemma-copy-button
+                                        value="#post-44"
+                                        label="Copy the address"
+                                    ></stemma-copy-button>
+                                </div>
+                            </header>
+                            <div class="post__body document">
+                                <p>
+                                    Does the converse hold? I could not find a group of order 4 that
+                                    is not cyclic.
+                                </p>
+                            </div>
+                        </li>
+                        <li class="post post--highlighted" id="post-45">
+                            <span class="avatar avatar--agent"
+                                ><svg class="glyph" aria-hidden="true">
+                                    <use href="../targets/web/glyphs.svg#sparkle" /></svg
+                            ></span>
+                            <header class="post__head">
+                                <span class="post__author">Claude</span>
+                                <span class="post__attribution">for Ada</span>
+                                <a class="post__number" href="#post-45">#45</a>
+                                <time class="post__time" datetime="2026-10-16T09:14">09:14</time>
+                                <div class="post__actions">
+                                    <button
+                                        class="button button--icon button--small"
+                                        aria-label="Reply"
+                                    >
+                                        <svg class="glyph" aria-hidden="true">
+                                            <use href="../targets/web/glyphs.svg#reply" />
+                                        </svg>
+                                    </button>
+                                    <stemma-copy-button
+                                        value="#post-45"
+                                        label="Copy the address"
+                                    ></stemma-copy-button>
+                                </div>
+                            </header>
+                            <div class="post__body document">
+                                <p>
+                                    It does not: the Klein four-group,
+                                    <math
+                                        ><mi>V</mi><mo>≅</mo><msub><mi>C</mi><mn>2</mn></msub
+                                        ><mo>×</mo><msub><mi>C</mi><mn>2</mn></msub></math
+                                    >, has order 4 and no element of order 4. See
+                                    <a class="ref" href="#post-44">#44</a>.
+                                </p>
+                            </div>
+                            <ul class="post__attachments">
+                                <li>
+                                    <a class="post__attachment" href="#post"
+                                        ><svg class="glyph" aria-hidden="true">
+                                            <use href="../targets/web/glyphs.svg#attach" /></svg
+                                        >klein.lean <span class="quiet">2 KB</span></a
+                                    >
+                                </li>
+                            </ul>
+                        </li>
+                    </ol>
+                </div>
+            </section>
+
+            <section class="specimen" id="copy-block">
+                <h2>Copy block</h2>
+                <p>
+                    Text meant to be copied whole: a configuration, a command, a token shown once.
+                    It wraps rather than scrolls, and its button copies all of it.
+                </p>
+                <div class="specimen__api">
+                    <code>.copy-block</code><code>.copy-block__label</code
+                    ><code>&lt;stemma-copy-button for&gt;</code>
+                </div>
+                <div class="specimen__stage specimen__stage--page">
+                    <div class="copy-block">
+                        <span class="copy-block__label">worker.toml</span>
+                        <pre id="copy-block-config">
+[hub]
+url = "https://hub.example.org"
+token = "stm_7c1f0e9a2b4d4f3e8a6b5c0d9e8f7a6b5c4d3e2f1a0b9c8d7e6f5a4b3c2d1e0f"</pre>
+                        <stemma-copy-button
+                            for="copy-block-config"
+                            label="Copy the configuration"
+                        ></stemma-copy-button>
+                    </div>
+                    <div class="copy-block">
+                        <pre id="copy-block-command">stemma worker start --config worker.toml</pre>
+                        <stemma-copy-button
+                            for="copy-block-command"
+                            label="Copy the command"
+                        ></stemma-copy-button>
                     </div>
                 </div>
             </section>

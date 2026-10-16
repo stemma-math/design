@@ -101,6 +101,7 @@ Its use is governed by `LICENSE` in this folder.
 | `svg/wordmark-on-dark.svg` | The wordmark, for dark surfaces. |
 | `svg/wordmark-on-light.svg` | The wordmark, for light surfaces. |
 | `web/apple-touch-icon.png` | The home-screen icon, 180px, full bleed. |
+| `web/favicon-32.png` | The favicon, the small application icon, 32px, where SVG is not taken. |
 | `web/favicon.ico` | The favicon, the small application icon, at 16, 32, 48 px. |
 | `web/favicon.svg` | The favicon, lighter where the browser's chrome is dark. |
 | `web/icon-192.png` | The home-screen icon, 192px, full bleed. |

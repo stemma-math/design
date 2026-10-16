@@ -135,6 +135,11 @@
       "$description": "Running text in documents."
     }
   },
+  "measure": {
+    "$type": "dimension",
+    "$description": "How wide running text runs at most, in the face it is set in.",
+    "measure": { "$value": "68ch" }
+  },
   "space": {
     "$type": "dimension",
     "$description": "A 4px grid.",

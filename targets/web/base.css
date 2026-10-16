@@ -28,6 +28,21 @@
         font-family: var(--font-math);
     }
 
+    /* A link in interface text: in the link colour, underlined faintly
+     * until hovered, as in a document. A link with a class of its own is
+     * left to it; `.link` gives one this look again. */
+    a:not([class]):any-link {
+        color: var(--link);
+        text-decoration: underline;
+        text-decoration-color: color-mix(in srgb, currentColor 40%, transparent);
+        text-decoration-thickness: 1px;
+        text-underline-offset: 0.18em;
+    }
+
+    a:not([class]):any-link:hover {
+        text-decoration-color: currentColor;
+    }
+
     ::selection {
         background: color-mix(in srgb, var(--accent) 22%, transparent);
     }

@@ -55,6 +55,21 @@
         border-radius: var(--radius-xs);
     }
 
+    /* A link in interface text that has a class of its own, with the look
+     * a plain link has: in the link colour, underlined faintly until
+     * hovered. */
+    .link {
+        color: var(--link);
+        text-decoration: underline;
+        text-decoration-color: color-mix(in srgb, currentColor 40%, transparent);
+        text-decoration-thickness: 1px;
+        text-underline-offset: 0.18em;
+    }
+
+    .link:hover {
+        text-decoration-color: currentColor;
+    }
+
     .visually-hidden {
         position: absolute;
         width: 1px;
@@ -840,7 +855,8 @@
      * A state with a fixed meaning, in a tone: neutral by default. Always
      * words, so colour is never the only cue; a glyph may go before them.
      * A soft fill by default; `--outline` is a border alone, `--solid` a
-     * solid fill, and `--dashed` says something is missing. */
+     * solid fill, and `--dashed` says something is missing. `--small`
+     * sits in a line of running text, as a status after a word. */
 
     .chip {
         --tone: var(--neutral);
@@ -876,6 +892,15 @@
         border: 1px dashed var(--border-dashed);
     }
 
+    /* In proportion to the text around it, on its baseline, and shorter
+     * than its line, so the line keeps its height. */
+    .chip--small {
+        gap: 0.3em;
+        padding: 0 0.5em;
+        font: 500 0.75em / 1.35 var(--font-ui);
+        vertical-align: baseline;
+    }
+
     /* A chip that is a toggle, as in a set of filters: outlined while
      * off, filled while on. */
     button.chip {
@@ -903,6 +928,11 @@
         width: 13px;
         height: 13px;
         stroke-width: 2;
+    }
+
+    .chip--small .glyph {
+        width: 1em;
+        height: 1em;
     }
 
     /* ── Count ─────────────────────────────────────────────────────────
@@ -938,7 +968,8 @@
      * A person is a circle with an initial; `--square` is a rounded square,
      * for a group, with its initials. Either may hold an `img` instead. In
      * a tone, the accent by default; a categorical tone tells people or
-     * groups apart. */
+     * groups apart. `--agent` is an agent, not a person: on the navy of
+     * the brand, in its light blues, with a glyph or an initial. */
 
     .avatar {
         --tone: var(--accent);
@@ -966,6 +997,25 @@
         height: 42px;
         font: 500 16px / 1 var(--font-ui);
         border-radius: var(--radius-md);
+    }
+
+    .avatar--agent {
+        color: var(--on-dark-1);
+        background:
+            radial-gradient(
+                120% 90% at 50% 110%,
+                color-mix(in srgb, var(--blue-400) 55%, transparent),
+                transparent 70%
+            ),
+            linear-gradient(180deg, var(--navy-700), var(--navy-950));
+        border-radius: 32%;
+        box-shadow: inset 0 0 0 1px color-mix(in srgb, var(--blue-300) 35%, transparent);
+    }
+
+    .avatar--agent > .glyph {
+        width: 52%;
+        height: 52%;
+        color: var(--blue-200);
     }
 
     /* A picture, where there is one, fills the shape in place of the
@@ -1014,12 +1064,20 @@
      *
      * Rows in a card. A row that goes somewhere is an `a` with the class
      * `.table__row`, whole, ending in a chevron. The columns are the
-     * consumer's: set `--columns` on the table, as a track list. For
+     * consumer's: set `--columns` on the table, as a track list. The table
+     * is the grid, and the head and every row take its columns, so a
+     * column sized by its content (`auto`, `max-content`) fits it across
+     * all of them. A row with one child alone spans every column. For
      * tabular data in running text, use a plain `table` in a document. */
 
     .table {
-        display: flex;
-        flex-direction: column;
+        /* A track at either edge, outside the consumer's columns, makes
+         * the rows' inline padding with the gap beside it. */
+        --table-edge: calc(var(--space-6) - var(--space-4));
+
+        display: grid;
+        grid-template-columns: var(--table-edge) var(--columns, 1fr) var(--table-edge);
+        column-gap: var(--space-4);
     }
 
     /* In a card, the rows are cut to its rounded corners, and the head
@@ -1035,10 +1093,20 @@
     .table__head,
     .table__row {
         display: grid;
-        grid-template-columns: var(--columns, 1fr);
-        gap: var(--space-4);
+        grid-column: 1 / -1;
+        grid-template-columns: subgrid;
         align-items: center;
-        padding: var(--space-3) var(--space-6);
+        padding-block: var(--space-3);
+    }
+
+    .table__head > :first-child,
+    .table__row > :first-child {
+        grid-column-start: 2;
+    }
+
+    .table__head > :only-child,
+    .table__row > :only-child {
+        grid-column: 2 / -2;
     }
 
     .table__head {
@@ -1369,6 +1437,194 @@
     .message__close:hover {
         opacity: 1;
         background: color-mix(in srgb, currentColor 10%, transparent);
+    }
+
+    /* ── Post ──────────────────────────────────────────────────────────
+     *
+     * A message in a conversation, a forum's thread or a chat, unlike
+     * `.message`, which is said to the person. `.posts` is the list, an
+     * `ol` of `.post`s. A post is an avatar, then `.post__head`, with
+     * `.post__author`, an optional `.post__attribution` ("for Ada"),
+     * `.post__number`, a link to the post itself, `.post__time` and
+     * `.post__actions`, shown on hover or focus; then `.post__body`, at
+     * the reading measure, usually also a `.document`, and
+     * `.post__attachments`, a list of `.post__attachment`. The post a link
+     * points to (`:target`), or one marked `.post--highlighted`, is
+     * lit. */
+
+    .posts {
+        display: flex;
+        flex-direction: column;
+        gap: var(--space-1);
+        margin: 0;
+        padding: 0;
+        list-style: none;
+    }
+
+    .post {
+        display: grid;
+        grid-template-columns: auto minmax(0, 1fr);
+        column-gap: var(--space-3);
+        align-items: start;
+        padding: var(--space-3);
+        border-radius: var(--radius-md);
+        scroll-margin-block: var(--space-6);
+        transition: background var(--dur-ui) var(--ease-out);
+    }
+
+    .post > .avatar {
+        grid-row: 1 / span 3;
+    }
+
+    .post > :not(.avatar) {
+        grid-column: 2;
+    }
+
+    .post:target,
+    .post--highlighted {
+        background: color-mix(in srgb, var(--accent) calc(var(--mix-soft) / 2), transparent);
+        box-shadow: inset 3px 0 0 var(--accent);
+    }
+
+    .post__head {
+        display: flex;
+        flex-wrap: wrap;
+        align-items: baseline;
+        column-gap: var(--space-2);
+        min-height: 22px;
+        font: var(--text-meta);
+        color: var(--ink-3);
+    }
+
+    .post__author {
+        font-weight: 600;
+        color: var(--ink-1);
+    }
+
+    .post__number,
+    .post__time {
+        font-variant-numeric: tabular-nums;
+        color: var(--ink-3);
+        text-decoration: none;
+    }
+
+    a.post__number:hover,
+    a.post__time:hover {
+        color: var(--ink-1);
+        text-decoration: underline;
+        text-underline-offset: 3px;
+    }
+
+    .post__actions {
+        display: flex;
+        gap: 2px;
+        align-self: center;
+        margin: -4px 0 -4px auto;
+        opacity: 0;
+        transition: opacity var(--dur-ui) var(--ease-out);
+    }
+
+    .post:hover .post__actions,
+    .post:focus-within .post__actions,
+    .post__actions:has([aria-expanded="true"]) {
+        opacity: 1;
+    }
+
+    /* Without a pointer that hovers, the actions are always there. */
+    @media (hover: none) {
+        .post__actions {
+            opacity: 1;
+        }
+    }
+
+    .post__body {
+        max-width: var(--measure);
+        margin-top: var(--space-1);
+        overflow-wrap: break-word;
+    }
+
+    .post__attachments {
+        display: flex;
+        flex-wrap: wrap;
+        gap: var(--space-2);
+        margin: var(--space-3) 0 0;
+        padding: 0;
+        list-style: none;
+    }
+
+    .post__attachment {
+        display: inline-flex;
+        align-items: center;
+        gap: var(--space-2);
+        max-width: 100%;
+        box-sizing: border-box;
+        padding: 6px 10px;
+        font: var(--text-meta);
+        color: var(--ink-1);
+        text-decoration: none;
+        background: var(--surface-card);
+        border: 1px solid var(--border);
+        border-radius: var(--radius-sm);
+        transition: border-color var(--dur-ui) var(--ease-out);
+    }
+
+    a.post__attachment:hover {
+        border-color: var(--border-strong);
+    }
+
+    .post__attachment > .glyph {
+        color: var(--ink-3);
+    }
+
+    /* What the attachment is, beside its name: a size, a kind. */
+    .post__attachment > .quiet {
+        font-variant-numeric: tabular-nums;
+    }
+
+    /* ── Copy block ────────────────────────────────────────────────────
+     *
+     * Text meant to be copied whole: a configuration file, a command, a
+     * token shown once. Monospaced, wrapping rather than scrolling, with a
+     * `<stemma-copy-button>` in its corner, `for` the `pre` inside, and an
+     * optional `.copy-block__label` over it. */
+
+    .copy-block {
+        position: relative;
+        box-sizing: border-box;
+        min-width: 0;
+        margin: 0;
+        background: var(--surface-subtle);
+        border: 1px solid var(--border);
+        border-radius: var(--radius-md);
+    }
+
+    .copy-block__label {
+        display: block;
+        padding: var(--space-2) var(--space-11) 0 var(--space-4);
+        font: var(--text-label);
+        color: var(--ink-3);
+    }
+
+    .copy-block > pre {
+        margin: 0;
+        padding: var(--space-3) var(--space-11) var(--space-3) var(--space-4);
+        font: var(--text-mono-sm);
+        line-height: 1.6;
+        color: var(--ink-1);
+        white-space: pre-wrap;
+        overflow-wrap: anywhere;
+        tab-size: 4;
+    }
+
+    .copy-block__label + pre {
+        padding-top: var(--space-1);
+    }
+
+    .copy-block > stemma-copy-button,
+    .copy-block > .copy-block__button {
+        position: absolute;
+        top: 6px;
+        right: 6px;
     }
 
     /* ── Toast ─────────────────────────────────────────────────────────
