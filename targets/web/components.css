@@ -1068,7 +1068,8 @@
      * consumer's: set `--columns` on the table, as a track list. The table
      * is the grid, and the head and every row take its columns, so a
      * column sized by its content (`auto`, `max-content`) fits it across
-     * all of them. A row with one child alone spans every column. For
+     * all of them. A row with one child alone spans every column, and so
+     * does anything else in the table, as a note that it is empty. For
      * tabular data in running text, use a plain `table` in a document. */
 
     .table {
@@ -1100,13 +1101,23 @@
         padding-block: var(--space-3);
     }
 
-    .table__head > :first-child,
-    .table__row > :first-child {
-        grid-column-start: 2;
+    /* The row holds the edge tracks itself, so that its children start at
+     * the first of the consumer's columns, whichever of them are shown. */
+    .table__head::before,
+    .table__row::before {
+        content: "";
+        grid-column: 1;
+    }
+
+    .table__head::after,
+    .table__row::after {
+        content: "";
+        grid-column: -2;
     }
 
     .table__head > :only-child,
-    .table__row > :only-child {
+    .table__row > :only-child,
+    .table > :not(.table__head, .table__row) {
         grid-column: 2 / -2;
     }
 
