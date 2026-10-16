@@ -968,8 +968,9 @@
      * A person is a circle with an initial; `--square` is a rounded square,
      * for a group, with its initials. Either may hold an `img` instead. In
      * a tone, the accent by default; a categorical tone tells people or
-     * groups apart. `--agent` is an agent, not a person: on the navy of
-     * the brand, in its light blues, with a glyph or an initial. */
+     * groups apart. `--brand` is drawn on the brand's navy, in its light
+     * blues, with a glyph or an initial: for what is neither a person nor
+     * a group. */
 
     .avatar {
         --tone: var(--accent);
@@ -999,7 +1000,7 @@
         border-radius: var(--radius-md);
     }
 
-    .avatar--agent {
+    .avatar--brand {
         color: var(--on-dark-1);
         background:
             radial-gradient(
@@ -1012,7 +1013,7 @@
         box-shadow: inset 0 0 0 1px color-mix(in srgb, var(--blue-300) 35%, transparent);
     }
 
-    .avatar--agent > .glyph {
+    .avatar--brand > .glyph {
         width: 52%;
         height: 52%;
         color: var(--blue-200);
