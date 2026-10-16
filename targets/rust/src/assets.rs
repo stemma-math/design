@@ -592,6 +592,11 @@ pub(crate) static BRAND_KIT: &[Asset] = &[
         bytes: include_bytes!("../assets/brand-kit/web/apple-touch-icon.png"),
     },
     Asset {
+        path: "brand-kit/web/favicon-32.png",
+        content_type: "image/png",
+        bytes: include_bytes!("../assets/brand-kit/web/favicon-32.png"),
+    },
+    Asset {
         path: "brand-kit/web/favicon.ico",
         content_type: "image/vnd.microsoft.icon",
         bytes: include_bytes!("../assets/brand-kit/web/favicon.ico"),

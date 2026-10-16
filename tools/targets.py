@@ -35,8 +35,14 @@ GROUPS = [
         "feature": None,
         "target": "targets/web",
         "prefix": "web",
+        # The icons are the mark's; the crate carries them in `brand-kit/`.
         "keep": lambda p: (
-            re.search(r"\.(css|svg)$", p) or p.startswith("fonts/") or p == "LICENSE"
+            not p.startswith("icons/")
+            and (
+                re.search(r"\.(css|svg)$", p)
+                or p.startswith("fonts/")
+                or p == "LICENSE"
+            )
         ),
     },
     {

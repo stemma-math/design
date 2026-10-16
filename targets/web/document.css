@@ -104,6 +104,18 @@
         text-decoration: underline;
     }
 
+    /* A reference that resolves to nothing: what it names does not exist,
+     * or is gone. Muted, with a dotted underline that stays, so it reads
+     * in running text and is not taken for one that works. */
+    .document .ref--unresolved,
+    .document .ref--unresolved:hover {
+        color: var(--ink-3);
+        text-decoration: underline dotted;
+        text-decoration-color: color-mix(in srgb, currentColor 70%, transparent);
+        text-decoration-thickness: 1px;
+        text-underline-offset: 0.18em;
+    }
+
     .document :is(strong, b) {
         font-weight: 700;
     }

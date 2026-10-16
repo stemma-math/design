@@ -6,18 +6,20 @@ no build step; link the stylesheets, or import them through a bundler.
 
 ## What it provides
 
-| File             | What it holds                                                                                                                                                                                                                                                                                                                                                                       | Generated |
-| ---------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | --------- |
-| `index.css`      | Every file below, imported in order.                                                                                                                                                                                                                                                                                                                                                | No        |
-| `fonts.css`      | `@font-face` rules for New Computer Modern, New Computer Modern Math, Instrument Sans, Libertinus Sans and JuliaMono. Text faces are split by `unicode-range`; the math face and JuliaMono are whole.                                                                                                                                                                               | Yes       |
-| `fonts/`         | The WOFF2 files `fonts.css` refers to, one folder per family, each with its licence.                                                                                                                                                                                                                                                                                                | Yes       |
-| `tokens.css`     | Every token as a custom property on `:root`: colour ramps, ink, surfaces, the six intents, the categorical tones, faces, type, space, radius, shadow, motion and density. Light and dark.                                                                                                                                                                                           | Yes       |
-| `base.css`       | The order of the cascade layers, the page's defaults, focus, reduced motion, and the modifiers that choose a component's tone.                                                                                                                                                                                                                                                      | No        |
-| `document.css`   | Typography for documents inside `.document`: headings, prose, lists, tables, quotations, code, figures, references and MathML formulas.                                                                                                                                                                                                                                             | No        |
-| `code.css`       | Colours for highlighted code, from the `--code-*` tokens: the variables of Shiki's CSS variables theme, and the classes of highlight.js.                                                                                                                                                                                                                                            | No        |
-| `components.css` | Button, field, input, choice, switch, range, stepper, select, fieldset, key, chip, count, avatar, card, table, menu, disclosure, dialog, message, toast, tooltip, segmented control, tabs, breadcrumbs, skeleton, spinner, progress, highlight and the wordmark. The brand light without script (`.brand-light`), and the layout of the elements in `@stemma-math/design-elements`. | No        |
-| `glyphs.svg`     | The line glyphs, one `symbol` each, on a 24-unit box.                                                                                                                                                                                                                                                                                                                               | Yes       |
-| `noise.svg`      | The grain `.brand-light` lays over the brand gradient.                                                                                                                                                                                                                                                                                                                              | Yes       |
+| File             | What it holds                                                                                                                                                                                                                                                                                                                                                                                               | Generated |
+| ---------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | --------- |
+| `index.css`      | Every file below, imported in order.                                                                                                                                                                                                                                                                                                                                                                        | No        |
+| `fonts.css`      | `@font-face` rules for New Computer Modern, New Computer Modern Math, Instrument Sans, Libertinus Sans and JuliaMono. Text faces are split by `unicode-range`; the math face and JuliaMono are whole.                                                                                                                                                                                                       | Yes       |
+| `fonts/`         | The WOFF2 files `fonts.css` refers to, one folder per family, each with its licence.                                                                                                                                                                                                                                                                                                                        | Yes       |
+| `tokens.css`     | Every token as a custom property on `:root`: colour ramps, ink, surfaces, the six intents, the categorical tones, faces, type, space, radius, shadow, motion and density. Light and dark.                                                                                                                                                                                                                   | Yes       |
+| `base.css`       | The order of the cascade layers, the page's defaults, links in interface text, focus, reduced motion, and the modifiers that choose a component's tone.                                                                                                                                                                                                                                                     | No        |
+| `document.css`   | Typography for documents inside `.document`: headings, prose, lists, tables, quotations, code, figures, references, resolved or not, and MathML formulas.                                                                                                                                                                                                                                                   | No        |
+| `code.css`       | Colours for highlighted code, from the `--code-*` tokens: the variables of Shiki's CSS variables theme, and the classes of highlight.js.                                                                                                                                                                                                                                                                    | No        |
+| `components.css` | Link, button, field, input, choice, switch, range, stepper, select, fieldset, key, chip, count, avatar, card, table, post, copy block, menu, disclosure, dialog, message, toast, tooltip, segmented control, tabs, breadcrumbs, skeleton, spinner, progress, highlight and the wordmark. The brand light without script (`.brand-light`), and the layout of the elements in `@stemma-math/design-elements`. | No        |
+| `glyphs.svg`     | The line glyphs, one `symbol` each, on a 24-unit box.                                                                                                                                                                                                                                                                                                                                                       | Yes       |
+| `noise.svg`      | The grain `.brand-light` lays over the brand gradient.                                                                                                                                                                                                                                                                                                                                                      | Yes       |
+| `icons/`         | The favicon (SVG, following the appearance; PNG and ICO where SVG is not taken) and the home-screen icons, made from the mark.                                                                                                                                                                                                                                                                              | Yes       |
+| `LICENSE-mark`   | The mark's usage policy, which `icons/` is under.                                                                                                                                                                                                                                                                                                                                                           | Yes       |
 
 Generated files are produced from the repository's `source/` and must not
 be edited here.
@@ -84,6 +86,33 @@ The names are the files in the repository's `source/glyphs/`: `add`,
 `alert`, `check`, `chevron-down`, `close`, `copy`, `done`, `info`,
 `settings`, `warning` and so on.
 
+### Links and references
+
+A link in interface text without a class of its own is in the link
+colour, underlined faintly until hovered, as in a document; `.link` gives
+the same look to a link that has a class. In a document, `.ref` is a
+reference, and `.ref--unresolved` one that resolves to nothing.
+
+### Icons
+
+`icons/` holds the favicon and home-screen icons, made from the mark.
+Link them from the page's `head`:
+
+```html
+<link rel="icon" href="…/@stemma-math/design/icons/favicon-32.png" sizes="32x32" type="image/png" />
+<link rel="icon" href="…/@stemma-math/design/icons/favicon.svg" type="image/svg+xml" />
+<link rel="apple-touch-icon" href="…/@stemma-math/design/icons/apple-touch-icon.png" />
+```
+
+A web app manifest lists `icon-192.png` and `icon-512.png`:
+
+```json
+"icons": [
+  { "src": "…/icons/icon-192.png", "sizes": "192x192", "type": "image/png" },
+  { "src": "…/icons/icon-512.png", "sizes": "512x512", "type": "image/png" }
+]
+```
+
 ### The brand light
 
 `.brand-light` on any element puts the brand light behind its content,
@@ -99,7 +128,8 @@ rules always win.
 
 ## Licences
 
-The stylesheets are MIT (`LICENSE`). Each face in `fonts/` keeps its own
+The stylesheets are MIT (`LICENSE`). The icons in `icons/` are the Stemma
+mark, whose use is governed by `LICENSE-mark`, not by the MIT licence. Each face in `fonts/` keeps its own
 licence beside it: the SIL Open Font License for Instrument Sans,
 Libertinus Sans and JuliaMono, and the GUST Font License (LPPL 1.3c) for
 New Computer Modern. JuliaMono ships as upstream publishes its WOFF2
