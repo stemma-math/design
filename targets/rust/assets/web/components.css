@@ -970,7 +970,8 @@
      * a tone, the accent by default; a categorical tone tells people or
      * groups apart. `--brand` is drawn on the brand's navy, in its light
      * blues, with a glyph or an initial: for what is neither a person nor
-     * a group. */
+     * a group. `--small` fits within a small control, in either density,
+     * and combines with any shape or tone. */
 
     .avatar {
         --tone: var(--accent);
@@ -1017,6 +1018,12 @@
         width: 52%;
         height: 52%;
         color: var(--blue-200);
+    }
+
+    .avatar--small {
+        width: 24px;
+        height: 24px;
+        font-size: var(--step-1);
     }
 
     /* A picture, where there is one, fills the shape in place of the
@@ -1152,6 +1159,121 @@
 
     .chevron {
         color: var(--ink-4);
+    }
+
+    /* ── Navigation list ───────────────────────────────────────────────
+     *
+     * Destinations, as links, or actions, as buttons. A leading avatar or
+     * glyph keeps its size; `.nav-item__label` truncates within the end
+     * padding, even with a trailing count. `aria-current` marks where you
+     * are. Native `details.nav-section` folds a group under its summary;
+     * no script or menu roles are needed. */
+
+    .nav-list {
+        display: grid;
+        gap: var(--space-1);
+        min-width: 0;
+        margin: 0;
+        padding: 0;
+        list-style: none;
+    }
+
+    .nav-list > li {
+        min-width: 0;
+    }
+
+    .nav-item,
+    .nav-section__heading {
+        box-sizing: border-box;
+        display: flex;
+        align-items: center;
+        gap: var(--space-2);
+        width: 100%;
+        min-width: 0;
+        min-height: var(--control-height);
+        padding: var(--control-block) var(--control-inline);
+        font: 400 var(--control-font) / 1.3 var(--font-ui);
+        color: var(--ink-2);
+        text-align: start;
+        text-decoration: none;
+        background: transparent;
+        border: 0;
+        border-radius: var(--radius-md);
+        cursor: pointer;
+        transition:
+            background var(--dur-ui) var(--ease-out),
+            color var(--dur-ui) var(--ease-out);
+    }
+
+    .nav-item:hover,
+    .nav-section__heading:hover {
+        background: var(--fill-muted);
+    }
+
+    .nav-item:focus-visible,
+    .nav-section__heading:focus-visible {
+        outline-offset: -2px;
+    }
+
+    .nav-item[aria-current]:not([aria-current="false"]) {
+        font-weight: 500;
+        color: var(--accent-text);
+        background: color-mix(in srgb, var(--accent) var(--mix-soft), transparent);
+    }
+
+    .nav-item:disabled {
+        color: var(--ink-disabled);
+        background: transparent;
+        cursor: not-allowed;
+    }
+
+    .nav-item__label {
+        flex: 1;
+        min-width: 0;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        white-space: nowrap;
+    }
+
+    .nav-item > .count {
+        flex-shrink: 0;
+    }
+
+    .nav-section__heading {
+        font: var(--text-label);
+        color: var(--ink-3);
+        list-style: none;
+    }
+
+    .nav-section__heading::-webkit-details-marker {
+        display: none;
+    }
+
+    .nav-section__heading::before {
+        flex-shrink: 0;
+        width: 7px;
+        height: 7px;
+        content: "";
+        border-inline-end: 1.5px solid currentColor;
+        border-bottom: 1.5px solid currentColor;
+        transform: rotate(-45deg);
+        transition: transform var(--dur-ui) var(--ease-out);
+    }
+
+    .nav-section__heading:dir(rtl)::before {
+        transform: rotate(45deg);
+    }
+
+    .nav-section[open] > .nav-section__heading::before {
+        transform: rotate(45deg);
+    }
+
+    .nav-section[open] > .nav-section__heading:dir(rtl)::before {
+        transform: rotate(-45deg);
+    }
+
+    .nav-section > .nav-list {
+        margin-block-start: var(--space-1);
     }
 
     /* ── Menu ──────────────────────────────────────────────────────────
@@ -1342,8 +1464,11 @@
         outline: none;
     }
 
+    /* A scrim dims the page behind a drawer or panel, as behind a dialog.
+     * The consumer places it and manages dismissal, focus and modality. */
+    .scrim,
     .dialog::backdrop {
-        background: color-mix(in srgb, var(--navy-950) 45%, transparent);
+        background: var(--scrim);
     }
 
     .dialog__body {

@@ -141,6 +141,8 @@
     --fill-muted-strong: #e6ebf4;
     /* What sits on a muted fill: the chosen option of a segmented control, the thumb of a switch or a range. */
     --surface-raised: #ffffff;
+    /* Dims the page behind a modal dialog, drawer or panel. */
+    --scrim: color-mix(in srgb, var(--navy-950) 45%, transparent);
     --border: #e3e8f1;
     /* Outlined buttons and inputs. */
     --border-strong: #d7deea;
@@ -265,6 +267,7 @@
         --fill-muted: #1b263d;
         --fill-muted-strong: #233049;
         --surface-raised: #2c3a57;
+        --scrim: color-mix(in srgb, var(--navy-950) 70%, transparent);
         --border: #222e46;
         --border-strong: #2d3a56;
         --border-dashed: #3a4866;
@@ -308,6 +311,7 @@
     --fill-muted: #1b263d;
     --fill-muted-strong: #233049;
     --surface-raised: #2c3a57;
+    --scrim: color-mix(in srgb, var(--navy-950) 70%, transparent);
     --border: #222e46;
     --border-strong: #2d3a56;
     --border-dashed: #3a4866;

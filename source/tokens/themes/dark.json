@@ -9,6 +9,7 @@
     "fill-muted": { "$value": "#1b263d" },
     "fill-muted-strong": { "$value": "#233049" },
     "surface-raised": { "$value": "#2c3a57" },
+    "scrim": { "$value": "color-mix(in srgb, {color.navy-950} 70%, transparent)" },
     "border": { "$value": "#222e46" },
     "border-strong": { "$value": "#2d3a56" },
     "border-dashed": { "$value": "#3a4866" },

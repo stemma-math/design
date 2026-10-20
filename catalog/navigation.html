@@ -15,10 +15,128 @@
                 <p class="label">Components</p>
                 <h1>Navigation and overlays</h1>
                 <p>
-                    Where a person is and where they can go, and what opens over the page: menus,
-                    dialogs and tooltips. Where each sits on the page is the product's to say.
+                    Where a person is and where they can go, and what opens over the page:
+                    navigation lists, menus, dialogs and tooltips. Where each sits on the page is
+                    the product's to say.
                 </p>
             </header>
+
+            <section class="specimen" id="nav-list">
+                <h2>Navigation list</h2>
+                <p>
+                    Destinations with an optional avatar or glyph, and a label that truncates while
+                    keeping the end padding. The current destination has
+                    <code>aria-current="page"</code>. Padding above and below accommodates a full
+                    avatar; a small one makes a denser row. Use links for destinations and buttons
+                    for actions, with their native keyboard behaviour.
+                </p>
+                <div class="specimen__api">
+                    <code>.nav-list</code><code>.nav-item</code><code>.nav-item__label</code>
+                    <code>aria-current</code>
+                </div>
+                <div class="specimen__stage">
+                    <nav aria-label="Example destinations" style="width: min(100%, 260px)">
+                        <ul class="nav-list">
+                            <li>
+                                <a class="nav-item" href="#nav-list" aria-current="page">
+                                    <svg class="glyph" aria-hidden="true">
+                                        <use href="../targets/web/glyphs.svg#home" />
+                                    </svg>
+                                    <span class="nav-item__label">Overview</span>
+                                </a>
+                            </li>
+                            <li>
+                                <a class="nav-item" href="#nav-list">
+                                    <span class="avatar avatar--teal" aria-hidden="true">E</span>
+                                    <span class="nav-item__label">Emmy Noether</span>
+                                </a>
+                            </li>
+                            <li>
+                                <a class="nav-item" href="#nav-list">
+                                    <span
+                                        class="avatar avatar--small avatar--square"
+                                        aria-hidden="true"
+                                        >NT</span
+                                    >
+                                    <span class="nav-item__label"
+                                        >Number theory and its applications</span
+                                    >
+                                    <span class="count" aria-label="12 unread">12</span>
+                                </a>
+                            </li>
+                            <li>
+                                <a class="nav-item" href="#nav-list" aria-current="false">
+                                    <span class="nav-item__label"
+                                        >A destination with only a label</span
+                                    >
+                                </a>
+                            </li>
+                            <li>
+                                <button class="nav-item" disabled>
+                                    <svg class="glyph" aria-hidden="true">
+                                        <use href="../targets/web/glyphs.svg#add" />
+                                    </svg>
+                                    <span class="nav-item__label">Add a destination</span>
+                                </button>
+                            </li>
+                        </ul>
+                    </nav>
+                </div>
+            </section>
+
+            <section class="specimen" id="nav-section">
+                <h2>Folding navigation section</h2>
+                <p>
+                    A native disclosure groups destinations under a heading with an even hover box.
+                    The summary works with Enter or Space and hides the links from the tab order
+                    when closed. Long headings use the same label as an item.
+                </p>
+                <div class="specimen__api">
+                    <code>details.nav-section</code><code>summary.nav-section__heading</code>
+                    <code>.nav-item__label</code><code>.nav-list</code>
+                </div>
+                <div class="specimen__stage">
+                    <nav aria-label="Example grouped destinations" style="width: min(100%, 260px)">
+                        <details class="nav-section" open>
+                            <summary class="nav-section__heading">
+                                <span class="nav-item__label">Places</span>
+                            </summary>
+                            <ul class="nav-list">
+                                <li>
+                                    <a class="nav-item" href="#nav-section">
+                                        <svg class="glyph" aria-hidden="true">
+                                            <use href="../targets/web/glyphs.svg#book" />
+                                        </svg>
+                                        <span class="nav-item__label">Library</span>
+                                    </a>
+                                </li>
+                                <li>
+                                    <a class="nav-item" href="#nav-section">
+                                        <svg class="glyph" aria-hidden="true">
+                                            <use href="../targets/web/glyphs.svg#document" />
+                                        </svg>
+                                        <span class="nav-item__label">Drafts</span>
+                                    </a>
+                                </li>
+                            </ul>
+                        </details>
+                        <details class="nav-section">
+                            <summary class="nav-section__heading">
+                                <span class="nav-item__label"
+                                    >A longer heading for another group of destinations</span
+                                >
+                            </summary>
+                            <ul class="nav-list">
+                                <li>
+                                    <a class="nav-item" href="#nav-section">
+                                        <span class="nav-item__label">Archive</span>
+                                    </a>
+                                </li>
+                            </ul>
+                        </details>
+                    </nav>
+                </div>
+            </section>
 
             <section class="specimen" id="tabs">
                 <h2>Tabs</h2>
@@ -107,6 +225,52 @@
                         </div>
                     </div>
                     <p class="events" data-events>Choose an item.</p>
+                </div>
+            </section>
+
+            <section class="specimen" id="scrim">
+                <h2>Scrim</h2>
+                <p>
+                    Dims the page behind a drawer or panel, in either appearance. The same token
+                    colours a dialog's native backdrop. The class provides the fill; the product
+                    places it behind the panel and manages dismissal, focus and modality.
+                </p>
+                <div class="specimen__api">
+                    <code>--scrim</code><code>.scrim</code><code>.dialog::backdrop</code>
+                </div>
+                <div class="specimen__stage specimen__stage--page">
+                    <div
+                        style="
+                            position: relative;
+                            isolation: isolate;
+                            overflow: hidden;
+                            border-radius: var(--radius-md);
+                        "
+                    >
+                        <div style="padding: var(--space-6); min-height: 140px" aria-hidden="true">
+                            <p class="label">Page behind the panel</p>
+                            <p>Its content waits while the panel is open.</p>
+                        </div>
+                        <div
+                            class="scrim"
+                            style="position: absolute; inset: 0"
+                            aria-hidden="true"
+                        ></div>
+                        <div
+                            class="card"
+                            style="
+                                position: absolute;
+                                inset-block: 0;
+                                inset-inline-end: 0;
+                                width: 45%;
+                                padding: var(--space-4);
+                                border-radius: 0;
+                            "
+                        >
+                            <p class="label">Panel</p>
+                            <p>Content above the scrim.</p>
+                        </div>
+                    </div>
                 </div>
             </section>
 
