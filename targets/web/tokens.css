@@ -165,6 +165,10 @@
     --link: var(--blue-500);
     /* A 2px outline, 2px from every focusable element. */
     --focus-ring: var(--blue-500);
+    /* A quiet scrollbar thumb over any surface; its track stays transparent. */
+    --scrollbar-thumb: color-mix(in srgb, var(--ink-4) 50%, transparent);
+    /* The scrollbar thumb while its scrolling area is hovered. */
+    --scrollbar-thumb-hover: color-mix(in srgb, var(--ink-4) 75%, transparent);
     /* Text on navy surfaces, in both appearances: names, the current item. */
     --on-dark-1: #f4f8ff;
     /* Items on navy. */
@@ -251,6 +255,8 @@
     --mix-soft: 12%;
     --mix-border: 35%;
     --mix-hover: 84%;
+    /* The opacity of the CSS brand light's grain, from 0 (none) to 1. */
+    --grain: 0.12;
     /* Around a selected or hovered choice. */
     --ring-selected: 0 0 0 3px color-mix(in srgb, var(--accent) 10%, transparent);
     /* Around a focused input, with an accent border. */
@@ -281,6 +287,8 @@
         /* Lighter than the accent, which is too dark to read as text here. */
         --link: var(--blue-300);
         --focus-ring: #6f9cff;
+        --scrollbar-thumb: color-mix(in srgb, var(--ink-4) 50%, transparent);
+        --scrollbar-thumb-hover: color-mix(in srgb, var(--ink-4) 75%, transparent);
         --neutral: #656f84;
         --neutral-text: #c3cde0;
         --accent-text: var(--blue-200);
@@ -325,8 +333,56 @@
     /* Lighter than the accent, which is too dark to read as text here. */
     --link: var(--blue-300);
     --focus-ring: #6f9cff;
+    --scrollbar-thumb: color-mix(in srgb, var(--ink-4) 50%, transparent);
+    --scrollbar-thumb-hover: color-mix(in srgb, var(--ink-4) 75%, transparent);
     --neutral: #656f84;
     --neutral-text: #c3cde0;
+    --accent-text: var(--blue-200);
+    --success-text: var(--green-300);
+    --warning-text: var(--amber-300);
+    --danger: var(--red-600);
+    --danger-text: var(--red-300);
+    --info-text: var(--cyan-200);
+    --tone-indigo-text: var(--indigo-200);
+    --tone-teal-text: var(--teal-200);
+    --tone-violet-text: var(--violet-200);
+    --tone-ochre-text: var(--ochre-200);
+    --tone-magenta-text: var(--magenta-200);
+    --tone-olive-text: var(--olive-200);
+    --tone-cerulean-text: var(--cerulean-200);
+    --tone-rust-text: var(--rust-200);
+    --mix-soft: 20%;
+    --mix-border: 50%;
+}
+
+/* A navy surface inside either page appearance. */
+.brand-surface {
+    color-scheme: dark;
+    --surface-page: var(--navy-950);
+    --surface-card: var(--navy-900);
+    --surface-subtle: #151f33;
+    --surface-field: #0d1526;
+    --fill-muted: #1b263d;
+    --fill-muted-strong: #233049;
+    --surface-raised: #2c3a57;
+    --scrim: color-mix(in srgb, var(--navy-950) 70%, transparent);
+    --border: #222e46;
+    --border-strong: #2d3a56;
+    --border-dashed: #3a4866;
+    --divider: #1b263d;
+    --ink-1: var(--on-dark-1);
+    --ink-2: var(--on-dark-2);
+    --ink-3: var(--on-dark-3);
+    --ink-4: var(--on-dark-4);
+    --ink-placeholder: #8591a9;
+    --ink-disabled: #56627a;
+    /* Lighter than the accent, which is too dark to read as text here. */
+    --link: var(--blue-300);
+    --focus-ring: #6f9cff;
+    --scrollbar-thumb: color-mix(in srgb, var(--on-dark-4) 50%, transparent);
+    --scrollbar-thumb-hover: color-mix(in srgb, var(--on-dark-4) 75%, transparent);
+    --neutral: #656f84;
+    --neutral-text: var(--on-dark-2);
     --accent-text: var(--blue-200);
     --success-text: var(--green-300);
     --warning-text: var(--amber-300);

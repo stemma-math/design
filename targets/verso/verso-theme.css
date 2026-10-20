@@ -649,6 +649,10 @@
     --link: var(--blue-500);
     /* A 2px outline, 2px from every focusable element. */
     --focus-ring: var(--blue-500);
+    /* A quiet scrollbar thumb over any surface; its track stays transparent. */
+    --scrollbar-thumb: color-mix(in srgb, var(--ink-4) 50%, transparent);
+    /* The scrollbar thumb while its scrolling area is hovered. */
+    --scrollbar-thumb-hover: color-mix(in srgb, var(--ink-4) 75%, transparent);
     /* Text on navy surfaces, in both appearances: names, the current item. */
     --on-dark-1: #f4f8ff;
     /* Items on navy. */
@@ -735,6 +739,8 @@
     --mix-soft: 12%;
     --mix-border: 35%;
     --mix-hover: 84%;
+    /* The opacity of the CSS brand light's grain, from 0 (none) to 1. */
+    --grain: 0.12;
     /* Around a selected or hovered choice. */
     --ring-selected: 0 0 0 3px color-mix(in srgb, var(--accent) 10%, transparent);
     /* Around a focused input, with an accent border. */
@@ -765,6 +771,8 @@
         /* Lighter than the accent, which is too dark to read as text here. */
         --link: var(--blue-300);
         --focus-ring: #6f9cff;
+        --scrollbar-thumb: color-mix(in srgb, var(--ink-4) 50%, transparent);
+        --scrollbar-thumb-hover: color-mix(in srgb, var(--ink-4) 75%, transparent);
         --neutral: #656f84;
         --neutral-text: #c3cde0;
         --accent-text: var(--blue-200);
@@ -809,8 +817,56 @@
     /* Lighter than the accent, which is too dark to read as text here. */
     --link: var(--blue-300);
     --focus-ring: #6f9cff;
+    --scrollbar-thumb: color-mix(in srgb, var(--ink-4) 50%, transparent);
+    --scrollbar-thumb-hover: color-mix(in srgb, var(--ink-4) 75%, transparent);
     --neutral: #656f84;
     --neutral-text: #c3cde0;
+    --accent-text: var(--blue-200);
+    --success-text: var(--green-300);
+    --warning-text: var(--amber-300);
+    --danger: var(--red-600);
+    --danger-text: var(--red-300);
+    --info-text: var(--cyan-200);
+    --tone-indigo-text: var(--indigo-200);
+    --tone-teal-text: var(--teal-200);
+    --tone-violet-text: var(--violet-200);
+    --tone-ochre-text: var(--ochre-200);
+    --tone-magenta-text: var(--magenta-200);
+    --tone-olive-text: var(--olive-200);
+    --tone-cerulean-text: var(--cerulean-200);
+    --tone-rust-text: var(--rust-200);
+    --mix-soft: 20%;
+    --mix-border: 50%;
+}
+
+/* A navy surface inside either page appearance. */
+.brand-surface {
+    color-scheme: dark;
+    --surface-page: var(--navy-950);
+    --surface-card: var(--navy-900);
+    --surface-subtle: #151f33;
+    --surface-field: #0d1526;
+    --fill-muted: #1b263d;
+    --fill-muted-strong: #233049;
+    --surface-raised: #2c3a57;
+    --scrim: color-mix(in srgb, var(--navy-950) 70%, transparent);
+    --border: #222e46;
+    --border-strong: #2d3a56;
+    --border-dashed: #3a4866;
+    --divider: #1b263d;
+    --ink-1: var(--on-dark-1);
+    --ink-2: var(--on-dark-2);
+    --ink-3: var(--on-dark-3);
+    --ink-4: var(--on-dark-4);
+    --ink-placeholder: #8591a9;
+    --ink-disabled: #56627a;
+    /* Lighter than the accent, which is too dark to read as text here. */
+    --link: var(--blue-300);
+    --focus-ring: #6f9cff;
+    --scrollbar-thumb: color-mix(in srgb, var(--on-dark-4) 50%, transparent);
+    --scrollbar-thumb-hover: color-mix(in srgb, var(--on-dark-4) 75%, transparent);
+    --neutral: #656f84;
+    --neutral-text: var(--on-dark-2);
     --accent-text: var(--blue-200);
     --success-text: var(--green-300);
     --warning-text: var(--amber-300);
@@ -869,6 +925,54 @@
         font: var(--text-body);
         color: var(--ink-1);
         background: var(--surface-page);
+    }
+
+    /* Every scrolling area follows its local surface, including the page.
+     * Standard properties take precedence over the WebKit fallback. */
+    * {
+        scrollbar-width: thin;
+        scrollbar-color: var(--scrollbar-thumb) transparent;
+    }
+
+    *:hover {
+        scrollbar-color: var(--scrollbar-thumb-hover) transparent;
+    }
+
+    ::-webkit-scrollbar {
+        width: 6px;
+        height: 6px;
+    }
+
+    ::-webkit-scrollbar-track,
+    ::-webkit-scrollbar-corner {
+        background: transparent;
+    }
+
+    ::-webkit-scrollbar-button {
+        display: none;
+        width: 0;
+        height: 0;
+    }
+
+    ::-webkit-scrollbar-thumb {
+        background: var(--scrollbar-thumb);
+        border-radius: var(--radius-pill);
+    }
+
+    ::-webkit-scrollbar-thumb:hover {
+        background: var(--scrollbar-thumb-hover);
+    }
+
+    /* Controls and native UI on a navy region, in either page appearance. */
+    .brand-surface {
+        color: var(--ink-1);
+        background-color: var(--surface-page);
+    }
+
+    @media (forced-colors: active) {
+        * {
+            scrollbar-color: auto;
+        }
     }
 
     code,
@@ -2765,6 +2869,42 @@
         margin-block-start: var(--space-1);
     }
 
+    /* The details and the action are siblings. The action stays visible
+     * when the section closes, without becoming part of the summary. */
+    .nav-section__head {
+        display: grid;
+        grid-template-columns: minmax(0, 1fr) auto;
+        min-width: 0;
+    }
+
+    .nav-section__head > .nav-section {
+        grid-area: 1 / 1 / 2 / -1;
+        min-width: 0;
+    }
+
+    .nav-section__head > .nav-section > .nav-section__heading {
+        padding-inline-end: calc(var(--control-height) + var(--space-2));
+    }
+
+    .nav-section__action {
+        z-index: 1;
+        grid-area: 1 / 2;
+        align-self: start;
+        width: var(--control-height);
+        height: var(--control-height);
+    }
+
+    .nav-section__head:has(> .nav-section__action:hover) > .nav-section > .nav-section__heading {
+        background: var(--fill-muted);
+    }
+
+    .nav-section__head:has(> .nav-section__action:focus-visible)
+        > .nav-section
+        > .nav-section__heading {
+        outline: 2px solid var(--focus-ring);
+        outline-offset: -2px;
+    }
+
     /* ── Menu ──────────────────────────────────────────────────────────
      *
      * A panel of actions or destinations, one `.menu__item` each. Works as
@@ -3381,6 +3521,26 @@
         height: 16px;
     }
 
+    .segmented--fill {
+        display: flex;
+        width: 100%;
+    }
+
+    .segmented--fill > button {
+        flex: 1 1 0;
+        justify-content: center;
+        min-width: 0;
+        padding-inline: var(--space-2);
+        overflow: hidden;
+        overflow-wrap: anywhere;
+    }
+
+    stemma-theme-switch[fill] {
+        display: block;
+        min-width: 0;
+        width: 100%;
+    }
+
     /* ── Tabs ──────────────────────────────────────────────────────────
      *
      * Views of one place, each a `.tabs__tab` in a `.tabs` list, the
@@ -3762,24 +3922,36 @@
      * CSS alone, the brand gradient and grain, for pages without script;
      * `<stemma-light>` draws it live, over the same. Its content sits above
      * it, in the colours for dark surfaces. `--light-progress`, from 0 to
-     * 1, fades it. */
+     * 1, fades it. `--grain` sets the texture's opacity independently of
+     * the gradient. Use `.brand-surface` for controls over its navy region. */
 
     .brand-light {
         position: relative;
         isolation: isolate;
         color: var(--on-dark-1);
+        --scrollbar-thumb: color-mix(in srgb, var(--on-dark-4) 50%, transparent);
+        --scrollbar-thumb-hover: color-mix(in srgb, var(--on-dark-4) 75%, transparent);
     }
 
-    .brand-light::before {
+    .brand-light::before,
+    .brand-light:not([data-drawn])::after {
         position: absolute;
         inset: 0;
         z-index: -1;
         content: "";
-        background:
-            url("noise.svg") 0 0 / 180px,
-            var(--glow);
-        background-blend-mode: soft-light, normal;
+        pointer-events: none;
+    }
+
+    .brand-light::before {
+        z-index: -2;
+        background: var(--glow);
         opacity: calc(1 - var(--light-progress, 0));
+    }
+
+    .brand-light:not([data-drawn])::after {
+        background: url("noise.svg") 0 0 / 180px;
+        mix-blend-mode: soft-light;
+        opacity: calc(var(--grain) * (1 - var(--light-progress, 0)));
     }
 
     stemma-light {

@@ -25,6 +25,8 @@
       "$description": "Lighter than the accent, which is too dark to read as text here."
     },
     "focus-ring": { "$value": "#6f9cff" },
+    "scrollbar-thumb": { "$value": "color-mix(in srgb, {color.ink-4} 50%, transparent)" },
+    "scrollbar-thumb-hover": { "$value": "color-mix(in srgb, {color.ink-4} 75%, transparent)" },
     "neutral": { "$value": "#656f84" },
     "neutral-text": { "$value": "#c3cde0" },
     "accent-text": { "$value": "{color.blue-200}" },

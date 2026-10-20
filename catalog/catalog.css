@@ -104,16 +104,6 @@ body {
     gap: var(--space-1);
 }
 
-.catalog-settings .segmented {
-    width: 100%;
-}
-
-.catalog-settings .segmented > button {
-    flex: 1;
-    justify-content: center;
-    padding: 0 var(--space-2);
-}
-
 /* ── A page ─────────────────────────────────────────────────────────── */
 
 .catalog-page {

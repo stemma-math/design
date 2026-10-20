@@ -283,6 +283,30 @@ If p is prime, then a^p ≡ a (mod p).</textarea>
                 </div>
             </section>
 
+            <section class="specimen" id="segmented-fill">
+                <h2>Full-width segmented control</h2>
+                <p>
+                    Equal-width options fill a narrow column. Use the class on a segmented group, or
+                    the boolean <code>fill</code> attribute on the theme switch; it also reflects
+                    the element's <code>fill</code> property.
+                </p>
+                <div class="specimen__api">
+                    <code>.segmented--fill</code><code>&lt;stemma-theme-switch fill&gt;</code>
+                </div>
+                <div class="specimen__stage">
+                    <div style="display: grid; gap: var(--space-3); width: min(100%, 280px)">
+                        <stemma-segmented label="Full-width view">
+                            <div class="segmented segmented--fill">
+                                <button value="list" aria-pressed="true">List</button>
+                                <button value="graph">Graph view</button>
+                                <button value="table">Table</button>
+                            </div>
+                        </stemma-segmented>
+                        <stemma-theme-switch fill></stemma-theme-switch>
+                    </div>
+                </div>
+            </section>
+
             <section class="specimen" id="filter-chips">
                 <h2>Filter chips</h2>
                 <p>

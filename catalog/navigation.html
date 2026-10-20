@@ -138,6 +138,72 @@
                 </div>
             </section>
 
+            <section class="specimen" id="nav-section-action">
+                <h2>Navigation heading with an action</h2>
+                <p>
+                    A shared heading row with two independent targets. The action is a sibling of
+                    the native disclosure, outside its summary, and remains available when the
+                    section closes. Hover or keyboard focus covers the row; focusing a destination
+                    below it does not highlight the heading.
+                </p>
+                <div class="specimen__api">
+                    <code>.nav-section__head</code><code>.nav-section__action</code>
+                    <code>details.nav-section</code><code>summary.nav-section__heading</code>
+                    <code>.button.button--icon.button--quiet</code>
+                </div>
+                <div class="specimen__stage">
+                    <nav aria-label="Sections with actions" style="width: min(100%, 260px)">
+                        <div class="nav-section__head">
+                            <details class="nav-section" open>
+                                <summary class="nav-section__heading">
+                                    <span class="nav-item__label">Places</span>
+                                </summary>
+                                <ul class="nav-list">
+                                    <li>
+                                        <a class="nav-item" href="#nav-section-action">Library</a>
+                                    </li>
+                                    <li>
+                                        <a class="nav-item" href="#nav-section-action">Drafts</a>
+                                    </li>
+                                </ul>
+                            </details>
+                            <button
+                                type="button"
+                                class="button button--icon button--quiet nav-section__action"
+                                aria-label="Add a place"
+                            >
+                                <svg class="glyph" aria-hidden="true">
+                                    <use href="../targets/web/glyphs.svg#add" />
+                                </svg>
+                            </button>
+                        </div>
+                        <div class="nav-section__head">
+                            <details class="nav-section">
+                                <summary class="nav-section__heading">
+                                    <span class="nav-item__label"
+                                        >A longer heading for another group of destinations</span
+                                    >
+                                </summary>
+                                <ul class="nav-list">
+                                    <li>
+                                        <a class="nav-item" href="#nav-section-action">Archive</a>
+                                    </li>
+                                </ul>
+                            </details>
+                            <button
+                                type="button"
+                                class="button button--icon button--quiet nav-section__action"
+                                aria-label="Add to the other group"
+                            >
+                                <svg class="glyph" aria-hidden="true">
+                                    <use href="../targets/web/glyphs.svg#add" />
+                                </svg>
+                            </button>
+                        </div>
+                    </nav>
+                </div>
+            </section>
+
             <section class="specimen" id="tabs">
                 <h2>Tabs</h2>
                 <p>

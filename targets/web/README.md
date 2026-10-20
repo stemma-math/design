@@ -51,6 +51,26 @@ The dark appearance follows the system. Set `data-theme="light"` or
 comfortable by default; `data-density="compact"` on any element makes the
 controls inside it compact.
 
+Add `.brand-surface` to a navy region to use dark control surfaces, on-dark
+ink, and readable intent and categorical text colours within it. This is
+local: it does not change the page's selected appearance. It works on its
+own or over the navy region of `.brand-light`. Keep menus and popovers
+inside that context in the DOM so they inherit its tokens. Avoid applying
+it over the pale end of the light. These pairings are contrast-checked
+alongside the light and dark appearances.
+
+`.brand-light` has a gentle CSS grain by default. Set `--grain` on it from
+`0` to `1` to adjust the grain's opacity, independently of the gradient or
+`--light-progress`. The live `<stemma-light>` drawing uses its preset's
+grain instead; this token controls the CSS fallback.
+
+The page and every scrolling element have thin scrollbars, transparent
+tracks and no arrow buttons, where the platform allows styling. The thumb
+uses `--scrollbar-thumb` and becomes `--scrollbar-thumb-hover` on hover.
+Both follow the local appearance, including brand surfaces. Standard
+scrollbar properties are used with WebKit pseudo-elements as a fallback;
+forced colours retain the system palette.
+
 ### Intents and tones
 
 Components that carry a tone take it as a modifier: an intent
@@ -68,6 +88,21 @@ Each tone is three tokens, `--{tone}`, `--{tone}-text` and `--{tone}-on`.
 A component derives its borders, soft fills and hover states from them
 with `color-mix()`, and every combination is checked for contrast in both
 appearances.
+
+### Full-width segmented controls
+
+`.segmented--fill` fills the container and gives every button the same
+width, even when labels differ. With the theme-switch element, use
+`<stemma-theme-switch fill>` instead.
+
+```html
+<stemma-segmented label="View">
+  <div class="segmented segmented--fill">
+    <button value="list" aria-pressed="true">List</button>
+    <button value="graph">Graph view</button>
+  </div>
+</stemma-segmented>
+```
 
 ### Glyphs
 
@@ -123,6 +158,32 @@ The native `details` and `summary` fold the section by keyboard as well
 as pointer. Lists keep ordinary link navigation and need no menu roles
 or JavaScript. Item and heading padding follows the density, leaving
 space above and below a full-size avatar too.
+
+For a trailing heading action, wrap the details and a sibling icon button
+in `.nav-section__head`. Add `.nav-section__action` to the button. The
+heading's hover and focus cover the whole row, while the action keeps its
+own target and remains available when closed. Keep the button outside the
+summary, and give it an accessible name:
+
+```html
+<div class="nav-section__head">
+  <details class="nav-section" open>
+    <summary class="nav-section__heading">
+      <span class="nav-item__label">Places</span>
+    </summary>
+    <ul class="nav-list">
+      <li><a class="nav-item" href="…">Library</a></li>
+    </ul>
+  </details>
+  <button
+    type="button"
+    class="button button--icon button--quiet nav-section__action"
+    aria-label="Add a place"
+  >
+    <svg class="glyph" aria-hidden="true"><use href="…/glyphs.svg#add" /></svg>
+  </button>
+</div>
+```
 
 `.avatar--small` is 24px in either density, so it fits within
 `--control-small-height`. It combines with `--square`, `--brand`, every

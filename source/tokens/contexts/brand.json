@@ -1,0 +1,15 @@
+{
+  "$description": "The brand-surface context, independent of the page appearance. Inherits the dark appearance's control fills, intents and categorical tones; maps text, page and card surfaces to the existing on-dark palette. Use on a navy region or alongside brand-light, away from the pale end of the light. Contrast requirements from semantic.json also hold here.",
+  "color": {
+    "$type": "color",
+    "surface-page": { "$value": "{color.navy-950}" },
+    "surface-card": { "$value": "{color.navy-900}" },
+    "ink-1": { "$value": "{color.on-dark-1}" },
+    "ink-2": { "$value": "{color.on-dark-2}" },
+    "ink-3": { "$value": "{color.on-dark-3}" },
+    "ink-4": { "$value": "{color.on-dark-4}" },
+    "neutral-text": { "$value": "{color.on-dark-2}" },
+    "scrollbar-thumb": { "$value": "color-mix(in srgb, {color.on-dark-4} 50%, transparent)" },
+    "scrollbar-thumb-hover": { "$value": "color-mix(in srgb, {color.on-dark-4} 75%, transparent)" }
+  }
+}

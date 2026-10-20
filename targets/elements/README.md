@@ -43,6 +43,11 @@ elements share; it is not part of the interface.
 
 ## Accessibility and motion
 
+`<stemma-theme-switch fill>` fills its container with equal-width options.
+The boolean `fill` property reflects the attribute and can change after
+connection. Other segmented controls use `.segmented.segmented--fill` on
+their group. Both variants keep the same arrow-key selection and ARIA state.
+
 - Every control is a native `button`, reachable by keyboard, with ARIA
   state (`aria-pressed`, `aria-expanded`, `aria-describedby`) kept in step.
 - Focus returns where it was when a dialog or menu closes.
