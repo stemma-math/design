@@ -18,7 +18,7 @@ no build step; link the stylesheets, or import them through a bundler.
 | `components.css` | Link, button, field, input, choice, switch, range, stepper, select, fieldset, key, chip, count, avatar, card, table, post, copy block, menu, disclosure, dialog, message, toast, tooltip, segmented control, tabs, breadcrumbs, skeleton, spinner, progress, highlight and the wordmark. The brand light without script (`.brand-light`), and the layout of the elements in `@stemma-math/design-elements`. | No        |
 | `glyphs.svg`     | The line glyphs, one `symbol` each, on a 24-unit box.                                                                                                                                                                                                                                                                                                                                                       | Yes       |
 | `noise.svg`      | The grain `.brand-light` lays over the brand gradient.                                                                                                                                                                                                                                                                                                                                                      | Yes       |
-| `icons/`         | The favicon (SVG, following the appearance; PNG and ICO where SVG is not taken) and the home-screen icons, made from the mark.                                                                                                                                                                                                                                                                              | Yes       |
+| `icons/`         | The favicon (SVG, following the appearance; PNG and ICO where SVG is not taken), the home-screen icons and, in `icons/app/`, the application icons for a desktop app, made from the mark.                                                                                                                                                                                                                   | Yes       |
 | `LICENSE-mark`   | The mark's usage policy, which `icons/` is under.                                                                                                                                                                                                                                                                                                                                                           | Yes       |
 
 Generated files are produced from the repository's `source/` and must not
@@ -112,6 +112,11 @@ A web app manifest lists `icon-192.png` and `icon-512.png`:
   { "src": "…/icons/icon-512.png", "sizes": "512x512", "type": "image/png" }
 ]
 ```
+
+`icons/app/` holds the application icon, a rounded square with room
+around it as macOS draws them: `icon.icns` for macOS, `icon.ico` for
+Windows, and PNG from 16 to 1024 pixels, which a desktop app's bundle
+takes as they are.
 
 ### The brand light
 

@@ -2,7 +2,8 @@
 drawn masters in `source/brand/`.
 
 It writes targets/brand-kit/ and the marks in other targets: the icons a
-page links from its `head` in targets/web/icons/.
+page links from its `head` in targets/web/icons/, and the application
+icons, for a desktop app, in targets/web/icons/app/.
 
 The wordmark is "stemma" in Instrument Sans, shaped with HarfBuzz and
 outlined with fontTools, so no font is needed to show it. Lockups place it
@@ -407,6 +408,9 @@ def kit():
     for path, (data, _) in list(out.items()):
         if path.startswith("targets/brand-kit/web/"):
             name = path.removeprefix("targets/brand-kit/web/")
+            out[f"targets/web/icons/{name}"] = (data, None)
+        if path.startswith("targets/brand-kit/app/"):
+            name = path.removeprefix("targets/brand-kit/")
             out[f"targets/web/icons/{name}"] = (data, None)
     out["targets/web/LICENSE-mark"] = ((BRAND / "LICENSE").read_bytes(), None)
     return out
