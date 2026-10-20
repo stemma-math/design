@@ -4,11 +4,13 @@ modules["theme-switch.js"] = (() => {
 // follows, and remembers the choice in local storage.
 //
 //     <stemma-theme-switch></stemma-theme-switch>
+//     <stemma-theme-switch fill></stemma-theme-switch>
 //
 // Attributes: `label` names the control for assistive technology
 // ("Appearance"); `label-system`, `label-light` and `label-dark` name the
 // options; `storage-key` is where the choice is kept ("stemma-theme"). A
-// `change` event says what was chosen, in `value`.
+// `change` event says what was chosen, in `value`. `fill` makes the control
+// fill its container, with equal-width options.
 //
 // To avoid a flash of the wrong appearance, call `applyStoredTheme()` as
 // early as possible, before the page paints.
@@ -42,6 +44,8 @@ function applyStoredTheme(key = DEFAULT_KEY) {
 }
 
 class StemmaThemeSwitch extends HTMLElement {
+    static observedAttributes = ["fill"];
+
     #value = "system";
     #choose = null;
 
@@ -50,6 +54,7 @@ class StemmaThemeSwitch extends HTMLElement {
         const key = this.getAttribute("storage-key") || DEFAULT_KEY;
         const group = document.createElement("div");
         group.className = "segmented";
+        group.classList.toggle("segmented--fill", this.fill);
         group.setAttribute("role", "group");
         group.setAttribute("aria-label", this.getAttribute("label") || "Appearance");
         const names = { system: "System", light: "Light", dark: "Dark" };
@@ -86,6 +91,19 @@ class StemmaThemeSwitch extends HTMLElement {
         this.#value = theme;
         applyTheme(theme);
         this.#choose?.(theme);
+    }
+
+    attributeChangedCallback() {
+        this.querySelector(".segmented")?.classList.toggle("segmented--fill", this.fill);
+    }
+
+    /** Whether the control fills its container. Reflects the `fill` attribute. */
+    get fill() {
+        return this.hasAttribute("fill");
+    }
+
+    set fill(value) {
+        this.toggleAttribute("fill", Boolean(value));
     }
 }
 

@@ -1276,6 +1276,42 @@
         margin-block-start: var(--space-1);
     }
 
+    /* The details and the action are siblings. The action stays visible
+     * when the section closes, without becoming part of the summary. */
+    .nav-section__head {
+        display: grid;
+        grid-template-columns: minmax(0, 1fr) auto;
+        min-width: 0;
+    }
+
+    .nav-section__head > .nav-section {
+        grid-area: 1 / 1 / 2 / -1;
+        min-width: 0;
+    }
+
+    .nav-section__head > .nav-section > .nav-section__heading {
+        padding-inline-end: calc(var(--control-height) + var(--space-2));
+    }
+
+    .nav-section__action {
+        z-index: 1;
+        grid-area: 1 / 2;
+        align-self: start;
+        width: var(--control-height);
+        height: var(--control-height);
+    }
+
+    .nav-section__head:has(> .nav-section__action:hover) > .nav-section > .nav-section__heading {
+        background: var(--fill-muted);
+    }
+
+    .nav-section__head:has(> .nav-section__action:focus-visible)
+        > .nav-section
+        > .nav-section__heading {
+        outline: 2px solid var(--focus-ring);
+        outline-offset: -2px;
+    }
+
     /* ── Menu ──────────────────────────────────────────────────────────
      *
      * A panel of actions or destinations, one `.menu__item` each. Works as
@@ -1892,6 +1928,26 @@
         height: 16px;
     }
 
+    .segmented--fill {
+        display: flex;
+        width: 100%;
+    }
+
+    .segmented--fill > button {
+        flex: 1 1 0;
+        justify-content: center;
+        min-width: 0;
+        padding-inline: var(--space-2);
+        overflow: hidden;
+        overflow-wrap: anywhere;
+    }
+
+    stemma-theme-switch[fill] {
+        display: block;
+        min-width: 0;
+        width: 100%;
+    }
+
     /* ── Tabs ──────────────────────────────────────────────────────────
      *
      * Views of one place, each a `.tabs__tab` in a `.tabs` list, the
@@ -2273,24 +2329,36 @@
      * CSS alone, the brand gradient and grain, for pages without script;
      * `<stemma-light>` draws it live, over the same. Its content sits above
      * it, in the colours for dark surfaces. `--light-progress`, from 0 to
-     * 1, fades it. */
+     * 1, fades it. `--grain` sets the texture's opacity independently of
+     * the gradient. Use `.brand-surface` for controls over its navy region. */
 
     .brand-light {
         position: relative;
         isolation: isolate;
         color: var(--on-dark-1);
+        --scrollbar-thumb: color-mix(in srgb, var(--on-dark-4) 50%, transparent);
+        --scrollbar-thumb-hover: color-mix(in srgb, var(--on-dark-4) 75%, transparent);
     }
 
-    .brand-light::before {
+    .brand-light::before,
+    .brand-light:not([data-drawn])::after {
         position: absolute;
         inset: 0;
         z-index: -1;
         content: "";
-        background:
-            url("noise.svg") 0 0 / 180px,
-            var(--glow);
-        background-blend-mode: soft-light, normal;
+        pointer-events: none;
+    }
+
+    .brand-light::before {
+        z-index: -2;
+        background: var(--glow);
         opacity: calc(1 - var(--light-progress, 0));
+    }
+
+    .brand-light:not([data-drawn])::after {
+        background: url("noise.svg") 0 0 / 180px;
+        mix-blend-mode: soft-light;
+        opacity: calc(var(--grain) * (1 - var(--light-progress, 0)));
     }
 
     stemma-light {

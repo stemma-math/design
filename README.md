@@ -74,7 +74,7 @@ is committed in `targets/` and `catalog/`.
 
 | Folder           | What it holds                                                                                                                                                                                                                                             |
 | ---------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| `source/tokens/` | Tokens in the Design Tokens Community Group format, by tier: `brand.json` (primitives), `semantic.json` (light), `themes/dark.json` and `density.json`.                                                                                                   |
+| `source/tokens/` | Tokens in the Design Tokens Community Group format, by tier: `brand.json` (primitives), `semantic.json` (light), `themes/dark.json`, `contexts/brand.json` (local navy surfaces) and `density.json`.                                                      |
 | `source/fonts/`  | Each face as published upstream, with its licence and an `ORIGIN` note; `faces.json` lists the faces every target ships.                                                                                                                                  |
 | `source/brand/`  | The drawn masters of the mark, the live mark's data, the grain texture, and `brand.json`, how the wordmark, lockups and icons are built.                                                                                                                  |
 | `source/glyphs/` | One SVG per line glyph.                                                                                                                                                                                                                                   |
@@ -100,7 +100,8 @@ just format     # format every file
 ```
 
 `just check` fails while a generated file is out of date, or while a
-colour falls below its contrast requirement in either appearance.
+colour falls below its contrast requirement in either appearance or the
+brand-surface context.
 
 ## Versions
 

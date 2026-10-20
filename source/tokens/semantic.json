@@ -101,6 +101,14 @@
         "stemma": { "contrast": [{ "on": ["surface-card", "surface-page"], "min": 3 }] }
       }
     },
+    "scrollbar-thumb": {
+      "$value": "color-mix(in srgb, {color.ink-4} 50%, transparent)",
+      "$description": "A quiet scrollbar thumb over any surface; its track stays transparent."
+    },
+    "scrollbar-thumb-hover": {
+      "$value": "color-mix(in srgb, {color.ink-4} 75%, transparent)",
+      "$description": "The scrollbar thumb while its scrolling area is hovered."
+    },
     "on-dark-1": {
       "$value": "#f4f8ff",
       "$description": "Text on navy surfaces, in both appearances: names, the current item.",
@@ -318,6 +326,13 @@
     "mix-soft": { "$value": "12%" },
     "mix-border": { "$value": "35%" },
     "mix-hover": { "$value": "84%" }
+  },
+  "texture": {
+    "grain": {
+      "$type": "number",
+      "$value": 0.12,
+      "$description": "The opacity of the CSS brand light's grain, from 0 (none) to 1."
+    }
   },
   "shadow": {
     "ring-selected": {

@@ -3,6 +3,8 @@ export type Theme = "system" | "light" | "dark";
 export declare class StemmaThemeSwitch extends HTMLElement {
     /** The choice. Setting it applies it without storing it. */
     value: Theme;
+    /** Fill the container with equal-width options. Reflects `fill`. */
+    fill: boolean;
 }
 
 /** The stored choice. */

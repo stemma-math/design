@@ -91,9 +91,9 @@ function sidebar() {
         </nav>
         <div class="catalog-settings">
             <div><span class="label">Appearance</span>
-                <stemma-theme-switch storage-key="${THEME_KEY}"></stemma-theme-switch></div>
+                <stemma-theme-switch fill storage-key="${THEME_KEY}"></stemma-theme-switch></div>
             <div><span class="label">Density</span>
-                <div class="segmented" id="density" aria-label="Density">
+                <div class="segmented segmented--fill" id="density" aria-label="Density">
                     <button value="comfortable">Comfortable</button
                     ><button value="compact">Compact</button>
                 </div></div>

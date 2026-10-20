@@ -1,5 +1,6 @@
 """Generates the tokens of every target from `source/tokens/`, and checks
-the contrast requirements recorded in them, in both appearances.
+the contrast requirements recorded in them, in both appearances and the
+brand-surface context.
 
 The sources are in the Design Tokens Community Group format. A token's name
 is its path without the first level, which is its category (or, for
@@ -112,7 +113,7 @@ def declarations(appearance, tokens, indent="    "):
     return lines
 
 
-def css(light, dark):
+def css(light, dark, brand):
     def density(which):
         return [t for t in light.of("density.json") if t.path[0] == which]
 
@@ -137,6 +138,21 @@ def css(light, dark):
             ':root[data-theme="dark"] {',
             "    color-scheme: dark;",
             *declarations(dark, dark.of("themes/dark.json")),
+            "}",
+            "",
+            "/* A navy surface inside either page appearance. */",
+            ".brand-surface {",
+            "    color-scheme: dark;",
+            *declarations(
+                brand,
+                list(
+                    {
+                        token.name: token
+                        for file in ("themes/dark.json", "contexts/brand.json")
+                        for token in brand.of(file)
+                    }.values()
+                ),
+            ),
             "}",
             "",
             ":root,",
@@ -282,9 +298,9 @@ def requirements(appearance):
     return pairs
 
 
-def contrast_failures(light, dark):
+def contrast_failures(light, dark, brand):
     failures = []
-    for which, appearance in (("light", light), ("dark", dark)):
+    for which, appearance in (("light", light), ("dark", dark), ("brand", brand)):
         for foreground, background, minimum, what in requirements(appearance):
             r = ratio(foreground, background)
             if r < minimum:
@@ -298,10 +314,13 @@ def contrast_failures(light, dark):
 def generate():
     light = Appearance(["brand.json", "semantic.json", "density.json"])
     dark = Appearance(["brand.json", "semantic.json", "themes/dark.json"])
-    failures = contrast_failures(light, dark)
+    brand = Appearance(
+        ["brand.json", "semantic.json", "themes/dark.json", "contexts/brand.json"]
+    )
+    failures = contrast_failures(light, dark, brand)
     if failures:
         sys.exit("Contrast below requirement:\n  " + "\n  ".join(failures))
     out = Outputs()
-    out.add("targets/web/tokens.css", css(light, dark))
+    out.add("targets/web/tokens.css", css(light, dark, brand))
     out.add("targets/terminal/src/tokens.rs", rust(light, dark))
     return out

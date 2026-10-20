@@ -95,6 +95,58 @@
                 </div>
             </section>
 
+            <section class="specimen" id="scrollbars">
+                <h2>Scrollbars</h2>
+                <p>
+                    The page and every scrolling element use a thin thumb and a transparent track.
+                    Hover strengthens the thumb. Switch the page appearance to compare light and
+                    dark; the brand surface keeps its on-dark thumb. Forced colours use the system
+                    palette. On systems with overlay scrollbars, scroll to reveal the thumb.
+                </p>
+                <div class="specimen__api">
+                    <code>--scrollbar-thumb</code><code>--scrollbar-thumb-hover</code>
+                    <code>.brand-light</code><code>.brand-surface</code>
+                </div>
+                <div class="specimen__stage split">
+                    <div
+                        tabindex="0"
+                        role="region"
+                        aria-label="Page surface scrollbar"
+                        style="
+                            height: 180px;
+                            overflow: auto;
+                            padding: var(--space-4);
+                            background: var(--surface-page);
+                            border-radius: var(--radius-md);
+                        "
+                    >
+                        <div style="min-width: 640px; min-height: 340px">
+                            <p>Scroll vertically or horizontally.</p>
+                            <p class="quiet">A quiet thumb on the current page surface.</p>
+                            <p style="margin-top: 240px">The end of the scrolling area.</p>
+                        </div>
+                    </div>
+                    <div
+                        class="brand-light brand-surface"
+                        tabindex="0"
+                        role="region"
+                        aria-label="Brand surface scrollbar"
+                        style="
+                            height: 180px;
+                            overflow: auto;
+                            padding: var(--space-4);
+                            border-radius: var(--radius-md);
+                        "
+                    >
+                        <div style="min-width: 640px; min-height: 340px">
+                            <p>Scroll vertically or horizontally.</p>
+                            <p class="quiet">On-dark ink, independent of the page appearance.</p>
+                            <p style="margin-top: 240px">The end of the scrolling area.</p>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
             <section class="specimen" id="ramps">
                 <h2>Ramps</h2>
                 <p>

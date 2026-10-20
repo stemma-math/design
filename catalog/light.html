@@ -90,6 +90,101 @@
                 </div>
             </section>
 
+            <section class="specimen" id="grain">
+                <h2>Grain strength</h2>
+                <p>
+                    The CSS light has a gentle texture by default. Set <code>--grain</code> from
+                    zero to one to adjust its opacity without changing the gradient. This controls
+                    the CSS fallback; the live WebGL light keeps its preset's own grain.
+                </p>
+                <div class="specimen__api"><code>.brand-light</code><code>--grain</code></div>
+                <div class="specimen__stage split">
+                    <div
+                        class="brand-light"
+                        style="
+                            height: 260px;
+                            padding: var(--space-4);
+                            box-sizing: border-box;
+                            overflow: hidden;
+                            border-radius: var(--radius-lg);
+                        "
+                    >
+                        <p>Default texture</p>
+                    </div>
+                    <div
+                        class="brand-light"
+                        style="
+                            --grain: 0;
+                            height: 260px;
+                            padding: var(--space-4);
+                            box-sizing: border-box;
+                            overflow: hidden;
+                            border-radius: var(--radius-lg);
+                        "
+                    >
+                        <p>No grain</p>
+                    </div>
+                </div>
+            </section>
+
+            <section class="specimen" id="brand-surface">
+                <h2>Controls on a brand surface</h2>
+                <p>
+                    The brand context uses on-dark ink and dark control tokens in either page
+                    appearance. Put it on a navy panel, or on the dark region of a brand light;
+                    controls over the pale end need the page's own tokens. It does not select the
+                    page appearance. A menu or popover should stay inside this context in the DOM.
+                </p>
+                <div class="specimen__api">
+                    <code>.brand-surface</code><code>.brand-light</code><code>.button</code>
+                    <code>.chip</code><code>.avatar</code><code>.nav-item</code> <code>.menu</code
+                    ><code>&lt;stemma-theme-switch fill&gt;</code>
+                </div>
+                <div class="specimen__stage">
+                    <div
+                        class="brand-light"
+                        style="
+                            width: min(100%, 300px);
+                            border-radius: var(--radius-lg);
+                            overflow: hidden;
+                        "
+                    >
+                        <div
+                            class="brand-surface"
+                            style="
+                                display: grid;
+                                gap: var(--space-4);
+                                padding: var(--space-5);
+                                background: transparent;
+                            "
+                        >
+                            <a class="nav-item" href="#brand-surface" aria-current="page">
+                                <span class="avatar avatar--small avatar--teal" aria-hidden="true"
+                                    >E</span
+                                >
+                                <span class="nav-item__label">Emmy Noether</span>
+                            </a>
+                            <div class="row">
+                                <button class="button button--primary">Continue</button>
+                                <button class="button button--quiet">Cancel</button>
+                                <button class="button" disabled>Unavailable</button>
+                            </div>
+                            <div class="row">
+                                <span class="chip chip--neutral">Neutral</span>
+                                <span class="chip chip--accent">Accent</span>
+                                <span class="chip chip--success">Success</span>
+                                <span class="chip chip--teal">Teal</span>
+                            </div>
+                            <div class="menu" style="min-width: 0">
+                                <button class="menu__item">Open</button>
+                                <button class="menu__item menu__item--danger">Delete</button>
+                            </div>
+                            <stemma-theme-switch fill></stemma-theme-switch>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
             <script type="module">
                 const hero = document.getElementById("hero-light");
                 const progress = document.getElementById("progress");
