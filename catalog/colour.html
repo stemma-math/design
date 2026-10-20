@@ -75,7 +75,10 @@
 
             <section class="specimen" id="surfaces">
                 <h2>Surfaces, fills and lines</h2>
-                <p>The page, the cards on it, fields, muted fills, borders and dividers.</p>
+                <p>
+                    The page, the cards on it, fields, muted fills, borders, dividers and the scrim
+                    behind overlays.
+                </p>
                 <div class="specimen__stage">
                     <div class="swatches" id="surface-swatches"></div>
                 </div>
@@ -150,7 +153,7 @@
                         document.getElementById(id).append(swatch(name));
                 };
                 fill("ink-swatches", /^(ink-|link$|focus-ring$)/);
-                fill("surface-swatches", /^(surface-|fill-|border|divider)/);
+                fill("surface-swatches", /^(surface-|fill-|border|divider|scrim$)/);
                 fill("dark-swatches", /^on-dark-/);
 
                 const hues = new Map();

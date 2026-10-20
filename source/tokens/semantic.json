@@ -30,6 +30,10 @@
       "$value": "#ffffff",
       "$description": "What sits on a muted fill: the chosen option of a segmented control, the thumb of a switch or a range."
     },
+    "scrim": {
+      "$value": "color-mix(in srgb, {color.navy-950} 45%, transparent)",
+      "$description": "Dims the page behind a modal dialog, drawer or panel."
+    },
     "border": { "$value": "#e3e8f1" },
     "border-strong": {
       "$value": "#d7deea",

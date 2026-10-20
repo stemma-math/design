@@ -6,20 +6,20 @@ no build step; link the stylesheets, or import them through a bundler.
 
 ## What it provides
 
-| File             | What it holds                                                                                                                                                                                                                                                                                                                                                                                               | Generated |
-| ---------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | --------- |
-| `index.css`      | Every file below, imported in order.                                                                                                                                                                                                                                                                                                                                                                        | No        |
-| `fonts.css`      | `@font-face` rules for New Computer Modern, New Computer Modern Math, Instrument Sans, Libertinus Sans and JuliaMono. Text faces are split by `unicode-range`; the math face and JuliaMono are whole.                                                                                                                                                                                                       | Yes       |
-| `fonts/`         | The WOFF2 files `fonts.css` refers to, one folder per family, each with its licence.                                                                                                                                                                                                                                                                                                                        | Yes       |
-| `tokens.css`     | Every token as a custom property on `:root`: colour ramps, ink, surfaces, the six intents, the categorical tones, faces, type, space, radius, shadow, motion and density. Light and dark.                                                                                                                                                                                                                   | Yes       |
-| `base.css`       | The order of the cascade layers, the page's defaults, links in interface text, focus, reduced motion, and the modifiers that choose a component's tone.                                                                                                                                                                                                                                                     | No        |
-| `document.css`   | Typography for documents inside `.document`: headings, prose, lists, tables, quotations, code, figures, references, resolved or not, and MathML formulas.                                                                                                                                                                                                                                                   | No        |
-| `code.css`       | Colours for highlighted code, from the `--code-*` tokens: the variables of Shiki's CSS variables theme, and the classes of highlight.js.                                                                                                                                                                                                                                                                    | No        |
-| `components.css` | Link, button, field, input, choice, switch, range, stepper, select, fieldset, key, chip, count, avatar, card, table, post, copy block, menu, disclosure, dialog, message, toast, tooltip, segmented control, tabs, breadcrumbs, skeleton, spinner, progress, highlight and the wordmark. The brand light without script (`.brand-light`), and the layout of the elements in `@stemma-math/design-elements`. | No        |
-| `glyphs.svg`     | The line glyphs, one `symbol` each, on a 24-unit box.                                                                                                                                                                                                                                                                                                                                                       | Yes       |
-| `noise.svg`      | The grain `.brand-light` lays over the brand gradient.                                                                                                                                                                                                                                                                                                                                                      | Yes       |
-| `icons/`         | The favicon (SVG, following the appearance; PNG and ICO where SVG is not taken) and the home-screen icons, made from the mark.                                                                                                                                                                                                                                                                              | Yes       |
-| `LICENSE-mark`   | The mark's usage policy, which `icons/` is under.                                                                                                                                                                                                                                                                                                                                                           | Yes       |
+| File             | What it holds                                                                                                                                                                                                                                                                                                                                                                                                                                           | Generated |
+| ---------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | --------- |
+| `index.css`      | Every file below, imported in order.                                                                                                                                                                                                                                                                                                                                                                                                                    | No        |
+| `fonts.css`      | `@font-face` rules for New Computer Modern, New Computer Modern Math, Instrument Sans, Libertinus Sans and JuliaMono. Text faces are split by `unicode-range`; the math face and JuliaMono are whole.                                                                                                                                                                                                                                                   | Yes       |
+| `fonts/`         | The WOFF2 files `fonts.css` refers to, one folder per family, each with its licence.                                                                                                                                                                                                                                                                                                                                                                    | Yes       |
+| `tokens.css`     | Every token as a custom property on `:root`: colour ramps, ink, surfaces, the six intents, the categorical tones, faces, type, space, radius, shadow, motion and density. Light and dark.                                                                                                                                                                                                                                                               | Yes       |
+| `base.css`       | The order of the cascade layers, the page's defaults, links in interface text, focus, reduced motion, and the modifiers that choose a component's tone.                                                                                                                                                                                                                                                                                                 | No        |
+| `document.css`   | Typography for documents inside `.document`: headings, prose, lists, tables, quotations, code, figures, references, resolved or not, and MathML formulas.                                                                                                                                                                                                                                                                                               | No        |
+| `code.css`       | Colours for highlighted code, from the `--code-*` tokens: the variables of Shiki's CSS variables theme, and the classes of highlight.js.                                                                                                                                                                                                                                                                                                                | No        |
+| `components.css` | Link, button, field, input, choice, switch, range, stepper, select, fieldset, key, chip, count, avatar, card, table, post, copy block, navigation list and folding section, menu, disclosure, scrim, dialog, message, toast, tooltip, segmented control, tabs, breadcrumbs, skeleton, spinner, progress, highlight and the wordmark. The brand light without script (`.brand-light`), and the layout of the elements in `@stemma-math/design-elements`. | No        |
+| `glyphs.svg`     | The line glyphs, one `symbol` each, on a 24-unit box.                                                                                                                                                                                                                                                                                                                                                                                                   | Yes       |
+| `noise.svg`      | The grain `.brand-light` lays over the brand gradient.                                                                                                                                                                                                                                                                                                                                                                                                  | Yes       |
+| `icons/`         | The favicon (SVG, following the appearance; PNG and ICO where SVG is not taken), the home-screen icons and, in `icons/app/`, the application icons for a desktop app, made from the mark.                                                                                                                                                                                                                                                               | Yes       |
+| `LICENSE-mark`   | The mark's usage policy, which `icons/` is under.                                                                                                                                                                                                                                                                                                                                                                                                       | Yes       |
 
 Generated files are produced from the repository's `source/` and must not
 be edited here.
@@ -93,6 +93,49 @@ colour, underlined faintly until hovered, as in a document; `.link` gives
 the same look to a link that has a class. In a document, `.ref` is a
 reference, and `.ref--unresolved` one that resolves to nothing.
 
+### Navigation lists and avatars
+
+Use `.nav-list` for a list of destinations and `.nav-item` on each link
+or button. Wrap the label in `.nav-item__label` so it truncates without
+losing the end padding. An optional leading `.avatar` or `.glyph` keeps
+its size; a trailing `.count` stays visible. `aria-current="page"` marks
+the current destination; omit it or set it to `false` elsewhere.
+
+```html
+<nav aria-label="Places">
+  <details class="nav-section" open>
+    <summary class="nav-section__heading">
+      <span class="nav-item__label">Library</span>
+    </summary>
+    <ul class="nav-list">
+      <li>
+        <a class="nav-item" href="/library" aria-current="page">
+          <span class="avatar avatar--small avatar--square" aria-hidden="true">NT</span>
+          <span class="nav-item__label">Number theory</span>
+        </a>
+      </li>
+    </ul>
+  </details>
+</nav>
+```
+
+The native `details` and `summary` fold the section by keyboard as well
+as pointer. Lists keep ordinary link navigation and need no menu roles
+or JavaScript. Item and heading padding follows the density, leaving
+space above and below a full-size avatar too.
+
+`.avatar--small` is 24px in either density, so it fits within
+`--control-small-height`. It combines with `--square`, `--brand`, every
+tone and a child `img`; the other avatar sizes stay 34px and 42px.
+
+### Scrims
+
+`--scrim` is the translucent fill behind modal overlays, with a value
+for each appearance. `.scrim` applies it as a background, and
+`.dialog::backdrop` uses the same token. Place a scrim over the page and
+behind the drawer or panel; the product owns its positioning, stacking,
+dismissal and focus management.
+
 ### Icons
 
 `icons/` holds the favicon and home-screen icons, made from the mark.
@@ -112,6 +155,11 @@ A web app manifest lists `icon-192.png` and `icon-512.png`:
   { "src": "…/icons/icon-512.png", "sizes": "512x512", "type": "image/png" }
 ]
 ```
+
+`icons/app/` holds the application icon, a rounded square with room
+around it as macOS draws them: `icon.icns` for macOS, `icon.ico` for
+Windows, and PNG from 16 to 1024 pixels, which a desktop app's bundle
+takes as they are.
 
 ### The brand light
 
