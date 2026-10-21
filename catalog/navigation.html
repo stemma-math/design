@@ -89,7 +89,10 @@
                 <p>
                     A native disclosure groups destinations under a heading with an even hover box.
                     The summary works with Enter or Space and hides the links from the tab order
-                    when closed. Long headings use the same label as an item.
+                    when closed. Long headings use the same label as an item. Nested items use the
+                    smaller control height and font, with a quiet tree guide aligned under the
+                    heading's chevron. The guide is decorative; this remains ordinary link
+                    navigation, with no tree roles or extra keyboard rules.
                 </p>
                 <div class="specimen__api">
                     <code>details.nav-section</code><code>summary.nav-section__heading</code>
@@ -131,6 +134,93 @@
                                     <a class="nav-item" href="#nav-section">
                                         <span class="nav-item__label">Archive</span>
                                     </a>
+                                </li>
+                            </ul>
+                        </details>
+                    </nav>
+                </div>
+            </section>
+
+            <section class="specimen" id="nav-section-nested">
+                <h2>Nested navigation items</h2>
+                <p>
+                    A smaller step in height and type separates a section's destinations from a
+                    top-level item. A vertical guide and short ticks show the group. Avatars and
+                    counts retain their size; labels truncate before them. The guide follows the
+                    inline direction and the surface's border token.
+                </p>
+                <div class="specimen__api">
+                    <code>.nav-section &gt; .nav-list</code><code>.nav-item</code>
+                    <code>.nav-item__label</code><code>.avatar--small</code><code>.count</code>
+                </div>
+                <div class="specimen__stage">
+                    <nav aria-label="Navigation hierarchy" style="width: min(100%, 280px)">
+                        <a class="nav-item" href="#nav-section-nested"
+                            ><span class="nav-item__label">Top-level destination</span></a
+                        >
+                        <details class="nav-section" open>
+                            <summary class="nav-section__heading">
+                                <span class="nav-item__label">People</span>
+                            </summary>
+                            <ul class="nav-list">
+                                <li>
+                                    <a
+                                        class="nav-item"
+                                        href="#nav-section-nested"
+                                        aria-current="page"
+                                        ><span
+                                            class="avatar avatar--small avatar--teal"
+                                            aria-hidden="true"
+                                            >E</span
+                                        ><span class="nav-item__label">Emmy Noether</span
+                                        ><span class="count">3</span></a
+                                    >
+                                </li>
+                                <li>
+                                    <a class="nav-item" href="#nav-section-nested"
+                                        ><span class="nav-item__label"
+                                            >A longer destination label that truncates inside the
+                                            section</span
+                                        ><span class="count">12</span></a
+                                    >
+                                </li>
+                                <li>
+                                    <button class="nav-item" disabled>
+                                        <span class="nav-item__label">Unavailable destination</span>
+                                    </button>
+                                </li>
+                            </ul>
+                        </details>
+                    </nav>
+                    <nav
+                        class="brand-surface"
+                        aria-label="Navigation hierarchy on navy"
+                        style="
+                            width: min(100%, 280px);
+                            padding: var(--space-3);
+                            border-radius: var(--radius-md);
+                        "
+                    >
+                        <a class="nav-item" href="#nav-section-nested"
+                            ><span class="nav-item__label">Top-level destination</span></a
+                        >
+                        <details class="nav-section" open>
+                            <summary class="nav-section__heading">
+                                <span class="nav-item__label">Places</span>
+                            </summary>
+                            <ul class="nav-list">
+                                <li>
+                                    <a
+                                        class="nav-item"
+                                        href="#nav-section-nested"
+                                        aria-current="page"
+                                        ><span class="nav-item__label">Library</span></a
+                                    >
+                                </li>
+                                <li>
+                                    <a class="nav-item" href="#nav-section-nested"
+                                        ><span class="nav-item__label">Drafts</span></a
+                                    >
                                 </li>
                             </ul>
                         </details>
@@ -199,6 +289,65 @@
                                     <use href="../targets/web/glyphs.svg#add" />
                                 </svg>
                             </button>
+                        </div>
+                    </nav>
+                </div>
+            </section>
+
+            <section class="specimen" id="nav-section-actions">
+                <h2>Navigation heading with several actions</h2>
+                <p>
+                    Group one or more trailing actions outside the disclosure. Their actual width
+                    reserves space beside the heading, while the destinations still span the
+                    section. Hover and keyboard focus cover the heading row, not its destinations.
+                    The arrow opens the full list; the chevron only folds this section.
+                </p>
+                <div class="specimen__api">
+                    <code>.nav-section__head</code><code>.nav-section__actions</code>
+                    <code>.nav-section__action</code><code>.nav-section</code>
+                    <code>.nav-section__heading</code><code>glyphs.svg#arrow-right</code>
+                </div>
+                <div class="specimen__stage">
+                    <nav aria-label="Section with several actions" style="width: min(100%, 280px)">
+                        <div class="nav-section__head">
+                            <details class="nav-section" open>
+                                <summary class="nav-section__heading">
+                                    <span class="nav-item__label"
+                                        >Places with a long section heading</span
+                                    >
+                                </summary>
+                                <ul class="nav-list">
+                                    <li>
+                                        <a class="nav-item" href="#nav-section-actions"
+                                            ><span class="nav-item__label">Library</span></a
+                                        >
+                                    </li>
+                                    <li>
+                                        <a class="nav-item" href="#nav-section-actions"
+                                            ><span class="nav-item__label">Drafts</span
+                                            ><span class="count">4</span></a
+                                        >
+                                    </li>
+                                </ul>
+                            </details>
+                            <div class="nav-section__actions">
+                                <button
+                                    type="button"
+                                    class="button button--icon button--quiet nav-section__action"
+                                    aria-label="Add a place"
+                                >
+                                    <svg class="glyph" aria-hidden="true">
+                                        <use href="../targets/web/glyphs.svg#add" />
+                                    </svg>
+                                </button>
+                                <a
+                                    class="button button--icon button--quiet nav-section__action"
+                                    href="#nav-section-nested"
+                                    aria-label="All places"
+                                    ><svg class="glyph" aria-hidden="true">
+                                        <use href="../targets/web/glyphs.svg#arrow-right" /></svg
+                                ></a>
+                            </div>
                         </div>
                     </nav>
                 </div>
@@ -291,6 +440,87 @@
                         </div>
                     </div>
                     <p class="events" data-events>Choose an item.</p>
+                </div>
+            </section>
+
+            <section class="specimen" id="menu-row">
+                <h2>Menu destination with an action</h2>
+                <p>
+                    A destination fills the row beside a separate icon action. Each has the menu's
+                    hover and keyboard focus. In a menu element, both participate in arrow-key
+                    navigation and send the same select event; disabled targets are skipped. Name
+                    icon-only actions for assistive technology, and wrap long text in a label.
+                </p>
+                <div class="specimen__api">
+                    <code>.menu__row</code><code>.menu__item</code><code>.menu__action</code>
+                    <code>.menu__label</code><code>&lt;stemma-menu&gt;</code>
+                </div>
+                <div class="specimen__stage">
+                    <div class="menu" style="width: min(100%, 280px)">
+                        <p class="menu__heading">Destinations</p>
+                        <a class="menu__item" href="#menu-row">Library</a>
+                        <hr class="menu__separator" />
+                        <div class="menu__row">
+                            <a class="menu__item" href="#nav-list"
+                                ><span class="menu__label"
+                                    >All destinations in the collection</span
+                                ></a
+                            >
+                            <button
+                                type="button"
+                                class="menu__action"
+                                aria-label="Add a destination"
+                            >
+                                <svg class="glyph" aria-hidden="true">
+                                    <use href="../targets/web/glyphs.svg#add" />
+                                </svg>
+                            </button>
+                        </div>
+                    </div>
+                    <div
+                        class="brand-surface"
+                        style="padding: var(--space-4); border-radius: var(--radius-md)"
+                    >
+                        <stemma-menu id="row-menu">
+                            <button class="button" type="button">Open menu on navy</button>
+                            <div class="menu" style="width: 280px">
+                                <button class="menu__item" data-value="recent">
+                                    Recent destinations
+                                </button>
+                                <hr class="menu__separator" />
+                                <div class="menu__row">
+                                    <a class="menu__item" href="#nav-list" data-value="all"
+                                        ><span class="menu__label">All destinations</span></a
+                                    >
+                                    <button
+                                        type="button"
+                                        class="menu__action"
+                                        data-value="add"
+                                        aria-label="Add a destination"
+                                    >
+                                        <svg class="glyph" aria-hidden="true">
+                                            <use href="../targets/web/glyphs.svg#add" />
+                                        </svg>
+                                    </button>
+                                </div>
+                                <div class="menu__row">
+                                    <a class="menu__item" href="#menu-row" data-value="archive"
+                                        ><span class="menu__label">Archived destinations</span></a
+                                    >
+                                    <button
+                                        type="button"
+                                        class="menu__action"
+                                        disabled
+                                        aria-label="Add an archived destination"
+                                    >
+                                        <svg class="glyph" aria-hidden="true">
+                                            <use href="../targets/web/glyphs.svg#add" />
+                                        </svg>
+                                    </button>
+                                </div>
+                            </div>
+                        </stemma-menu>
+                    </div>
                 </div>
             </section>
 

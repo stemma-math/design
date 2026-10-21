@@ -155,6 +155,79 @@
                 </div>
             </section>
 
+            <section class="specimen" id="account">
+                <h2>Account row</h2>
+                <p>
+                    A person link with an avatar, a name and a secondary line, beside an independent
+                    icon action. The link has one hover surface with even spacing around its avatar
+                    and text; the action keeps its own target. Secondary text can be quiet text or a
+                    non-interactive chip. Long names and secondary lines truncate.
+                </p>
+                <div class="specimen__api">
+                    <code>.account</code><code>.account__person</code><code>.account__details</code>
+                    <code>.account__name</code><code>.account__meta</code
+                    ><code>.account__action</code> <code>.avatar</code><code>.chip</code
+                    ><code>.button.button--icon.button--quiet</code>
+                </div>
+                <div class="specimen__stage">
+                    <div class="card" style="width: min(100%, 340px); padding: var(--space-2)">
+                        <div class="account">
+                            <a class="account__person" href="#account">
+                                <span class="avatar avatar--teal" aria-hidden="true">E</span>
+                                <span class="account__details">
+                                    <span class="account__name">Emmy Noether</span>
+                                    <span class="account__meta"
+                                        ><span class="chip chip--neutral">Maintainer</span></span
+                                    >
+                                </span>
+                            </a>
+                            <button
+                                type="button"
+                                class="button button--icon button--quiet account__action"
+                                aria-label="Sign out"
+                            >
+                                <svg class="glyph" aria-hidden="true">
+                                    <use href="../targets/web/glyphs.svg#log-out" />
+                                </svg>
+                            </button>
+                        </div>
+                    </div>
+                    <div
+                        class="brand-light brand-surface"
+                        style="
+                            box-sizing: border-box;
+                            width: min(100%, 340px);
+                            padding: var(--space-2);
+                            border-radius: var(--radius-xl);
+                            overflow: hidden;
+                        "
+                    >
+                        <div class="account">
+                            <a class="account__person" href="#account">
+                                <span class="avatar avatar--violet" aria-hidden="true">A</span>
+                                <span class="account__details">
+                                    <span class="account__name"
+                                        >Ada Lovelace with a longer display name</span
+                                    >
+                                    <span class="account__meta"
+                                        >A longer secondary line that stays on one line</span
+                                    >
+                                </span>
+                            </a>
+                            <button
+                                type="button"
+                                class="button button--icon button--quiet account__action"
+                                aria-label="Account settings"
+                            >
+                                <svg class="glyph" aria-hidden="true">
+                                    <use href="../targets/web/glyphs.svg#settings" />
+                                </svg>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
             <section class="specimen" id="card">
                 <h2>Card</h2>
                 <p>

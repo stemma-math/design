@@ -326,12 +326,12 @@
         padding: var(--control-block) var(--control-inline);
         font: 400 var(--control-font) / 1.4 var(--font-ui);
         color: var(--ink-1);
-        background: var(--surface-field);
+        background-color: var(--surface-field);
         border: 1px solid var(--border-strong);
         border-radius: var(--radius-md);
         transition:
             border-color var(--dur-ui) var(--ease-out),
-            background var(--dur-ui) var(--ease-out),
+            background-color var(--dur-ui) var(--ease-out),
             box-shadow var(--dur-ui) var(--ease-out);
     }
 
@@ -341,13 +341,13 @@
 
     .input:focus {
         outline: none;
-        background: var(--surface-card);
+        background-color: var(--surface-card);
         border-color: var(--accent);
         box-shadow: var(--ring-input);
     }
 
     .input[aria-invalid="true"] {
-        background: color-mix(in srgb, var(--danger) 5%, var(--surface-field));
+        background-color: color-mix(in srgb, var(--danger) 5%, var(--surface-field));
         border-color: var(--danger);
     }
 
@@ -366,11 +366,15 @@
 
     select.input {
         appearance: none;
-        padding-right: calc(var(--control-inline) + 20px);
+        padding-inline-end: calc(var(--control-inline) + 20px);
         background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23838c9f' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='m7 10 5 5 5-5'/%3E%3C/svg%3E");
         background-repeat: no-repeat;
         background-position: right 10px center;
         background-size: 16px;
+    }
+
+    select.input:dir(rtl) {
+        background-position: left 10px center;
     }
 
     /* Verbatim input: codes, identifiers, source. */
@@ -1036,6 +1040,71 @@
         border-radius: inherit;
     }
 
+    /* ── Account ───────────────────────────────────────────────────────
+     *
+     * One person link, with an avatar and two lines, and an independent
+     * icon action. The link owns its hover box; the action stays outside. */
+
+    .account {
+        display: flex;
+        align-items: center;
+        gap: var(--space-1);
+        min-width: 0;
+    }
+
+    .account__person {
+        box-sizing: border-box;
+        display: flex;
+        flex: 1;
+        align-items: center;
+        gap: var(--space-3);
+        min-width: 0;
+        padding: var(--control-block) var(--control-inline);
+        color: var(--ink-1);
+        text-decoration: none;
+        border-radius: var(--radius-md);
+        transition: background-color var(--dur-ui) var(--ease-out);
+    }
+
+    .account__person:hover {
+        background-color: var(--fill-muted);
+    }
+
+    .account__person:focus-visible {
+        outline-offset: -2px;
+    }
+
+    .account__details {
+        display: flex;
+        flex: 1;
+        flex-direction: column;
+        gap: var(--space-1);
+        min-width: 0;
+    }
+
+    .account__name,
+    .account__meta {
+        display: block;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        white-space: nowrap;
+    }
+
+    .account__name {
+        font: 500 var(--control-font) / 1.3 var(--font-ui);
+    }
+
+    .account__meta {
+        font: 400 var(--control-small-font) / 1.3 var(--font-ui);
+        color: var(--ink-3);
+    }
+
+    .account__action {
+        flex: 0 0 var(--control-height);
+        width: var(--control-height);
+        height: var(--control-height);
+    }
+
     /* ── Card ──────────────────────────────────────────────────────────
      *
      * A surface on the page. `--empty` is an empty state or an invitation
@@ -1274,23 +1343,90 @@
 
     .nav-section > .nav-list {
         margin-block-start: var(--space-1);
+        padding-inline-start: calc(var(--control-inline) + 16px);
     }
 
-    /* The details and the action are siblings. The action stays visible
-     * when the section closes, without becoming part of the summary. */
+    /* The guide sits under the heading's chevron. Each segment reaches
+     * the next item across the list gap; the last ends at its own tick. */
+    .nav-section > .nav-list > li {
+        position: relative;
+    }
+
+    .nav-section > .nav-list > li::before,
+    .nav-section > .nav-list > li::after {
+        position: absolute;
+        inset-inline-start: -12px;
+        content: "";
+        pointer-events: none;
+    }
+
+    .nav-section > .nav-list > li::before {
+        inset-block: 0 calc(-1 * var(--space-1));
+        border-inline-start: 1px solid var(--border-strong);
+    }
+
+    .nav-section > .nav-list > li:last-child::before {
+        inset-block-end: 50%;
+    }
+
+    .nav-section > .nav-list > li::after {
+        inset-block-start: 50%;
+        width: 12px;
+        border-block-start: 1px solid var(--border-strong);
+    }
+
+    .nav-section > .nav-list > li > .nav-item {
+        min-height: var(--control-small-height);
+        padding-block: calc(var(--control-block) / 2);
+        font-size: var(--control-small-font);
+    }
+
+    /* A shared column reserves exactly the width of the actions, without
+     * counting them. The details content spans both columns; its native
+     * content slot keeps the destinations hidden while closed. */
     .nav-section__head {
+        position: relative;
+        isolation: isolate;
         display: grid;
         grid-template-columns: minmax(0, 1fr) auto;
         min-width: 0;
     }
 
     .nav-section__head > .nav-section {
+        display: grid;
+        grid-template-columns: subgrid;
         grid-area: 1 / 1 / 2 / -1;
         min-width: 0;
     }
 
     .nav-section__head > .nav-section > .nav-section__heading {
-        padding-inline-end: calc(var(--control-height) + var(--space-2));
+        grid-column: 1;
+    }
+
+    .nav-section__head > .nav-section::details-content,
+    .nav-section__head > .nav-section > .nav-list {
+        grid-column: 1 / -1;
+        min-width: 0;
+    }
+
+    .nav-section__head::before {
+        position: absolute;
+        inset-block-start: 0;
+        inset-inline: 0;
+        z-index: -1;
+        height: var(--control-height);
+        content: "";
+        border-radius: var(--radius-md);
+        pointer-events: none;
+    }
+
+    .nav-section__actions {
+        z-index: 1;
+        display: flex;
+        align-items: center;
+        gap: var(--space-1);
+        grid-area: 1 / 2;
+        align-self: start;
     }
 
     .nav-section__action {
@@ -1301,13 +1437,19 @@
         height: var(--control-height);
     }
 
-    .nav-section__head:has(> .nav-section__action:hover) > .nav-section > .nav-section__heading {
+    .nav-section__head:has(
+            > .nav-section > .nav-section__heading:hover,
+            > .nav-section__action:hover,
+            > .nav-section__actions > .nav-section__action:hover
+        )::before {
         background: var(--fill-muted);
     }
 
-    .nav-section__head:has(> .nav-section__action:focus-visible)
-        > .nav-section
-        > .nav-section__heading {
+    .nav-section__head:has(
+            > .nav-section > .nav-section__heading:focus-visible,
+            > .nav-section__action:focus-visible,
+            > .nav-section__actions > .nav-section__action:focus-visible
+        )::before {
         outline: 2px solid var(--focus-ring);
         outline-offset: -2px;
     }
@@ -1331,7 +1473,8 @@
         box-shadow: var(--shadow-float);
     }
 
-    .menu__item {
+    .menu__item,
+    .menu__action {
         box-sizing: border-box;
         display: flex;
         align-items: center;
@@ -1350,7 +1493,9 @@
     }
 
     .menu__item:hover,
-    .menu__item:focus-visible {
+    .menu__item:focus-visible,
+    .menu__action:hover,
+    .menu__action:focus-visible {
         background: var(--fill-muted);
         outline-offset: -2px;
     }
@@ -1361,7 +1506,10 @@
         color: var(--accent-text);
     }
 
-    .menu__item:disabled {
+    .menu__item:disabled,
+    .menu__item[aria-disabled="true"],
+    .menu__action:disabled,
+    .menu__action[aria-disabled="true"] {
         color: var(--ink-disabled);
         background: transparent;
         cursor: not-allowed;
@@ -1375,7 +1523,8 @@
         background: color-mix(in srgb, var(--tone) var(--mix-soft), transparent);
     }
 
-    .menu__item .glyph {
+    .menu__item .glyph,
+    .menu__action .glyph {
         width: 16px;
         height: 16px;
         color: var(--ink-3);
@@ -1383,6 +1532,34 @@
 
     .menu__item--danger .glyph {
         color: inherit;
+    }
+
+    /* Two independent targets on one menu line: the destination grows,
+     * while its sibling icon action keeps an ordinary menu item's height. */
+    .menu__row {
+        display: flex;
+        gap: 2px;
+        min-width: 0;
+    }
+
+    .menu__row > .menu__item {
+        flex: 1;
+        min-width: 0;
+    }
+
+    .menu__action {
+        flex: 0 0 36px;
+        justify-content: center;
+        width: 36px;
+        padding: 0;
+    }
+
+    .menu__label {
+        flex: 1;
+        min-width: 0;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        white-space: nowrap;
     }
 
     .menu__hint {

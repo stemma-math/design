@@ -7,6 +7,7 @@ const glyphs = {
     "add": "<path d=\"M12 5v14M5 12h14\"/>",
     "alert": "<circle cx=\"12\" cy=\"12\" r=\"9\"/><path d=\"M12 7.5v5.5M12 16.5v.5\"/>",
     "arrow-left": "<path d=\"M19 12H5M11 6l-6 6 6 6\"/>",
+    "arrow-right": "<path d=\"M5 12h14M13 6l6 6-6 6\"/>",
     "attach": "<path d=\"M9.5 7.5V15a2 2 0 0 0 4 0V6.75a3.75 3.75 0 0 0-7.5 0v8.75a5.5 5.5 0 0 0 11 0V8\"/>",
     "blocks": "<rect x=\"4\" y=\"4\" width=\"16\" height=\"6\" rx=\"1.5\"/><rect x=\"4\" y=\"14\" width=\"16\" height=\"6\" rx=\"1.5\"/>",
     "book": "<path d=\"M5 4h11a3 3 0 0 1 3 3v13H8a3 3 0 0 1-3-3z\"/><path d=\"M5 17a3 3 0 0 1 3-3h11\"/>",

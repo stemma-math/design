@@ -6,20 +6,20 @@ no build step; link the stylesheets, or import them through a bundler.
 
 ## What it provides
 
-| File             | What it holds                                                                                                                                                                                                                                                                                                                                                                                                                                           | Generated |
-| ---------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | --------- |
-| `index.css`      | Every file below, imported in order.                                                                                                                                                                                                                                                                                                                                                                                                                    | No        |
-| `fonts.css`      | `@font-face` rules for New Computer Modern, New Computer Modern Math, Instrument Sans, Libertinus Sans and JuliaMono. Text faces are split by `unicode-range`; the math face and JuliaMono are whole.                                                                                                                                                                                                                                                   | Yes       |
-| `fonts/`         | The WOFF2 files `fonts.css` refers to, one folder per family, each with its licence.                                                                                                                                                                                                                                                                                                                                                                    | Yes       |
-| `tokens.css`     | Every token as a custom property on `:root`: colour ramps, ink, surfaces, the six intents, the categorical tones, faces, type, space, radius, shadow, motion and density. Light and dark.                                                                                                                                                                                                                                                               | Yes       |
-| `base.css`       | The order of the cascade layers, the page's defaults, links in interface text, focus, reduced motion, and the modifiers that choose a component's tone.                                                                                                                                                                                                                                                                                                 | No        |
-| `document.css`   | Typography for documents inside `.document`: headings, prose, lists, tables, quotations, code, figures, references, resolved or not, and MathML formulas.                                                                                                                                                                                                                                                                                               | No        |
-| `code.css`       | Colours for highlighted code, from the `--code-*` tokens: the variables of Shiki's CSS variables theme, and the classes of highlight.js.                                                                                                                                                                                                                                                                                                                | No        |
-| `components.css` | Link, button, field, input, choice, switch, range, stepper, select, fieldset, key, chip, count, avatar, card, table, post, copy block, navigation list and folding section, menu, disclosure, scrim, dialog, message, toast, tooltip, segmented control, tabs, breadcrumbs, skeleton, spinner, progress, highlight and the wordmark. The brand light without script (`.brand-light`), and the layout of the elements in `@stemma-math/design-elements`. | No        |
-| `glyphs.svg`     | The line glyphs, one `symbol` each, on a 24-unit box.                                                                                                                                                                                                                                                                                                                                                                                                   | Yes       |
-| `noise.svg`      | The grain `.brand-light` lays over the brand gradient.                                                                                                                                                                                                                                                                                                                                                                                                  | Yes       |
-| `icons/`         | The favicon (SVG, following the appearance; PNG and ICO where SVG is not taken), the home-screen icons and, in `icons/app/`, the application icons for a desktop app, made from the mark.                                                                                                                                                                                                                                                               | Yes       |
-| `LICENSE-mark`   | The mark's usage policy, which `icons/` is under.                                                                                                                                                                                                                                                                                                                                                                                                       | Yes       |
+| File             | What it holds                                                                                                                                                                                                                                                                                                                                                                                                                                                        | Generated |
+| ---------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | --------- |
+| `index.css`      | Every file below, imported in order.                                                                                                                                                                                                                                                                                                                                                                                                                                 | No        |
+| `fonts.css`      | `@font-face` rules for New Computer Modern, New Computer Modern Math, Instrument Sans, Libertinus Sans and JuliaMono. Text faces are split by `unicode-range`; the math face and JuliaMono are whole.                                                                                                                                                                                                                                                                | Yes       |
+| `fonts/`         | The WOFF2 files `fonts.css` refers to, one folder per family, each with its licence.                                                                                                                                                                                                                                                                                                                                                                                 | Yes       |
+| `tokens.css`     | Every token as a custom property on `:root`: colour ramps, ink, surfaces, the six intents, the categorical tones, faces, type, space, radius, shadow, motion and density. Light and dark.                                                                                                                                                                                                                                                                            | Yes       |
+| `base.css`       | The order of the cascade layers, the page's defaults, links in interface text, focus, reduced motion, and the modifiers that choose a component's tone.                                                                                                                                                                                                                                                                                                              | No        |
+| `document.css`   | Typography for documents inside `.document`: headings, prose, lists, tables, quotations, code, figures, references, resolved or not, and MathML formulas.                                                                                                                                                                                                                                                                                                            | No        |
+| `code.css`       | Colours for highlighted code, from the `--code-*` tokens: the variables of Shiki's CSS variables theme, and the classes of highlight.js.                                                                                                                                                                                                                                                                                                                             | No        |
+| `components.css` | Link, button, field, input, choice, switch, range, stepper, select, fieldset, key, chip, count, avatar, account row, card, table, post, copy block, navigation list and folding section, menu, disclosure, scrim, dialog, message, toast, tooltip, segmented control, tabs, breadcrumbs, skeleton, spinner, progress, highlight and the wordmark. The brand light without script (`.brand-light`), and the layout of the elements in `@stemma-math/design-elements`. | No        |
+| `glyphs.svg`     | The line glyphs, one `symbol` each, on a 24-unit box.                                                                                                                                                                                                                                                                                                                                                                                                                | Yes       |
+| `noise.svg`      | The grain `.brand-light` lays over the brand gradient.                                                                                                                                                                                                                                                                                                                                                                                                               | Yes       |
+| `icons/`         | The favicon (SVG, following the appearance; PNG and ICO where SVG is not taken), the home-screen icons and, in `icons/app/`, the application icons for a desktop app, made from the mark.                                                                                                                                                                                                                                                                            | Yes       |
+| `LICENSE-mark`   | The mark's usage policy, which `icons/` is under.                                                                                                                                                                                                                                                                                                                                                                                                                    | Yes       |
 
 Generated files are produced from the repository's `source/` and must not
 be edited here.
@@ -70,6 +70,14 @@ uses `--scrollbar-thumb` and becomes `--scrollbar-thumb-hover` on hover.
 Both follow the local appearance, including brand surfaces. Standard
 scrollbar properties are used with WebKit pseudo-elements as a fallback;
 forced colours retain the system palette.
+
+### Native selects
+
+`select.input` keeps the browser's native picker. Its chevron stays at
+the inline end during focus, invalid states and blur; surface changes
+transition only `background-color`, leaving the image and its position
+unchanged. Use a label and `aria-describedby` for any hint or error, just
+as with the other `.input` fields.
 
 ### Intents and tones
 
@@ -159,6 +167,13 @@ as pointer. Lists keep ordinary link navigation and need no menu roles
 or JavaScript. Item and heading padding follows the density, leaving
 space above and below a full-size avatar too.
 
+Items directly inside a section's `.nav-list` use `--control-small-height`
+and `--control-small-font`. A decorative guide sits under the heading's
+chevron, with a tick at each item and an end at the last one. The guide
+uses the local border colour and mirrors in RTL. These are ordinary
+links and disclosures, not an ARIA tree; native Tab, Enter and Space
+behaviour stays the same.
+
 For a trailing heading action, wrap the details and a sibling icon button
 in `.nav-section__head`. Add `.nav-section__action` to the button. The
 heading's hover and focus cover the whole row, while the action keeps its
@@ -185,9 +200,79 @@ summary, and give it an accessible name:
 </div>
 ```
 
+For several actions, replace the single trailing button with a
+`.nav-section__actions` wrapper holding the `.nav-section__action` links
+or buttons. The heading reserves their actual combined width, including
+the gap, while the section's items still fill the width below. Actions
+remain outside the summary and available when the section is closed.
+The existing single-action markup works as before. This layout uses
+CSS subgrid and `::details-content` to share the available columns.
+
+```html
+<div class="nav-section__actions">
+  <button type="button" class="button button--icon nav-section__action" aria-label="Add a place">
+    <svg class="glyph" aria-hidden="true"><use href="…/glyphs.svg#add" /></svg>
+  </button>
+  <a class="button button--icon nav-section__action" href="/places" aria-label="All places">
+    <svg class="glyph" aria-hidden="true"><use href="…/glyphs.svg#arrow-right" /></svg>
+  </a>
+</div>
+```
+
 `.avatar--small` is 24px in either density, so it fits within
 `--control-small-height`. It combines with `--square`, `--brand`, every
 tone and a child `img`; the other avatar sizes stay 34px and 42px.
+
+### Account rows
+
+`.account` holds an `.account__person` link and a separate icon button
+with `.account__action`. The link contains an `.avatar` and an
+`.account__details` stack, with `.account__name` and `.account__meta`.
+The secondary line can hold quiet text or a non-interactive `.chip`.
+Names and secondary lines truncate without shrinking the avatar or action.
+The person link's hover and focus cover only its own evenly padded box.
+Both targets follow the local card or `.brand-surface` tokens and density.
+
+```html
+<div class="account">
+  <a class="account__person" href="/account">
+    <span class="avatar" aria-hidden="true">E</span>
+    <span class="account__details">
+      <span class="account__name">Emmy Noether</span>
+      <span class="account__meta"><span class="chip chip--neutral">Maintainer</span></span>
+    </span>
+  </a>
+  <button
+    type="button"
+    class="button button--icon button--quiet account__action"
+    aria-label="Sign out"
+  >
+    <svg class="glyph" aria-hidden="true"><use href="…/glyphs.svg#log-out" /></svg>
+  </button>
+</div>
+```
+
+### Menu rows with an action
+
+Place a `.menu__item` and a `.menu__action` beside each other in a
+`.menu__row`. The item fills the width; the icon action keeps a square
+target. Both use the menu's hover and focus styles. Use `.menu__label`
+around text that should truncate, and give an icon-only action an
+accessible name. The same classes work inside `.brand-surface`.
+
+```html
+<div class="menu__row">
+  <a class="menu__item" href="/places"><span class="menu__label">All places</span></a>
+  <button type="button" class="menu__action" aria-label="Add a place" data-value="add">
+    <svg class="glyph" aria-hidden="true"><use href="…/glyphs.svg#add" /></svg>
+  </button>
+</div>
+```
+
+Inside `<stemma-menu>`, both targets are menu items: Up, Down, Home and
+End visit them in document order, skipping disabled targets. Choosing
+either emits `select` with its `data-value` and closes the menu. Outside
+the element, they keep native link and button behaviour.
 
 ### Scrims
 
