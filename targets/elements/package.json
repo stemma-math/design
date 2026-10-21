@@ -1,6 +1,6 @@
 {
   "name": "@stemma-math/design-elements",
-  "version": "0.8.1",
+  "version": "0.9.0",
   "description": "Stemma's design system, behaviour: framework-agnostic custom elements over the classes of @stemma-math/design, the brand light and the live mark.",
   "license": "MIT AND LicenseRef-Stemma-Mark",
   "repository": {
@@ -11,7 +11,7 @@
   "type": "module",
   "sideEffects": true,
   "peerDependencies": {
-    "@stemma-math/design": "0.8.1"
+    "@stemma-math/design": "0.9.0"
   },
   "exports": {
     ".": {
