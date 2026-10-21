@@ -255,6 +255,33 @@ Both targets follow the local card or `.brand-surface` tokens and density.
 </div>
 ```
 
+To make the whole account row open a menu, use an
+`.account.account--menu` button as the trigger inside `<stemma-menu>`.
+It has the same padding and avatar/text spacing as the person link, with
+one hover surface. A trailing `.account__chevron` rotates with
+`aria-expanded`. Names still truncate, and the secondary line is optional.
+Add `match-width` to the element when the menu should follow the row's
+width in a narrow panel; it stays inside the viewport and resizes with
+the row while open. This works on cards and `.brand-surface`.
+
+```html
+<stemma-menu match-width>
+  <button type="button" class="account account--menu">
+    <span class="avatar" aria-hidden="true">E</span>
+    <span class="account__details">
+      <span class="account__name">Emmy Noether</span>
+    </span>
+    <svg class="glyph account__chevron" aria-hidden="true">
+      <use href="…/glyphs.svg#chevron-down" />
+    </svg>
+  </button>
+  <div class="menu">
+    <a class="menu__item" href="/profile">Profile</a>
+    <button type="button" class="menu__item" data-value="sign-out">Sign out</button>
+  </div>
+</stemma-menu>
+```
+
 ### Person menu headers
 
 `.menu__header` presents a person's identity before the menu items. Place

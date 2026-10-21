@@ -228,6 +228,119 @@
                 </div>
             </section>
 
+            <section class="specimen" id="account-menu">
+                <h2>Account row as a menu button</h2>
+                <p>
+                    One button opens the person's menu, with the same avatar and text spacing as an
+                    account link. The name truncates and the trailing chevron turns while open. The
+                    optional matching width keeps the menu aligned with a narrow panel; it follows
+                    the row when the panel resizes. Keyboard selection and Escape return focus to
+                    the row.
+                </p>
+                <div class="specimen__api">
+                    <code>.account.account--menu</code><code>.account__details</code
+                    ><code>.account__name</code> <code>.account__meta</code
+                    ><code>.account__chevron</code><code>&lt;stemma-menu match-width&gt;</code>
+                    <code>matchWidth</code><code>.menu__header</code><code>aria-expanded</code>
+                </div>
+                <div class="specimen__stage">
+                    <div class="card" style="width: min(100%, 340px); padding: var(--space-2)">
+                        <stemma-menu match-width id="account-menu-card">
+                            <button type="button" class="account account--menu">
+                                <span class="avatar avatar--teal" aria-hidden="true">E</span>
+                                <span class="account__details">
+                                    <span class="account__name">Emmy Noether</span>
+                                    <span class="account__meta">@emmy</span>
+                                </span>
+                                <svg class="glyph account__chevron" aria-hidden="true">
+                                    <use href="../targets/web/glyphs.svg#chevron-down" />
+                                </svg>
+                            </button>
+                            <div class="menu" aria-labelledby="account-card-name">
+                                <div class="menu__header">
+                                    <span class="avatar avatar--teal" aria-hidden="true">E</span>
+                                    <div class="menu__identity">
+                                        <span class="menu__name" id="account-card-name"
+                                            >Emmy Noether</span
+                                        >
+                                        <span class="menu__meta">@emmy · Maintainer</span>
+                                    </div>
+                                </div>
+                                <hr class="menu__separator" />
+                                <a class="menu__item" href="#account-menu" data-value="profile"
+                                    ><svg class="glyph" aria-hidden="true">
+                                        <use href="../targets/web/glyphs.svg#person" /></svg
+                                    >Profile</a
+                                >
+                                <button type="button" class="menu__item" data-value="settings">
+                                    Settings
+                                </button>
+                                <hr class="menu__separator" />
+                                <button
+                                    type="button"
+                                    class="menu__item menu__item--danger"
+                                    data-value="sign-out"
+                                >
+                                    Sign out
+                                </button>
+                            </div>
+                        </stemma-menu>
+                    </div>
+                    <div
+                        class="brand-light brand-surface"
+                        style="
+                            box-sizing: border-box;
+                            width: min(100%, 340px);
+                            padding: var(--space-2);
+                            border-radius: var(--radius-xl);
+                            overflow: hidden;
+                        "
+                    >
+                        <stemma-menu match-width id="account-menu-brand">
+                            <button type="button" class="account account--menu">
+                                <span class="avatar avatar--violet" aria-hidden="true">A</span>
+                                <span class="account__details">
+                                    <span class="account__name"
+                                        >Ada Lovelace with a longer display name</span
+                                    >
+                                </span>
+                                <svg class="glyph account__chevron" aria-hidden="true">
+                                    <use href="../targets/web/glyphs.svg#chevron-down" />
+                                </svg>
+                            </button>
+                            <div class="menu" aria-labelledby="account-brand-name">
+                                <div class="menu__header">
+                                    <span class="avatar avatar--violet" aria-hidden="true">A</span>
+                                    <div class="menu__identity">
+                                        <span class="menu__name" id="account-brand-name"
+                                            >Ada Lovelace with a longer display name</span
+                                        >
+                                        <span class="menu__meta">@ada-with-a-longer-handle</span>
+                                    </div>
+                                </div>
+                                <hr class="menu__separator" />
+                                <a class="menu__item" href="#account-menu" data-value="profile"
+                                    ><svg class="glyph" aria-hidden="true">
+                                        <use href="../targets/web/glyphs.svg#person" /></svg
+                                    >Profile</a
+                                >
+                                <button type="button" class="menu__item" data-value="settings">
+                                    Settings
+                                </button>
+                                <hr class="menu__separator" />
+                                <button
+                                    type="button"
+                                    class="menu__item menu__item--danger"
+                                    data-value="sign-out"
+                                >
+                                    Sign out
+                                </button>
+                            </div>
+                        </stemma-menu>
+                    </div>
+                </div>
+            </section>
+
             <section class="specimen" id="card">
                 <h2>Card</h2>
                 <p>

@@ -1052,7 +1052,8 @@
         min-width: 0;
     }
 
-    .account__person {
+    .account__person,
+    .account--menu {
         box-sizing: border-box;
         display: flex;
         flex: 1;
@@ -1066,11 +1067,14 @@
         transition: background-color var(--dur-ui) var(--ease-out);
     }
 
-    .account__person:hover {
+    .account__person:hover,
+    .account--menu:hover,
+    .account--menu[aria-expanded="true"] {
         background-color: var(--fill-muted);
     }
 
-    .account__person:focus-visible {
+    .account__person:focus-visible,
+    .account--menu:focus-visible {
         outline-offset: -2px;
     }
 
@@ -1103,6 +1107,41 @@
         flex: 0 0 var(--control-height);
         width: var(--control-height);
         height: var(--control-height);
+    }
+
+    /* One button owns the entire row when the account opens a menu. */
+    .account--menu {
+        width: 100%;
+        min-height: var(--control-height);
+        margin: 0;
+        font: inherit;
+        text-align: start;
+        background: transparent;
+        border: 0;
+        appearance: none;
+        cursor: pointer;
+    }
+
+    .account--menu:disabled {
+        color: var(--ink-disabled);
+        background: transparent;
+        cursor: not-allowed;
+    }
+
+    .account__chevron {
+        flex-shrink: 0;
+        color: var(--ink-3);
+        transition: transform var(--dur-ui) var(--ease-out);
+    }
+
+    .account--menu[aria-expanded="true"] > .account__chevron {
+        transform: rotate(180deg);
+    }
+
+    stemma-menu[match-width],
+    stemma-menu:has(> .account--menu) {
+        display: block;
+        min-width: 0;
     }
 
     /* ── Card ──────────────────────────────────────────────────────────
@@ -1471,6 +1510,12 @@
         border: 1px solid var(--border);
         border-radius: 12px;
         box-shadow: var(--shadow-float);
+    }
+
+    stemma-menu[match-width] > .menu {
+        width: var(--menu-anchor-width);
+        min-width: 0;
+        max-width: calc(100vw - 16px);
     }
 
     .menu__item,

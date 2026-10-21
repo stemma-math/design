@@ -1,4 +1,6 @@
 export declare class StemmaMenu extends HTMLElement {
+    /** Match the button's width, within the viewport. Reflects `match-width`. */
+    matchWidth: boolean;
     /** Whether the menu is open. */
     readonly isOpen: boolean;
     /** Opens the menu, focusing its first or last item. */
