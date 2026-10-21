@@ -2871,6 +2871,42 @@
 
     .nav-section > .nav-list {
         margin-block-start: var(--space-1);
+        padding-inline-start: calc(var(--control-inline) + 16px);
+    }
+
+    /* The guide sits under the heading's chevron. Each segment reaches
+     * the next item across the list gap; the last ends at its own tick. */
+    .nav-section > .nav-list > li {
+        position: relative;
+    }
+
+    .nav-section > .nav-list > li::before,
+    .nav-section > .nav-list > li::after {
+        position: absolute;
+        inset-inline-start: -12px;
+        content: "";
+        pointer-events: none;
+    }
+
+    .nav-section > .nav-list > li::before {
+        inset-block: 0 calc(-1 * var(--space-1));
+        border-inline-start: 1px solid var(--border-strong);
+    }
+
+    .nav-section > .nav-list > li:last-child::before {
+        inset-block-end: 50%;
+    }
+
+    .nav-section > .nav-list > li::after {
+        inset-block-start: 50%;
+        width: 12px;
+        border-block-start: 1px solid var(--border-strong);
+    }
+
+    .nav-section > .nav-list > li > .nav-item {
+        min-height: var(--control-small-height);
+        padding-block: calc(var(--control-block) / 2);
+        font-size: var(--control-small-font);
     }
 
     /* The details and the action are siblings. The action stays visible

@@ -89,7 +89,10 @@
                 <p>
                     A native disclosure groups destinations under a heading with an even hover box.
                     The summary works with Enter or Space and hides the links from the tab order
-                    when closed. Long headings use the same label as an item.
+                    when closed. Long headings use the same label as an item. Nested items use the
+                    smaller control height and font, with a quiet tree guide aligned under the
+                    heading's chevron. The guide is decorative; this remains ordinary link
+                    navigation, with no tree roles or extra keyboard rules.
                 </p>
                 <div class="specimen__api">
                     <code>details.nav-section</code><code>summary.nav-section__heading</code>
@@ -131,6 +134,93 @@
                                     <a class="nav-item" href="#nav-section">
                                         <span class="nav-item__label">Archive</span>
                                     </a>
+                                </li>
+                            </ul>
+                        </details>
+                    </nav>
+                </div>
+            </section>
+
+            <section class="specimen" id="nav-section-nested">
+                <h2>Nested navigation items</h2>
+                <p>
+                    A smaller step in height and type separates a section's destinations from a
+                    top-level item. A vertical guide and short ticks show the group. Avatars and
+                    counts retain their size; labels truncate before them. The guide follows the
+                    inline direction and the surface's border token.
+                </p>
+                <div class="specimen__api">
+                    <code>.nav-section &gt; .nav-list</code><code>.nav-item</code>
+                    <code>.nav-item__label</code><code>.avatar--small</code><code>.count</code>
+                </div>
+                <div class="specimen__stage">
+                    <nav aria-label="Navigation hierarchy" style="width: min(100%, 280px)">
+                        <a class="nav-item" href="#nav-section-nested"
+                            ><span class="nav-item__label">Top-level destination</span></a
+                        >
+                        <details class="nav-section" open>
+                            <summary class="nav-section__heading">
+                                <span class="nav-item__label">People</span>
+                            </summary>
+                            <ul class="nav-list">
+                                <li>
+                                    <a
+                                        class="nav-item"
+                                        href="#nav-section-nested"
+                                        aria-current="page"
+                                        ><span
+                                            class="avatar avatar--small avatar--teal"
+                                            aria-hidden="true"
+                                            >E</span
+                                        ><span class="nav-item__label">Emmy Noether</span
+                                        ><span class="count">3</span></a
+                                    >
+                                </li>
+                                <li>
+                                    <a class="nav-item" href="#nav-section-nested"
+                                        ><span class="nav-item__label"
+                                            >A longer destination label that truncates inside the
+                                            section</span
+                                        ><span class="count">12</span></a
+                                    >
+                                </li>
+                                <li>
+                                    <button class="nav-item" disabled>
+                                        <span class="nav-item__label">Unavailable destination</span>
+                                    </button>
+                                </li>
+                            </ul>
+                        </details>
+                    </nav>
+                    <nav
+                        class="brand-surface"
+                        aria-label="Navigation hierarchy on navy"
+                        style="
+                            width: min(100%, 280px);
+                            padding: var(--space-3);
+                            border-radius: var(--radius-md);
+                        "
+                    >
+                        <a class="nav-item" href="#nav-section-nested"
+                            ><span class="nav-item__label">Top-level destination</span></a
+                        >
+                        <details class="nav-section" open>
+                            <summary class="nav-section__heading">
+                                <span class="nav-item__label">Places</span>
+                            </summary>
+                            <ul class="nav-list">
+                                <li>
+                                    <a
+                                        class="nav-item"
+                                        href="#nav-section-nested"
+                                        aria-current="page"
+                                        ><span class="nav-item__label">Library</span></a
+                                    >
+                                </li>
+                                <li>
+                                    <a class="nav-item" href="#nav-section-nested"
+                                        ><span class="nav-item__label">Drafts</span></a
+                                    >
                                 </li>
                             </ul>
                         </details>

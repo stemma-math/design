@@ -167,6 +167,13 @@ as pointer. Lists keep ordinary link navigation and need no menu roles
 or JavaScript. Item and heading padding follows the density, leaving
 space above and below a full-size avatar too.
 
+Items directly inside a section's `.nav-list` use `--control-small-height`
+and `--control-small-font`. A decorative guide sits under the heading's
+chevron, with a tick at each item and an end at the last one. The guide
+uses the local border colour and mirrors in RTL. These are ordinary
+links and disclosures, not an ARIA tree; native Tab, Enter and Space
+behaviour stays the same.
+
 For a trailing heading action, wrap the details and a sibling icon button
 in `.nav-section__head`. Add `.nav-section__action` to the button. The
 heading's hover and focus cover the whole row, while the action keeps its
