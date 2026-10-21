@@ -443,6 +443,75 @@
                 </div>
             </section>
 
+            <section class="specimen" id="menu-header">
+                <h2>Person menu header</h2>
+                <p>
+                    A non-interactive identity above a menu's items: avatar, name and a secondary
+                    line for a handle and short role, followed by a separator. Both lines truncate
+                    while the avatar keeps its size. Arrow keys visit only the items below. The name
+                    can also label the menu for assistive technology.
+                </p>
+                <div class="specimen__api">
+                    <code>.menu__header</code><code>.menu__identity</code><code>.menu__name</code>
+                    <code>.menu__meta</code><code>.avatar</code><code>.menu__separator</code>
+                </div>
+                <div class="specimen__stage">
+                    <div class="menu" style="width: min(100%, 280px)">
+                        <div class="menu__header">
+                            <span class="avatar avatar--teal" aria-hidden="true">E</span>
+                            <div class="menu__identity">
+                                <span class="menu__name">Emmy Noether</span>
+                                <span class="menu__meta">@emmy · Maintainer</span>
+                            </div>
+                        </div>
+                        <hr class="menu__separator" />
+                        <a class="menu__item" href="#menu-header"
+                            ><svg class="glyph" aria-hidden="true">
+                                <use href="../targets/web/glyphs.svg#person" /></svg
+                            >Profile</a
+                        >
+                        <button class="menu__item" type="button">Settings</button>
+                    </div>
+                    <div
+                        class="brand-surface"
+                        style="padding: var(--space-4); border-radius: var(--radius-md)"
+                    >
+                        <stemma-menu id="identity-menu">
+                            <button class="button" type="button">Open person menu on navy</button>
+                            <div
+                                class="menu"
+                                style="width: 280px"
+                                aria-labelledby="identity-menu-name"
+                            >
+                                <div class="menu__header">
+                                    <span class="avatar avatar--violet" aria-hidden="true">A</span>
+                                    <div class="menu__identity">
+                                        <span class="menu__name" id="identity-menu-name"
+                                            >Ada Lovelace with a longer display name</span
+                                        >
+                                        <span class="menu__meta"
+                                            >@ada-with-a-longer-handle · Maintainer</span
+                                        >
+                                    </div>
+                                </div>
+                                <hr class="menu__separator" />
+                                <a class="menu__item" href="#menu-header" data-value="profile"
+                                    ><svg class="glyph" aria-hidden="true">
+                                        <use href="../targets/web/glyphs.svg#person" /></svg
+                                    >Profile</a
+                                >
+                                <button class="menu__item" type="button" data-value="settings">
+                                    Settings
+                                </button>
+                                <button class="menu__item" type="button" disabled>
+                                    Unavailable action
+                                </button>
+                            </div>
+                        </stemma-menu>
+                    </div>
+                </div>
+            </section>
+
             <section class="specimen" id="menu-row">
                 <h2>Menu destination with an action</h2>
                 <p>

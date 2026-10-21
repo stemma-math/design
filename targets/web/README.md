@@ -255,6 +255,31 @@ Both targets follow the local card or `.brand-surface` tokens and density.
 </div>
 ```
 
+### Person menu headers
+
+`.menu__header` presents a person's identity before the menu items. Place
+an `.avatar` beside a `.menu__identity` stack containing `.menu__name`
+and `.menu__meta`. Both text lines truncate; the secondary line can show
+a handle and a short role. Follow it with `.menu__separator`.
+
+```html
+<div class="menu" aria-labelledby="person-name">
+  <div class="menu__header">
+    <span class="avatar" aria-hidden="true">E</span>
+    <div class="menu__identity">
+      <span class="menu__name" id="person-name">Emmy Noether</span>
+      <span class="menu__meta">@emmy · Maintainer</span>
+    </div>
+  </div>
+  <hr class="menu__separator" />
+  <a class="menu__item" href="/profile">Profile</a>
+</div>
+```
+
+The header is ordinary, non-interactive content: do not give it a
+`menuitem` role or a tab stop. `<stemma-menu>` skips it during keyboard
+navigation. Its colours follow the current appearance or `.brand-surface`.
+
 ### Menu rows with an action
 
 Place a `.menu__item` and a `.menu__action` beside each other in a

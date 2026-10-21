@@ -37,6 +37,7 @@ export class StemmaMenu extends HTMLElement {
 
         this.#menu.id ||= uid("stemma-menu");
         this.#menu.setAttribute("role", "menu");
+        this.#menu.tabIndex = -1;
         this.#trigger.setAttribute("aria-haspopup", "menu");
         this.#trigger.setAttribute("aria-controls", this.#menu.id);
         this.#trigger.setAttribute("aria-expanded", "false");
@@ -84,7 +85,12 @@ export class StemmaMenu extends HTMLElement {
         this.#menu.addEventListener("keydown", (event) => this.#key(event));
         this.#menu.addEventListener("click", (event) => {
             const item = event.target.closest(ITEMS);
-            if (!item) return;
+            if (!item) {
+                // The identity is not an item, but clicking it must keep
+                // arrow keys and Escape inside the open menu.
+                if (event.target.closest(".menu__header")) this.#menu.focus();
+                return;
+            }
             if (item.disabled || item.getAttribute("aria-disabled") === "true") {
                 event.preventDefault();
                 return;
