@@ -134,7 +134,8 @@
     .avatar--neutral,
     .message--neutral,
     .progress--neutral,
-    .highlight--neutral {
+    .highlight--neutral,
+    .mark--neutral {
         --tone: var(--neutral);
         --tone-text: var(--neutral-text);
         --tone-on: var(--neutral-on);
@@ -146,7 +147,8 @@
     .avatar--accent,
     .message--accent,
     .progress--accent,
-    .highlight--accent {
+    .highlight--accent,
+    .mark--accent {
         --tone: var(--accent);
         --tone-text: var(--accent-text);
         --tone-on: var(--accent-on);
@@ -158,7 +160,8 @@
     .avatar--success,
     .message--success,
     .progress--success,
-    .highlight--success {
+    .highlight--success,
+    .mark--success {
         --tone: var(--success);
         --tone-text: var(--success-text);
         --tone-on: var(--success-on);
@@ -170,7 +173,8 @@
     .avatar--warning,
     .message--warning,
     .progress--warning,
-    .highlight--warning {
+    .highlight--warning,
+    .mark--warning {
         --tone: var(--warning);
         --tone-text: var(--warning-text);
         --tone-on: var(--warning-on);
@@ -183,6 +187,7 @@
     .message--danger,
     .progress--danger,
     .highlight--danger,
+    .mark--danger,
     .menu__item--danger {
         --tone: var(--danger);
         --tone-text: var(--danger-text);
@@ -195,7 +200,8 @@
     .avatar--info,
     .message--info,
     .progress--info,
-    .highlight--info {
+    .highlight--info,
+    .mark--info {
         --tone: var(--info);
         --tone-text: var(--info-text);
         --tone-on: var(--info-on);
@@ -206,7 +212,8 @@
     .chip--indigo,
     .count--indigo,
     .avatar--indigo,
-    .highlight--indigo {
+    .highlight--indigo,
+    .mark--indigo {
         --tone: var(--tone-indigo);
         --tone-text: var(--tone-indigo-text);
         --tone-on: var(--tone-indigo-on);
@@ -215,7 +222,8 @@
     .chip--teal,
     .count--teal,
     .avatar--teal,
-    .highlight--teal {
+    .highlight--teal,
+    .mark--teal {
         --tone: var(--tone-teal);
         --tone-text: var(--tone-teal-text);
         --tone-on: var(--tone-teal-on);
@@ -224,7 +232,8 @@
     .chip--violet,
     .count--violet,
     .avatar--violet,
-    .highlight--violet {
+    .highlight--violet,
+    .mark--violet {
         --tone: var(--tone-violet);
         --tone-text: var(--tone-violet-text);
         --tone-on: var(--tone-violet-on);
@@ -233,7 +242,8 @@
     .chip--ochre,
     .count--ochre,
     .avatar--ochre,
-    .highlight--ochre {
+    .highlight--ochre,
+    .mark--ochre {
         --tone: var(--tone-ochre);
         --tone-text: var(--tone-ochre-text);
         --tone-on: var(--tone-ochre-on);
@@ -242,7 +252,8 @@
     .chip--magenta,
     .count--magenta,
     .avatar--magenta,
-    .highlight--magenta {
+    .highlight--magenta,
+    .mark--magenta {
         --tone: var(--tone-magenta);
         --tone-text: var(--tone-magenta-text);
         --tone-on: var(--tone-magenta-on);
@@ -251,7 +262,8 @@
     .chip--olive,
     .count--olive,
     .avatar--olive,
-    .highlight--olive {
+    .highlight--olive,
+    .mark--olive {
         --tone: var(--tone-olive);
         --tone-text: var(--tone-olive-text);
         --tone-on: var(--tone-olive-on);
@@ -260,7 +272,8 @@
     .chip--cerulean,
     .count--cerulean,
     .avatar--cerulean,
-    .highlight--cerulean {
+    .highlight--cerulean,
+    .mark--cerulean {
         --tone: var(--tone-cerulean);
         --tone-text: var(--tone-cerulean-text);
         --tone-on: var(--tone-cerulean-on);
@@ -269,7 +282,8 @@
     .chip--rust,
     .count--rust,
     .avatar--rust,
-    .highlight--rust {
+    .highlight--rust,
+    .mark--rust {
         --tone: var(--tone-rust);
         --tone-text: var(--tone-rust-text);
         --tone-on: var(--tone-rust-on);

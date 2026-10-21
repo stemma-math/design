@@ -2557,6 +2557,31 @@
         color: var(--tone-text);
     }
 
+    /* ── Mark ──────────────────────────────────────────────────────────
+     *
+     * A run inside text set apart in a tone, on a `<mark>` or a `<span>`:
+     * neutral by default, and in an intent to say why (`.mark--danger`
+     * for something that should not be shared). The words stay where they
+     * are, in the text's own face, readable and selectable: the tone's
+     * text colour on a faint fill of it. It works in running and in
+     * preformatted text, and breaks anywhere, since such runs are often
+     * long and unbroken; a run that breaks keeps its fill on every line. */
+
+    .mark {
+        --tone: var(--neutral);
+        --tone-text: var(--neutral-text);
+        --tone-on: var(--neutral-on);
+
+        padding: 0.05em 0.2em;
+        font: inherit;
+        color: var(--tone-text);
+        background: color-mix(in srgb, var(--tone) var(--mix-soft), transparent);
+        border-radius: var(--radius-sm);
+        overflow-wrap: anywhere;
+        -webkit-box-decoration-break: clone;
+        box-decoration-break: clone;
+    }
+
     /* ── The wordmark ──────────────────────────────────────────────────
      *
      * "Stemma" set in the interface face, where the mark's own drawing
