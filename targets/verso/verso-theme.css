@@ -1919,12 +1919,12 @@
         padding: var(--control-block) var(--control-inline);
         font: 400 var(--control-font) / 1.4 var(--font-ui);
         color: var(--ink-1);
-        background: var(--surface-field);
+        background-color: var(--surface-field);
         border: 1px solid var(--border-strong);
         border-radius: var(--radius-md);
         transition:
             border-color var(--dur-ui) var(--ease-out),
-            background var(--dur-ui) var(--ease-out),
+            background-color var(--dur-ui) var(--ease-out),
             box-shadow var(--dur-ui) var(--ease-out);
     }
 
@@ -1934,13 +1934,13 @@
 
     .input:focus {
         outline: none;
-        background: var(--surface-card);
+        background-color: var(--surface-card);
         border-color: var(--accent);
         box-shadow: var(--ring-input);
     }
 
     .input[aria-invalid="true"] {
-        background: color-mix(in srgb, var(--danger) 5%, var(--surface-field));
+        background-color: color-mix(in srgb, var(--danger) 5%, var(--surface-field));
         border-color: var(--danger);
     }
 
@@ -1959,11 +1959,15 @@
 
     select.input {
         appearance: none;
-        padding-right: calc(var(--control-inline) + 20px);
+        padding-inline-end: calc(var(--control-inline) + 20px);
         background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23838c9f' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='m7 10 5 5 5-5'/%3E%3C/svg%3E");
         background-repeat: no-repeat;
         background-position: right 10px center;
         background-size: 16px;
+    }
+
+    select.input:dir(rtl) {
+        background-position: left 10px center;
     }
 
     /* Verbatim input: codes, identifiers, source. */

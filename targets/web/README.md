@@ -71,6 +71,14 @@ Both follow the local appearance, including brand surfaces. Standard
 scrollbar properties are used with WebKit pseudo-elements as a fallback;
 forced colours retain the system palette.
 
+### Native selects
+
+`select.input` keeps the browser's native picker. Its chevron stays at
+the inline end during focus, invalid states and blur; surface changes
+transition only `background-color`, leaving the image and its position
+unchanged. Use a label and `aria-describedby` for any hint or error, just
+as with the other `.input` fields.
+
 ### Intents and tones
 
 Components that carry a tone take it as a modifier: an intent

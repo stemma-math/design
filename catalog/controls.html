@@ -154,6 +154,55 @@ If p is prime, then a^p ≡ a (mod p).</textarea>
                 </div>
             </section>
 
+            <section class="specimen" id="native-select">
+                <h2>Native select</h2>
+                <p>
+                    The chevron stays in place at rest, during focus and after the picker closes,
+                    including invalid fields. Only the surface colour changes. These selects keep
+                    the browser's own picker and keyboard behaviour, without a custom element.
+                </p>
+                <div class="specimen__api">
+                    <code>select.input</code><code>.field</code><code>aria-invalid</code>
+                </div>
+                <div class="specimen__stage">
+                    <div class="row" style="align-items: flex-start">
+                        <div class="field" style="width: 220px">
+                            <label class="field__label" for="native-kind">Kind</label>
+                            <select class="input" id="native-kind">
+                                <option>Theorem</option>
+                                <option selected>Lemma</option>
+                                <option>Corollary</option>
+                                <option>Definition</option>
+                            </select>
+                        </div>
+                        <div class="field" style="width: 220px">
+                            <label class="field__label" for="native-invalid">Required kind</label>
+                            <select
+                                class="input"
+                                id="native-invalid"
+                                aria-invalid="true"
+                                aria-describedby="native-error"
+                            >
+                                <option value="">Choose a kind</option>
+                                <option>Theorem</option>
+                                <option>Lemma</option>
+                            </select>
+                            <span class="field__error" id="native-error"
+                                >Choose a kind to continue.</span
+                            >
+                        </div>
+                        <div class="field" style="width: 220px">
+                            <label class="field__label" for="native-disabled"
+                                >Unavailable kind</label
+                            >
+                            <select class="input" id="native-disabled" disabled>
+                                <option>Unavailable</option>
+                            </select>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
             <section class="specimen" id="choice">
                 <h2>Checkbox, radio and switch</h2>
                 <p>
