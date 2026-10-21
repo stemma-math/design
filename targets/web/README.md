@@ -129,6 +129,9 @@ The names are the files in the repository's `source/glyphs/`: `add`,
 `alert`, `check`, `chevron-down`, `close`, `copy`, `done`, `info`,
 `settings`, `warning` and so on.
 
+`person` marks a single person's profile, matching the head and shoulders
+of `add-person`. Use `group` when the destination represents several people.
+
 ### Links and references
 
 A link in interface text without a class of its own is in the link
