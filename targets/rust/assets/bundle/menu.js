@@ -19,16 +19,25 @@ modules["menu.js"] = (() => {
 // closes the menu.
 // A `.menu__row` can hold an item and a trailing `.menu__action`, each a
 // separate menu item. Arrow keys visit both; disabled targets are skipped.
+// `match-width` makes the menu as wide as its button, within the viewport,
+// and follows changes to the button's size while open. The boolean
+// `matchWidth` property reflects the attribute.
 
 const { define, place, popovers, uid } = modules["internal.js"];
 const ITEMS = ".menu__item, .menu__action";
 
 class StemmaMenu extends HTMLElement {
+    static observedAttributes = ["match-width"];
+
     #trigger = null;
     #menu = null;
+    #resize = null;
 
     connectedCallback() {
-        if (this.#menu) return;
+        if (this.#menu) {
+            this.#observe();
+            return;
+        }
         this.#menu = this.querySelector(".menu");
         this.#trigger = [...this.querySelectorAll("button")].find(
             (button) => !this.#menu?.contains(button),
@@ -37,6 +46,7 @@ class StemmaMenu extends HTMLElement {
 
         this.#menu.id ||= uid("stemma-menu");
         this.#menu.setAttribute("role", "menu");
+        this.#menu.tabIndex = -1;
         this.#trigger.setAttribute("aria-haspopup", "menu");
         this.#trigger.setAttribute("aria-controls", this.#menu.id);
         this.#trigger.setAttribute("aria-expanded", "false");
@@ -84,7 +94,12 @@ class StemmaMenu extends HTMLElement {
         this.#menu.addEventListener("keydown", (event) => this.#key(event));
         this.#menu.addEventListener("click", (event) => {
             const item = event.target.closest(ITEMS);
-            if (!item) return;
+            if (!item) {
+                // The identity is not an item, but clicking it must keep
+                // arrow keys and Escape inside the open menu.
+                if (event.target.closest(".menu__header")) this.#menu.focus();
+                return;
+            }
             if (item.disabled || item.getAttribute("aria-disabled") === "true") {
                 event.preventDefault();
                 return;
@@ -97,6 +112,35 @@ class StemmaMenu extends HTMLElement {
             );
             this.close();
         });
+        this.#observe();
+    }
+
+    disconnectedCallback() {
+        this.#resize?.disconnect();
+    }
+
+    attributeChangedCallback() {
+        this.#observe();
+        if (this.isOpen) this.#place();
+    }
+
+    #observe() {
+        this.#resize?.disconnect();
+        if (!this.matchWidth || !this.#trigger || !this.isConnected) return;
+        this.#resize ??= new ResizeObserver(() => {
+            if (this.isOpen) this.#place();
+        });
+        this.#resize.observe(this.#trigger, { box: "border-box" });
+    }
+
+    #place() {
+        if (this.matchWidth) {
+            this.style.setProperty(
+                "--menu-anchor-width",
+                `${this.#trigger.getBoundingClientRect().width}px`,
+            );
+        }
+        place(this.#menu, this.#trigger, "below", 4);
     }
 
     #items() {
@@ -114,13 +158,22 @@ class StemmaMenu extends HTMLElement {
         return popovers ? this.#menu?.matches(":popover-open") : this.#menu && !this.#menu.hidden;
     }
 
+    /** Whether the menu matches the button's width. Reflects `match-width`. */
+    get matchWidth() {
+        return this.hasAttribute("match-width");
+    }
+
+    set matchWidth(value) {
+        this.toggleAttribute("match-width", Boolean(value));
+    }
+
     /** Opens the menu, focusing its `first` or `last` item. */
     open(focus = "first") {
         if (!this.#menu) return;
         if (popovers) this.#menu.showPopover();
         else this.#menu.hidden = false;
         this.#expanded(true);
-        place(this.#menu, this.#trigger, "below", 4);
+        this.#place();
         const items = this.#items();
         (focus === "last" ? items.at(-1) : items[0])?.focus();
     }
@@ -142,7 +195,7 @@ class StemmaMenu extends HTMLElement {
         const index = items.indexOf(document.activeElement);
         const next = {
             ArrowDown: index + 1,
-            ArrowUp: index - 1,
+            ArrowUp: index < 0 ? items.length - 1 : index - 1,
             Home: 0,
             End: items.length - 1,
         }[event.key];

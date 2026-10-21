@@ -49,6 +49,16 @@ visually, while both have `menuitem` roles, arrow-key navigation and the
 same `select` event. Native disabled controls and `aria-disabled="true"`
 targets are skipped and cannot select or navigate.
 
+A `.menu__header` can precede the items to show a person's identity.
+It stays non-interactive and is skipped by the menu's arrow keys. Use
+`aria-labelledby` on the menu to name it with the header's `.menu__name`.
+
+`<stemma-menu match-width>` matches its menu to the trigger's width,
+limited by the viewport, and follows trigger resizes while open. The
+boolean `matchWidth` property reflects the attribute and can change after
+connection. An `.account.account--menu` button can serve as its trigger;
+the element keeps `aria-expanded` in step with its rotating chevron.
+
 `<stemma-theme-switch fill>` fills its container with equal-width options.
 The boolean `fill` property reflects the attribute and can change after
 connection. Other segmented controls use `.segmented.segmented--fill` on

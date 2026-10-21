@@ -129,6 +129,9 @@ The names are the files in the repository's `source/glyphs/`: `add`,
 `alert`, `check`, `chevron-down`, `close`, `copy`, `done`, `info`,
 `settings`, `warning` and so on.
 
+`person` marks a single person's profile, matching the head and shoulders
+of `add-person`. Use `group` when the destination represents several people.
+
 ### Links and references
 
 A link in interface text without a class of its own is in the link
@@ -251,6 +254,58 @@ Both targets follow the local card or `.brand-surface` tokens and density.
   </button>
 </div>
 ```
+
+To make the whole account row open a menu, use an
+`.account.account--menu` button as the trigger inside `<stemma-menu>`.
+It has the same padding and avatar/text spacing as the person link, with
+one hover surface. A trailing `.account__chevron` rotates with
+`aria-expanded`. Names still truncate, and the secondary line is optional.
+Add `match-width` to the element when the menu should follow the row's
+width in a narrow panel; it stays inside the viewport and resizes with
+the row while open. This works on cards and `.brand-surface`.
+
+```html
+<stemma-menu match-width>
+  <button type="button" class="account account--menu">
+    <span class="avatar" aria-hidden="true">E</span>
+    <span class="account__details">
+      <span class="account__name">Emmy Noether</span>
+    </span>
+    <svg class="glyph account__chevron" aria-hidden="true">
+      <use href="…/glyphs.svg#chevron-down" />
+    </svg>
+  </button>
+  <div class="menu">
+    <a class="menu__item" href="/profile">Profile</a>
+    <button type="button" class="menu__item" data-value="sign-out">Sign out</button>
+  </div>
+</stemma-menu>
+```
+
+### Person menu headers
+
+`.menu__header` presents a person's identity before the menu items. Place
+an `.avatar` beside a `.menu__identity` stack containing `.menu__name`
+and `.menu__meta`. Both text lines truncate; the secondary line can show
+a handle and a short role. Follow it with `.menu__separator`.
+
+```html
+<div class="menu" aria-labelledby="person-name">
+  <div class="menu__header">
+    <span class="avatar" aria-hidden="true">E</span>
+    <div class="menu__identity">
+      <span class="menu__name" id="person-name">Emmy Noether</span>
+      <span class="menu__meta">@emmy · Maintainer</span>
+    </div>
+  </div>
+  <hr class="menu__separator" />
+  <a class="menu__item" href="/profile">Profile</a>
+</div>
+```
+
+The header is ordinary, non-interactive content: do not give it a
+`menuitem` role or a tab stop. `<stemma-menu>` skips it during keyboard
+navigation. Its colours follow the current appearance or `.brand-surface`.
 
 ### Menu rows with an action
 
