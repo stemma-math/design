@@ -311,7 +311,8 @@ navigation. Its colours follow the current appearance or `.brand-surface`.
 
 Place a `.menu__item` and a `.menu__action` beside each other in a
 `.menu__row`. The item fills the width; the icon action keeps a square
-target. Both use the menu's hover and focus styles. Use `.menu__label`
+target. Hovering either shades the whole row, and the action's glyph
+brightens; each keeps its own focus style. Use `.menu__label`
 around text that should truncate, and give an icon-only action an
 accessible name. The same classes work inside `.brand-surface`.
 
