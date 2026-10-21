@@ -16,8 +16,12 @@
 // closes it and returns focus to the button. Choosing an item sends a
 // `select` event whose `detail.value` is the item's `data-value`, then
 // closes the menu.
+// A `.menu__row` can hold an item and a trailing `.menu__action`, each a
+// separate menu item. Arrow keys visit both; disabled targets are skipped.
 
 import { define, place, popovers, uid } from "./internal.js";
+
+const ITEMS = ".menu__item, .menu__action";
 
 export class StemmaMenu extends HTMLElement {
     #trigger = null;
@@ -36,12 +40,15 @@ export class StemmaMenu extends HTMLElement {
         this.#trigger.setAttribute("aria-haspopup", "menu");
         this.#trigger.setAttribute("aria-controls", this.#menu.id);
         this.#trigger.setAttribute("aria-expanded", "false");
-        for (const item of this.#items()) {
+        for (const item of this.#menu.querySelectorAll(ITEMS)) {
             item.setAttribute("role", "menuitem");
             item.tabIndex = -1;
         }
         for (const separator of this.#menu.querySelectorAll(".menu__separator")) {
             separator.setAttribute("role", "separator");
+        }
+        for (const row of this.#menu.querySelectorAll(".menu__row")) {
+            row.setAttribute("role", "none");
         }
 
         if (popovers) {
@@ -76,8 +83,12 @@ export class StemmaMenu extends HTMLElement {
         });
         this.#menu.addEventListener("keydown", (event) => this.#key(event));
         this.#menu.addEventListener("click", (event) => {
-            const item = event.target.closest(".menu__item");
-            if (!item || item.disabled || item.getAttribute("aria-disabled") === "true") return;
+            const item = event.target.closest(ITEMS);
+            if (!item) return;
+            if (item.disabled || item.getAttribute("aria-disabled") === "true") {
+                event.preventDefault();
+                return;
+            }
             this.dispatchEvent(
                 new CustomEvent("select", {
                     bubbles: true,
@@ -89,7 +100,7 @@ export class StemmaMenu extends HTMLElement {
     }
 
     #items() {
-        return [...this.#menu.querySelectorAll(".menu__item")].filter(
+        return [...this.#menu.querySelectorAll(ITEMS)].filter(
             (item) => !item.disabled && item.getAttribute("aria-disabled") !== "true",
         );
     }

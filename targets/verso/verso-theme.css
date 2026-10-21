@@ -3001,7 +3001,8 @@
         box-shadow: var(--shadow-float);
     }
 
-    .menu__item {
+    .menu__item,
+    .menu__action {
         box-sizing: border-box;
         display: flex;
         align-items: center;
@@ -3020,7 +3021,9 @@
     }
 
     .menu__item:hover,
-    .menu__item:focus-visible {
+    .menu__item:focus-visible,
+    .menu__action:hover,
+    .menu__action:focus-visible {
         background: var(--fill-muted);
         outline-offset: -2px;
     }
@@ -3031,7 +3034,10 @@
         color: var(--accent-text);
     }
 
-    .menu__item:disabled {
+    .menu__item:disabled,
+    .menu__item[aria-disabled="true"],
+    .menu__action:disabled,
+    .menu__action[aria-disabled="true"] {
         color: var(--ink-disabled);
         background: transparent;
         cursor: not-allowed;
@@ -3045,7 +3051,8 @@
         background: color-mix(in srgb, var(--tone) var(--mix-soft), transparent);
     }
 
-    .menu__item .glyph {
+    .menu__item .glyph,
+    .menu__action .glyph {
         width: 16px;
         height: 16px;
         color: var(--ink-3);
@@ -3053,6 +3060,34 @@
 
     .menu__item--danger .glyph {
         color: inherit;
+    }
+
+    /* Two independent targets on one menu line: the destination grows,
+     * while its sibling icon action keeps an ordinary menu item's height. */
+    .menu__row {
+        display: flex;
+        gap: 2px;
+        min-width: 0;
+    }
+
+    .menu__row > .menu__item {
+        flex: 1;
+        min-width: 0;
+    }
+
+    .menu__action {
+        flex: 0 0 36px;
+        justify-content: center;
+        width: 36px;
+        padding: 0;
+    }
+
+    .menu__label {
+        flex: 1;
+        min-width: 0;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        white-space: nowrap;
     }
 
     .menu__hint {

@@ -223,6 +223,28 @@ CSS subgrid and `::details-content` to share the available columns.
 `--control-small-height`. It combines with `--square`, `--brand`, every
 tone and a child `img`; the other avatar sizes stay 34px and 42px.
 
+### Menu rows with an action
+
+Place a `.menu__item` and a `.menu__action` beside each other in a
+`.menu__row`. The item fills the width; the icon action keeps a square
+target. Both use the menu's hover and focus styles. Use `.menu__label`
+around text that should truncate, and give an icon-only action an
+accessible name. The same classes work inside `.brand-surface`.
+
+```html
+<div class="menu__row">
+  <a class="menu__item" href="/places"><span class="menu__label">All places</span></a>
+  <button type="button" class="menu__action" aria-label="Add a place" data-value="add">
+    <svg class="glyph" aria-hidden="true"><use href="…/glyphs.svg#add" /></svg>
+  </button>
+</div>
+```
+
+Inside `<stemma-menu>`, both targets are menu items: Up, Down, Home and
+End visit them in document order, skipping disabled targets. Choosing
+either emits `select` with its `data-value` and closes the menu. Outside
+the element, they keep native link and button behaviour.
+
 ### Scrims
 
 `--scrim` is the translucent fill behind modal overlays, with a value

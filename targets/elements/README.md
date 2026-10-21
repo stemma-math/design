@@ -43,6 +43,12 @@ elements share; it is not part of the interface.
 
 ## Accessibility and motion
 
+`<stemma-menu>` treats `.menu__action` as a separate item alongside
+`.menu__item`. A `.menu__row` groups a destination and its trailing action
+visually, while both have `menuitem` roles, arrow-key navigation and the
+same `select` event. Native disabled controls and `aria-disabled="true"`
+targets are skipped and cannot select or navigate.
+
 `<stemma-theme-switch fill>` fills its container with equal-width options.
 The boolean `fill` property reflects the attribute and can change after
 connection. Other segmented controls use `.segmented.segmented--fill` on
