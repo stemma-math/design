@@ -2633,6 +2633,71 @@
         border-radius: inherit;
     }
 
+    /* ── Account ───────────────────────────────────────────────────────
+     *
+     * One person link, with an avatar and two lines, and an independent
+     * icon action. The link owns its hover box; the action stays outside. */
+
+    .account {
+        display: flex;
+        align-items: center;
+        gap: var(--space-1);
+        min-width: 0;
+    }
+
+    .account__person {
+        box-sizing: border-box;
+        display: flex;
+        flex: 1;
+        align-items: center;
+        gap: var(--space-3);
+        min-width: 0;
+        padding: var(--control-block) var(--control-inline);
+        color: var(--ink-1);
+        text-decoration: none;
+        border-radius: var(--radius-md);
+        transition: background-color var(--dur-ui) var(--ease-out);
+    }
+
+    .account__person:hover {
+        background-color: var(--fill-muted);
+    }
+
+    .account__person:focus-visible {
+        outline-offset: -2px;
+    }
+
+    .account__details {
+        display: flex;
+        flex: 1;
+        flex-direction: column;
+        gap: var(--space-1);
+        min-width: 0;
+    }
+
+    .account__name,
+    .account__meta {
+        display: block;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        white-space: nowrap;
+    }
+
+    .account__name {
+        font: 500 var(--control-font) / 1.3 var(--font-ui);
+    }
+
+    .account__meta {
+        font: 400 var(--control-small-font) / 1.3 var(--font-ui);
+        color: var(--ink-3);
+    }
+
+    .account__action {
+        flex: 0 0 var(--control-height);
+        width: var(--control-height);
+        height: var(--control-height);
+    }
+
     /* ── Card ──────────────────────────────────────────────────────────
      *
      * A surface on the page. `--empty` is an empty state or an invitation
