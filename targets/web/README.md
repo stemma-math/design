@@ -131,6 +131,8 @@ The names are the files in the repository's `source/glyphs/`: `add`,
 
 `person` marks a single person's profile, matching the head and shoulders
 of `add-person`. Use `group` when the destination represents several people.
+`appearance`, a crescent moon, marks where one chooses the appearance: light,
+dark or the system's.
 
 ### Links and references
 

@@ -6,6 +6,7 @@ const glyphs = {
     "add-person": "<circle cx=\"10\" cy=\"8\" r=\"4\"/><path d=\"M3 20c.8-3.5 3.6-5.5 7-5.5s6.2 2 7 5.5M19 8v6M16 11h6\"/>",
     "add": "<path d=\"M12 5v14M5 12h14\"/>",
     "alert": "<circle cx=\"12\" cy=\"12\" r=\"9\"/><path d=\"M12 7.5v5.5M12 16.5v.5\"/>",
+    "appearance": "<path d=\"M20 14.5A8 8 0 0 1 9.5 4 8.5 8.5 0 1 0 20 14.5Z\"/>",
     "arrow-left": "<path d=\"M19 12H5M11 6l-6 6 6 6\"/>",
     "arrow-right": "<path d=\"M5 12h14M13 6l6 6-6 6\"/>",
     "attach": "<path d=\"M9.5 7.5V15a2 2 0 0 0 4 0V6.75a3.75 3.75 0 0 0-7.5 0v8.75a5.5 5.5 0 0 0 11 0V8\"/>",
