@@ -3173,11 +3173,30 @@
     }
 
     /* Two independent targets on one menu line: the destination grows,
-     * while its sibling icon action keeps an ordinary menu item's height. */
+     * while its sibling icon action keeps an ordinary menu item's height.
+     * The line hovers as one surface; the action keeps its own focus ring,
+     * and its glyph brightens under the pointer. */
     .menu__row {
         display: flex;
         gap: 2px;
         min-width: 0;
+        border-radius: var(--radius-sm);
+    }
+
+    .menu__row:has(
+        > .menu__item:hover:not(:disabled, [aria-disabled="true"]),
+        > .menu__action:hover:not(:disabled, [aria-disabled="true"])
+    ) {
+        background: var(--fill-muted);
+    }
+
+    .menu__row > .menu__item:hover,
+    .menu__row > .menu__action:hover {
+        background: transparent;
+    }
+
+    .menu__row > .menu__action:hover:not(:disabled, [aria-disabled="true"]) .glyph {
+        color: var(--ink-1);
     }
 
     .menu__row > .menu__item {
