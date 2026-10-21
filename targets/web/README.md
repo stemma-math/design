@@ -200,6 +200,25 @@ summary, and give it an accessible name:
 </div>
 ```
 
+For several actions, replace the single trailing button with a
+`.nav-section__actions` wrapper holding the `.nav-section__action` links
+or buttons. The heading reserves their actual combined width, including
+the gap, while the section's items still fill the width below. Actions
+remain outside the summary and available when the section is closed.
+The existing single-action markup works as before. This layout uses
+CSS subgrid and `::details-content` to share the available columns.
+
+```html
+<div class="nav-section__actions">
+  <button type="button" class="button button--icon nav-section__action" aria-label="Add a place">
+    <svg class="glyph" aria-hidden="true"><use href="…/glyphs.svg#add" /></svg>
+  </button>
+  <a class="button button--icon nav-section__action" href="/places" aria-label="All places">
+    <svg class="glyph" aria-hidden="true"><use href="…/glyphs.svg#arrow-right" /></svg>
+  </a>
+</div>
+```
+
 `.avatar--small` is 24px in either density, so it fits within
 `--control-small-height`. It combines with `--square`, `--brand`, every
 tone and a child `img`; the other avatar sizes stay 34px and 42px.

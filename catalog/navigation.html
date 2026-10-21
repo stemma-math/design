@@ -294,6 +294,65 @@
                 </div>
             </section>
 
+            <section class="specimen" id="nav-section-actions">
+                <h2>Navigation heading with several actions</h2>
+                <p>
+                    Group one or more trailing actions outside the disclosure. Their actual width
+                    reserves space beside the heading, while the destinations still span the
+                    section. Hover and keyboard focus cover the heading row, not its destinations.
+                    The arrow opens the full list; the chevron only folds this section.
+                </p>
+                <div class="specimen__api">
+                    <code>.nav-section__head</code><code>.nav-section__actions</code>
+                    <code>.nav-section__action</code><code>.nav-section</code>
+                    <code>.nav-section__heading</code><code>glyphs.svg#arrow-right</code>
+                </div>
+                <div class="specimen__stage">
+                    <nav aria-label="Section with several actions" style="width: min(100%, 280px)">
+                        <div class="nav-section__head">
+                            <details class="nav-section" open>
+                                <summary class="nav-section__heading">
+                                    <span class="nav-item__label"
+                                        >Places with a long section heading</span
+                                    >
+                                </summary>
+                                <ul class="nav-list">
+                                    <li>
+                                        <a class="nav-item" href="#nav-section-actions"
+                                            ><span class="nav-item__label">Library</span></a
+                                        >
+                                    </li>
+                                    <li>
+                                        <a class="nav-item" href="#nav-section-actions"
+                                            ><span class="nav-item__label">Drafts</span
+                                            ><span class="count">4</span></a
+                                        >
+                                    </li>
+                                </ul>
+                            </details>
+                            <div class="nav-section__actions">
+                                <button
+                                    type="button"
+                                    class="button button--icon button--quiet nav-section__action"
+                                    aria-label="Add a place"
+                                >
+                                    <svg class="glyph" aria-hidden="true">
+                                        <use href="../targets/web/glyphs.svg#add" />
+                                    </svg>
+                                </button>
+                                <a
+                                    class="button button--icon button--quiet nav-section__action"
+                                    href="#nav-section-nested"
+                                    aria-label="All places"
+                                    ><svg class="glyph" aria-hidden="true">
+                                        <use href="../targets/web/glyphs.svg#arrow-right" /></svg
+                                ></a>
+                            </div>
+                        </div>
+                    </nav>
+                </div>
+            </section>
+
             <section class="specimen" id="tabs">
                 <h2>Tabs</h2>
                 <p>

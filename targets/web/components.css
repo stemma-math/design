@@ -1316,21 +1316,52 @@
         font-size: var(--control-small-font);
     }
 
-    /* The details and the action are siblings. The action stays visible
-     * when the section closes, without becoming part of the summary. */
+    /* A shared column reserves exactly the width of the actions, without
+     * counting them. The details content spans both columns; its native
+     * content slot keeps the destinations hidden while closed. */
     .nav-section__head {
+        position: relative;
+        isolation: isolate;
         display: grid;
         grid-template-columns: minmax(0, 1fr) auto;
         min-width: 0;
     }
 
     .nav-section__head > .nav-section {
+        display: grid;
+        grid-template-columns: subgrid;
         grid-area: 1 / 1 / 2 / -1;
         min-width: 0;
     }
 
     .nav-section__head > .nav-section > .nav-section__heading {
-        padding-inline-end: calc(var(--control-height) + var(--space-2));
+        grid-column: 1;
+    }
+
+    .nav-section__head > .nav-section::details-content,
+    .nav-section__head > .nav-section > .nav-list {
+        grid-column: 1 / -1;
+        min-width: 0;
+    }
+
+    .nav-section__head::before {
+        position: absolute;
+        inset-block-start: 0;
+        inset-inline: 0;
+        z-index: -1;
+        height: var(--control-height);
+        content: "";
+        border-radius: var(--radius-md);
+        pointer-events: none;
+    }
+
+    .nav-section__actions {
+        z-index: 1;
+        display: flex;
+        align-items: center;
+        gap: var(--space-1);
+        grid-area: 1 / 2;
+        align-self: start;
     }
 
     .nav-section__action {
@@ -1341,13 +1372,19 @@
         height: var(--control-height);
     }
 
-    .nav-section__head:has(> .nav-section__action:hover) > .nav-section > .nav-section__heading {
+    .nav-section__head:has(
+            > .nav-section > .nav-section__heading:hover,
+            > .nav-section__action:hover,
+            > .nav-section__actions > .nav-section__action:hover
+        )::before {
         background: var(--fill-muted);
     }
 
-    .nav-section__head:has(> .nav-section__action:focus-visible)
-        > .nav-section
-        > .nav-section__heading {
+    .nav-section__head:has(
+            > .nav-section > .nav-section__heading:focus-visible,
+            > .nav-section__action:focus-visible,
+            > .nav-section__actions > .nav-section__action:focus-visible
+        )::before {
         outline: 2px solid var(--focus-ring);
         outline-offset: -2px;
     }

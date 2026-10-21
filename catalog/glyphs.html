@@ -32,6 +32,25 @@
                 <div class="glyphs" id="glyphs" style="margin-top: var(--space-4)"></div>
             </section>
 
+            <section class="specimen" id="arrows">
+                <h2>Directional arrows</h2>
+                <p>The two directions of travel, distinct from the chevron of a disclosure.</p>
+                <div class="specimen__api">
+                    <code>glyphs.svg#arrow-left</code><code>glyphs.svg#arrow-right</code>
+                </div>
+                <div class="specimen__stage">
+                    <a class="button" href="#arrows"
+                        ><svg class="glyph" aria-hidden="true">
+                            <use href="../targets/web/glyphs.svg#arrow-left" /></svg
+                        >Back</a
+                    >
+                    <a class="button" href="#arrows"
+                        >All destinations<svg class="glyph" aria-hidden="true">
+                            <use href="../targets/web/glyphs.svg#arrow-right" /></svg
+                    ></a>
+                </div>
+            </section>
+
             <script type="module">
                 import { glyph, glyphs } from "../targets/elements/glyphs.js";
                 import { html } from "./catalog.js";
