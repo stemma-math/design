@@ -113,6 +113,19 @@ appearances.
 The default dot uses quiet ink for an inactive state. Add `--active` for
 success and a slow, soft pulse, or an intent or categorical tone modifier
 to choose its colour. Motion stops with reduced motion; the dot stays visible.
+
+A chip can carry the same idea where a state sits among other chips: put
+`.chip__dot` before its words, and the dot takes the chip's tone. Add
+`--live` while the state holds, and the dot pulses as an active
+indicator's does.
+
+```html
+<span class="chip chip--success chip--live"
+  ><span class="chip__dot" aria-hidden="true"></span>Connected</span
+>
+<span class="chip"><span class="chip__dot" aria-hidden="true"></span>Stopped</span>
+```
+
 The label keeps the normal text colour.
 
 ```html

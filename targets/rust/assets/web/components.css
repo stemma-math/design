@@ -1063,6 +1063,35 @@
         height: 1em;
     }
 
+    /* A chip for a state that is live, as "connected": a dot in its tone
+     * before its words. `--live` makes the dot pulse, as an active
+     * indicator's does, while the state holds; it is still with reduced
+     * motion. */
+    .chip__dot {
+        position: relative;
+        width: 6px;
+        height: 6px;
+        flex: none;
+        background: var(--tone);
+        border-radius: var(--radius-pill);
+    }
+
+    .chip--small .chip__dot {
+        width: 0.45em;
+        height: 0.45em;
+    }
+
+    @media (prefers-reduced-motion: no-preference) {
+        .chip--live .chip__dot::after {
+            content: "";
+            position: absolute;
+            inset: 0;
+            background: inherit;
+            border-radius: inherit;
+            animation: stemma-indicator-pulse 3s var(--ease-out) infinite;
+        }
+    }
+
     /* ── Indicator ─────────────────────────────────────────────────────
      *
      * A quiet dot and a short label, without a background. `--active`
