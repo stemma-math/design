@@ -4293,7 +4293,8 @@
     /* ── Loading ───────────────────────────────────────────────────────
      *
      * A grey shape where content will be; a spinner only inside a button
-     * or beside a job. */
+     * or beside a job; and words for what is under way, with dots that
+     * come one at a time or a soft light running across them. */
 
     .skeleton {
         background: var(--fill-muted);
@@ -4314,6 +4315,60 @@
     @keyframes stemma-spin {
         to {
             transform: rotate(1turn);
+        }
+    }
+
+    /* Words for something under way. `.ellipsis` ends them with three dots
+     * that come one at a time, in their own room, so nothing beside them
+     * moves. `.shimmer` is quiet text a soft light runs across now and
+     * then. With reduced motion the dots are all shown and the text stays
+     * as it is. */
+    .ellipsis::after {
+        display: inline-block;
+        content: "...";
+    }
+
+    .shimmer {
+        color: var(--ink-3);
+    }
+
+    @media (prefers-reduced-motion: no-preference) {
+        .ellipsis::after {
+            animation: stemma-ellipsis 1.6s steps(4, jump-none) infinite;
+        }
+
+        .shimmer {
+            color: transparent;
+            background: linear-gradient(
+                    100deg,
+                    var(--ink-3) 40%,
+                    var(--ink-1) 50%,
+                    var(--ink-3) 60%
+                )
+                0 0 / 250% 100%;
+            background-clip: text;
+            -webkit-background-clip: text;
+            animation: stemma-shimmer 2.4s linear infinite;
+        }
+    }
+
+    @keyframes stemma-ellipsis {
+        from {
+            clip-path: inset(0 100% 0 0);
+        }
+
+        to {
+            clip-path: inset(0);
+        }
+    }
+
+    @keyframes stemma-shimmer {
+        from {
+            background-position: 100% 0;
+        }
+
+        to {
+            background-position: 0 0;
         }
     }
 

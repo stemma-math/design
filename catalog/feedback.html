@@ -204,9 +204,13 @@
                 <h2>Loading</h2>
                 <p>
                     A grey shape where content will be; a spinner only inside a button or beside a
-                    job.
+                    job; and words for what is under way, with dots that come one at a time or a
+                    soft light running across them. Both are still with reduced motion.
                 </p>
-                <div class="specimen__api"><code>.skeleton</code><code>.spinner</code></div>
+                <div class="specimen__api">
+                    <code>.skeleton</code><code>.spinner</code><code>.ellipsis</code
+                    ><code>.shimmer</code>
+                </div>
                 <div class="specimen__stage">
                     <div class="row">
                         <button class="button button--primary" disabled>
@@ -215,6 +219,10 @@
                         <span class="quiet row" style="gap: var(--space-2)"
                             ><span class="spinner"></span>Building the index</span
                         >
+                    </div>
+                    <div class="stack" style="gap: var(--space-1)">
+                        <strong class="ellipsis">Answering</strong>
+                        <span class="shimmer">Reading the sources</span>
                     </div>
                     <div class="stack" style="gap: var(--space-2)">
                         <span class="skeleton" style="width: 40%; height: 18px"></span>
