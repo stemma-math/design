@@ -746,6 +746,11 @@ pub(crate) static MODULES: &[crate::bundle::Module] = &[
         code: include_str!("../assets/bundle/copy-button.js"),
     },
     crate::bundle::Module {
+        name: "date-picker",
+        imports: &["glyphs", "internal"],
+        code: include_str!("../assets/bundle/date-picker.js"),
+    },
+    crate::bundle::Module {
         name: "dialog",
         imports: &["internal"],
         code: include_str!("../assets/bundle/dialog.js"),

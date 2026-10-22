@@ -24,7 +24,8 @@
                 <h2>Chip</h2>
                 <p>
                     A state with a fixed meaning, in an intent or a tone. Always words, so colour is
-                    never the only cue.
+                    never the only cue. Keeps the width of its content in a table, grid or flex
+                    column too.
                 </p>
                 <div class="specimen__api">
                     <code>.chip</code><code>--outline</code><code>--solid</code><code>--dashed</code
@@ -58,6 +59,20 @@
                         <span class="chip chip--olive">Olive</span>
                         <span class="chip chip--cerulean">Cerulean</span>
                         <span class="chip chip--rust">Rust</span>
+                    </div>
+                    <div class="split">
+                        <div style="display: grid; gap: var(--space-2)">
+                            <span class="caption">In a grid column</span>
+                            <span class="chip chip--success">Done</span>
+                            <span class="chip chip--warning">Open</span>
+                            <span class="chip chip--dashed">Missing</span>
+                        </div>
+                        <div style="display: flex; flex-direction: column; gap: var(--space-2)">
+                            <span class="caption">In a flex column</span>
+                            <span class="chip chip--success">Done</span>
+                            <span class="chip chip--warning">Open</span>
+                            <span class="chip chip--dashed">Missing</span>
+                        </div>
                     </div>
                     <p style="margin: 0">
                         Small, in a line of text: <code class="identifier">Foo.bar</code>

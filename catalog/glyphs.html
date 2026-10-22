@@ -74,6 +74,73 @@
                 </div>
             </section>
 
+            <section class="specimen" id="reset">
+                <h2>Reset</h2>
+                <p>
+                    A counter-clockwise circular arrow with its head at the top: return a value to
+                    its default. Use undo for undoing an action, and sync for refreshing.
+                </p>
+                <div class="specimen__api">
+                    <code>glyphs.svg#reset</code><code>.button--icon</code
+                    ><code>&lt;stemma-tooltip&gt;</code>
+                </div>
+                <div class="specimen__stage">
+                    <div class="row">
+                        <label class="field" style="width: 180px">
+                            <span class="field__label">Value</span>
+                            <input class="input" type="number" value="10" id="reset-value" />
+                        </label>
+                        <button
+                            class="button button--icon"
+                            aria-label="Reset to default"
+                            id="reset-button"
+                        >
+                            <svg class="glyph" aria-hidden="true">
+                                <use href="../targets/web/glyphs.svg#reset" />
+                            </svg>
+                        </button>
+                        <stemma-tooltip for="reset-button">Reset to default</stemma-tooltip>
+                    </div>
+                </div>
+            </section>
+
+            <section class="specimen" id="forge-and-external-links">
+                <h2>Anvil and external links</h2>
+                <p>
+                    An anvil for a place where things are made and kept, such as a code forge. The
+                    arrow up and right marks an external link opening a new tab or window; the arrow
+                    right stays with travel inside the site. Name the new tab in the link's
+                    accessible text too.
+                </p>
+                <div class="specimen__api">
+                    <code>glyphs.svg#anvil</code><code>glyphs.svg#arrow-up-right</code
+                    ><code>glyphs.svg#arrow-right</code><code>.visually-hidden</code>
+                </div>
+                <div class="specimen__stage">
+                    <a
+                        class="button"
+                        href="https://github.com/stemma-math"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                    >
+                        <svg class="glyph" aria-hidden="true">
+                            <use href="../targets/web/glyphs.svg#anvil" />
+                        </svg>
+                        Code forge
+                        <svg class="glyph" aria-hidden="true">
+                            <use href="../targets/web/glyphs.svg#arrow-up-right" />
+                        </svg>
+                        <span class="visually-hidden">(opens in a new tab)</span>
+                    </a>
+                    <a class="button" href="#every">
+                        More glyphs
+                        <svg class="glyph" aria-hidden="true">
+                            <use href="../targets/web/glyphs.svg#arrow-right" />
+                        </svg>
+                    </a>
+                </div>
+            </section>
+
             <section class="specimen" id="arrows">
                 <h2>Directional arrows</h2>
                 <p>The two directions of travel, distinct from the chevron of a disclosure.</p>
@@ -96,6 +163,11 @@
             <script type="module">
                 import { glyph, glyphs } from "../targets/elements/glyphs.js";
                 import { html } from "./catalog.js";
+
+                document.getElementById("reset-button").addEventListener("click", () => {
+                    const input = document.getElementById("reset-value");
+                    input.value = input.defaultValue;
+                });
 
                 for (const name of Object.keys(glyphs))
                     document

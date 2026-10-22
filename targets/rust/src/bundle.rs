@@ -86,6 +86,7 @@ impl Subset {
 #[derive(Clone, Copy, Debug, PartialEq, Eq)]
 pub enum Element {
     CopyButton,
+    DatePicker,
     Dialog,
     FilterChips,
     Light,
@@ -104,8 +105,9 @@ pub enum Element {
 #[cfg(feature = "elements")]
 impl Element {
     /// Every element.
-    pub const ALL: [Element; 14] = [
+    pub const ALL: [Element; 15] = [
         Element::CopyButton,
+        Element::DatePicker,
         Element::Dialog,
         Element::FilterChips,
         Element::Light,
@@ -125,6 +127,7 @@ impl Element {
     pub fn module(self) -> &'static str {
         match self {
             Element::CopyButton => "copy-button",
+            Element::DatePicker => "date-picker",
             Element::Dialog => "dialog",
             Element::FilterChips => "filter-chips",
             Element::Light => "light",

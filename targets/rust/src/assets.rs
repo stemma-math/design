@@ -368,6 +368,11 @@ pub(crate) static ELEMENTS: &[Asset] = &[
         bytes: include_bytes!("../assets/elements/copy-button.js"),
     },
     Asset {
+        path: "elements/date-picker.js",
+        content_type: "text/javascript; charset=utf-8",
+        bytes: include_bytes!("../assets/elements/date-picker.js"),
+    },
+    Asset {
         path: "elements/dialog.js",
         content_type: "text/javascript; charset=utf-8",
         bytes: include_bytes!("../assets/elements/dialog.js"),

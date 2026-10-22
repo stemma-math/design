@@ -1041,6 +1041,7 @@
 @layer stemma.tones {
     .button--neutral,
     .chip--neutral,
+    .indicator--neutral,
     .count--neutral,
     .avatar--neutral,
     .message--neutral,
@@ -1054,6 +1055,7 @@
 
     .button--accent,
     .chip--accent,
+    .indicator--accent,
     .count--accent,
     .avatar--accent,
     .message--accent,
@@ -1067,6 +1069,7 @@
 
     .button--success,
     .chip--success,
+    .indicator--success,
     .count--success,
     .avatar--success,
     .message--success,
@@ -1080,6 +1083,7 @@
 
     .button--warning,
     .chip--warning,
+    .indicator--warning,
     .count--warning,
     .avatar--warning,
     .message--warning,
@@ -1093,6 +1097,7 @@
 
     .button--danger,
     .chip--danger,
+    .indicator--danger,
     .count--danger,
     .avatar--danger,
     .message--danger,
@@ -1107,6 +1112,7 @@
 
     .button--info,
     .chip--info,
+    .indicator--info,
     .count--info,
     .avatar--info,
     .message--info,
@@ -1121,6 +1127,7 @@
     /* The categorical tones: no meaning, only telling things apart. */
 
     .chip--indigo,
+    .indicator--indigo,
     .count--indigo,
     .avatar--indigo,
     .highlight--indigo,
@@ -1131,6 +1138,7 @@
     }
 
     .chip--teal,
+    .indicator--teal,
     .count--teal,
     .avatar--teal,
     .highlight--teal,
@@ -1141,6 +1149,7 @@
     }
 
     .chip--violet,
+    .indicator--violet,
     .count--violet,
     .avatar--violet,
     .highlight--violet,
@@ -1151,6 +1160,7 @@
     }
 
     .chip--ochre,
+    .indicator--ochre,
     .count--ochre,
     .avatar--ochre,
     .highlight--ochre,
@@ -1161,6 +1171,7 @@
     }
 
     .chip--magenta,
+    .indicator--magenta,
     .count--magenta,
     .avatar--magenta,
     .highlight--magenta,
@@ -1171,6 +1182,7 @@
     }
 
     .chip--olive,
+    .indicator--olive,
     .count--olive,
     .avatar--olive,
     .highlight--olive,
@@ -1181,6 +1193,7 @@
     }
 
     .chip--cerulean,
+    .indicator--cerulean,
     .count--cerulean,
     .avatar--cerulean,
     .highlight--cerulean,
@@ -1191,6 +1204,7 @@
     }
 
     .chip--rust,
+    .indicator--rust,
     .count--rust,
     .avatar--rust,
     .highlight--rust,
@@ -2461,6 +2475,128 @@
         cursor: not-allowed;
     }
 
+    /* ── Date picker ───────────────────────────────────────────────────
+     *
+     * The element enhances a native date or datetime-local input with a
+     * `.select` trigger and a calendar. Without script the input stays
+     * visible. The calendar uses a single tab stop among the days. */
+
+    stemma-date-picker {
+        display: inline-block;
+    }
+
+    .date-picker {
+        box-sizing: border-box;
+        width: 300px;
+        max-width: calc(100vw - 16px);
+        max-height: calc(100dvh - 16px);
+        overflow: auto;
+        padding: var(--space-3);
+        font: var(--text-body);
+        color: var(--ink-1);
+        background: var(--surface-card);
+        border: 1px solid var(--border-strong);
+        border-radius: var(--radius-lg);
+        box-shadow: var(--shadow-float);
+        z-index: 30;
+    }
+
+    .date-picker__header,
+    .date-picker__footer {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: var(--space-2);
+    }
+
+    .date-picker__header {
+        margin-bottom: var(--space-2);
+        font: var(--text-label);
+    }
+
+    .date-picker__week {
+        display: grid;
+        grid-template-columns: repeat(7, minmax(0, 1fr));
+        gap: 2px;
+        text-align: center;
+    }
+
+    .date-picker__week [role="columnheader"] {
+        padding-block: var(--space-2);
+        font: var(--text-label);
+        color: var(--ink-3);
+    }
+
+    .date-picker__day {
+        width: 100%;
+        min-height: var(--control-height);
+        padding: 0;
+        font: var(--text-label);
+        font-variant-numeric: tabular-nums;
+        color: var(--ink-1);
+        background: transparent;
+        border: 1px solid transparent;
+        border-radius: var(--radius-sm);
+        cursor: pointer;
+    }
+
+    .date-picker__day[data-outside="true"] {
+        color: var(--ink-3);
+    }
+
+    .date-picker__day[aria-current="date"] {
+        border-color: var(--accent);
+    }
+
+    .date-picker__day:hover:not([aria-disabled="true"]) {
+        background: var(--fill-muted);
+    }
+
+    .date-picker [aria-selected="true"] > .date-picker__day {
+        color: var(--accent-on);
+        background: var(--accent);
+    }
+
+    .date-picker__day[aria-disabled="true"] {
+        color: var(--ink-disabled);
+        cursor: not-allowed;
+    }
+
+    .date-picker__day:focus-visible {
+        outline-offset: -2px;
+    }
+
+    .date-picker__time {
+        display: flex;
+        gap: var(--space-2);
+        margin-block: var(--space-3);
+    }
+
+    .date-picker__time > .field {
+        flex: 1;
+        min-width: 0;
+    }
+
+    .date-picker__time .input {
+        width: 100%;
+        min-width: 0;
+    }
+
+    .date-picker__time[hidden],
+    .date-picker__time > [hidden] {
+        display: none;
+    }
+
+    .date-picker__footer {
+        margin-top: var(--space-3);
+    }
+
+    .date-picker__help {
+        margin: var(--space-3) 0 0;
+        font: var(--text-label);
+        color: var(--ink-3);
+    }
+
     /* ── Chip ──────────────────────────────────────────────────────────
      *
      * A state with a fixed meaning, in a tone: neutral by default. Always
@@ -2476,6 +2612,8 @@
 
         box-sizing: border-box;
         display: inline-flex;
+        width: max-content;
+        flex: none;
         align-items: center;
         gap: 6px;
         padding: 3px 9px;
@@ -2544,6 +2682,62 @@
     .chip--small .glyph {
         width: 1em;
         height: 1em;
+    }
+
+    /* ── Indicator ─────────────────────────────────────────────────────
+     *
+     * A quiet dot and a short label, without a background. `--active`
+     * defaults to success and adds a slow, soft pulse around the dot.
+     * A tone can describe another state independently of motion. Give a
+     * dot-only indicator an accessible name; hide the dot itself. */
+
+    .indicator {
+        --tone: var(--ink-3);
+
+        display: inline-flex;
+        width: max-content;
+        flex: none;
+        align-items: center;
+        gap: var(--space-2);
+        font: var(--text-label);
+        color: var(--ink-2);
+        vertical-align: middle;
+    }
+
+    .indicator__dot {
+        position: relative;
+        width: 8px;
+        height: 8px;
+        flex: none;
+        background: var(--tone);
+        border-radius: var(--radius-pill);
+    }
+
+    .indicator--active {
+        --tone: var(--success);
+    }
+
+    @media (prefers-reduced-motion: no-preference) {
+        .indicator--active .indicator__dot::after {
+            content: "";
+            position: absolute;
+            inset: 0;
+            background: inherit;
+            border-radius: inherit;
+            animation: stemma-indicator-pulse 3s var(--ease-out) infinite;
+        }
+    }
+
+    @keyframes stemma-indicator-pulse {
+        from {
+            opacity: 0.2;
+            transform: scale(1);
+        }
+        70%,
+        to {
+            opacity: 0;
+            transform: scale(2.5);
+        }
     }
 
     /* ── Count ─────────────────────────────────────────────────────────
@@ -4313,6 +4507,7 @@
      * A menu or tooltip shown as a popover is placed by its element, not
      * by the browser's defaults. */
 
+    .date-picker[popover],
     .menu[popover],
     .tooltip[popover] {
         position: fixed;
@@ -4321,6 +4516,7 @@
         overflow: visible;
     }
 
+    .date-picker[popover],
     .menu[popover] {
         overflow: auto;
     }
