@@ -174,6 +174,12 @@ dark or the system's.
 for returning a value to its default; `undo` undoes an action, and `sync`
 refreshes. Name an icon-only reset button and give it a tooltip.
 
+`anvil` marks a place where things are made and kept, such as a code forge.
+`arrow-up-right` marks an external link that opens a new tab or window;
+`arrow-right` stays with navigation inside the site. Hide the decorative
+glyph from assistive technology and include the new-tab notice in the
+link's accessible text, for example with `.visually-hidden`.
+
 ### Links and references
 
 A link in interface text without a class of its own is in the link
