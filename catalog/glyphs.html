@@ -74,6 +74,36 @@
                 </div>
             </section>
 
+            <section class="specimen" id="reset">
+                <h2>Reset</h2>
+                <p>
+                    A counter-clockwise circular arrow with its head at the top: return a value to
+                    its default. Use undo for undoing an action, and sync for refreshing.
+                </p>
+                <div class="specimen__api">
+                    <code>glyphs.svg#reset</code><code>.button--icon</code
+                    ><code>&lt;stemma-tooltip&gt;</code>
+                </div>
+                <div class="specimen__stage">
+                    <div class="row">
+                        <label class="field" style="width: 180px">
+                            <span class="field__label">Value</span>
+                            <input class="input" type="number" value="10" id="reset-value" />
+                        </label>
+                        <button
+                            class="button button--icon"
+                            aria-label="Reset to default"
+                            id="reset-button"
+                        >
+                            <svg class="glyph" aria-hidden="true">
+                                <use href="../targets/web/glyphs.svg#reset" />
+                            </svg>
+                        </button>
+                        <stemma-tooltip for="reset-button">Reset to default</stemma-tooltip>
+                    </div>
+                </div>
+            </section>
+
             <section class="specimen" id="arrows">
                 <h2>Directional arrows</h2>
                 <p>The two directions of travel, distinct from the chevron of a disclosure.</p>
@@ -96,6 +126,11 @@
             <script type="module">
                 import { glyph, glyphs } from "../targets/elements/glyphs.js";
                 import { html } from "./catalog.js";
+
+                document.getElementById("reset-button").addEventListener("click", () => {
+                    const input = document.getElementById("reset-value");
+                    input.value = input.defaultValue;
+                });
 
                 for (const name of Object.keys(glyphs))
                     document

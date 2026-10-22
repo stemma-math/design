@@ -160,6 +160,9 @@ The names are the files in the repository's `source/glyphs/`: `add`,
 of `add-person`. Use `group` when the destination represents several people.
 `appearance`, a crescent moon, marks where one chooses the appearance: light,
 dark or the system's.
+`reset` is a counter-clockwise circular arrow with its head at the top,
+for returning a value to its default; `undo` undoes an action, and `sync`
+refreshes. Name an icon-only reset button and give it a tooltip.
 
 ### Links and references
 

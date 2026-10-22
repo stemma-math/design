@@ -36,6 +36,7 @@
   <symbol id="person" viewBox="0 0 24 24"><circle cx="12" cy="8" r="4"/><path d="M5 20c.8-3.5 3.6-5.5 7-5.5s6.2 2 7 5.5"/></symbol>
   <symbol id="redo" viewBox="0 0 24 24"><path d="m15 14 5-5-5-5"/><path d="M20 9H10a6 6 0 0 0 0 12h3"/></symbol>
   <symbol id="reply" viewBox="0 0 24 24"><path d="M9 17 4 12l5-5"/><path d="M4 12h9a7 7 0 0 1 7 7"/></symbol>
+  <symbol id="reset" viewBox="0 0 24 24"><path d="M12 4a8 8 0 1 1-7.5 5.2"/><path d="m16 1-4 3 4 3"/></symbol>
   <symbol id="search" viewBox="0 0 24 24"><circle cx="11" cy="11" r="6.5"/><path d="m20 20-4.2-4.2"/></symbol>
   <symbol id="send" viewBox="0 0 24 24"><path d="M21 3 3 10l7 4 4 7 7-18Z"/><path d="m10 14 11-11"/></symbol>
   <symbol id="settings" viewBox="0 0 24 24"><path d="M10.3 5.0 10.6 2.5 13.4 2.5 13.7 5.0 15.7 5.8 17.7 4.3 19.7 6.3 18.2 8.3 19.0 10.3 21.5 10.6 21.5 13.4 19.0 13.7 18.2 15.7 19.7 17.7 17.7 19.7 15.7 18.2 13.7 19.0 13.4 21.5 10.6 21.5 10.3 19.0 8.3 18.2 6.3 19.7 4.3 17.7 5.8 15.7 5.0 13.7 2.5 13.4 2.5 10.6 5.0 10.3 5.8 8.3 4.3 6.3 6.3 4.3 8.3 5.8Z"/><circle cx="12" cy="12" r="2.8"/></symbol>
