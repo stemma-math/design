@@ -2475,6 +2475,128 @@
         cursor: not-allowed;
     }
 
+    /* ── Date picker ───────────────────────────────────────────────────
+     *
+     * The element enhances a native date or datetime-local input with a
+     * `.select` trigger and a calendar. Without script the input stays
+     * visible. The calendar uses a single tab stop among the days. */
+
+    stemma-date-picker {
+        display: inline-block;
+    }
+
+    .date-picker {
+        box-sizing: border-box;
+        width: 300px;
+        max-width: calc(100vw - 16px);
+        max-height: calc(100dvh - 16px);
+        overflow: auto;
+        padding: var(--space-3);
+        font: var(--text-body);
+        color: var(--ink-1);
+        background: var(--surface-card);
+        border: 1px solid var(--border-strong);
+        border-radius: var(--radius-lg);
+        box-shadow: var(--shadow-float);
+        z-index: 30;
+    }
+
+    .date-picker__header,
+    .date-picker__footer {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: var(--space-2);
+    }
+
+    .date-picker__header {
+        margin-bottom: var(--space-2);
+        font: var(--text-label);
+    }
+
+    .date-picker__week {
+        display: grid;
+        grid-template-columns: repeat(7, minmax(0, 1fr));
+        gap: 2px;
+        text-align: center;
+    }
+
+    .date-picker__week [role="columnheader"] {
+        padding-block: var(--space-2);
+        font: var(--text-label);
+        color: var(--ink-3);
+    }
+
+    .date-picker__day {
+        width: 100%;
+        min-height: var(--control-height);
+        padding: 0;
+        font: var(--text-label);
+        font-variant-numeric: tabular-nums;
+        color: var(--ink-1);
+        background: transparent;
+        border: 1px solid transparent;
+        border-radius: var(--radius-sm);
+        cursor: pointer;
+    }
+
+    .date-picker__day[data-outside="true"] {
+        color: var(--ink-3);
+    }
+
+    .date-picker__day[aria-current="date"] {
+        border-color: var(--accent);
+    }
+
+    .date-picker__day:hover:not([aria-disabled="true"]) {
+        background: var(--fill-muted);
+    }
+
+    .date-picker [aria-selected="true"] > .date-picker__day {
+        color: var(--accent-on);
+        background: var(--accent);
+    }
+
+    .date-picker__day[aria-disabled="true"] {
+        color: var(--ink-disabled);
+        cursor: not-allowed;
+    }
+
+    .date-picker__day:focus-visible {
+        outline-offset: -2px;
+    }
+
+    .date-picker__time {
+        display: flex;
+        gap: var(--space-2);
+        margin-block: var(--space-3);
+    }
+
+    .date-picker__time > .field {
+        flex: 1;
+        min-width: 0;
+    }
+
+    .date-picker__time .input {
+        width: 100%;
+        min-width: 0;
+    }
+
+    .date-picker__time[hidden],
+    .date-picker__time > [hidden] {
+        display: none;
+    }
+
+    .date-picker__footer {
+        margin-top: var(--space-3);
+    }
+
+    .date-picker__help {
+        margin: var(--space-3) 0 0;
+        font: var(--text-label);
+        color: var(--ink-3);
+    }
+
     /* ── Chip ──────────────────────────────────────────────────────────
      *
      * A state with a fixed meaning, in a tone: neutral by default. Always
@@ -4385,6 +4507,7 @@
      * A menu or tooltip shown as a popover is placed by its element, not
      * by the browser's defaults. */
 
+    .date-picker[popover],
     .menu[popover],
     .tooltip[popover] {
         position: fixed;
@@ -4393,6 +4516,7 @@
         overflow: visible;
     }
 
+    .date-picker[popover],
     .menu[popover] {
         overflow: auto;
     }

@@ -70,6 +70,7 @@ def files : Array String := #[
   "elements/LICENSE",
   "elements/LICENSE-mark",
   "elements/copy-button.js",
+  "elements/date-picker.js",
   "elements/dialog.js",
   "elements/filter-chips.js",
   "elements/glyphs.js",

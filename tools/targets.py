@@ -94,6 +94,7 @@ def fnv(text):
 # The bundles the crate's tests rebuild and compare with `tools/bundle.py`.
 VARIANTS = [
     bundle.Options(faces=[], subsets=["latin"]),
+    bundle.Options(faces=[], sprite=False, elements=["date-picker"]),
     bundle.Options(
         faces=["ui"], subsets=["latin", "latin-ext"], weights=[400], sprite=False
     ),

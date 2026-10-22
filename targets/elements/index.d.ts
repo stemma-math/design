@@ -1,4 +1,5 @@
 import type { StemmaCopyButton } from "./copy-button.js";
+import type { StemmaDatePicker } from "./date-picker.js";
 import type { StemmaDialog } from "./dialog.js";
 import type { StemmaFilterChips } from "./filter-chips.js";
 import type { StemmaLight } from "./light.js";
@@ -14,6 +15,7 @@ import type { StemmaToastRegion } from "./toast-region.js";
 import type { StemmaTooltip } from "./tooltip.js";
 
 export { StemmaCopyButton } from "./copy-button.js";
+export { StemmaDatePicker } from "./date-picker.js";
 export { StemmaDialog } from "./dialog.js";
 export { StemmaFilterChips } from "./filter-chips.js";
 export { StemmaLight } from "./light.js";
@@ -34,6 +36,7 @@ export { StemmaTooltip } from "./tooltip.js";
 declare global {
     interface HTMLElementTagNameMap {
         "stemma-copy-button": StemmaCopyButton;
+        "stemma-date-picker": StemmaDatePicker;
         "stemma-dialog": StemmaDialog;
         "stemma-filter-chips": StemmaFilterChips;
         "stemma-light": StemmaLight;

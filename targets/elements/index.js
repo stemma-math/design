@@ -1,6 +1,7 @@
 // Every element, defined on import, and their helpers.
 
 export { StemmaCopyButton } from "./copy-button.js";
+export { StemmaDatePicker } from "./date-picker.js";
 export { StemmaDialog } from "./dialog.js";
 export { StemmaFilterChips } from "./filter-chips.js";
 export { StemmaLight } from "./light.js";

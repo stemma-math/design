@@ -22,6 +22,10 @@
       "types": "./copy-button.d.ts",
       "default": "./copy-button.js"
     },
+    "./date-picker.js": {
+      "types": "./date-picker.d.ts",
+      "default": "./date-picker.js"
+    },
     "./dialog.js": {
       "types": "./dialog.d.ts",
       "default": "./dialog.js"

@@ -203,6 +203,81 @@ If p is prime, then a^p ≡ a (mod p).</textarea>
                 </div>
             </section>
 
+            <section class="specimen" id="date-picker">
+                <h2>Date and time picker</h2>
+                <p>
+                    A calendar over a native date or local date-time input, kept for forms and
+                    events. Monday-first weeks, month navigation, today outlined and the chosen day
+                    filled. Arrows move days, Page Up/Down moves months (Shift moves years), and
+                    typing finds a day number or month name. Enter chooses; Escape closes. Minimum,
+                    maximum and step constraints disable unavailable dates and bound time.
+                </p>
+                <div class="specimen__api">
+                    <code>&lt;stemma-date-picker&gt;</code><code>input[type="date"]</code
+                    ><code>input[type="datetime-local"]</code><code>.select</code
+                    ><code>.date-picker</code><code>.date-picker__day</code><code>min</code
+                    ><code>max</code><code>step</code><code>placeholder</code>
+                </div>
+                <form class="specimen__stage" id="date-form">
+                    <div class="split">
+                        <div class="field">
+                            <label class="field__label" for="calendar-date">Date</label>
+                            <stemma-date-picker placeholder="Choose a date">
+                                <input
+                                    class="input"
+                                    type="date"
+                                    id="calendar-date"
+                                    name="date"
+                                    aria-describedby="calendar-date-hint"
+                                    data-events-for
+                                />
+                            </stemma-date-picker>
+                            <span class="field__hint" id="calendar-date-hint">Today or later.</span>
+                        </div>
+                        <div class="field">
+                            <label class="field__label" for="calendar-datetime"
+                                >Date and time</label
+                            >
+                            <stemma-date-picker placeholder="Choose a date and time">
+                                <input
+                                    class="input"
+                                    type="datetime-local"
+                                    id="calendar-datetime"
+                                    name="datetime"
+                                    step="900"
+                                    aria-describedby="calendar-time-hint"
+                                />
+                            </stemma-date-picker>
+                            <span class="field__hint" id="calendar-time-hint"
+                                >Today through the next 30 days, in 15-minute steps.</span
+                            >
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="field">
+                            <label class="field__label" for="calendar-disabled"
+                                >Unavailable date</label
+                            >
+                            <stemma-date-picker>
+                                <input class="input" type="date" id="calendar-disabled" disabled />
+                            </stemma-date-picker>
+                        </div>
+                        <button class="button" type="reset">Reset dates</button>
+                    </div>
+                </form>
+                <script type="module">
+                    const localDate = (date) =>
+                        `${date.getFullYear()}-${String(date.getMonth() + 1).padStart(2, "0")}-${String(date.getDate()).padStart(2, "0")}`;
+                    const now = new Date();
+                    const last = new Date(now);
+                    last.setDate(last.getDate() + 30);
+                    document.getElementById("calendar-date").min = localDate(now);
+                    const datetime = document.getElementById("calendar-datetime");
+                    datetime.min = `${localDate(now)}T09:00`;
+                    datetime.max = `${localDate(last)}T18:00`;
+                </script>
+            </section>
+
             <section class="specimen" id="choice">
                 <h2>Checkbox, radio and switch</h2>
                 <p>

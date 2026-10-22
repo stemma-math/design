@@ -25,6 +25,7 @@ or one module for one element.
 | `menu.js`         | `<stemma-menu>`         | Opens a `.menu` from its button, with arrow keys, Home, End and Escape, and sends `select`.                                                                      |
 | `segmented.js`    | `<stemma-segmented>`    | A single choice among the buttons of a `.segmented` control, with arrow keys.                                                                                    |
 | `select.js`       | `<stemma-select>`       | Draws a native `select` with its own list, keyboard and typeahead; the `select` stays, hidden, for forms and events.                                             |
+| `date-picker.js`  | `<stemma-date-picker>`  | A calendar over a native date or datetime-local input, with month navigation, time fields, keyboard, typeahead and native form constraints.                      |
 | `stepper.js`      | `<stemma-stepper>`      | Buttons that take a number input down and up by its step, repeating while held.                                                                                  |
 | `range.js`        | `<stemma-range>`        | Fills a range's track up to its value in every engine, and shows the value in an `output`.                                                                       |
 | `tabs.js`         | `<stemma-tabs>`         | Tabs over a `.tabs` list, each showing its panel, with arrow keys.                                                                                               |
@@ -72,6 +73,58 @@ their group. Both variants keep the same arrow-key selection and ARIA state.
   stylesheets shorten every transition.
 - The light and the live mark pause while the page is hidden, and the
   light while it is out of view.
+
+## Date and time pickers
+
+```html
+<label for="ends">Ends</label>
+<stemma-date-picker placeholder="Choose a date and time">
+  <input
+    class="input"
+    type="datetime-local"
+    id="ends"
+    name="ends"
+    min="2026-10-22T09:00"
+    max="2026-12-31T18:00"
+    step="900"
+  />
+</stemma-date-picker>
+```
+
+Use `type="date"` for a date alone. The native input remains the source of
+truth: its `name`, form association, `required`, `disabled`, `readonly`,
+`min`, `max`, `step`, value, validation and reset continue to work. Labels,
+`aria-labelledby`, `aria-label`, `aria-describedby` and `aria-invalid`
+name or describe the trigger. Invalid form submission focuses it and
+announces the native validation message. A date outside the bounds, or
+with no permitted step, cannot be selected. Time is rounded to the nearest
+permitted step within that day, including partial minimum/maximum days.
+Date-time values are local calendar fields with no timezone conversion.
+The supported years are 1–9999.
+
+The calendar opens at the selection, or today within the bounds. Today
+has an outline and `aria-current="date"`; the chosen cell has
+`aria-selected`. Month and day names follow the page's `lang`. The week
+starts on Monday. Only one day is a tab stop. Unavailable days can be
+explored by arrows and are announced as disabled; they cannot be chosen.
+
+- Arrow keys move one day or week; Home/End move to the week's edges.
+- Page Up/Down moves a month; Shift moves a year, preserving the day when
+  possible (January 31 becomes February 28 or 29).
+- Type a day number or a month name to move focus. Enter/Space chooses.
+- Escape or Done closes and restores trigger focus. Tab visits the month,
+  grid, time and footer controls; moving outside closes the calendar.
+- Today chooses today if permitted; Clear removes an optional or required
+  value (a required native input remains invalid until a date is chosen).
+
+Date selection closes a date-only picker. For a date and time, it moves
+focus to Hour and leaves the panel open for editing; Done completes it.
+Each changed choice sends bubbling `input` and `change` from the native
+input. Changes to time are committed on field change. The `value`
+property sets the native ISO value without events. `open()`, `close()` and
+`isOpen` control the panel; `refresh()` reflects script assignments to
+`input.value` or `setCustomValidity()`. Native events, attribute changes
+and form reset refresh automatically. Without script the input is shown.
 
 ## The live mark
 
