@@ -1,8 +1,8 @@
 # Generated from targets/web, targets/elements and targets/brand-kit by tools/targets.py. Do not edit.
 # faces	math	subsets	face subsets	weights	elements	sprite	length	fnv1a64
-	false	latin				true	130267	016af5753ae802c9
-	false	latin,latin-ext			date-picker	false	160406	9f5148868516e838
-ui	false	latin,latin-ext		400		false	232642	4e58b17b662ee16d
-prose,mono	true	latin		400,700	theme-switch,copy-button,mark	true	1461241	3d7105ca3513e83d
-ui,prose,mono	true	latin,latin-ext,greek,cyrillic,symbols			copy-button,date-picker,dialog,filter-chips,light,mark,menu,range,segmented,select,stepper,tabs,theme-switch,toast-region,tooltip	true	9247092	c258c905d46488d1
-ui,prose,mono	false	latin,latin-ext	ui=latin;mono=latin	400,600	theme-switch	true	658020	127b03df5d7b0661
+	false	latin				true	131766	43bacd957d61f098
+	false	latin,latin-ext			date-picker	false	161905	21725e68c4b6662d
+ui	false	latin,latin-ext		400		false	234141	a847be456ae3c144
+prose,mono	true	latin		400,700	theme-switch,copy-button,mark	true	1462740	5a778acbe6290252
+ui,prose,mono	true	latin,latin-ext,greek,cyrillic,symbols			copy-button,date-picker,dialog,filter-chips,light,mark,menu,range,segmented,select,stepper,tabs,theme-switch,toast-region,tooltip	true	9248591	d4abefa3a76cc6b4
+ui,prose,mono	false	latin,latin-ext	ui=latin;mono=latin	400,600	theme-switch	true	659519	c39b26482ec97c88

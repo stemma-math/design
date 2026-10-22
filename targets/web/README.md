@@ -107,6 +107,17 @@ A component derives its borders, soft fills and hover states from them
 with `color-mix()`, and every combination is checked for contrast in both
 appearances.
 
+### Under way
+
+For words that say something is under way, `.ellipsis` ends them with
+three dots that come one at a time, in their own room, and `.shimmer` runs
+a soft light across quiet text. With reduced motion the dots are all shown
+and the text stays as it is.
+
+```html
+<strong class="ellipsis">Answering</strong> <span class="shimmer">Reading the sources</span>
+```
+
 ### Live indicators
 
 `.indicator` pairs an 8px dot with a short label, without a background.
