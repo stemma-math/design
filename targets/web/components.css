@@ -869,6 +869,8 @@
 
         box-sizing: border-box;
         display: inline-flex;
+        width: max-content;
+        flex: none;
         align-items: center;
         gap: 6px;
         padding: 3px 9px;

@@ -1,7 +1,7 @@
 # Generated from targets/web, targets/elements and targets/brand-kit by tools/targets.py. Do not edit.
 # faces	math	subsets	face subsets	weights	elements	sprite	length	fnv1a64
-	false	latin				true	123972	13b77e1ce261937d
-ui	false	latin,latin-ext		400		false	226693	0dbd1f40c6cd36b3
-prose,mono	true	latin		400,700	theme-switch,copy-button,mark	true	1454694	4425363c9ec670c1
-ui,prose,mono	true	latin,latin-ext,greek,cyrillic,symbols			copy-button,dialog,filter-chips,light,mark,menu,range,segmented,select,stepper,tabs,theme-switch,toast-region,tooltip	true	9214667	4cd6ae4803ef4eda
-ui,prose,mono	false	latin,latin-ext	ui=latin;mono=latin	400,600	theme-switch	true	651725	bf1dffdf7af9a7af
+	false	latin				true	124020	1b2fe5c4cb674678
+ui	false	latin,latin-ext		400		false	226741	d8a8546866e46792
+prose,mono	true	latin		400,700	theme-switch,copy-button,mark	true	1454742	c67bd379910602b0
+ui,prose,mono	true	latin,latin-ext,greek,cyrillic,symbols			copy-button,dialog,filter-chips,light,mark,menu,range,segmented,select,stepper,tabs,theme-switch,toast-region,tooltip	true	9214715	ac758b6658f01c43
+ui,prose,mono	false	latin,latin-ext	ui=latin;mono=latin	400,600	theme-switch	true	651773	af4a8e85bf437344
