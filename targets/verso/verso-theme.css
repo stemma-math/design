@@ -3358,6 +3358,113 @@
         margin-bottom: var(--disclosure-inset);
     }
 
+    /* ── Row list ──────────────────────────────────────────────────────
+     *
+     * One thing per row, its name beside its control, for pages of many
+     * small settings: on a `ul` or a `div` of `.row-list__item`, usually on
+     * a `.card`. A row holds `.row-list__text` (its `.row-list__name`, with
+     * anything small beside it such as a chip, and an optional
+     * `.row-list__description`) and `.row-list__control`, one control or a
+     * few, on the right. Rows are parted by hairlines. A row that opens is
+     * a `details.row-list__item`: its `summary` is the row, ending in a
+     * chevron, and `.row-list__body` holds what it opens to. Where the row
+     * has no room, the control goes under the name. */
+
+    .row-list {
+        --row-list-inset: 16px;
+        --row-list-block: 12px;
+
+        margin: 0;
+        padding: 0;
+        list-style: none;
+    }
+
+    .card > .row-list,
+    .card.row-list {
+        --row-list-inset: 20px;
+        --row-list-block: 14px;
+    }
+
+    /* Each row, or the `li` holding one, under the one before. */
+    .row-list > * + * {
+        border-top: 1px solid var(--border);
+    }
+
+    .row-list__item:not(details),
+    details.row-list__item > summary {
+        display: flex;
+        flex-wrap: wrap;
+        align-items: center;
+        gap: var(--space-2) var(--space-4);
+        padding: var(--row-list-block) var(--row-list-inset);
+    }
+
+    details.row-list__item > summary {
+        list-style: none;
+        cursor: pointer;
+    }
+
+    details.row-list__item > summary::-webkit-details-marker {
+        display: none;
+    }
+
+    details.row-list__item > summary::after {
+        flex-shrink: 0;
+        width: 7px;
+        height: 7px;
+        margin-inline: 2px;
+        content: "";
+        border-right: 1.5px solid var(--ink-3);
+        border-bottom: 1.5px solid var(--ink-3);
+        transform: rotate(-45deg);
+        transition: transform var(--dur-ui) var(--ease-out);
+    }
+
+    details.row-list__item[open] > summary::after {
+        transform: rotate(45deg);
+    }
+
+    .row-list__text {
+        display: flex;
+        flex: 1 1 14rem;
+        flex-direction: column;
+        gap: 2px;
+        min-width: 0;
+    }
+
+    .row-list__name {
+        display: flex;
+        flex-wrap: wrap;
+        align-items: center;
+        gap: 4px 8px;
+        font: 500 var(--control-font) / 1.3 var(--font-ui);
+        color: var(--ink-1);
+    }
+
+    .row-list__description {
+        font-size: var(--control-small-font);
+        color: var(--ink-3);
+        overflow-wrap: anywhere;
+    }
+
+    .row-list__control {
+        display: flex;
+        flex: 0 1 auto;
+        flex-wrap: wrap;
+        align-items: center;
+        justify-content: flex-end;
+        gap: var(--space-2);
+        min-width: 0;
+        margin-left: auto;
+    }
+
+    .row-list__body {
+        display: flex;
+        flex-direction: column;
+        gap: var(--space-3);
+        padding: 0 var(--row-list-inset) var(--row-list-inset);
+    }
+
     /* ── Dialog ────────────────────────────────────────────────────────
      *
      * On a `dialog` opened with `showModal()`: a title in a sentence, what

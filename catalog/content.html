@@ -550,6 +550,78 @@ token = "stm_7c1f0e9a2b4d4f3e8a6b5c0d9e8f7a6b5c4d3e2f1a0b9c8d7e6f5a4b3c2d1e0f"</
                 </div>
             </section>
 
+            <section class="specimen" id="row-list">
+                <h2>Row list</h2>
+                <p>
+                    One thing per row, its name beside its control, for pages of many small
+                    settings. A row that opens holds what is wanted now and then. Where a row has no
+                    room, its control goes under its name.
+                </p>
+                <div class="specimen__api">
+                    <code>.row-list</code><code>.row-list__item</code><code>.row-list__text</code
+                    ><code>.row-list__name</code><code>.row-list__description</code
+                    ><code>.row-list__control</code><code>.row-list__body</code>
+                </div>
+                <div class="specimen__stage">
+                    <ul class="card row-list" style="width: 100%">
+                        <li class="row-list__item">
+                            <span class="row-list__text">
+                                <span class="row-list__name">Sync</span>
+                                <span class="row-list__description"
+                                    >Keep this device up to date.</span
+                                >
+                            </span>
+                            <span class="row-list__control">
+                                <input
+                                    type="checkbox"
+                                    role="switch"
+                                    aria-checked="true"
+                                    aria-label="Sync"
+                                    checked
+                                />
+                            </span>
+                        </li>
+                        <li class="row-list__item">
+                            <span class="row-list__text">
+                                <span class="row-list__name">
+                                    Page size
+                                    <span class="chip chip--small chip--accent">Changed</span>
+                                </span>
+                            </span>
+                            <span class="row-list__control">
+                                <select class="input" aria-label="Page size">
+                                    <option>A4</option>
+                                    <option>Letter</option>
+                                </select>
+                            </span>
+                        </li>
+                        <li>
+                            <details class="row-list__item">
+                                <summary>
+                                    <span class="row-list__text">
+                                        <span class="row-list__name">Export</span>
+                                        <span class="row-list__description"
+                                            >Where and how often.</span
+                                        >
+                                    </span>
+                                    <span class="row-list__control"
+                                        ><span class="chip chip--small chip--success"
+                                            >On</span
+                                        ></span
+                                    >
+                                </summary>
+                                <div class="row-list__body">
+                                    <label class="field">
+                                        <span class="field__label">Folder</span>
+                                        <input class="input" value="~/Exports" />
+                                    </label>
+                                </div>
+                            </details>
+                        </li>
+                    </ul>
+                </div>
+            </section>
+
             <section class="specimen" id="highlight">
                 <h2>Highlight</h2>
                 <p>
