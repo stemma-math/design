@@ -941,6 +941,62 @@
         height: 1em;
     }
 
+    /* ── Indicator ─────────────────────────────────────────────────────
+     *
+     * A quiet dot and a short label, without a background. `--active`
+     * defaults to success and adds a slow, soft pulse around the dot.
+     * A tone can describe another state independently of motion. Give a
+     * dot-only indicator an accessible name; hide the dot itself. */
+
+    .indicator {
+        --tone: var(--ink-3);
+
+        display: inline-flex;
+        width: max-content;
+        flex: none;
+        align-items: center;
+        gap: var(--space-2);
+        font: var(--text-label);
+        color: var(--ink-2);
+        vertical-align: middle;
+    }
+
+    .indicator__dot {
+        position: relative;
+        width: 8px;
+        height: 8px;
+        flex: none;
+        background: var(--tone);
+        border-radius: var(--radius-pill);
+    }
+
+    .indicator--active {
+        --tone: var(--success);
+    }
+
+    @media (prefers-reduced-motion: no-preference) {
+        .indicator--active .indicator__dot::after {
+            content: "";
+            position: absolute;
+            inset: 0;
+            background: inherit;
+            border-radius: inherit;
+            animation: stemma-indicator-pulse 3s var(--ease-out) infinite;
+        }
+    }
+
+    @keyframes stemma-indicator-pulse {
+        from {
+            opacity: 0.2;
+            transform: scale(1);
+        }
+        70%,
+        to {
+            opacity: 0;
+            transform: scale(2.5);
+        }
+    }
+
     /* ── Count ─────────────────────────────────────────────────────────
      *
      * A small number beside a heading or a destination, in a tone:

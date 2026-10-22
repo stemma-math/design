@@ -20,6 +20,70 @@
                 </p>
             </header>
 
+            <section class="specimen" id="indicator">
+                <h2>Live indicator</h2>
+                <p>
+                    A small dot beside a short label, without a chip's background. Quiet ink when
+                    off; success and a slow, soft pulse when active. An intent or a categorical tone
+                    chooses the colour independently. Still with reduced motion. Hide the dot from
+                    assistive technology; a dot alone needs an accessible name on its wrapper.
+                </p>
+                <div class="specimen__api">
+                    <code>.indicator</code><code>.indicator__dot</code><code>--active</code
+                    ><code>--{intent}</code><code>--{tone}</code><code>role="img"</code
+                    ><code>aria-label</code>
+                </div>
+                <div class="specimen__stage">
+                    <div class="row">
+                        <span class="indicator indicator--active">
+                            <span class="indicator__dot" aria-hidden="true"></span>Connected
+                        </span>
+                        <span class="indicator">
+                            <span class="indicator__dot" aria-hidden="true"></span>Offline
+                        </span>
+                        <span class="indicator indicator--warning">
+                            <span class="indicator__dot" aria-hidden="true"></span>Reconnecting
+                        </span>
+                        <span class="indicator indicator--danger">
+                            <span class="indicator__dot" aria-hidden="true"></span>Disconnected
+                        </span>
+                        <span class="indicator indicator--active indicator--teal">
+                            <span class="indicator__dot" aria-hidden="true"></span>Running
+                        </span>
+                        <span class="indicator indicator--active" role="img" aria-label="Connected">
+                            <span class="indicator__dot" aria-hidden="true"></span>
+                        </span>
+                    </div>
+                    <div class="split">
+                        <nav aria-label="Indicator in navigation">
+                            <a class="nav-item" href="#indicator">
+                                <span class="nav-item__label">Connection</span>
+                                <span
+                                    class="indicator indicator--active"
+                                    role="img"
+                                    aria-label="Connected"
+                                >
+                                    <span class="indicator__dot" aria-hidden="true"></span>
+                                </span>
+                            </a>
+                        </nav>
+                        <div class="card">
+                            <ul class="row-list">
+                                <li class="row-list__item">
+                                    <div class="row-list__text">
+                                        <span class="row-list__name">Connection</span>
+                                    </div>
+                                    <span class="indicator indicator--active row-list__control">
+                                        <span class="indicator__dot" aria-hidden="true"></span
+                                        >Connected
+                                    </span>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
             <section class="specimen" id="message">
                 <h2>Message</h2>
                 <p>

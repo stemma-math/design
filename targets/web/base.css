@@ -130,6 +130,7 @@
 @layer stemma.tones {
     .button--neutral,
     .chip--neutral,
+    .indicator--neutral,
     .count--neutral,
     .avatar--neutral,
     .message--neutral,
@@ -143,6 +144,7 @@
 
     .button--accent,
     .chip--accent,
+    .indicator--accent,
     .count--accent,
     .avatar--accent,
     .message--accent,
@@ -156,6 +158,7 @@
 
     .button--success,
     .chip--success,
+    .indicator--success,
     .count--success,
     .avatar--success,
     .message--success,
@@ -169,6 +172,7 @@
 
     .button--warning,
     .chip--warning,
+    .indicator--warning,
     .count--warning,
     .avatar--warning,
     .message--warning,
@@ -182,6 +186,7 @@
 
     .button--danger,
     .chip--danger,
+    .indicator--danger,
     .count--danger,
     .avatar--danger,
     .message--danger,
@@ -196,6 +201,7 @@
 
     .button--info,
     .chip--info,
+    .indicator--info,
     .count--info,
     .avatar--info,
     .message--info,
@@ -210,6 +216,7 @@
     /* The categorical tones: no meaning, only telling things apart. */
 
     .chip--indigo,
+    .indicator--indigo,
     .count--indigo,
     .avatar--indigo,
     .highlight--indigo,
@@ -220,6 +227,7 @@
     }
 
     .chip--teal,
+    .indicator--teal,
     .count--teal,
     .avatar--teal,
     .highlight--teal,
@@ -230,6 +238,7 @@
     }
 
     .chip--violet,
+    .indicator--violet,
     .count--violet,
     .avatar--violet,
     .highlight--violet,
@@ -240,6 +249,7 @@
     }
 
     .chip--ochre,
+    .indicator--ochre,
     .count--ochre,
     .avatar--ochre,
     .highlight--ochre,
@@ -250,6 +260,7 @@
     }
 
     .chip--magenta,
+    .indicator--magenta,
     .count--magenta,
     .avatar--magenta,
     .highlight--magenta,
@@ -260,6 +271,7 @@
     }
 
     .chip--olive,
+    .indicator--olive,
     .count--olive,
     .avatar--olive,
     .highlight--olive,
@@ -270,6 +282,7 @@
     }
 
     .chip--cerulean,
+    .indicator--cerulean,
     .count--cerulean,
     .avatar--cerulean,
     .highlight--cerulean,
@@ -280,6 +293,7 @@
     }
 
     .chip--rust,
+    .indicator--rust,
     .count--rust,
     .avatar--rust,
     .highlight--rust,
