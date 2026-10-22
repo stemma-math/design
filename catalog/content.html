@@ -25,11 +25,13 @@
                 <p>
                     A state with a fixed meaning, in an intent or a tone. Always words, so colour is
                     never the only cue. Keeps the width of its content in a table, grid or flex
-                    column too.
+                    column too. A dot before the words marks a live state, and pulses while it
+                    holds.
                 </p>
                 <div class="specimen__api">
                     <code>.chip</code><code>--outline</code><code>--solid</code><code>--dashed</code
-                    ><code>--small</code><code>--{intent}</code><code>--{tone}</code>
+                    ><code>--small</code><code>--{intent}</code><code>--{tone}</code
+                    ><code>.chip__dot</code><code>--live</code>
                 </div>
                 <div class="specimen__stage">
                     <div class="row">
@@ -48,6 +50,20 @@
                             ><svg class="glyph" aria-hidden="true">
                                 <use href="../targets/web/glyphs.svg#done" /></svg
                             >With a glyph</span
+                        >
+                    </div>
+                    <div class="row">
+                        <span class="chip chip--success chip--live"
+                            ><span class="chip__dot" aria-hidden="true"></span>Connected</span
+                        >
+                        <span class="chip chip--success chip--live"
+                            ><span class="chip__dot" aria-hidden="true"></span>Running</span
+                        >
+                        <span class="chip chip--warning"
+                            ><span class="chip__dot" aria-hidden="true"></span>Offline</span
+                        >
+                        <span class="chip"
+                            ><span class="chip__dot" aria-hidden="true"></span>Stopped</span
                         >
                     </div>
                     <div class="row">
