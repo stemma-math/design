@@ -12,6 +12,7 @@ const glyphs = {
     "arrow-right": "<path d=\"M5 12h14M13 6l6 6-6 6\"/>",
     "arrow-up-right": "<path d=\"m6 18 12-12M8 6h10v10\"/>",
     "attach": "<path d=\"M9.5 7.5V15a2 2 0 0 0 4 0V6.75a3.75 3.75 0 0 0-7.5 0v8.75a5.5 5.5 0 0 0 11 0V8\"/>",
+    "bell": "<path d=\"M6 10a6 6 0 0 1 12 0c0 4.5 1.5 6 2 7H4c.5-1 2-2.5 2-7\"/><path d=\"M10 20a2 2 0 0 0 4 0\"/>",
     "blocks": "<rect x=\"4\" y=\"4\" width=\"16\" height=\"6\" rx=\"1.5\"/><rect x=\"4\" y=\"14\" width=\"16\" height=\"6\" rx=\"1.5\"/>",
     "book": "<path d=\"M5 4h11a3 3 0 0 1 3 3v13H8a3 3 0 0 1-3-3z\"/><path d=\"M5 17a3 3 0 0 1 3-3h11\"/>",
     "check": "<path d=\"m5 12 5 5 9-10\"/>",
