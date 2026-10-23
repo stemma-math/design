@@ -280,4 +280,39 @@
         overflow-x: auto;
         overflow-y: hidden;
     }
+
+    /* ── Compact ───────────────────────────────────────────────────────
+     *
+     * A short text among interface, in a row or a card: the prose face at
+     * the interface's size, headings a step above it, and blocks closer
+     * together. */
+
+    .document--compact {
+        font-size: var(--step-4);
+        line-height: 1.5;
+    }
+
+    .document--compact :is(h1, h2, h3, h4, h5, h6) {
+        letter-spacing: normal;
+    }
+
+    .document--compact :is(h1, h2, h3, h4, h5, h6):not(:first-child) {
+        margin-top: 1em;
+    }
+
+    .document--compact :is(h1, h2, h3) {
+        font-size: var(--step-5);
+    }
+
+    .document--compact :is(h4, h5, h6) {
+        font-size: var(--step-4);
+    }
+
+    .document--compact :is(p, ul, ol, dl, blockquote, pre, table, figure) {
+        margin-bottom: 0.5em;
+    }
+
+    .document--compact math[display="block"] {
+        margin: 0.5em 0;
+    }
 }

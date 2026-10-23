@@ -404,11 +404,13 @@
                     Rows in a card. A row that goes somewhere is a link, whole, ending in a chevron.
                     The columns are the consumer's, as a track list in
                     <code class="identifier">--columns</code>; the head and every row share them, so
-                    a column sized by its content lines up across rows.
+                    a column sized by its content lines up across rows. A row that holds controls of
+                    its own, a checkbox or a menu, is not a link: its
+                    <code class="identifier">.table__link</code> covers the row, beneath them.
                 </p>
                 <div class="specimen__api">
                     <code>.table</code><code>.table__head</code><code>.table__row</code
-                    ><code>--columns</code>
+                    ><code>.table__link</code><code>--columns</code>
                 </div>
                 <div class="specimen__stage specimen__stage--page">
                     <div class="card">
@@ -438,6 +440,108 @@
                         </div>
                     </div>
                 </div>
+                <div class="specimen__stage specimen__stage--page">
+                    <div class="card">
+                        <div class="table" style="--columns: auto auto 1fr auto auto">
+                            <div class="table__head">
+                                <input type="checkbox" id="table-all" aria-label="Choose all" />
+                                <span>Number</span><span>Name</span><span>State</span><span></span>
+                            </div>
+                            <div class="table__row">
+                                <input
+                                    type="checkbox"
+                                    aria-label="Choose Fermat's little theorem"
+                                    checked
+                                />
+                                <span class="numeric quiet">2.1</span>
+                                <a class="table__link" href="#table">Fermat's little theorem</a>
+                                <span class="chip chip--success">Done</span>
+                                <stemma-menu>
+                                    <button
+                                        type="button"
+                                        class="button button--quiet button--icon button--small"
+                                        aria-label="More for Fermat's little theorem"
+                                    >
+                                        <svg class="glyph glyph--small" aria-hidden="true">
+                                            <use href="../targets/web/glyphs.svg#more" />
+                                        </svg>
+                                    </button>
+                                    <div class="menu">
+                                        <button type="button" class="menu__item">Rename</button>
+                                        <hr class="menu__separator" />
+                                        <button type="button" class="menu__item menu__item--danger">
+                                            Delete
+                                        </button>
+                                    </div>
+                                </stemma-menu>
+                            </div>
+                            <div class="table__row">
+                                <input type="checkbox" aria-label="Choose Wilson's theorem" />
+                                <span class="numeric quiet">2.14</span>
+                                <a class="table__link" href="#table">Wilson's theorem</a>
+                                <span class="chip chip--warning">Open</span>
+                                <stemma-menu>
+                                    <button
+                                        type="button"
+                                        class="button button--quiet button--icon button--small"
+                                        aria-label="More for Wilson's theorem"
+                                    >
+                                        <svg class="glyph glyph--small" aria-hidden="true">
+                                            <use href="../targets/web/glyphs.svg#more" />
+                                        </svg>
+                                    </button>
+                                    <div class="menu">
+                                        <button type="button" class="menu__item">Rename</button>
+                                        <hr class="menu__separator" />
+                                        <button type="button" class="menu__item menu__item--danger">
+                                            Delete
+                                        </button>
+                                    </div>
+                                </stemma-menu>
+                            </div>
+                            <div class="table__row">
+                                <input type="checkbox" aria-label="Choose Lagrange's theorem" />
+                                <span class="numeric quiet">11</span>
+                                <a class="table__link" href="#table">Lagrange's theorem</a>
+                                <span class="chip chip--dashed">Missing</span>
+                                <stemma-menu>
+                                    <button
+                                        type="button"
+                                        class="button button--quiet button--icon button--small"
+                                        aria-label="More for Lagrange's theorem"
+                                    >
+                                        <svg class="glyph glyph--small" aria-hidden="true">
+                                            <use href="../targets/web/glyphs.svg#more" />
+                                        </svg>
+                                    </button>
+                                    <div class="menu">
+                                        <button type="button" class="menu__item">Rename</button>
+                                        <hr class="menu__separator" />
+                                        <button type="button" class="menu__item menu__item--danger">
+                                            Delete
+                                        </button>
+                                    </div>
+                                </stemma-menu>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <script type="module">
+                    // The head's box stands for the rows': mixed while some are chosen.
+                    const all = document.getElementById("table-all");
+                    const rows = [...all.closest(".table").querySelectorAll(".table__row input")];
+                    const show = () => {
+                        const chosen = rows.filter((row) => row.checked).length;
+                        all.checked = chosen === rows.length;
+                        all.indeterminate = chosen > 0 && chosen < rows.length;
+                    };
+                    all.addEventListener("change", () => {
+                        for (const row of rows) row.checked = all.checked;
+                        show();
+                    });
+                    for (const row of rows) row.addEventListener("change", show);
+                    show();
+                </script>
             </section>
 
             <section class="specimen" id="post">
