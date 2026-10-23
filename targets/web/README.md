@@ -204,6 +204,10 @@ refreshes. Name an icon-only reset button and give it a tooltip.
 glyph from assistive technology and include the new-tab notice in the
 link's accessible text, for example with `.visually-hidden`.
 
+`bell` marks where someone is told of what concerns them, such as their
+notifications. To say there is something new, pair it with a count or a
+dot-only `.indicator`, and say how much in the accessible name.
+
 ### Links and references
 
 A link in interface text without a class of its own is in the link
