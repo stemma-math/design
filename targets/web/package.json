@@ -1,6 +1,6 @@
 {
   "name": "@stemma-math/design",
-  "version": "0.15.0",
+  "version": "0.16.0",
   "description": "Stemma's design system for the web: faces, tokens, base styles, document typography and components, as plain CSS.",
   "license": "MIT AND OFL-1.1 AND LPPL-1.3c AND LicenseRef-Stemma-Mark",
   "repository": {
