@@ -131,5 +131,26 @@ function place(floating, anchor, side = "below", gap = 6) {
     floating.style.left = `${Math.round(left)}px`;
 }
 
-return { define, uid, reducedMotion, onReducedMotionChange, token, tokenColor, durationToken, cubicBezier, easingToken, appearance, onAppearanceChange, popovers, place };
+/** Calls `update` once a frame while anything scrolls or the viewport is
+ * resized, so a fixed element stays beside its anchor. Returns a function
+ * that stops. */
+function follow(update) {
+    let frame = 0;
+    const later = () => {
+        if (!frame)
+            frame = requestAnimationFrame(() => {
+                frame = 0;
+                update();
+            });
+    };
+    addEventListener("resize", later);
+    document.addEventListener("scroll", later, { capture: true, passive: true });
+    return () => {
+        cancelAnimationFrame(frame);
+        removeEventListener("resize", later);
+        document.removeEventListener("scroll", later, { capture: true });
+    };
+}
+
+return { define, uid, reducedMotion, onReducedMotionChange, token, tokenColor, durationToken, cubicBezier, easingToken, appearance, onAppearanceChange, popovers, place, follow };
 })();

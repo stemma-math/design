@@ -15,7 +15,7 @@ modules["select.js"] = (() => {
 // and what the page reads and listens to: choosing an option sets its
 // value and sends `input` and `change` from it. In its place a `.select`
 // button shows the chosen option, and opens a `.menu` listbox below it, or
-// above where there is no room. An `optgroup` becomes a heading. The
+// above where there is no room, beside it as the page scrolls. An `optgroup` becomes a heading. The
 // arrow keys, Home and End move among the options, typing a letter goes
 // to the next option starting with it, Enter or Space chooses, and Escape,
 // Tab or a click elsewhere closes the list. `placeholder` is shown while
@@ -24,7 +24,7 @@ modules["select.js"] = (() => {
 // script shows here after `refresh()`.
 
 const { glyph } = modules["glyphs.js"];
-const { define, place, popovers, uid } = modules["internal.js"];
+const { define, follow, place, popovers, uid } = modules["internal.js"];
 class StemmaSelect extends HTMLElement {
     #select = null;
     #button = null;
@@ -33,6 +33,7 @@ class StemmaSelect extends HTMLElement {
     #list = null;
     #typed = "";
     #typedAt = 0;
+    #unfollow = null;
 
     connectedCallback() {
         if (this.#button) return;
@@ -84,6 +85,7 @@ class StemmaSelect extends HTMLElement {
             this.#list.popover = "auto";
             this.#list.addEventListener("toggle", (event) => {
                 this.#button.setAttribute("aria-expanded", String(event.newState === "open"));
+                if (event.newState === "closed") this.#stopFollowing();
             });
         } else {
             this.#list.hidden = true;
@@ -211,6 +213,7 @@ class StemmaSelect extends HTMLElement {
         this.#button.setAttribute("aria-expanded", "true");
         this.#list.style.minWidth = `${this.#button.offsetWidth}px`;
         place(this.#list, this.#button, "below", 4);
+        this.#unfollow ??= follow(() => place(this.#list, this.#button, "below", 4));
         const options = this.#options();
         const chosen = options.find((item) => item.getAttribute("aria-selected") === "true");
         this.#focus(chosen ?? options[0]);
@@ -224,8 +227,18 @@ class StemmaSelect extends HTMLElement {
         } else {
             this.#list.hidden = true;
         }
+        this.#stopFollowing();
         this.#button.setAttribute("aria-expanded", "false");
         if (refocus) this.#button.focus();
+    }
+
+    disconnectedCallback() {
+        this.#stopFollowing();
+    }
+
+    #stopFollowing() {
+        this.#unfollow?.();
+        this.#unfollow = null;
     }
 
     #focus(item) {
