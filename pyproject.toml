@@ -2,7 +2,7 @@
 # `uv sync` installs them, and the Nix flake builds the same set from it.
 [project]
 name = "stemma-design-tools"
-version = "0.16.0"
+version = "0.17.0"
 description = "The generators of Stemma's design system, and the catalog's server."
 requires-python = ">=3.12"
 license = "MIT"
