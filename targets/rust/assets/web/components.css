@@ -293,7 +293,8 @@
      * goes on the `input`, `textarea` or `select` itself, so a control
      * outside a field looks the same. An error says what happened and how
      * to fix it; the control points at it with `aria-describedby` and
-     * carries `aria-invalid="true"`. */
+     * carries `aria-invalid="true"`. `.field__success` confirms a value
+     * checked as it is typed, such as a name that is free. */
 
     .field {
         display: flex;
@@ -311,12 +312,17 @@
         color: var(--ink-3);
     }
 
-    .field__error {
+    .field__error,
+    .field__success {
         display: flex;
         align-items: flex-start;
         gap: 6px;
         font-size: var(--control-small-font);
         color: var(--danger-text);
+    }
+
+    .field__success {
+        color: var(--success-text);
     }
 
     .input {

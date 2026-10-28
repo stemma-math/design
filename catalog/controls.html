@@ -73,11 +73,12 @@
                 <h2>Field</h2>
                 <p>
                     A label, the control, and a hint or an error under it. An error says what
-                    happened and how to fix it.
+                    happened and how to fix it; a success confirms a value checked as it is typed.
                 </p>
                 <div class="specimen__api">
                     <code>.field</code><code>.field__label</code><code>.field__hint</code
-                    ><code>.field__error</code><code>.input</code><code>.input--mono</code>
+                    ><code>.field__error</code><code>.field__success</code><code>.input</code
+                    ><code>.input--mono</code>
                 </div>
                 <div class="specimen__stage">
                     <div class="split">
@@ -101,6 +102,20 @@
                                 >An identifier needs a name after its colon.</span
                             >
                         </div>
+                    </div>
+                    <div class="field">
+                        <label class="field__label" for="label">Label</label>
+                        <input
+                            class="input input--mono"
+                            id="label"
+                            value="little-fermat"
+                            aria-describedby="label-success"
+                        />
+                        <span class="field__success" id="label-success"
+                            ><svg class="glyph glyph--small" aria-hidden="true">
+                                <use href="../targets/web/glyphs.svg#check" /></svg
+                            >No other theorem has this label.</span
+                        >
                     </div>
                     <div class="field">
                         <label class="field__label" for="statement">Statement</label>
