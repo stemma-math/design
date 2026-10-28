@@ -8,15 +8,17 @@ modules["tooltip.js"] = (() => {
 // It describes the control whose id is `for`, or the element just before
 // it. It appears after a short rest of the pointer, at once on keyboard
 // focus, and goes on Escape, blur or when the pointer leaves. It sits
-// above the control, or below where there is no room.
+// above the control, or below where there is no room, and stays beside it
+// as the page scrolls.
 
-const { define, place, popovers, uid } = modules["internal.js"];
+const { define, follow, place, popovers, uid } = modules["internal.js"];
 const DELAY = 450;
 
 class StemmaTooltip extends HTMLElement {
     #target = null;
     #timer = 0;
     #listeners = [];
+    #unfollow = null;
 
     connectedCallback() {
         this.classList.add("tooltip");
@@ -29,6 +31,7 @@ class StemmaTooltip extends HTMLElement {
 
     disconnectedCallback() {
         this.#detach();
+        this.hide();
     }
 
     #attach() {
@@ -75,6 +78,7 @@ class StemmaTooltip extends HTMLElement {
             this.hidden = false;
         }
         place(this, this.#target, "above");
+        this.#unfollow ??= follow(() => place(this, this.#target, "above"));
     }
 
     /** Hides the tooltip. */
@@ -85,6 +89,8 @@ class StemmaTooltip extends HTMLElement {
         } else {
             this.hidden = true;
         }
+        this.#unfollow?.();
+        this.#unfollow = null;
     }
 }
 

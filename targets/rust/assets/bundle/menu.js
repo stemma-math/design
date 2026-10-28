@@ -12,7 +12,8 @@ modules["menu.js"] = (() => {
 //     </stemma-menu>
 //
 // The first button outside the menu opens it; the menu appears below it,
-// or above where there is no room. The arrow keys move among the items,
+// or above where there is no room, and stays beside it as the page
+// scrolls. The arrow keys move among the items,
 // Home and End go to the first and last, Escape or a click elsewhere
 // closes it and returns focus to the button. Choosing an item sends a
 // `select` event whose `detail.value` is the item's `data-value`, then
@@ -23,7 +24,7 @@ modules["menu.js"] = (() => {
 // and follows changes to the button's size while open. The boolean
 // `matchWidth` property reflects the attribute.
 
-const { define, place, popovers, uid } = modules["internal.js"];
+const { define, follow, place, popovers, uid } = modules["internal.js"];
 const ITEMS = ".menu__item, .menu__action";
 
 class StemmaMenu extends HTMLElement {
@@ -32,6 +33,7 @@ class StemmaMenu extends HTMLElement {
     #trigger = null;
     #menu = null;
     #resize = null;
+    #unfollow = null;
 
     connectedCallback() {
         if (this.#menu) {
@@ -65,6 +67,7 @@ class StemmaMenu extends HTMLElement {
             this.#menu.popover = "auto";
             this.#menu.addEventListener("toggle", (event) => {
                 this.#expanded(event.newState === "open");
+                if (event.newState === "closed") this.#stopFollowing();
             });
         } else {
             this.#menu.hidden = true;
@@ -117,6 +120,7 @@ class StemmaMenu extends HTMLElement {
 
     disconnectedCallback() {
         this.#resize?.disconnect();
+        this.#stopFollowing();
     }
 
     attributeChangedCallback() {
@@ -141,6 +145,11 @@ class StemmaMenu extends HTMLElement {
             );
         }
         place(this.#menu, this.#trigger, "below", 4);
+    }
+
+    #stopFollowing() {
+        this.#unfollow?.();
+        this.#unfollow = null;
     }
 
     #items() {
@@ -174,6 +183,7 @@ class StemmaMenu extends HTMLElement {
         else this.#menu.hidden = false;
         this.#expanded(true);
         this.#place();
+        this.#unfollow ??= follow(() => this.#place());
         const items = this.#items();
         (focus === "last" ? items.at(-1) : items[0])?.focus();
     }
@@ -186,6 +196,7 @@ class StemmaMenu extends HTMLElement {
         } else {
             this.#menu.hidden = true;
         }
+        this.#stopFollowing();
         this.#expanded(false);
         if (refocus) this.#trigger.focus();
     }
